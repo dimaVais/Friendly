@@ -1,31 +1,31 @@
 import React from 'react'
 // import carImg from '../assets/imgs/i101.jpg'
 
-export function PetPreview({  }) {
-    const pet={
-        name:"Bobi",
-        summary: "Energetic and happy dog",
-        imgUrls:["../assets/img/cow.jpg"],
-        bDate: 12321312,
-        gender: "Male",
-        breed: "Golden retreiver",
-        size: "Small",
-        isInRisk: true,
-        shop: {
-            fullName: "Freedom Farm",
-            imgUrl: "../assets/img/user.jpg",
-            rate: 4
-          },
-          reacts:[{
-            type:"love",
-            count:4
-          },
-          {
-            type:"food",
-            count:10
-          }
-        ]
-    }
+export function PetPreview({ pet }) {
+    // const pet={
+    //     name:"Bobi",
+    //     summary: "Energetic and happy dog",
+    //     imgUrls:["../assets/img/cow.jpg"],
+    //     bDate: 12321312,
+    //     gender: "Male",
+    //     breed: "Golden retreiver",
+    //     size: "Small",
+    //     isInRisk: true,
+    //     shop: {
+    //         fullName: "Freedom Farm",
+    //         imgUrl: "../assets/img/user.jpg",
+    //         rate: 4
+    //       },
+    //       reacts:[{
+    //         type:"love",
+    //         count:4
+    //       },
+    //       {
+    //         type:"food",
+    //         count:10
+    //       }
+    //     ]
+    // }
     const {shop}=pet;
     // const image = pet.img ? require(`../assets/imgs/${car._id}.jpg`) : require(`../assets/imgs/default.jpg`)
     return (
@@ -44,12 +44,12 @@ export function PetPreview({  }) {
             </section>
             <section className="pet-reacts">
                 <ul>
-                    pet.reacts.map((react,index)=>{
+                    {pet.reacts.map(react,index => {
                         <li key={index}>
                             <img src={`../assets/img/${react.type}`} alt=""/>
                             <span>{react.count}</span>
                          </li>
-                    })
+                    })}
                 </ul>
             </section>
         </div>
