@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Filter } from '../cmps/PetFilter'
+import { PetFilter } from '../cmps/PetFilter'
 import { PetList } from '../cmps/PetList'
 import { loadPets } from '../store/actions/petActions'
 

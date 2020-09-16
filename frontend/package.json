@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+<<<<<<< HEAD
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+=======
+>>>>>>> e7e8fc1b2af6e7426c41c3c18595676fafded263
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "axios": "^0.20.0",
@@ -25,6 +28,15 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "keywords": [],
   "author": "",
