@@ -5,6 +5,7 @@ export  class NavBar extends Component {
         return (
             <div>
                 <h1>NavBar</h1>
+                <h1>Daiiii</h1>
             </div>
         )
     }
