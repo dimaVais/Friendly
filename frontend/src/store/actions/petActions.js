@@ -1,0 +1,29 @@
+import { petService } from "../../services/pet-service.js"
+
+export function loadPets(filterBy) {
+    return async dispatch => {
+        const pets = await petService.getPets(filterBy);
+        dispatch({ type: 'LOAD_PETS', pets });
+    }
+}
+
+export function savePet(pet) {
+    return async dispatch => {
+        const petToSave = await petService.save(pet);
+        if (pet._id) dispatch({ type: 'PET', petToSave });
+        else dispatch({ type: 'ADD_TOY', petToSave });
+    }
+}
+
+export function removePet(petId) {
+    return async dispatch => {
+       await petService.remove(petId);
+       dispatch({ type: 'REMOVE_PET', petId })
+    }
+}
+
+export function setFilter(filterBy){
+    return dispatch => {
+        dispatch({ type: 'SET_FILTER', filterBy })
+    }
+}

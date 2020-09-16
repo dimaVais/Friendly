@@ -1,0 +1,5 @@
+
+npm install -g json-server 
+
+json-server --watch friendly.json --id=_id
+

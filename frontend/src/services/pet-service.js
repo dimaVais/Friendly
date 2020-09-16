@@ -1,5 +1,5 @@
-// import httpService from './httpService.js'
-// const BASE_URL = 'api/pet'
+import httpService from './httpService.js'
+const BASE_URL = '/pet'
 
 
 export const petService = {
@@ -9,8 +9,8 @@ export const petService = {
     remove
 }
 
-async function query(filterBy) {
-    const queryStr = (filterBy)? `?name=${filterBy.name}&type=${filterBy.type}&inStock=${filterBy.inStock}`: '';
+async function query(filterBy ) {
+    const queryStr = (filterBy)? `?name=${filterBy.name}&type=${filterBy.type}`: '';
     const res = await httpService.get(`${BASE_URL}${queryStr}`, {
         params: filterBy
     });
@@ -24,10 +24,13 @@ async function getPetById(id) {
 
 async function save(pet) {
     if (pet._id) {
+        pet.updatedAt = new Date(date.now()).toLocaleString();
         const res = await httpService.put(`${BASE_URL}/${pet._id}`, pet)
         return res;
 
     } else {
+        pet._id = _makeId();
+        pet.createdAt = new Date(date.now()).toLocaleString();
         const res = await httpService.post(`${BASE_URL}`, pet)
         return res;
     }
