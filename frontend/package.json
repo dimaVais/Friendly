@@ -1,0 +1,29 @@
+{
+  "name": "friendly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "axios": "^0.20.0",
+    "chart.js": "^2.9.3",
+    "cloudinary": "^1.23.0",
+    "google-maps-react": "^2.0.6",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-chartjs-2": "^2.10.0",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
+    "socket.io": "^2.3.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
