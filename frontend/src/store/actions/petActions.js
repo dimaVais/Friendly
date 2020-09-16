@@ -1,8 +1,8 @@
-import { petService } from "../../services/pet-service.js"
+import { petService } from "../../services/petService.js"
 
 export function loadPets(filterBy) {
     return async dispatch => {
-        const pets = await petService.getPets(filterBy);
+        const pets = await petService.query(filterBy);
         dispatch({ type: 'LOAD_PETS', pets });
     }
 }
