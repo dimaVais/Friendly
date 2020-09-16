@@ -56,7 +56,7 @@
         {
           "_id": "p140",
           "name": "Johnny",
-          "imgUrls": ["http://cloudinery.com/img1", "http://cloudinery.com/img2"],
+          "imgUrls": ["http://cloudinery.com/img1", "http://cloudinery.com/img2"]
         },
       "status": "pending"
     }    
