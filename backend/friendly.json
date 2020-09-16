@@ -32,9 +32,79 @@
       {
         "type":"pet",
         "count":10
+      }]
+  },
+  {
+    "_id": "p141",
+      "name": "Rexy",
+      "type": "Dog",
+      "adoptedAt": 12321312,
+      "bDate": 12321312,
+      "gender": "Male",
+      "breed": "Mixed German shepeard",
+      "size": "large",
+      "isInRisk": false,
+      "shop": {
+        "_id": "s101",
+        "fullName": "Freedom Farm",
+        "imgUrl": "url",
+        "rate": 4
+      },
+      "summary": "Very playful and loving",
+      "description": "Active and loyal dog, greate with kids, prefare a family which loves sport and activity.",
+      "location": {
+        "address": "Hashomer 10, Ramat Gan",
+        "lat": 23.90,
+        "lng": 21.44
+      },
+      "imgUrls": ["http://cloudinery.com/img1", "http://cloudinery.com/img2"],
+      "tags": ["Kids Friendly", "Healthy","Energetic","Trained","Sterilized"],
+      "reacts":[{
+        "type":"love",
+        "count":7
+      },
+      {
+        "type":"pet",
+        "count":5
       }
     ]
-  }],
+  },
+  {
+    "_id": "p142",
+      "name": "Doly",
+      "type": "Dog",
+      "adoptedAt": 12321312,
+      "bDate": 12321312,
+      "gender": "Femail",
+      "breed": "Poodle",
+      "size": "medium",
+      "isInRisk": true,
+      "shop": {
+        "_id": "s101",
+        "fullName": "Freedom Farm",
+        "imgUrl": "url",
+        "rate": 4
+      },
+      "summary": "Calm and shy dog that needs experinced owner ",
+      "description": "Doly is asenior and shy dog that needs a family without small kids and prefare to rest all day.",
+      "location": {
+        "address": "Hashomer 10, Ramat Gan",
+        "lat": 23.90,
+        "lng": 21.44
+      },
+      "imgUrls": ["http://cloudinery.com/img1", "http://cloudinery.com/img2"],
+      "tags": ["Adults Only","Calm","Trained","Sterilized"],
+      "reacts":[{
+        "type":"love",
+        "count":10
+      },
+      {
+        "type":"pet",
+        "count":4
+      }
+    ]
+  }
+],
 
   "order":[
  {
