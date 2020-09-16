@@ -30,12 +30,36 @@ class _PetApp extends Component {
 
     render() {
         const { pets, user } = this.props;
+        const pet={
+            name:"Bobi",
+            summary: "Energetic and happy dog",
+            imgUrls:["../assets/img/cow.jpg"],
+            bDate: 12321312,
+            gender: "Male",
+            breed: "Golden retreiver",
+            size: "Small",
+            isInRisk: true,
+            shop: {
+                fullName: "Freedom Farm",
+                imgUrl: "../assets/img/user.jpg",
+                rate: 4
+              },
+              reacts:[{
+                type:"love",
+                count:4
+              },
+              {
+                type:"food",
+                count:10
+              }
+            ]
+        }
         if (!pets) return <h1>Loading...</h1>
         return (
             <div>
-                <Filter />
+                {/* <Filter /> */}
 
-                <PetList pets={pets} onRemove={onRemove} onEdit={onEdit} user={user} />
+                <PetList  />
             </div>
         )
     }

@@ -38,8 +38,7 @@ import { PetList } from '../cmps/PetList'
             imgUrl: '',
             summary: 'Showing the meaning of haste'
         },
-    ],
-    categories: ['Dogs' , 'Cats' , 'Farm' , 'Other']
+    ]
     }
 
 
@@ -49,9 +48,9 @@ import { PetList } from '../cmps/PetList'
             <div>
                 <Hero />
                 <hr/>
-                <CategoryList categories={this.state.categories} />
+                <CategoryList />
                 <hr/>
-                <PetList pets={this.state.pets}/>
+                {/* <PetList pets={this.state.pets}/> */}
             </div>
         )
     }
@@ -60,11 +59,11 @@ import { PetList } from '../cmps/PetList'
 const mapStateToProps = state => {
     return {
         // pets: state.petReducer.pets,
-        user: state.userReducer.loggedInUser
+        // user: state.userReducer.loggedInUser
     }
 }
 const mapDispatchToProps = {
-    loadPets,
+    // loadPets,
 }
 
 export const Home = connect(mapStateToProps, mapDispatchToProps)(_Home)

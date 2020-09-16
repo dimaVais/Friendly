@@ -4,7 +4,9 @@ import { PetPreview } from './PetPreview'
 
 export function PetList(props) {
 
-    const {pets} = this.props
+    
+
+    const {pets} = props
 
     return (
         <div className="pet-list">

@@ -24,13 +24,13 @@ async function getPetById(id) {
 
 async function save(pet) {
     if (pet._id) {
-        pet.updatedAt = new Date(date.now()).toLocaleString();
+        // pet.updatedAt = new Date(date.now()).toLocaleString();
         const res = await httpService.put(`${BASE_URL}/${pet._id}`, pet)
         return res;
 
     } else {
         pet._id = _makeId();
-        pet.createdAt = new Date(date.now()).toLocaleString();
+        // pet.createdAt = new Date(date.now()).toLocaleString();
         const res = await httpService.post(`${BASE_URL}`, pet)
         return res;
     }
