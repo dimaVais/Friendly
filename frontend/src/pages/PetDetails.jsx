@@ -36,7 +36,7 @@ class _PetDetails extends Component {
                         <p><span>Size:</span> {pet.size}</p>
                         <p><span>Gender:</span> {pet.gender}</p>
                         <p><span>Breed:</span> {pet.breed}</p>
-                        {console.log('mmm', pet.tags)}
+                        {/* {console.log('mmm', pet.tags)} */}
                         <span> Tags:</span>
                         <ul>
                             {
@@ -49,14 +49,16 @@ class _PetDetails extends Component {
                         </ul>
                         <div>
                             <ul>
-                                {/* {
+                                {
                                     (pet.reacts) ?
                                         pet.reacts.map(react => {
-                                            if(react)
-                                            return <li>{tag}</li>
+                                            var icon;
+                                            if(react.type==='love')  icon = '❤️';
+                                            else if((react.type==='pet'))  icon ='🐶';
+                                            return <li>{`${icon} ${react.count}`}</li>
                                         })
                                         : ''
-                                } */}
+                                }
                             </ul>
                         </div>
                     </div>
