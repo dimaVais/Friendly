@@ -13,7 +13,7 @@ export function PetPreview(props) {
 
         return (
                 <div className="btn-panel">
-                    <button className="btn btn-delete" onClick={props.onRemove(pet._id)}>Delete</button>
+                    <button className="btn btn-delete" onClick={()=>{props.onRemove(pet._id)}}>Delete</button>
                     <Link to={`edit/${pet._id}`} className="btn btn-edit">
                         Edit
                     </Link>
@@ -32,8 +32,8 @@ export function PetPreview(props) {
             </section>
             <h4>{pet.summary}</h4>
             <section className="pet-category flex">
-                <img src={`../assets/img/${pet.gender.toLowerCase()}`} alt="gender"/>
-                <img src={`../assets/img/${pet.size.toLowerCase()}`} alt="size"/>
+                {/* <img src={`../assets/img/${pet.gender.toLowerCase()}`} alt="gender"/>
+                <img src={`../assets/img/${pet.size.toLowerCase()}`} alt="size"/> */}
             </section>
             <section className="pet-reacts">
                 {/* <ul> */}

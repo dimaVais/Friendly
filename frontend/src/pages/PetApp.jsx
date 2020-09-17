@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PetFilter } from '../cmps/PetFilter'
 import { PetList } from '../cmps/PetList'
-import { loadPets } from '../store/actions/petActions'
+import { loadPets, removePet } from '../store/actions/petActions'
 
 class _PetApp extends Component {
 
     //alex
-    
+    //Dima
 
     state = {
         pets: [],
@@ -24,8 +24,8 @@ class _PetApp extends Component {
     }
 
     onRemove = (id) => {
-        console.log('delete:',id);
-        //this.props.removePet(id);
+        console.log('delete:' ,id);
+        this.props.removePet(id)
     }
 
     onEdit = () => {
@@ -63,7 +63,7 @@ class _PetApp extends Component {
             <div>
                 <PetFilter />
 
-                <PetList pets={pets} onRemove={this.onRemove} onEdit={this.onEdit} user={user} />
+                <PetList pets={pets} onRemove={this.onRemove} user={user} />
             </div>
         )
     }
@@ -77,7 +77,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     loadPets,
-    // removePet,
+    removePet
 }
 
 

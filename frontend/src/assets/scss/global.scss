@@ -1,10 +1,12 @@
 // setup
-@import "./setup/typography";
-@import "./setup/variables";
-// basics
-@import "./basics/base";
-@import "./basics/buttons";
-@import "./basics/helpers";
+@import "./setup/_typography.scss";
+@import "./setup/variables.scss";
+// // basics
+@import "./basics/base.scss";
+@import "./basics/buttons.scss";
+// @import "./basics/helpers.scss";
 
-// cmps
-@import "./components/petPreview";
+// // cmps
+@import "./components/petPreview.scss";
+@import "./components/categoryList.scss";
+@import "./components/hero.scss"
