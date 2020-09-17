@@ -13,8 +13,8 @@ export function PetPreview(props) {
 
         return (
                 <div className="btn-panel">
-                    <div className="btn btn-delete" onClick={props.onRemove(pet._id)}>Delete</div>
-                    <Link to="edit/id" className="btn btn-edit">
+                    <button className="btn btn-delete" onClick={props.onRemove(pet._id)}>Delete</button>
+                    <Link to={`edit/${pet._id}`} className="btn btn-edit">
                         Edit
                     </Link>
                 </div>
