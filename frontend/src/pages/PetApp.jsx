@@ -20,8 +20,9 @@ class _PetApp extends Component {
         this.props.loadPets()
     }
 
-    onRemove = () => {
-        console.log('delete');
+    onRemove = (id) => {
+        console.log('delete:',id);
+        //this.props.removePet(id);
     }
 
     onEdit = () => {
@@ -59,7 +60,7 @@ class _PetApp extends Component {
             <div>
                 {/* <Filter /> */}
 
-                <PetList  />
+                <PetList  remove={this.onRemove}/>
             </div>
         )
     }
@@ -73,7 +74,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     loadPets,
-    // removePet,
+    removePet,
 }
 
 

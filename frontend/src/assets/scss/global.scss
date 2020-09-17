@@ -1,0 +1,10 @@
+// setup
+@import "./setup/typography";
+@import "./setup/variables";
+// basics
+@import "./basics/base";
+@import "./basics/buttons";
+@import "./basics/helpers";
+
+// cmps
+@import "./components/petPreview";
