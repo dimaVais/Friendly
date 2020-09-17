@@ -51,10 +51,10 @@ export class _PetEdit extends Component {
                     <input type="text" name="type" value={pet.type} onChange={this.handleInput} />
                 </label>
                 {pet.adoptedAt && <label> Adoption Date:
-                    <input type="date" name="adoptedAt" value={new Date(pet.adoptedAt).toLocaleDateString()} onChange={this.handleInput}/>
+                    <input type="date" name="adoptedAt" value={new Date(pet.adoptedAt).toISOString().substr(0, 10)} onChange={this.handleInput}/>
                 </label>}
                 <label> Pet Birth Date:
-                    <input type="date" name="bDate" value={new Date(pet.bDate)} onChange={this.handleInput} />
+                    <input type="date" name="bDate"  onChange={this.handleInput} />
                 </label>
                 <label> Pet Gender:
                     <input type="text" name="gender" value={pet.gender}  onChange={this.handleInput} />
