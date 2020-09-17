@@ -22,8 +22,9 @@ export function PetPreview(props) {
     }
     // const image = pet.img ? require(`../assets/imgs/${car._id}.jpg`) : require(`../assets/imgs/default.jpg`)
     return (
+        <Link to={`details/${pet._id}`}>
         <div className="pet-preview">
-           <img src={pet.image} alt="pet"/>
+           {/* <img src={(pet.imgUrls) ? pet.imgUrls[0] : ''} alt="pet"/> */}
            <h2 className="pet-name">{pet.name}</h2>
             <section className="shop-container">
                 {/* <img src={shop.imgUrl} alt="shop"/> */}
@@ -47,5 +48,6 @@ export function PetPreview(props) {
             </section>
             {displayEditButtons()}
         </div>
+        </Link>
     )
 }
