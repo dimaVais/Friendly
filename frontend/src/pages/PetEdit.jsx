@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { savePet } from '../store/actions/petActions.js'
+import { savePet,loadPets } from '../store/actions/petActions.js'
 
 
 export class _PetEdit extends Component {
@@ -9,7 +9,8 @@ export class _PetEdit extends Component {
         pet: {}
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        await this.props.loadPets();
         const petId = this.props.match.params.id
         if (petId) {
             const petToEdit = this.props.pets.find(pet => pet._id === petId)
@@ -39,44 +40,44 @@ export class _PetEdit extends Component {
         this.props.savePet(this.state.pet);
     }
 
-
     render() {
+        const pet = {...this.state.pet}
         return (
             <form className={"flex column align-center"} onSubmit={(event)=>{this.onSubmitForm(event)}}>
-                <label> Insert Pet Name:
-                    <input type="text" name="name" onChange={this.handleInput}/>
+                <label>  Pet Name:
+                    <input type="text" name="name" value={pet.name} onChange={this.handleInput}/>
                 </label>
-                <label>Insert Pet Type:
-                    <input type="text" name="type"  onChange={this.handleInput} />
+                <label> Pet Type:
+                    <input type="text" name="type" value={pet.type} onChange={this.handleInput} />
                 </label>
-                <label> Insert Pet Adoption Date:
-                    <input type="date" name="adoptedAt"  onChange={this.handleInput}/>
+                {pet.adoptedAt && <label> Adoption Date:
+                    <input type="date" name="adoptedAt" value={new Date(pet.adoptedAt).toLocaleDateString()} onChange={this.handleInput}/>
+                </label>}
+                <label> Pet Birth Date:
+                    <input type="date" name="bDate" value={new Date(pet.bDate)} onChange={this.handleInput} />
                 </label>
-                <label> Insert Pet Birth Date:
-                    <input type="date" name="bDate"  onChange={this.handleInput} />
+                <label> Pet Gender:
+                    <input type="text" name="gender" value={pet.gender}  onChange={this.handleInput} />
                 </label>
-                <label> Insert Pet Gender:
-                    <input type="text" name="gender"  onChange={this.handleInput} />
+                 <label>Pet Breed:
+                    <input type="text" name="breed" value={pet.breed} onChange={this.handleInput}/>
                 </label>
-                <label>Insert Pet Breed:
-                    <input type="text" name="breed"  onChange={this.handleInput}/>
-                </label>
-                <label> Insert Pet Size:
-                    <select name="size" id="size"  onChange={this.handleInput}>
+                <label> Pet Size:
+                    <select name="size" id="size" value={pet.size} onChange={this.handleInput}>
                         <option value="small">Small</option>
                         <option value="medium">medium</option>
                         <option value="large">Large</option>
                         <option value="giant">Giant</option>
                     </select>
                 </label>
-                <label> Is the adoption urgent:
-                    <input type="checkbox" name="isInRisk" onChange={this.handleInput}/>
+                <label> Urgent adoption:
+                    <input type="checkbox" name="isInRisk" checked={(pet.isInRisk) ? "checked" : ""} onChange={this.handleInput}/>
                 </label>
-                <label> Insert summary about the Pet:
-                    <input type="text" name="summary" onChange={this.handleInput}/>
+                <label> Summary about the Pet:
+                    <input type="text" name="summary" value={pet.summary} onChange={this.handleInput}/>
                 </label>
-                <label> Insert pet description:
-                    <textarea type="text" name="description"  onChange={this.handleInput}/>
+                <label> Pet description:
+                    <textarea type="text" name="description" value={pet.description}  onChange={this.handleInput}/>
                 </label>
                 <label> Select pet behavior with kids:
                     <select name="kids" id="kids"  onChange={this.handleInput}>
@@ -125,7 +126,8 @@ export class _PetEdit extends Component {
     }
 
     const mapDispatchToProps = {
-        savePet
+        savePet,
+        loadPets
     }
 
     export const PetEdit = connect(mapStateToProps, mapDispatchToProps)(_PetEdit)
