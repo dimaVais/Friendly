@@ -148,7 +148,17 @@
       "cats": "selective",
       "energy": "high",
       "_id": "lGWKcV",
-      "createdAt": "9/17/2020, 9:19:40 AM"
+      "createdAt": "9/17/2020, 9:19:40 AM",
+      "reacts": [
+        {
+          "type": "love",
+          "count": 10
+        },
+        {
+          "type": "pet",
+          "count": 4
+        }
+      ]
     }
   ],
   "order": [
