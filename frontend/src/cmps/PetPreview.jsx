@@ -33,7 +33,6 @@ export function PetPreview({ pet,remove }) {
             <section className="pet-category flex">
                 <img src={`../assets/img/${pet.gender.toLowerCase()}`} alt="gender"/>
                 <img src={`../assets/img/${pet.size.toLowerCase()}`} alt="size"/>
-                {displayEditButtons()}
             </section>
             <section className="pet-reacts">
                 <ul>
@@ -45,6 +44,7 @@ export function PetPreview({ pet,remove }) {
                     })}  */}
                 </ul>
             </section>
+            {displayEditButtons()}
         </div>
     )
 }
