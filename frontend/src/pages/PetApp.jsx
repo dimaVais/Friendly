@@ -74,7 +74,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = {
     loadPets,
-    removePet,
+    // removePet,
 }
 
 
