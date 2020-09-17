@@ -10,8 +10,8 @@ export function loadPets(filterBy) {
 export function savePet(pet) {
     return async dispatch => {
         const petToSave = await petService.save(pet);
-        if (pet._id) dispatch({ type: 'PET', petToSave });
-        else dispatch({ type: 'ADD_TOY', petToSave });
+        if (pet._id) dispatch({ type: 'EDIT_PET', petToSave });
+        else dispatch({ type: 'ADD_PET', petToSave });
     }
 }
 
