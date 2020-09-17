@@ -29,6 +29,9 @@ class _PetDetails extends Component {
                         </div>
                         <p> {pet.summary}</p>
                         <img src={pet.imgUrls} />
+                        <img src={pet.imgUrls} />
+                        <img src={pet.imgUrls} />
+                        <img src={pet.imgUrls} />
                         <div></div>
                         <p><span>Age:</span>
                             {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(2)}`}
@@ -36,7 +39,6 @@ class _PetDetails extends Component {
                         <p><span>Size:</span> {pet.size}</p>
                         <p><span>Gender:</span> {pet.gender}</p>
                         <p><span>Breed:</span> {pet.breed}</p>
-                        {/* {console.log('mmm', pet.tags)} */}
                         <span> Tags:</span>
                         <ul>
                             {
