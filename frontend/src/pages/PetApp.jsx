@@ -6,8 +6,7 @@ import { loadPets, removePet } from '../store/actions/petActions'
 
 class _PetApp extends Component {
 
-    //alex
-    //Dima
+
 
     state = {
         pets: [],
@@ -28,9 +27,11 @@ class _PetApp extends Component {
         this.props.removePet(id)
     }
 
-    onEdit = () => {
-        console.log('edit');
-    }
+    // onEdit = (ev) => {
+    //     ev.preventDefault();
+    //     // ev.stopPropagation();
+    //     console.log('edit+');
+    // }
 
     render() {
         const { pets, user } = this.props;
