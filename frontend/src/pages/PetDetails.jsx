@@ -49,14 +49,14 @@ class _PetDetails extends Component {
                         </ul>
                         <div>
                             <ul>
-                                {
+                                {/* {
                                     (pet.reacts) ?
                                         pet.reacts.map(react => {
                                             if(react)
                                             return <li>{tag}</li>
                                         })
                                         : ''
-                                }
+                                } */}
                             </ul>
                         </div>
                     </div>
