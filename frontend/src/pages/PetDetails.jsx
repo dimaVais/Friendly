@@ -20,55 +20,68 @@ class _PetDetails extends Component {
     render() {
         const pet = this.state.pet;
         return (
-            <section>
-                <h1>PetDetails</h1>
-                <div>
+            <section className="pet-details-main-container">
+                <div className="pet-details-box">
+                    <div >
+                        <h2 className="pet-details-heading">{pet.name}</h2>
+                        {/* like icon */}
+                        {/* <span>⭐⭐⭐</span> */}
+                    </div>
+                    <h4> {pet.summary}</h4>
+                    <div className="pet-details-img-box">
+                        {
+                            (pet.imgUrls) ?
+                                pet.imgUrls.map((imgUrl, index) => {
+                                    return <img className={`pet-details-img-${index}`} src={imgUrl} />
+                                })
+                                : ''
+                        }
+                    </div>
+                    <hr />
+                    <p><span>Age: </span>
+                        {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
+                    </p>
+                    <p><span>Size:</span> {pet.size}</p>
+                    <p><span>Gender:</span> {pet.gender}</p>
+                    <p><span>Breed:</span> {pet.breed}</p>
+                    <hr />
+                    {/* <span> About {pet.name}</span> */}
+                    <ul className="tags-list">
+                        {
+                            (pet.tags) ?
+                                pet.tags.map(tag => {
+                                    return <li> {tag} </li>
+                                })
+                                : ''
+                        }
+                    </ul>
                     <div>
-                        <div><h2><span>Name:</span>{pet.name}</h2>
-                            <span>⭐</span>
-                        </div>
-                        <p> {pet.summary}</p>
-                        <img src={pet.imgUrls} />
-                        <img src={pet.imgUrls} />
-                        <img src={pet.imgUrls} />
-                        <img src={pet.imgUrls} />
-                        <div></div>
-                        <p><span>Age:</span>
-                            {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(2)}`}
-                        </p>
-                        <p><span>Size:</span> {pet.size}</p>
-                        <p><span>Gender:</span> {pet.gender}</p>
-                        <p><span>Breed:</span> {pet.breed}</p>
-                        <span> Tags:</span>
                         <ul>
                             {
-                                (pet.tags) ?
-                                    pet.tags.map(tag => {
-                                        return <li>{tag}</li>
+                                (pet.reacts) ?
+                                    pet.reacts.map(react => {
+
+
+                                        var icon;
+                                        if (react.type === 'love') icon = '❤️';
+                                        else if ((react.type === 'pet')) icon = '🐶';
+                                        return <li>{`${icon} ${react.count}`}</li>
                                     })
                                     : ''
                             }
                         </ul>
-                        <div>
-                            <ul>
-                                {
-                                    (pet.reacts) ?
-                                        pet.reacts.map(react => {
-                                            var icon;
-                                            if(react.type==='love')  icon = '❤️';
-                                            else if((react.type==='pet'))  icon ='🐶';
-                                            return <li>{`${icon} ${react.count}`}</li>
-                                        })
-                                        : ''
-                                }
-                            </ul>
-                        </div>
                     </div>
 
                     <p><span>Description:</span> {'\n' + pet.description}</p>
                 </div>
-                <div></div>
-                <div></div>
+                <div className="actions-box">
+                    <h3>Reasons To Adopt</h3>
+                    <p>You save a life. </p>
+                    <p>You adopt a pet, and find a friend.</p>
+                    <p>You help stop cruelty in mass breeding facilities.</p>
+                    <button className="adopt-btn">Adopt</button>
+
+                </div>
             </section>
         )
     }
