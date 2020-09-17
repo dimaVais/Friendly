@@ -24,7 +24,7 @@
         "lng": 21.44
       },
       "imgUrls": [
-        "http://cloudinery.com/img1",
+        "https://www.valleywestvets.com/sites/default/files/styles/large/adaptive-image/public/golden-retriever-dog-breed-info.jpg",
         "http://cloudinery.com/img2"
       ],
       "tags": [
@@ -46,13 +46,58 @@
       ]
     },
     {
+      "_id": "p140",
+      "name": "Mary",
+      "type": "Cat",
+      "adoptedAt": 12321312,
+      "bDate": 12321312,
+      "gender": "Female",
+      "breed": "Siamese",
+      "size": "Small",
+      "isInRisk": false,
+      "shop": {
+        "_id": "s101",
+        "fullName": "Freedom Farm",
+        "imgUrl": "url",
+        "rate": 4
+      },
+      "summary": "Adorable cat that loves hugging",
+      "description": "One of the best cats we have here. Need a lot of attention and love but be sure you will get it back, big time.",
+      "location": {
+        "address": "Sderot HN 4, Tel-Aviv",
+        "lat": 23.2,
+        "lng": 21.94
+      },
+      "imgUrls": [
+        "https://petsbuyandsell.com/wp-content/uploads/2018/01/siamese-cat.png",
+        "http://cloudinery.com/img2"
+      ],
+      "tags": [
+        "Kids Friendly",
+        "Healthy",
+        "Energetic",
+        "Trained",
+        "Sterilized"
+      ],
+      "reacts": [
+        {
+          "type": "love",
+          "count": 8
+        },
+        {
+          "type": "pet",
+          "count": 2
+        }
+      ]
+    },
+    {
       "_id": "p141",
       "name": "Rexy",
       "type": "Dog",
       "adoptedAt": 12321312,
       "bDate": 12321312,
       "gender": "Male",
-      "breed": "Mixed German shepeard",
+      "breed": "Mixed German Shepeard",
       "size": "large",
       "isInRisk": false,
       "shop": {
@@ -69,7 +114,7 @@
         "lng": 21.44
       },
       "imgUrls": [
-        "http://cloudinery.com/img1",
+        "https://k9deb.com/wp-content/uploads/2019/08/German-Australian-Shepherd-625x550.png",
         "http://cloudinery.com/img2"
       ],
       "tags": [
@@ -120,7 +165,7 @@
         "Sterilized"
       ],
       "imgUrls": [
-        "http://cloudinery.com/img1",
+        "https://www.animalkingdomaz.com/wp-content/uploads/standard-poodle-2-300x300.jpg",
         "http://cloudinery.com/img2"
       ],
       "reacts": [
