@@ -22,6 +22,7 @@ export function PetPreview(props) {
     }
     // const image = pet.img ? require(`../assets/imgs/${car._id}.jpg`) : require(`../assets/imgs/default.jpg`)
     return (
+        
         <div className="pet-preview">
            <img src={pet.image} alt="pet"/>
            <h2 className="pet-name">{pet.name}</h2>
