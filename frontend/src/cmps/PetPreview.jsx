@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 // import carImg from '../assets/imgs/i101.jpg'
 
-export function PetPreview({ pet,remove }) {
-    const {shop}=pet;
+export function PetPreview(props) {
+    const {shop} = props.pet;
+    const pet = props.pet;
 
 
     function displayEditButtons() {
@@ -12,7 +13,7 @@ export function PetPreview({ pet,remove }) {
 
         return (
                 <div className="btn-panel">
-                    <div className="btn btn-delete" onClick={remove(pet._id)}>Delete</div>
+                    <div className="btn btn-delete" onClick={props.onRemove(pet._id)}>Delete</div>
                     <Link to="edit/id" className="btn btn-edit">
                         Edit
                     </Link>
@@ -35,14 +36,14 @@ export function PetPreview({ pet,remove }) {
                 <img src={`../assets/img/${pet.size.toLowerCase()}`} alt="size"/>
             </section>
             <section className="pet-reacts">
-                <ul>
+                {/* <ul> */}
                     {/* {pet.reacts && pet.reacts.map(reac,index => {
                         <li key={index}>
                             <img src={`../assets/img/${reac.type}`} alt=""/>
                             <span>{reac.count}</span>
                          </li>
                     })}  */}
-                </ul>
+                {/* </ul> */}
             </section>
             {displayEditButtons()}
         </div>

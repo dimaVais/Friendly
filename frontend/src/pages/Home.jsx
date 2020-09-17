@@ -4,6 +4,7 @@ import { CategoryList } from '../cmps/CategoryList'
 import { Hero } from '../cmps/Hero'
 import { PetList } from '../cmps/PetList'
 import { loadPets } from '../store/actions/petActions.js'
+import { PetApp } from './PetApp'
 
 class _Home extends Component {
 
@@ -61,7 +62,7 @@ class _Home extends Component {
                 <hr />
                 <CategoryList categories={this.state.categories} />
                 <hr />
-                <PetList pets={this.props.pets} />
+                <PetApp pets={this.props.pets} />
             </div>
         )
     }

@@ -2,17 +2,12 @@ import React from 'react'
 import { PetPreview } from './PetPreview'
 
 
-export function PetList(pets, remove) {
-
-    
-
-    const {pets} = props
-
+export function PetList(props) {
     return (
         <div className="pet-list">
             <ul>
                 {
-                    pets.map(pet => <PetPreview pet={pet} remove={remove}/>)
+                    props.pets.map(pet => <PetPreview pet={pet} onRemove={props.onRemove}/>)
                 }
             </ul>
 
