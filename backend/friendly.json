@@ -96,7 +96,7 @@
       "type": "Dog",
       "adoptedAt": 12321312,
       "bDate": 12321312,
-      "gender": "Femail",
+      "gender": "Female",
       "breed": "Poodle",
       "size": "medium",
       "isInRisk": true,
@@ -113,15 +113,15 @@
         "lat": 23.9,
         "lng": 21.44
       },
-      "imgUrls": [
-        "http://cloudinery.com/img1",
-        "http://cloudinery.com/img2"
-      ],
       "tags": [
         "Adults Only",
         "Calm",
         "Trained",
         "Sterilized"
+      ],
+      "imgUrls": [
+        "http://cloudinery.com/img1",
+        "http://cloudinery.com/img2"
       ],
       "reacts": [
         {
