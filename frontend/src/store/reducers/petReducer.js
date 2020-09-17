@@ -21,7 +21,7 @@ export function petReducer(state = initialState, action) {
                 ...state,
                 pets: state.pets.map(pet => {
                     if (pet._id === action.petToSave._id) pet = action.petToSave;
-                    return pet;
+                    // return pets;
                 })
             }
         case 'REMOVE_PET':

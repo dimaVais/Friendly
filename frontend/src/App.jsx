@@ -17,6 +17,7 @@ function _App(props) {
     <div className="App">
       <header className="flex align-center App-header">
         <div className="flex align-center header-div">
+        <NavBar />
           <h1>Friendly</h1>
         </div>
 
