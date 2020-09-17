@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 // import carImg from '../assets/imgs/i101.jpg'
 
-export function PetPreview({ pet,remove }) {
+export function PetPreview({ pet, remove }) {
     const {shop}=pet;
 
 
@@ -44,7 +44,10 @@ export function PetPreview({ pet,remove }) {
                          </li>
                     })} 
                 </ul> */}
+                
             </section>
+            {displayEditButtons()}
+
         </div>
     )
 }
