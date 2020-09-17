@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './styles/global.scss';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { SignUp } from './pages/SignUp';
@@ -18,14 +17,10 @@ function _App(props) {
       <header className="flex align-center App-header">
         <div className="flex align-center header-div">
         <NavBar />
-          <h1>Friendly</h1>
         </div>
 
-        <div className="flex column">Hello 
-        {/* {props.user.username} */}
-          {/* <Logout /> */}
-        </div>
-        <NavBar />
+          <h1>Friendly</h1>
+
       </header>
       <main>
         <Switch>

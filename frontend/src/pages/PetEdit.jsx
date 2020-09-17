@@ -38,6 +38,7 @@ export class _PetEdit extends Component {
     onSubmitForm = (ev) =>{
         ev.preventDefault();
         this.props.savePet(this.state.pet);
+        this.props.history.push('/')
     }
 
     render() {

@@ -60,7 +60,7 @@ class _Home extends Component {
             <div>
                 <Hero />
                 <hr />
-                <CategoryList categories={this.state.categories} />
+                <CategoryList />
                 <hr />
                 <PetApp pets={this.props.pets} />
             </div>
