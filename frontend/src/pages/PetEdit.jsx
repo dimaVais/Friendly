@@ -70,10 +70,10 @@ export class _PetEdit extends Component {
                     </select>
                 </label>
                 <label> Is the adoption urgent:
-                    <input type="checkbox" name="isInRisk"  onChange={this.handleInput}/>
+                    <input type="checkbox" name="isInRisk" onChange={this.handleInput}/>
                 </label>
                 <label> Insert summary about the Pet:
-                    <input type="text" name="summary"  onChange={this.handleInput}/>
+                    <input type="text" name="summary" onChange={this.handleInput}/>
                 </label>
                 <label> Insert pet description:
                     <textarea type="text" name="description"  onChange={this.handleInput}/>
@@ -89,14 +89,14 @@ export class _PetEdit extends Component {
                     <select name="dogs" id="dogs"  onChange={this.handleInput}>
                         <option value="friendly">Friendly</option>
                         <option value="selective">Selective</option>
-                        <option value="agressive">Large</option>
+                        <option value="agressive">agressive</option>
                     </select>
                 </label>
                 <label> Select pet behavior with cats:
                     <select name="cats" id="cats"  onChange={this.handleInput}>
                         <option value="friendly">Friendly</option>
                         <option value="selective">Selective</option>
-                        <option value="agressive">Large</option>
+                        <option value="agressive">agressive</option>
                     </select>
                 </label>
                 <label> Select pet energy level:
