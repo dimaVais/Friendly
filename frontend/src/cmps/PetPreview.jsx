@@ -31,25 +31,25 @@ export function PetPreview({ pet }) {
     return (
         <div className="pet-preview">
            <img src={pet.image} alt="pet"/>
-           <h2 className="pet-name">pet.name</h2>
+           <h2 className="pet-name">{pet.name}</h2>
             <section className="shop-container">
-                <img src={shop.imgUrl} alt="shop"/>
-                <div>{shop.rate}</div>
-                <h3>{shop.fullName}</h3>
+                {/* <img src={shop.imgUrl} alt="shop"/> */}
+                {/* <div>{shop.rate}</div> */}
+                {/* <h3>{shop.fullName}</h3> */}
             </section>
             <h4>{pet.summary}</h4>
             <section className="pet-category flex">
-                <img src={`../assets/img/${pet.gender.toLowerCase()}`} alt="gender"/>
-                <img src={`../assets/img/${pet.size.toLowerCase()}`} alt="size"/>
+                {/* <img src={`../assets/img/${pet.gender.toLowerCase()}`} alt="gender"/>
+                <img src={`../assets/img/${pet.size.toLowerCase()}`} alt="size"/> */}
             </section>
             <section className="pet-reacts">
                 <ul>
-                    {pet.reacts.map(react,index => {
+                    {/* {pet.reacts.map(react,index => {
                         <li key={index}>
                             <img src={`../assets/img/${react.type}`} alt=""/>
                             <span>{react.count}</span>
                          </li>
-                    })}
+                    })} */}
                 </ul>
             </section>
         </div>

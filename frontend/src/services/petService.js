@@ -1,5 +1,5 @@
 import httpService from './httpService.js'
-const BASE_URL = '/pet'
+const BASE_URL = 'pet'
 
 
 export const petService = {

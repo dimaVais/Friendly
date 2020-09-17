@@ -19,7 +19,9 @@ function _App(props) {
         <div className="flex align-center header-div">
           <h1>Friendly</h1>
         </div>
-        <div className="flex column">Hello {props.user.username}
+
+        <div className="flex column">Hello 
+        {/* {props.user.username} */}
           {/* <Logout /> */}
         </div>
         <NavBar />

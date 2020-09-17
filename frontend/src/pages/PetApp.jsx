@@ -33,9 +33,9 @@ class _PetApp extends Component {
         if (!pets) return <h1>Loading...</h1>
         return (
             <div>
-                <Filter />
+                <PetFilter />
 
-                <PetList pets={pets} onRemove={onRemove} onEdit={onEdit} user={user} />
+                <PetList pets={pets} onRemove={this.onRemove} onEdit={this.onEdit} user={user} />
             </div>
         )
     }
