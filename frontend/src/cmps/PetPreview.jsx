@@ -13,7 +13,7 @@ export function PetPreview({ pet,remove }) {
         return (
                 <div className="btn-panel">
                     <div className="btn btn-delete" onClick={remove(pet._id)}>Delete</div>
-                    <Link to={'/edit'} className="btn btn-edit">
+                    <Link to={`/edit/${pet._id}`} className="btn btn-edit">
                         Edit
                     </Link>
                 </div>
