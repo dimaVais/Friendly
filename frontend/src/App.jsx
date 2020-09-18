@@ -22,7 +22,7 @@ function _App(props) {
       <main>
         <Switch>
           <Route component={ShopDetails} path="/shop/:id" />
-          <Route component={PetDetails} path="/details/:id?" />
+          <Route component={PetDetails}  path="/details/:id?" />
           <Route component={PetEdit} path="/edit/:id?" />
           <Route component={SignUp} path="/signup" />
           <Route component={About} path="/about" />
