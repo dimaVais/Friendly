@@ -23,7 +23,7 @@ class _ShopDetails extends Component {
             if (pet.shop) return pet.shop._id === this.state.shop._id
 
         })
-        await this.setState({
+         this.setState({
             shopPets: [...shopPets]
         })
     }
