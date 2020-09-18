@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 
 export function PetPreview(props) {
     const {shop} = props.pet;
@@ -21,7 +21,7 @@ export function PetPreview(props) {
   
     // const image = pet.img ? require(`../assets/imgs/${car._id}.jpg`) : require(`../assets/imgs/default.jpg`)
     return (
-        <Link to={`details/${pet._id}`}>
+        <NavLink to={`/details/${pet._id}`}>
         <div className="pet-preview flex column">
            <img src={(pet.imgUrls) ? pet.imgUrls[0] : ''} alt="pet"/>
            <h2 className="pet-name">{pet.name}</h2>
@@ -46,8 +46,9 @@ export function PetPreview(props) {
                 {/* </ul> */}
             </section>
             {/* {displayEditButtons()} */}
-            
+        
         </div>
-        </Link>
+        </ NavLink>
+
     )
 }

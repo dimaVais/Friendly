@@ -12,11 +12,13 @@ class _PetApp extends Component {
             gender:'',
             type:''
         },
-        sortBy: null
+        sortBy: null,
+        isReady:false
     }
 
     async componentDidMount() {
     if (this.props.match){
+        console.log(this.props);
         if (this.props.match.params.filterType){
             const filterBy={
                 type:this.props.match.params.filterType
@@ -28,26 +30,27 @@ class _PetApp extends Component {
     }
 
    async  componentDidUpdate(prevProps){
-        if (prevProps!==this.props){
-            if (this.props.match){
-                if (this.props.match.params.filterType){
-                    const filterBy={
-                        type:this.props.match.params.filterType
-                    }
-                    await this.setState({filterBy})
-                }
-               } 
-        }
-        console.log(this.state);
+           if (prevProps!==this.props){
+                this.setState({isReady:true})
+           }
+        // if (prevProps!==this.props){
+        //     if (this.props.match){
+        //         if (this.props.match.params.filterType){
+        //             const filterBy={
+        //                 type:this.props.match.params.filterType
+        //             }
+        //             await this.setState({filterBy})
+        //         }
+        //        } 
+        // }
+        // console.log(this.state);
     }
     
     onSetFilter = (filterBy) =>  {
         this.setState({ filterBy }, () => this.loadPets())
-        console.log('After updating:',this.state);
     }
 
     loadPets = () => {
-        console.log(this.state.filterBy);
         this.props.loadPets(this.state.filterBy);
     }
 
@@ -62,7 +65,7 @@ class _PetApp extends Component {
         if (!pets) return <h1>Loading...</h1>
         return (
             <div>
-                <PetFilter onSetFilter={this.onSetFilter} type={this.state.filterBy.type} />
+                {this.state.isReady && <PetFilter onSetFilter={this.onSetFilter} type={this.state.filterBy.type} />}
                 <PetList pets={pets} onRemove={this.onRemove} user={user} />
             </div>
         )
