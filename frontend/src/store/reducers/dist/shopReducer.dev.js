@@ -37,7 +37,7 @@ function shopReducer() {
     case 'GET_SHOP':
       console.log('ccc', action.shop);
       return _objectSpread({}, state, {
-        currShop: _objectSpread({}, action.shop)
+        currShop: JSON.parse(JSON.stringify(action.shop))
       });
 
     case 'ADD_SHOP':

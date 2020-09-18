@@ -9,9 +9,10 @@ export function loadShops(filterBy) {
 }
 
 export function getShopById(shopId) {
-    console.log('kkkk',shopId);
     return async dispatch => {
         const shop = await shopService.getById(shopId);
+        console.log('kkkk',shop);
+
         dispatch({ type: 'GET_SHOP', shop });
     }
 }

@@ -37,7 +37,6 @@ function loadShops(filterBy) {
 }
 
 function getShopById(shopId) {
-  console.log('kkkk', shopId);
   return function _callee2(dispatch) {
     var shop;
     return regeneratorRuntime.async(function _callee2$(_context2) {
@@ -49,12 +48,13 @@ function getShopById(shopId) {
 
           case 2:
             shop = _context2.sent;
+            console.log('kkkk', shop);
             dispatch({
               type: 'GET_SHOP',
               shop: shop
             });
 
-          case 4:
+          case 5:
           case "end":
             return _context2.stop();
         }

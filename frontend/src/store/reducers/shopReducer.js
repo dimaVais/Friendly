@@ -15,7 +15,7 @@ export function shopReducer(state = initialState, action) {
             console.log('ccc',action.shop);
             return {
                 ...state,
-                currShop: {...action.shop}
+                currShop: JSON.parse(JSON.stringify(action.shop))
             }
         case 'ADD_SHOP':
             return {

@@ -210,9 +210,9 @@
       "title": "Saving lives",
       "desc": "We are here for the animals",
       "location": {
-        "name": "Paris",
-        "lat": 32.9898,
-        "lng": 12.28
+        "name": "Tel Aviv",
+        "lat": 32.0853,
+        "lng": 34.7818
       },
       "reviews": [
         {
@@ -236,7 +236,7 @@
       "isAdmin": false,
       "isOwner": true,
       "userName": "user1",
-      "password": "secret",
+      "password": "secret1",
       "messages": [
         {
           "from": "Didi Harari",
