@@ -10,7 +10,8 @@ exports.removeShop = removeShop;
 
 var _shopService = require("../../services/shopService.js");
 
-function loadShops(filterBy) {
+function loadShops() {
+  var filterBy = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   return function _callee(dispatch) {
     var shops;
     return regeneratorRuntime.async(function _callee$(_context) {

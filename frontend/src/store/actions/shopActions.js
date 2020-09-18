@@ -1,7 +1,7 @@
 import { shopService } from "../../services/shopService.js"
 
 
-export function loadShops(filterBy) {
+export function loadShops(filterBy={}) {
     return async dispatch => {
         const shops = await shopService.query(filterBy);
         dispatch({ type: 'LOAD_SHOPS', shops });

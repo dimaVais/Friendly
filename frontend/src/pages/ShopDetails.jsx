@@ -17,7 +17,6 @@ class _ShopDetails extends Component {
         const shopId = this.props.match.params.id;
         await this.props.loadPets();
         await this.props.getShopById(shopId);
-        console.log(this.props.currShop);
         this.setState({ shop: { ...this.props.currShop } });
         const shopPets = this.props.pets.filter(pet => {
             if (pet.shop) return pet.shop._id === this.state.shop._id
