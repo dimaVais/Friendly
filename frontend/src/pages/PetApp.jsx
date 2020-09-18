@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PetFilter } from '../cmps/PetFilter'
 import { PetList } from '../cmps/PetList'
-import { loadPets, removePet } from '../store/actions/petActions'
+import { loadPets, removePet,setFilter } from '../store/actions/petActions'
+import { Login } from './Login'
 
 class _PetApp extends Component {
 
@@ -10,28 +11,26 @@ class _PetApp extends Component {
 
     state = {
         pets: [],
-        filterBy: {
-            type: '',
-            value:''
-        },
+        filterBy: {},
         sortBy: null
     }
 
     async componentDidMount() {
-    await this.loadPets()
     if (this.props.match){
-        const filterBy={};
-        filterBy.type= this.props.match.params.filterType;
-        filterBy.value = this.props.match.params.filterValue;
-        this.setState({filterBy})
-       }
+        if (this.props.match.params.filterType){
+            const filterBy={
+                type:this.props.match.params.filterType
+            }
+            await this.props.setFilter(filterBy)
+        }
+       } 
+        await this.loadPets()
 
-        
     }
 
     loadPets = () => {
-        this.props.loadPets();
-
+        console.log('Filter is:',this.props.filterBy);
+        this.props.loadPets(this.props.filterBy);
     }
 
     onRemove = (id) => {
@@ -39,47 +38,24 @@ class _PetApp extends Component {
         this.props.removePet(id)
     }
     
-    getPetsForDisplay(){
-        if(!this.state.filterBy.type) return this.props.pets
-        const {filterBy} = this.state
-        const petsFiltered = this.props.pets.filter(pet=>{
-            return pet[filterBy.type].toLowerCase()===filterBy.value
-        });
-        return petsFiltered;
-    }
+    // getPetsForDisplay(){
+    //     if(!this.state.filterBy.type) return this.props.pets
+    //     const {filterBy} = this.state
+    //     const petsFiltered = this.props.pets.filter(pet=>{
+    //         return pet[filterBy.type].toLowerCase()===filterBy.value
+    //     });
+    //     return petsFiltered;
+    // }
 
 
     render() {
-        const {  user } = this.props;
-        const pets = this.getPetsForDisplay()
-        // const pet={
-        //     name:"Bobi",
-        //     summary: "Energetic and happy dog",
-        //     imgUrls:["../assets/img/cow.jpg"],
-        //     bDate: 12321312,
-        //     gender: "Male",
-        //     breed: "Golden retreiver",
-        //     size: "Small",
-        //     isInRisk: true,
-        //     shop: {
-        //         fullName: "Freedom Farm",
-        //         imgUrl: "../assets/img/user.jpg",
-        //         rate: 4
-        //       },
-        //       reacts:[{
-        //         type:"love",
-        //         count:4
-        //       },
-        //       {
-        //         type:"food",
-        //         count:10
-        //       }
-        //     ]
-        // }
+        const { pets, user } = this.props;
+        // const pets = this.getPetsForDisplay()
+      
         if (!pets) return <h1>Loading...</h1>
         return (
             <div>
-                {/* <PetFilter /> */}
+                <PetFilter />
 
                 <PetList pets={pets} onRemove={this.onRemove} user={user} />
             </div>
@@ -90,14 +66,15 @@ class _PetApp extends Component {
 const mapStateToProps = state => {
     return {
         pets: state.petReducer.pets,
+        filterBy:state.petReducer.filterBy
         // user: state.userReducer.loggedInUser
     }
 }
 const mapDispatchToProps = {
     loadPets,
-    removePet
+    removePet,
+    setFilter
 }
-
 
 export const PetApp = connect(mapStateToProps, mapDispatchToProps)(_PetApp)
 

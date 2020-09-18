@@ -55,9 +55,10 @@ class _Home extends Component {
 
 
     render() {
-
+        const {user} = this.props
         return (
             <div>
+                {user && <h1>hey {user.fullName}</h1>}
                 <Hero />
                 <hr />
                 <CategoryList />
@@ -71,7 +72,7 @@ class _Home extends Component {
 const mapStateToProps = state => {
     return {
         pets: state.petReducer.pets,
-        // user: state.userReducer.loggedInUser
+        user: state.userReducer.loggedInUser
     }
 }
 const mapDispatchToProps = {

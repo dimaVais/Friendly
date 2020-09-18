@@ -7,14 +7,14 @@ export function CategoryList() {
 
     function disCategories(category){
         return(
-            <NavLink to={`pet/type/${category}`}><img src={require(`../assets/img/category-${category}.jpg`)} alt="Cat"/></NavLink> 
+            <NavLink to={`pet/${category}`}><img src={require(`../assets/img/category-${category}.jpg`)} alt="Category"/></NavLink> 
         )
     }
     return (
         <div className="category-list">
             
             {
-                categories.map(cat=>disCategories(cat) )
+                categories.map(category=>disCategories(category) )
               
             }
         </div>
