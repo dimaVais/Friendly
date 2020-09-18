@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Home } from './pages/Home';
-import { Login } from './pages/Login';
+// import { LoginModal } from './cmps/LoginModal';
 import { SignUp } from './pages/SignUp';
 import { About } from './pages/About';
 import { PetApp } from './pages/PetApp';
@@ -27,7 +27,7 @@ function _App(props) {
           <Route component={SignUp} path="/signup" />
           <Route component={About} path="/about" />
           <Route component={PetApp} path="/pet/:filterType?" />
-          <Route component={Login} path="/login" />
+          {/* <Route component={Login} path="/login" /> */}
           <Route component={Home} path="/" /> 
         </Switch>
       </main>
