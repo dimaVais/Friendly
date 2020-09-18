@@ -14,7 +14,7 @@ export function CategoryList() {
         <div className="category-list">
             
             {
-                categories.map(cat=>disCategories(cat) )
+                categories.map(category=>disCategories(category) )
               
             }
         </div>
