@@ -40,7 +40,7 @@ class _PetApp extends Component {
     }
     
     getPetsForDisplay(){
-        if(!this.state.filterBy.type) return this.state.pets
+        if(!this.state.filterBy.type) return this.props.pets
         const {filterBy} = this.state
         const petsFiltered = this.props.pets.filter(pet=>{
             return pet[filterBy.type].toLowerCase()===filterBy.value
