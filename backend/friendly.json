@@ -25,7 +25,10 @@
       },
       "imgUrls": [
         "https://www.valleywestvets.com/sites/default/files/styles/large/adaptive-image/public/golden-retriever-dog-breed-info.jpg",
-        "http://cloudinery.com/img2"
+        "https://goldenretrieversociety.com/wp-content/uploads/2020/03/Golden-Retriever-Coat-1.png",
+        "https://goldheart.org/wp-content/uploads/2019/07/IMG_0589-e1564141761763-225x300.jpg",
+        "https://animals.net/wp-content/uploads/2018/07/Golden-Retriever-4.jpg",
+        "https://i.pinimg.com/originals/15/ea/3d/15ea3dbfc8f958b6accf812e890c674f.jpg"
       ],
       "tags": [
         "Kids Friendly",
@@ -46,58 +49,13 @@
       ]
     },
     {
-      "_id": "p140",
-      "name": "Mary",
+      "_id": "p141",
+      "name": "Kittty",
       "type": "Cat",
       "adoptedAt": 12321312,
       "bDate": 12321312,
-      "gender": "Female",
-      "breed": "Siamese",
-      "size": "Small",
-      "isInRisk": false,
-      "shop": {
-        "_id": "s101",
-        "fullName": "Freedom Farm",
-        "imgUrl": "url",
-        "rate": 4
-      },
-      "summary": "Adorable cat that loves hugging",
-      "description": "One of the best cats we have here. Need a lot of attention and love but be sure you will get it back, big time.",
-      "location": {
-        "address": "Sderot HN 4, Tel-Aviv",
-        "lat": 23.2,
-        "lng": 21.94
-      },
-      "imgUrls": [
-        "https://petsbuyandsell.com/wp-content/uploads/2018/01/siamese-cat.png",
-        "http://cloudinery.com/img2"
-      ],
-      "tags": [
-        "Kids Friendly",
-        "Healthy",
-        "Energetic",
-        "Trained",
-        "Sterilized"
-      ],
-      "reacts": [
-        {
-          "type": "love",
-          "count": 8
-        },
-        {
-          "type": "pet",
-          "count": 2
-        }
-      ]
-    },
-    {
-      "_id": "p141",
-      "name": "Rexy",
-      "type": "Dog",
-      "adoptedAt": 12321312,
-      "bDate": 12321312,
       "gender": "Male",
-      "breed": "Mixed German Shepeard",
+      "breed": "Mixed German shepeard",
       "size": "large",
       "isInRisk": false,
       "shop": {
@@ -114,7 +72,7 @@
         "lng": 21.44
       },
       "imgUrls": [
-        "https://k9deb.com/wp-content/uploads/2019/08/German-Australian-Shepherd-625x550.png",
+        "http://cloudinery.com/img1",
         "http://cloudinery.com/img2"
       ],
       "tags": [
@@ -141,7 +99,7 @@
       "type": "Dog",
       "adoptedAt": 12321312,
       "bDate": 12321312,
-      "gender": "Female",
+      "gender": "Femail",
       "breed": "Poodle",
       "size": "medium",
       "isInRisk": true,
@@ -158,15 +116,15 @@
         "lat": 23.9,
         "lng": 21.44
       },
+      "imgUrls": [
+        "http://cloudinery.com/img1",
+        "http://cloudinery.com/img2"
+      ],
       "tags": [
         "Adults Only",
         "Calm",
         "Trained",
         "Sterilized"
-      ],
-      "imgUrls": [
-        "https://www.animalkingdomaz.com/wp-content/uploads/standard-poodle-2-300x300.jpg",
-        "http://cloudinery.com/img2"
       ],
       "reacts": [
         {
@@ -180,16 +138,30 @@
       ]
     },
     {
-      "name": "Moshiko",
-      "type": "Cat",
-      "bDate": "2020-09-09",
-      "gender": "Male",
-      "breed": "Siami",
-      "summary": "All cats are weird",
-      "description": "and so does this cat",
-      "energy": "moderate",
-      "health": "notHealthy",
-      "_id": "yMjjfV"
+      "name": "Moka",
+      "type": "Dog",
+      "adoptedAt": "2020-09-10",
+      "bDate": "2020-09-08",
+      "gender": "Female",
+      "breed": "Mixed lab",
+      "isInRisk": false,
+      "size": "medium",
+      "summary": "A grate and gentle dog",
+      "description": "perfect for family",
+      "cats": "selective",
+      "energy": "high",
+      "_id": "lGWKcV",
+      "createdAt": "9/17/2020, 9:19:40 AM",
+      "reacts": [
+        {
+          "type": "love",
+          "count": 10
+        },
+        {
+          "type": "pet",
+          "count": 4
+        }
+      ]
     }
   ],
   "order": [
