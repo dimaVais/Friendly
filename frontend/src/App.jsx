@@ -26,7 +26,7 @@ function _App(props) {
           <Route component={PetEdit} path="/edit/:id?" />
           <Route component={SignUp} path="/signup" />
           <Route component={About} path="/about" />
-          <Route component={PetApp} path="/pet" />
+          <Route component={PetApp} path="/pet/:filterType/:filterValue?" />
           <Route component={Login} path="/login" />
           <Route component={Home} path="/" />
         </Switch>

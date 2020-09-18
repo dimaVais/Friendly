@@ -10,55 +10,72 @@ class _PetApp extends Component {
 
     state = {
         pets: [],
-        filterBy: null,
+        filterBy: {
+            type: '',
+            value:''
+        },
         sortBy: null
     }
 
-    componentDidMount() {
-        this.loadPets()
+    async componentDidMount() {
+    await this.loadPets()
+    if (this.props.match){
+        const filterBy={};
+        filterBy.type= this.props.match.params.filterType;
+        filterBy.value = this.props.match.params.filterValue;
+        this.setState({filterBy})
+       }
+
+        
     }
 
     loadPets = () => {
-        this.props.loadPets()
+        this.props.loadPets();
+
     }
 
     onRemove = (id) => {
         console.log('delete:' ,id);
         this.props.removePet(id)
     }
+    
+    getPetsForDisplay(){
+        if(!this.state.filterBy.type) return this.state.pets
+        const {filterBy} = this.state
+        const petsFiltered = this.props.pets.filter(pet=>{
+            return pet[filterBy.type].toLowerCase()===filterBy.value
+        });
+        return petsFiltered;
+    }
 
-    // onEdit = (ev) => {
-    //     ev.preventDefault();
-    //     // ev.stopPropagation();
-    //     console.log('edit+');
-    // }
 
     render() {
-        const { pets, user } = this.props;
-        const pet={
-            name:"Bobi",
-            summary: "Energetic and happy dog",
-            imgUrls:["../assets/img/cow.jpg"],
-            bDate: 12321312,
-            gender: "Male",
-            breed: "Golden retreiver",
-            size: "Small",
-            isInRisk: true,
-            shop: {
-                fullName: "Freedom Farm",
-                imgUrl: "../assets/img/user.jpg",
-                rate: 4
-              },
-              reacts:[{
-                type:"love",
-                count:4
-              },
-              {
-                type:"food",
-                count:10
-              }
-            ]
-        }
+        const {  user } = this.props;
+        const pets = this.getPetsForDisplay()
+        // const pet={
+        //     name:"Bobi",
+        //     summary: "Energetic and happy dog",
+        //     imgUrls:["../assets/img/cow.jpg"],
+        //     bDate: 12321312,
+        //     gender: "Male",
+        //     breed: "Golden retreiver",
+        //     size: "Small",
+        //     isInRisk: true,
+        //     shop: {
+        //         fullName: "Freedom Farm",
+        //         imgUrl: "../assets/img/user.jpg",
+        //         rate: 4
+        //       },
+        //       reacts:[{
+        //         type:"love",
+        //         count:4
+        //       },
+        //       {
+        //         type:"food",
+        //         count:10
+        //       }
+        //     ]
+        // }
         if (!pets) return <h1>Loading...</h1>
         return (
             <div>
