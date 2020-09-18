@@ -1,12 +1,22 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+
 
 export function CategoryList() {
+    const categories=["dog","cat","farm","other"];
+
+    function disCategories(category){
+        return(
+            <NavLink to={`pet/type/${category}`}><img src={require(`../assets/img/category-${category}.jpg`)} alt="Cat"/></NavLink> 
+        )
+    }
     return (
         <div className="category-list">
-            <img src={require('../assets/img/category-dog.png')} alt="Dog"/>
-            <img src={require('../assets/img/category-cat.jpg')} alt="Cat"/>
-            <img src={require('../assets/img/category-farm.jpg')} alt="Farm"/>
-            <img src={require('../assets/img/category-other.jpg')} alt="Other"/>
+            
+            {
+                categories.map(cat=>disCategories(cat) )
+              
+            }
         </div>
     )
 }
