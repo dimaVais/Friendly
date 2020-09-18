@@ -36,7 +36,7 @@ class _GoogleMap extends React.Component {
     render() {
         console.log(this.state);
         return (
-            <Map initialCenter={this.state} center={this.state} onClick={this.onMapClicked}
+            <Map className="map" initialCenter={this.state} center={this.state} onClick={this.onMapClicked}
                 google={this.props.google} zoom={this.state.zoom} className="map" >
 
                 <Marker position={this.state}
@@ -44,7 +44,7 @@ class _GoogleMap extends React.Component {
 
                 <InfoWindow position={this.state} visible={true}  >
                     <div>
-                        <h2>{this.state.loc}</h2>
+                        <h4>{this.state.loc}</h4>
                     </div>
                 </InfoWindow>
             </Map>
