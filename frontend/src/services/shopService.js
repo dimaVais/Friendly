@@ -9,18 +9,14 @@ export const shopService = {
     remove
 }
 
-async function query(filterBy = {} ) {
-    const res = await httpService.get(`${BASE_URL}`, {
-        params: filterBy
-    });
+async function query() {
+    const res = await httpService.get(`${BASE_URL}`);   
     return res;
 }
 
 async function getById(id) {
-    console.log('ee',id);
 
     const res = await httpService.get(`${BASE_URL}/${id}`);
-    console.log('zzz',res);
 
     return res;
 }
