@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { PetFilter } from '../cmps/PetFilter'
 import { PetList } from '../cmps/PetList'
 import { loadPets, removePet,setFilter } from '../store/actions/petActions'
-import { Login } from './Login'
 
 class _PetApp extends Component {
 

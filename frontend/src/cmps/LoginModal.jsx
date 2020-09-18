@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
+import { Button, TextField } from '@material-ui/core';
 import {
     loadUsers,
     removeUser,
@@ -9,44 +10,54 @@ import {
     signup
 } from '../store/actions/userActions';
 
-class _Login extends Component {
+class _LoginModal extends Component {
 
     state = {
         msg: '',
         loginCred: {
             userName: '',
             password: ''
-        }
+        },
+        showModal: false
     }
 
     loginHandleChange = ev => {
         const { name, value } = ev.target;
         this.setState(prevState => ({
-          loginCred: {
-            ...prevState.loginCred,
-            [name]: value
-          }
+            loginCred: {
+                ...prevState.loginCred,
+                [name]: value
+            }
         }));
-      };
+    };
+
+    closeModal = () => {
+        console.log('close');
+        this.props.onNavBarClick()
+    }
 
     doLogin = async ev => {
         ev.preventDefault();
         const { userName, password } = this.state.loginCred;
         if (!userName || !password) {
-          return this.setState({ msg: 'Please enter user/password' });
+            return this.setState({ msg: 'Please enter user/password' });
         }
         const userCreds = { userName, password };
         this.props.login(userCreds);
         this.setState({ loginCred: { userName: '', password: '' } });
-        this.props.history.push('/')
-      };
+        this.props.onNavBarClick()
+
+    };
 
     render() {
         return (
             <div>
-                <button onClick={()=>{this.props.history.push('/signup')}} >Sign up</button>
+                {/* <div onClick={()=>{this.props.onNavBarClick()}} className="modal-screen">heyyyyyyyy</div> */}
+            <div className="login-modal">
                 <form onSubmit={this.doLogin}>
-                    <input
+                    <TextField
+                    autoFocus={true}
+                    required={true}
                         type="text"
                         name="userName"
                         value={this.state.loginCred.userName}
@@ -54,7 +65,10 @@ class _Login extends Component {
                         placeholder="User Name"
                     />
                     <br />
-                    <input
+                    <br />
+
+                    <TextField
+                    required={true}
                         type="password"
                         name="password"
                         value={this.state.loginCred.password}
@@ -62,8 +76,12 @@ class _Login extends Component {
                         placeholder="Password"
                     />
                     <br />
-                    <button>Login</button>
+                    <br />
+
+                    <Button onClick={this.doLogin} variant="text" variant="outlined" color="primary" >Login</Button>
+
                 </form>
+            </div>
             </div>
         )
     }
@@ -85,4 +103,4 @@ const mapDispatchToProps = {
 
 
 
-export const Login = connect(mapStateToProps, mapDispatchToProps)(_Login);
+export const LoginModal = connect(mapStateToProps, mapDispatchToProps)(_LoginModal);
