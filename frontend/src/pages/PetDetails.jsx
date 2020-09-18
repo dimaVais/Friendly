@@ -10,6 +10,7 @@ class _PetDetails extends Component {
     }
 
 
+
     async componentDidMount() {
         await this.props.loadPets();
         const petId = this.props.match.params.id
@@ -80,7 +81,6 @@ class _PetDetails extends Component {
                     <p>You adopt a pet, and find a friend.</p>
                     <p>You help stop cruelty in mass breeding facilities.</p>
                     <button className="adopt-btn">Adopt</button>
-
                 </div>
             </section>
         )

@@ -1,5 +1,5 @@
 .pet-details-main-container {
-    width: 90%;
+    width: 80%;
     margin: 10px auto;
     display: flex;
     justify-content: space-between;
@@ -122,6 +122,11 @@ h2 {
     font-size: 1.6rem
 }
 
+hr {
+    width: 60%;
+    color: rgb(172, 172, 172);
+}
+
 .adopt-btn {
     width: 70%;
     padding:  10px 40px;
@@ -134,7 +139,7 @@ h2 {
     margin: 5px auto;
 
     &:hover {
-        color: #b3b3b4;
+        color: #e7e7e7;
     }
 }
 
