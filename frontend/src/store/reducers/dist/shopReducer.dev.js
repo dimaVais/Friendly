@@ -20,7 +20,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var initialState = {
-  shop: {}
+  shops: [],
+  currShop: {}
 };
 
 function shopReducer() {
@@ -28,33 +29,34 @@ function shopReducer() {
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
+    case 'LOAD_SHOPS':
+      return _objectSpread({}, state, {
+        shops: _toConsumableArray(action.shops)
+      });
+
     case 'GET_SHOP':
+      console.log('ccc', action.shop);
       return _objectSpread({}, state, {
-        shop: _objectSpread({}, action.shop)
+        currShop: _objectSpread({}, action.shop)
       });
 
-    case 'ADD_PET':
+    case 'ADD_SHOP':
       return _objectSpread({}, state, {
-        pets: [].concat(_toConsumableArray(state.pets), [action.petToSave])
+        shops: [].concat(_toConsumableArray(state.shops), [action.shopToSave])
       });
 
-    case 'EDIT_PET':
+    case 'EDIT_SHOP':
       return _objectSpread({}, state, {
-        pets: state.pets.map(function (pet) {
-          if (pet._id === action.petToSave._id) pet = action.petToSave; // return pets;
+        shops: state.shops.map(function (shop) {
+          if (shop._id === action.shopToSave._id) shop = action.shopToSave;
         })
       });
 
-    case 'REMOVE_PET':
+    case 'REMOVE_SHOP':
       return _objectSpread({}, state, {
-        pets: state.pets.filter(function (pet) {
-          return pet._id !== action.petId;
+        shops: state.shops.filter(function (shop) {
+          return shop._id !== action.shopId;
         })
-      });
-
-    case 'SET_FILTER':
-      return _objectSpread({}, state, {
-        filterBy: _objectSpread({}, state.filterBy, {}, action.filterBy)
       });
 
     default:

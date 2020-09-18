@@ -3,25 +3,37 @@ const BASE_URL = 'shop'
 
 
 export const shopService = {
+    query,
     getById,
     save,
     remove
 }
 
+async function query(filterBy = {} ) {
+    const res = await httpService.get(`${BASE_URL}`, {
+        params: filterBy
+    });
+    return res;
+}
+
 async function getById(id) {
+    console.log('ee',id);
+
     const res = await httpService.get(`${BASE_URL}/${id}`);
+    console.log('zzz',res);
+
     return res;
 }
 
 async function save(shop) {
     if (shop._id) {
-        shop.updatedAt = new Date(date.now()).toLocaleString();
+        shop.updatedAt = new Date(Date.now()).toLocaleString();
         const res = await httpService.put(`${BASE_URL}/${shop._id}`, shop)
         return res;
 
     } else {
         shop._id = _makeId();
-        shop.createdAt = new Date(date.now()).toLocaleString();
+        shop.createdAt = new Date(Date.now()).toLocaleString();
         const res = await httpService.post(`${BASE_URL}`, shop)
         return res;
     }

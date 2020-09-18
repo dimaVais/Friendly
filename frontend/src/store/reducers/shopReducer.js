@@ -1,36 +1,38 @@
 const initialState = {
-    shop: {}
+    shops: [],
+    currShop: {}
 }
 
 export function shopReducer(state = initialState, action) {
+
     switch (action.type) {
+        case 'LOAD_SHOPS':
+            return {
+                ...state,
+                shops: [...action.shops]
+            }
         case 'GET_SHOP':
+            console.log('ccc',action.shop);
             return {
                 ...state,
-                shop: {...action.shop}
+                currShop: {...action.shop}
             }
-        case 'ADD_PET':
+        case 'ADD_SHOP':
             return {
                 ...state,
-                pets: [...state.pets, action.petToSave]
+                shops: [...state.shops, action.shopToSave]
             }
-        case 'EDIT_PET':
+        case 'EDIT_SHOP':
             return {
                 ...state,
-                pets: state.pets.map(pet => {
-                    if (pet._id === action.petToSave._id) pet = action.petToSave;
-                    // return pets;
+                shops: state.shops.map(shop => {
+                    if (shop._id === action.shopToSave._id) shop = action.shopToSave;
                 })
             }
-        case 'REMOVE_PET':
+        case 'REMOVE_SHOP':
             return {
                 ...state,
-                pets: state.pets.filter(pet => pet._id !== action.petId)
-            }
-        case 'SET_FILTER':
-            return {
-                ...state,
-                filterBy: { ...state.filterBy, ...action.filterBy }
+                shops: state.shops.filter(shop => shop._id !== action.shopId)
             }
         default:
             return state;

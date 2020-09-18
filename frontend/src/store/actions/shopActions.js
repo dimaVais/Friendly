@@ -1,9 +1,18 @@
-import { shopService } from "../../services/shop.js"
+import { shopService } from "../../services/shopService.js"
 
-export function loadShopBYId(shopId) {
+
+export function loadShops(filterBy) {
+    return async dispatch => {
+        const shops = await shopService.query(filterBy);
+        dispatch({ type: 'LOAD_SHOPS', shops });
+    }
+}
+
+export function getShopById(shopId) {
+    console.log('kkkk',shopId);
     return async dispatch => {
         const shop = await shopService.getById(shopId);
-        dispatch({ type: 'GET_SHOP', shops });
+        dispatch({ type: 'GET_SHOP', shop });
     }
 }
 
