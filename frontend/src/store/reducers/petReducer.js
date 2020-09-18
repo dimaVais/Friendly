@@ -1,6 +1,14 @@
 const initialState = {
     pets: [],
-    filterBy: {}
+    filterBy: {
+        type:'',
+        gender:'',
+        breed:'',
+        size:'',
+        isInRisk:'',
+        bDate:''
+
+    }
 }
 
 export function petReducer(state = initialState, action) {
