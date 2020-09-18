@@ -12,9 +12,13 @@ export const petService = {
 async function query(filterBy) {
     if (filterBy){
         filterBy.type = filterBy.type.charAt(0).toUpperCase()+filterBy.type.slice(1);
+
+        // for (let key in filterBy){
+        //     key = key.charAt(0).toUpperCase()+filterBy.type.slice(1);
+        // }
     }
-    const queryStr = (filterBy)? `?type=${filterBy.type}&gender=${filterBy.gender}`: '';
-    // const queryStr = (filterBy)? `?name=${filterBy.name}&type=${filterBy.type}`: '';
+    
+    const queryStr = (filterBy)? `?type=${filterBy.type}&?gender=${filterBy.gender}`: '';
     const res = await httpService.get(`${BASE_URL}${queryStr}`, {
         params: filterBy
     });
