@@ -50,8 +50,8 @@
     },
     {
       "_id": "p141",
-      "name": "Rexy",
-      "type": "Dog",
+      "name": "Kittty",
+      "type": "Cat",
       "adoptedAt": 12321312,
       "bDate": 12321312,
       "gender": "Male",
