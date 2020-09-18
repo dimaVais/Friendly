@@ -1,66 +1,88 @@
-// import React, { Component } from 'react'
-// import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
-// import {
-//     loadUsers,
-//     removeUser,
-//     login,
-//     logout,
-//     signup
-// } from '../actions/userActions';
+import {
+    loadUsers,
+    removeUser,
+    login,
+    logout,
+    signup
+} from '../store/actions/userActions';
 
-// class _Login extends Component {
+class _Login extends Component {
 
-//     state = {
-//         msg: '',
-//         loginCred: {
-//             username: '',
-//             password: ''
-//         }
-//     }
+    state = {
+        msg: '',
+        loginCred: {
+            userName: '',
+            password: ''
+        }
+    }
 
-//     render() {
-//         return (
-//             <div>
-//                 <form onSubmit={this.doLogin}>
-//                     <input
-//                         type="text"
-//                         name="username"
-//                         value={this.state.loginCred.username}
-//                         onChange={this.loginHandleChange}
-//                         placeholder="User Name"
-//                     />
-//                     <br />
-//                     <input
-//                         type="password"
-//                         name="password"
-//                         value={this.state.loginCred.password}
-//                         onChange={this.loginHandleChange}
-//                         placeholder="Password"
-//                     />
-//                     <br />
-//                     <button>Login</button>
-//                 </form>
-//             </div>
-//         )
-//     }
-// }
+    loginHandleChange = ev => {
+        const { name, value } = ev.target;
+        this.setState(prevState => ({
+          loginCred: {
+            ...prevState.loginCred,
+            [name]: value
+          }
+        }));
+      };
 
-// const mapStateToProps = state => {
-//     return {
-//         users: state.user.users,
-//         loggedInUser: state.user.loggedInUser,
-//         isLoading: state.system.isLoading
-//     };
-// };
-// const mapDispatchToProps = {
-//     login,
-//     logout,
-//     signup,
-//     removeUser,
-//     loadUsers
-// };
+    doLogin = async ev => {
+        ev.preventDefault();
+        const { userName, password } = this.state.loginCred;
+        if (!userName || !password) {
+          return this.setState({ msg: 'Please enter user/password' });
+        }
+        const userCreds = { userName, password };
+        this.props.login(userCreds);
+        this.setState({ loginCred: { userName: '', password: '' } });
+        this.props.history.push('/')
+      };
+
+    render() {
+        return (
+            <div>
+                <button onClick={()=>{this.props.history.push('/signup')}} >Sign up</button>
+                <form onSubmit={this.doLogin}>
+                    <input
+                        type="text"
+                        name="userName"
+                        value={this.state.loginCred.userName}
+                        onChange={this.loginHandleChange}
+                        placeholder="User Name"
+                    />
+                    <br />
+                    <input
+                        type="password"
+                        name="password"
+                        value={this.state.loginCred.password}
+                        onChange={this.loginHandleChange}
+                        placeholder="Password"
+                    />
+                    <br />
+                    <button>Login</button>
+                </form>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        users: state.userReducer.users,
+        // loggedInUser: state.userReducer.loggedInUser,
+    };
+};
+const mapDispatchToProps = {
+    login,
+    logout,
+    signup,
+    removeUser,
+    loadUsers
+};
 
 
 
-// export const Login = connect(mapStateToProps, mapDispatchToProps)(_Login);
+export const Login = connect(mapStateToProps, mapDispatchToProps)(_Login);

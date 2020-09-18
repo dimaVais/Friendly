@@ -236,7 +236,7 @@
       "isAdmin": false,
       "isOwner": true,
       "userName": "user1",
-      "password": "secret",
+      "password": "secret1",
       "messages": [
         {
           "from": "Didi Harari",

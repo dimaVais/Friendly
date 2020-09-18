@@ -1,29 +1,45 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { shopService } from '../services/shopService.js';
 import { loadPets } from '../store/actions/petActions.js'
+
 
 
 class _PetDetails extends Component {
 
     state = {
         pet: {}
+
     }
-
-
 
     async componentDidMount() {
         await this.props.loadPets();
         const petId = this.props.match.params.id
         const petToShow = this.props.pets.find(pet => pet._id === petId)
         this.setState({ pet: { ...petToShow } });
+
     }
+
+    isOwnerOfPet = async () => {
+        const { loggedInUser } = this.props
+        const pet = this.state.pet
+        if (loggedInUser && pet.shop) {
+            const shopId = pet.shop._id
+            const shop = await shopService.getById(shopId)
+            return loggedInUser._id === shop.owner._id
+        }
+    }
+
 
     render() {
         const pet = this.state.pet;
+        let { loggedInUser } = this.props
+        if (!pet) return <h1>Loading...</h1>
         return (
             <section className="pet-details-main-container">
                 <div className="pet-details-box">
                     <div >
+                        {loggedInUser && this.isOwnerOfPet() && <h1>hey {loggedInUser.fullName}</h1>}
                         <h2 className="pet-details-heading">{pet.name}</h2>
                         {/* like icon */}
                         {/* <span>⭐⭐⭐</span> */}
@@ -90,7 +106,8 @@ class _PetDetails extends Component {
 
 const mapStateToProps = state => {
     return {
-        pets: state.petReducer.pets
+        pets: state.petReducer.pets,
+        loggedInUser: state.userReducer.loggedInUser,
     }
 }
 
