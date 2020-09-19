@@ -268,40 +268,23 @@
       },
       "shop": {
         "_id": "s101",
-        "name": "Freedom farm"
+        "name": "Freedom farm",
+        "type": "Shelter"
       },
       "pet": {
         "_id": "p140",
         "name": "Johnny"
       },
       "status": "Pending",
-      "_id": "yNB69h",
-      "createdAt": "9/19/2020, 2:30:26 PM"
-    },
-    {
-      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
-      "buyer": {
-        "_id": "u102",
-        "fullName": "User 2",
-        "imgUrl": "/img/img2.jpg"
-      },
-      "shop": {
-        "_id": "s101",
-        "name": "Freedom farm"
-      },
-      "pet": {
-        "_id": "p141",
-        "name": "Kittty"
-      },
-      "status": "Pending",
-      "_id": "VTCTkj",
-      "createdAt": "9/19/2020, 3:57:09 PM"
+      "_id": "6a2iXE",
+      "createdAt": "9/19/2020, 4:48:46 PM"
     }
   ],
   "shop": [
     {
       "_id": "s101",
       "name": "Freedom farm",
+      "type": "Shelter",
       "owner": {
         "_id": "u101",
         "fullName": "Moshi Dadiya",
@@ -356,7 +339,7 @@
     {
       "_id": "u102",
       "fullName": "User 2",
-      "imgUrl": "/img/img2.jpg",
+      "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png",
       "isAdmin": false,
       "userName": "user2",
       "password": "secret",
