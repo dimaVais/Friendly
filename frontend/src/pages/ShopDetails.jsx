@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PetList } from '../cmps/PetList';
+import { OrderList } from '../cmps/OrderList';
 import { getShopById } from '../store/actions/shopActions.js';
 import { savePet, loadPets } from '../store/actions/petActions.js'
 import { GoogleMap } from '../cmps/GoogleMap';
@@ -61,6 +62,7 @@ class _ShopDetails extends Component {
                                 </div>
                                 <div  className="shop-section">
                                     <h1>Adoption Requests:</h1>
+                                    <OrderList shopId={this.state.shop._id}/>
                                 </div>
                             </div>
                             <div className="shop-section">

@@ -18,28 +18,33 @@ var orderService = {
 };
 exports.orderService = orderService;
 
-function query(filterBy) {
-  var queryStr, res;
+function query() {
+  var filterBy,
+      queryStr,
+      res,
+      _args = arguments;
   return regeneratorRuntime.async(function query$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
+          filterBy = _args.length > 0 && _args[0] !== undefined ? _args[0] : {};
+
           if (!filterBy) {
-            _context.next = 6;
+            _context.next = 7;
             break;
           }
 
-          queryStr = filterBy ? "?name=".concat(filterBy.name) : '';
-          _context.next = 4;
+          queryStr = filterBy ? "?shop._id=".concat(filterBy) : '';
+          _context.next = 5;
           return regeneratorRuntime.awrap(_httpService["default"].get("".concat(BASE_URL).concat(queryStr), {
             params: filterBy
           }));
 
-        case 4:
+        case 5:
           res = _context.sent;
           return _context.abrupt("return", res);
 
-        case 6:
+        case 7:
         case "end":
           return _context.stop();
       }

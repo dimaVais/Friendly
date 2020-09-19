@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+}
+
 .fs12 {
   font-size: rem(12px);
 }
@@ -32,14 +40,29 @@
 .flex > *.full {
   flex: 1;
 }
+.flex.row {
+  flex-direction: row;
+}
 .flex.column {
   flex-direction: column;
+}
+.flex.justify-start {
+  justify-content: flex-start;
 }
 .flex.justify-center {
   justify-content: center;
 }
+.flex.space-between {
+  justify-content: space-between;
+}
+.flex.space-around {
+  justify-content: space-around;
+}
 .flex.align-center {
   align-items: center;
+}
+.flex.wrap {
+  flex-wrap: wrap;
 }
 
 .btn:hover {
@@ -231,7 +254,48 @@ hr {
   outline: none;
 }
 
+.login-modal {
+  width: 250px;
+  height: 220px;
+  position: fixed;
+  z-index: 4;
+  background-color: #e2ecf7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid grey;
+}
+
+.modal-screen {
+  z-index: 3;
+  background-color: #1a60a7;
+  height: 100%;
+  width: 100%;
+}
+
+.order-preview {
+  padding: 10px;
+  border: solid 1px lightgrey;
+}
+
 .data-container {
-  margin: auto;
-  width: 70%;
+  width: 100%;
+  margin: 0 auto;
+}
+.data-container .shop-section {
+  min-width: 33%;
+  text-align: center;
+}
+
+.shop-section {
+  border: #3b3939 solid 2px;
+}
+
+.map {
+  border: grey solid 2px;
+  margin-left: 20px;
+  max-width: 30%;
+  max-height: 60vh;
 }

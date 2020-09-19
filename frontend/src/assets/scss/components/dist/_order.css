@@ -1,0 +1,33 @@
+.order-list {
+  overflow-y: auto;
+  max-height: 75vh;
+}
+.order-list .order-loading {
+  max-width: 30em;
+  max-height: 40em;
+}
+.order-list .doubleAccept {
+  position: absolute;
+  right: 2.5%;
+  top: 40%;
+  width: 30%;
+  height: 30vh;
+  font-size: 2.5rem;
+  background-color: teal;
+  border: solid 3px lightgrey;
+}
+
+.order-preview {
+  padding: 10px;
+  border: solid 1px lightgrey;
+}
+.order-preview button {
+  margin: 5px;
+  border-radius: 30px;
+}
+.order-preview.accepted {
+  background-color: limegreen;
+}
+.order-preview.denied {
+  background-color: rgba(255, 0, 0, 0.445);
+}
