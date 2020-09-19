@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { shopService } from '../services/shopService.js';
 import { loadPets } from '../store/actions/petActions.js';
 import { saveOrder } from '../store/actions/orderActions.js';
-
+import {Chat} from '../cmps/Chat'
 
 
 class _PetDetails extends Component {
 
     state = {
-        pet: {}
-
+        pet: {},
+        isChatOn:false
     }
 
     async componentDidMount() {
@@ -61,7 +61,10 @@ class _PetDetails extends Component {
         this.props.saveOrder(order)
     }
 
-
+    onChat=()=>{
+        this.setState({isChatOn:!this.state.isChatOn})
+        console.log(this.state.isChatOn);
+    }
     render() {
         const pet = this.state.pet;
         let { loggedInUser } = this.props
@@ -85,6 +88,9 @@ class _PetDetails extends Component {
                         }
                     </div>
                     <hr />
+                    <div className="shop_details">
+                        <p><span>Shop</span><button onClick={this.onChat}>Chat</button></p>
+                    </div>
                     <p><span>Age: </span>
                         {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
                     </p>
@@ -128,6 +134,7 @@ class _PetDetails extends Component {
                     <p>You help stop cruelty in mass breeding facilities.</p>
                     <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
                 </div>
+                {this.state.isChatOn && <Chat pet={pet}/>}
             </section>
         )
     }
