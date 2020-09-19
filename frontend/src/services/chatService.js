@@ -2,7 +2,7 @@ import httpService from './httpService.js'
 const BASE_URL = 'chat'
 
 
-export const orderService = {
+export const chatService = {
     query,
     getById,
     save,
