@@ -37,13 +37,8 @@ async function save(shop) {
     } else {
         shop._id = _makeId();
         shop.createdAt = new Date(Date.now()).toLocaleString();
-        shop.owner = {
-            _id:shop._id,
-            fullName: shop.fullName,
-            imgUrl:shop.imgUrl
-        };
         shop.location = {
-            name: shop.name, 
+            name: shop.location, 
             lat: parseFloat(shop.lat),
             lng: parseFloat(shop.lng)
         };

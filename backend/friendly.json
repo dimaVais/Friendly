@@ -382,13 +382,11 @@
       "chats": [
         {
           "_id": "c101",
-          "targetUserId":"u102"
-
+          "targetUserId": "u102"
         },
         {
           "_id": "c103",
-          "targetUserId":"u103"
-        
+          "targetUserId": "u103"
         }
       ]
     },

@@ -81,7 +81,7 @@ export class _SignUp extends Component {
                 name: '', type: '', owner: '', title: '', description: '', location: '', lat: '', lng: ''
             }
         });
-       await this.props.loadShops();
+        await this.props.loadShops();
         const shopId = this.props.shops.find(shop => { return shop.owner._id === currUser._id })._id;
         this.props.history.push(`/shop/${shopId}`)
     }
@@ -145,9 +145,9 @@ export class _SignUp extends Component {
                     />
                     <Input type="text" name="location" placeholder="Your Shop Adress"
                         onChange={this.signupHandleChange}></Input>
-                    <Input type="number" name="lat" placeholder="Your Shop Latitude"
+                    <Input type="number" step="0.00000001" name="lat" placeholder="Your Shop Latitude"
                         onChange={this.signupHandleChange}></Input>
-                    <Input type="number" name="lng" placeholder="Your Shop Longitute"
+                    <Input type="number" step="0.00000001" name="lng" placeholder="Your Shop Longitute"
                         onChange={this.signupHandleChange}></Input>
                     <button>SAVE</button>
                 </form>

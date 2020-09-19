@@ -10,8 +10,6 @@ export function loadShops() {
 export function getShopById(shopId) {
     return async dispatch => {
         const shop = await shopService.getById(shopId);
-        console.log('kkkk',shop);
-
         dispatch({ type: 'GET_SHOP', shop });
     }
 }
