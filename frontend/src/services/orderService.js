@@ -9,9 +9,9 @@ export const orderService = {
     remove
 }
 
-async function query(filterBy={}) {
+async function query(filterBy={}, filterName) {
     if (filterBy) {
-        const queryStr = (filterBy) ? `?shop._id=${filterBy}` : '';
+        const queryStr = (filterBy) ? `?${filterName}=${filterBy}` : '';
         const res = await httpService.get(`${BASE_URL}${queryStr}`, {
             params: filterBy
         });

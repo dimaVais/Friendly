@@ -2,7 +2,6 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Home } from './pages/Home';
-// import { LoginModal } from './cmps/LoginModal';
 import { SignUp } from './pages/SignUp';
 import { About } from './pages/About';
 import { PetApp } from './pages/PetApp';
@@ -10,6 +9,7 @@ import { PetEdit } from './pages/PetEdit';
 import { PetDetails } from './pages/PetDetails';
 import { ShopDetails } from './pages/ShopDetails';
 import { NavBar } from './cmps/NavBar';
+import { userProfile } from './pages/userProfile';
 
 function _App(props) {
   return (
@@ -26,6 +26,7 @@ function _App(props) {
           <Route component={PetEdit} path="/edit/:id?" />
           <Route component={SignUp} path="/signup" />
           <Route component={About} path="/about" />
+          <Route component={userProfile} path="/profile/:id" />
           <Route component={PetApp} path="/pet/:filterType?" />
           {/* <Route component={Login} path="/login" /> */}
           <Route component={Home} path="/" /> 
