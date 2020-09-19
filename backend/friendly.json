@@ -40,11 +40,15 @@
       "reacts": [
         {
           "type": "love",
-          "count": 4
+          "count": 11
         },
         {
           "type": "pet",
-          "count": 10
+          "count": 11
+        },
+        {
+          "type": "feed",
+          "count": 6
         }
       ]
     },
@@ -327,15 +331,14 @@
       "isOwner": true,
       "userName": "user1",
       "password": "secret1",
-      "chats":[
+      "chats": [
         {
-          "_id":"c101"
+          "_id": "c101"
         },
         {
-          "_id":"c101"
+          "_id": "c101"
         }
-      ] 
-  
+      ]
     },
     {
       "_id": "u102",
@@ -344,14 +347,14 @@
       "isAdmin": false,
       "userName": "user2",
       "password": "secret",
-      "chats":[
+      "chats": [
         {
-          "_id":"ch101"
+          "_id": "ch101"
         },
         {
-          "_id":"ch101"
+          "_id": "ch101"
         }
-      ] 
+      ]
     },
     {
       "_id": "guest",
