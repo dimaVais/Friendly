@@ -118,6 +118,7 @@ import {chatService} from '../services/chatService.js'
                         value={this.state.msg.txt}
                         onChange={this.msgHandleChange}
                         name="txt"
+                        autocomplete="off"
                         />
                         <button>Send</button>
 
