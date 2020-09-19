@@ -42,7 +42,7 @@ export function PetPreview(props) {
                     <h4>{pet.summary}</h4>
                 </div>
 
-                <section className="pet-category flex">
+                <section className="pet-category">
                     {/* <img src={`../assets/img/${pet.gender.toLowerCase()}`} alt="gender"/>
                 <img src={`../assets/img/${pet.size.toLowerCase()}`} alt="size"/> */}
                 </section>

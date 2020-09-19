@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-export function TagsFilter({onToggleTag})  {
+export function TagsFilter({onToggleTag,onToggleFilterModal})  {
     const tags = ["Kids friendly","Healthy","Energetic","Sterilized"]
 
      
@@ -11,14 +11,13 @@ export function TagsFilter({onToggleTag})  {
                 <label htmlFor="">{tag}</label>
                 <input type="checkbox" name="" value={tag} onChange={(ev)=>onToggleTag(ev)}/>
             </div>
-          
         )
     }
 
     return (
             <div className="tags-modal">
                 {tags.map((tag,index) => displayTags(tag,index))}
-                <br/>
+                <button onClick={onToggleFilterModal}>Close</button>
              </div>
         )
 }
