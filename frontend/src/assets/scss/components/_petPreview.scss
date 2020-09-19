@@ -19,6 +19,7 @@
         position: Absolute;
         top: 0px;
         transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        object-fit: cover;
 
     }
 
@@ -31,6 +32,7 @@
         padding: 0.5em 1em;
         text-align: center;
         transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        border-bottom: 1px solid rgb(198, 194, 252);
 
         .card-description-header {
 
@@ -69,10 +71,44 @@
             text-align: start;
             color: rgb(44, 43, 43);
         }
+
+
     }
 
 
+    .shop-container {
+        position: absolute;
+        width: 16rem;
+        bottom: 0;
+        left: 5px;
+        font-family: roboto, sans-serif;
+        font-size: 0.8rem;
+        margin: 0 5px;
+        text-align: start;
+        color: rgb(44, 43, 43);
+        padding: 0.5em 1em;
+        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        display: flex;
+        justify-content: space-between;
+        
+        h4 {
+            color:rgb(87, 87, 87);
+            margin: 30px 0 0;
+        }
 
+        .shop-rate {
+            
+            color:#ffbf00;
+            font-size: 1rem;
+            padding: 3px;
+            font-family: montserrat, sans-serif;
+            border-radius: 50%;
+            font-weight: 900;
+            margin-right: 8px;
+
+        }
+
+    }
 
 
 }
