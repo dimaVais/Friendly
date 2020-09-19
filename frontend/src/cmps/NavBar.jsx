@@ -43,7 +43,7 @@ export class _NavBar extends Component {
                 <NavLink to="/about">About Us</NavLink>
                 <NavLink to="/signup">Sign Up</NavLink>
                 {user && user.isOwner && this.state.shopId && <NavLink to={`/shop/${this.state.shopId}`}>My Shop </NavLink>}
-                {user && !user.isOwner && <NavLink to={`/profile/${user._id}`}>My Profle</NavLink>}
+                {user && !user.isOwner && !user.isGuest && <NavLink to={`/profile/${user._id}`}>My Profle</NavLink>}
                 <button onClick={() => { this.onNavBarClick() }}>Login</button>
                 {this.state.showModal && <LoginModal onNavBarClick={this.onNavBarClick} />}
             </div>

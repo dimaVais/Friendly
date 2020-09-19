@@ -15,7 +15,7 @@ class _OrderList extends Component {
     }
 
     componentDidMount() {
-        this.props.loadOrders(this.props.shopId);
+        this.props.loadOrders(this.props.filterById, this.props.orderFilterName);
     }
 
     onSave = async (order, status) => {
@@ -26,7 +26,7 @@ class _OrderList extends Component {
         } else {
             order.status = status;
             await this.props.saveOrder(order);
-            this.props.loadOrders(this.props.shopId);
+            this.props.loadOrders(this.props.filterById ,  this.props.orderFilterName);
         }
     }
 
@@ -36,12 +36,13 @@ class _OrderList extends Component {
 
     render() {
         const orders = this.props.orders;
+        console.log('orders', orders);
         return (!orders) ? <h1>LOADING...</h1> :
             (
                 <div className="order-list" >
                     <div className={`doubleAccept ${this.state.msgDivClass}`}>
                         * You Cannot Aproove more then one Adoption request</div>
-                    {orders.map(order => <OrderPreview order={order} onRemove={this.onRemove} onSave={this.onSave} />)}
+                    {orders.map(order => <OrderPreview isShop={this.props.isShop} order={order} onRemove={this.onRemove} onSave={this.onSave} />)}
                 </div>
             )
     }
