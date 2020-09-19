@@ -1,9 +1,8 @@
 import { orderService } from "../../services/orderService.js"
 
-export function loadOrders(filterBy) {
+export function loadOrders(filterBy, filterName) {
     return async dispatch => {
-        const orders = await orderService.query(filterBy);
-        console.log('orders',orders);
+        const orders = await orderService.query(filterBy, filterName);
         dispatch({ type: 'LOAD_ORDERS', orders });
     }
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { shopService } from '../services/shopService.js';
-import { loadPets } from '../store/actions/petActions.js'
+import { loadPets } from '../store/actions/petActions.js';
+import { saveOrder } from '../store/actions/orderActions.js';
 
 
 
@@ -31,7 +32,33 @@ class _PetDetails extends Component {
     }
 
     onAdopt = async () => {
+        const { loggedInUser } = this.props
+        if (loggedInUser.isGuest) return
         
+        const pet = this.state.pet
+        const shopId = pet.shop._id
+        const shop = await shopService.getById(shopId)
+        const order = {
+            msg: "Hi, I saw your lovely pet and really wish to adopt it!",
+            buyer: {
+                _id: loggedInUser._id,
+                fullName: loggedInUser.fullName,
+                imgUrl: loggedInUser.imgUrl
+            },
+            shop: {
+                _id: shop._id,
+                name: shop.name,
+                type: shop.type,
+                imgUrl: shop.imgUrl
+            },
+            pet: {
+                _id: pet._id,
+                name: pet.name,
+            },
+            status: "Pending",
+        }
+        console.log('order', order);
+        this.props.saveOrder(order)
     }
 
 
@@ -43,7 +70,6 @@ class _PetDetails extends Component {
             <section className="pet-details-main-container">
                 <div className="pet-details-box">
                     <div >
-                        {loggedInUser && this.isOwnerOfPet() && <h1>hey {loggedInUser.fullName}</h1>}
                         <h2 className="pet-details-heading">{pet.name}</h2>
                         {/* like icon */}
                         {/* <span>⭐⭐⭐</span> */}
@@ -117,7 +143,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadPets,
-    
+    saveOrder
+
 }
 
 

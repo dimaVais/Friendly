@@ -38,8 +38,7 @@ class _ShopDetails extends Component {
 
     render() {
         const shop = this.state.shop;
-        console.log('ppp', shop);
-        console.log('ppp', shop.owner);
+
         return (
             <section>
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
@@ -62,7 +61,7 @@ class _ShopDetails extends Component {
                                 </div>
                                 <div  className="shop-section">
                                     <h1>Adoption Requests:</h1>
-                                    <OrderList shopId={this.state.shop._id}/>
+                                    <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id}/>
                                 </div>
                             </div>
                             <div className="shop-section">

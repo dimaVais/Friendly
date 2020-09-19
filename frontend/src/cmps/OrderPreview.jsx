@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-export function OrderPreview({ order, onSave, onRemove }) {
+export function OrderPreview({ order, onSave, onRemove, isShop}) {
 
     function orderClass() {
         let orderClass;
@@ -20,9 +20,9 @@ export function OrderPreview({ order, onSave, onRemove }) {
                 <p><span>Adoption Request:</span> {order.msg} </p>
             </div>
             <div>
-                <button onClick={() => { onSave(order, 'accepted') }}>✔</button>
-                <button onClick={() => { onSave(order, 'denied') }}>✖</button>
-                <button onClick={() => { onSave(order, 'pending') }}>❓</button>
+                 {isShop && <button onClick={() => { onSave(order, 'accepted') }}>✔</button>}
+                 {isShop && <button onClick={() => { onSave(order, 'denied') }}>✖</button>}
+                 {isShop &&  <button onClick={() => { onSave(order, 'pending') }}>❓</button>}
                 <button onClick={() => { onRemove(order._id) }}>🧹</button>
             </div>
         </div>

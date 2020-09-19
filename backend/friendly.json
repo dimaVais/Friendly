@@ -4,8 +4,8 @@
       "_id": "p140",
       "name": "Johnny",
       "type": "Dog",
-      "adoptedAt": 12321312,
-      "bDate": 12321312,
+      "adoptedAt": 160513411992,
+      "bDate": 1390513411992,
       "gender": "Male",
       "breed": "Golden retreiver",
       "size": "Small",
@@ -216,8 +216,63 @@
           "http://cloudinery.com/img2"
         ]
       },
-      "status": "pending",
-      "updatedAt": "9/19/2020, 1:38:11 PM"
+      "status": "denied",
+      "updatedAt": "9/19/2020, 2:31:00 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "guest",
+        "fullName": "guest"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm"
+      },
+      "pet": {
+        "_id": "p140",
+        "name": "Johnny"
+      },
+      "status": "Pending",
+      "_id": "PSk2Tb",
+      "createdAt": "9/19/2020, 2:20:02 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "guest",
+        "fullName": "guest"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm"
+      },
+      "pet": {
+        "_id": "p140",
+        "name": "Johnny"
+      },
+      "status": "Pending",
+      "_id": "cjYKwa",
+      "createdAt": "9/19/2020, 2:20:21 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "u102",
+        "fullName": "User 2",
+        "imgUrl": "/img/img2.jpg"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm"
+      },
+      "pet": {
+        "_id": "p140",
+        "name": "Johnny"
+      },
+      "status": "Pending",
+      "_id": "yNB69h",
+      "createdAt": "9/19/2020, 2:30:26 PM"
     }
   ],
   "shop": [
@@ -290,6 +345,15 @@
           "isRead": false
         }
       ]
+    },
+    {
+      "_id": "guest",
+      "fullName": "guest",
+      "imgUrl": "guest-img",
+      "isAdmin": false,
+      "userName": "guest",
+      "password": "guest",
+      "isGuest": "true"
     },
     {
       "fullName": "beri tzakala",
