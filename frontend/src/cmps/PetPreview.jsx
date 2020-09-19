@@ -2,6 +2,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMars } from '@fortawesome/free-solid-svg-icons'
 import { faVenus } from '@fortawesome/free-solid-svg-icons'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -46,9 +47,13 @@ class _PetPreview extends Component {
                         <h4>{pet.summary}</h4>
                     </div>
                     <div className="shop-container">
-                        {pet.shop && <h4>{pet.shop.fullName}</h4>}
-                        {pet.shop && <p className="shop-rate">{pet.shop.rate}  </p>}
-
+                        {pet.shop && <Link to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
+                        {/* {pet.shop && <h4>{pet.shop.fullName}</h4>} */}
+                        <div className="shop-rate-box">
+                        <FontAwesomeIcon className="star-icon" icon={faStar} />
+                        {pet.shop && <p className="shop-rate-rating">{pet.shop.rate.rating}  </p>}
+                        {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>}
+                        </div>
                     </div>
 
                     {/* <section className="pet-reacts">

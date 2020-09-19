@@ -14,7 +14,10 @@
         "_id": "s101",
         "fullName": "Freedom Farm",
         "imgUrl": "url",
-        "rate": 4
+        "rate": {
+          "rating": 4.7,
+          "count": 113
+        } 
       },
       "summary": "Energetic and happy dog",
       "description": "One of the best dogs we have here. Need a lot of attention and love but be sure you will get it back, big time.",
@@ -53,6 +56,57 @@
       ]
     },
     {
+      "_id": "p150",
+      "name": "Elza",
+      "type": "Farm",
+      "adoptedAt": 160513411992,
+      "bDate": 1790513411992,
+      "gender": "Female",
+      "breed": "Cow",
+      "size": "Large",
+      "isInRisk": false,
+      "shop": {
+        "_id": "s104",
+        "fullName": "We Love Animals",
+        "imgUrl": "https://i.pinimg.com/originals/05/0f/65/050f655bc2c1cf40c85bad9cf2f289f9.jpg",
+        "rate": {
+          "rating": 4.7,
+          "count": 113
+        } 
+      },
+      "summary": "Milk and Happiness",
+      "description": "This cow need you to take care of her. Is that too much to ask?",
+      "location": {
+        "address": "Hashomer 10, Ramat Gan",
+        "lat": 23.9,
+        "lng": 21.44
+      },
+      "imgUrls": [
+        "https://upload.wikimedia.org/wikipedia/commons/0/0c/Cow_female_black_white.jpg",
+        "https://milkgenomics.org/wp-content/uploads/2015/04/bigstock.A.cow_.eat_.the_.grass_.in_.the_.mea_.87461396.jpg",
+        "https://pbs.twimg.com/media/Ces0mmjW8AIwgvg.jpg",
+        "https://daveblaska.files.wordpress.com/2019/02/dairy-cow.jpg",
+        "https://s3-wp-lyleprintingandp.netdna-ssl.com/wp-content/uploads/2019/05/08152042/dairy-beef-web-TS.jpg"
+      ],
+      "tags": [
+        "Healthy"
+      ],
+      "reacts": [
+        {
+          "type": "love",
+          "count": 22
+        },
+        {
+          "type": "pet",
+          "count": 6
+        },
+        {
+          "type": "feed",
+          "count": 30
+        }
+      ]
+    },
+    {
       "_id": "p141",
       "name": "Kitty",
       "type": "Cat",
@@ -66,7 +120,10 @@
         "_id": "s101",
         "fullName": "Freedom Farm",
         "imgUrl": "url",
-        "rate": 4
+        "rate": {
+          "rating": 4.7,
+          "count": 113
+        } 
       },
       "summary": "Very playful and loving",
       "description": "Active and loyal dog, greate with kids, prefare a family which loves sport and activity.",
@@ -118,7 +175,10 @@
         "_id": "s101",
         "fullName": "Freedom Farm",
         "imgUrl": "url",
-        "rate": 4
+        "rate": {
+          "rating": 4.7,
+          "count": 113
+        } 
       },
       "summary": "Calm and shy dog that needs experinced owner ",
       "description": "Doly is asenior and shy dog that needs a family without small kids and prefare to rest all day.",
@@ -155,7 +215,7 @@
     {
       "_id": "p148",
       "name": "Shadowfax",
-      "type": "Horse",
+      "type": "Farm",
       "adoptedAt": 1390513411992,
       "bDate": 1390513411992,
       "gender": "Male",
@@ -163,10 +223,13 @@
       "size": "Large",
       "isInRisk": false,
       "shop": {
-        "_id": "s101",
-        "fullName": "Freedom Farm",
+        "_id": "s104",
+        "fullName": "We Love Animals",
         "imgUrl": "https://i.pinimg.com/originals/05/0f/65/050f655bc2c1cf40c85bad9cf2f289f9.jpg",
-        "rate": 5
+        "rate": {
+          "rating": 4.8,
+          "count": 62
+        } 
       },
       "summary": "Showing the meaning of haste",
       "description": "This special one wont be here for long. This historic creature is one of a kind",
@@ -216,25 +279,39 @@
         "http://cloudinery.com/img2"
       ],
       "isInRisk": false,
+      "shop": {
+        "_id": "s104",
+        "fullName": "We Love Animals",
+        "imgUrl": "https://i.pinimg.com/originals/05/0f/65/050f655bc2c1cf40c85bad9cf2f289f9.jpg",
+        "rate": {
+          "rating": 4.8,
+          "count": 62
+        } 
+      },
       "size": "medium",
-      "summary": "A great and gentle dog",
-      "description": "perfect for family",
+      "summary": "Our gentle giant",
+      "description": "Perfect family dog. She can work as she can cuddle",
       "cats": "selective",
       "energy": "high",
       "_id": "lGWKcV",
+      "location": {
+        "address": "Chicago",
+        "lat": 20.9,
+        "lng": 29.44
+      },
       "createdAt": "9/17/2020, 9:19:40 AM",
       "reacts": [
         {
           "type": "love",
-          "count": 10
+          "count": 9
         },
         {
           "type": "pet",
-          "count": 4
+          "count": 6
         },
         {
           "type": "feed",
-          "count": 6
+          "count": 2
         }
       ]
     }
@@ -387,17 +464,53 @@
           }
         }
       ]
+    },
+    {
+      "_id": "s104",
+      "name": "We Love Animals",
+      "type": "Shelter",
+      "owner": {
+        "_id": "u105",
+        "fullName": "Julie Lambert",
+        "imgUrl": "/img/img1.jpg"
+      },
+      "pets": [
+        {
+          "_id": "p148",
+          "name": "Shadowfax",
+          "amount": 2
+        }
+      ],
+      "title": "This world needs more kindness",
+      "desc": "We save all kinds of animals, feel free to reach out",
+      "location": {
+        "name": "Santa Barbara",
+        "lat": 34.4208,
+        "lng": 119.6982
+      },
+      "reviews": [
+        {
+          "id": "madeId",
+          "txt": "a great place to adopt",
+          "rate": 4,
+          "by": {
+            "_id": "u102",
+            "fullName": "user2",
+            "imgUrl": "/img/img2.jpg"
+          }
+        }
+      ]
     }
   ],
   "user": [
     {
       "_id": "u101",
-      "fullName": "Moshi Dadiya",
+      "fullName": "Adam Mitchell",
       "imgUrl": "/img/img1.jpg",
       "isAdmin": false,
       "isOwner": true,
-      "userName": "user1",
-      "password": "secret1",
+      "userName": "adam",
+      "password": "adam",
       "chats": [
         {
           "_id": "c101",
@@ -428,6 +541,16 @@
         
         }
       ]
+    },
+    {
+      "_id": "u105",
+      "fullName": "Julie Lambert",
+      "imgUrl": "/img/img1.jpg",
+      "isAdmin": false,
+      "userName": "julie",
+      "password": "julie",
+      "isGuest": false,
+      "isOwner": true
     },
     {
       "_id": "guest",
