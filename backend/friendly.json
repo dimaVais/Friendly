@@ -333,10 +333,12 @@
       "password": "secret1",
       "chats": [
         {
-          "_id": "c101"
+          "_id": "c101",
+          "targetUserId":"u102"
         },
         {
-          "_id": "c101"
+          "_id": "c102",
+          "targetUserId":"u103"
         }
       ]
     },
@@ -349,10 +351,10 @@
       "password": "secret",
       "chats": [
         {
-          "_id": "ch101"
+          "_id": "c101"
         },
         {
-          "_id": "ch101"
+          "_id": "c103"
         }
       ]
     },
@@ -363,6 +365,16 @@
       "isAdmin": false,
       "userName": "guest",
       "password": "guest",
+      "chats": [
+        {
+          "_id": "c101",
+          "targetUserId":"u101"
+        },
+        {
+          "_id": "c102",
+          "targetUserId":"u103"
+        }
+      ],
       "isGuest": "true"
     },
     {
@@ -374,19 +386,34 @@
   ],
   "chat": [
     {
-      "_id": "ch101",
-      "userId": "u101",
-      "targetId": "u102",
+      "_id": "c101",
       "messages": [
         {
-          "type": "in",
+          "from": "Alex",
           "txt": "I have a question",
           "date": 123456412,
           "isRead": true
         },
         {
-          "type": "out",
+          "from": "Dima",
           "txt": "Hey! What do you want to know?",
+          "date": 123456412,
+          "isRead": true
+        }
+      ]
+    },
+    {
+      "_id": "c102",
+      "messages": [
+        {
+          "from": "Asaf",
+          "txt": "Hey, you are cute",
+          "date": 123456412,
+          "isRead": true
+        },
+        {
+          "from": "Dima",
+          "txt": "Sorry, it not appropriate",
           "date": 123456412,
           "isRead": true
         }

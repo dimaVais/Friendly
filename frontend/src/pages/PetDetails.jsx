@@ -70,7 +70,7 @@ class _PetDetails extends Component {
         this.props.saveOrder(order)
     }
 
-    onChat = () => {
+    onToggleChat = () => {
         this.setState({ isChatOn: !this.state.isChatOn })
         console.log(this.state.isChatOn);
     }
@@ -153,7 +153,7 @@ class _PetDetails extends Component {
                     <p>You help stop cruelty in mass breeding facilities.</p>
                     <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
                 </div>
-                {this.state.isChatOn && <Chat onClose={this.onToggleChat} />}
+                {this.state.isChatOn  && <Chat onClose={this.onToggleChat} shopOwnerId={pet.shop._id} />}
             </section>
         )
     }
