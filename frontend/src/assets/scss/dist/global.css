@@ -1,3 +1,11 @@
+@font-face {
+  font-family: montserrat;
+  src: url(../../../fonts/Montserrat/Montserrat-Regular.ttf);
+}
+@font-face {
+  font-family: roboto;
+  src: url(../../../fonts/roboto/roboto-regular.ttf);
+}
 * {
   box-sizing: border-box;
 }
@@ -65,26 +73,84 @@ h1 {
   flex-wrap: wrap;
 }
 
+.hidden {
+  display: none;
+}
+
 .btn:hover {
   cursor: pointer;
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 .pet-preview {
-  background-color: #bcbebe;
-  padding: 20px;
-  margin: 10px;
-  width: 300px;
-  height: 280px;
-  border-radius: 8px;
-  display: inline-block;
+  background-color: #edeeee;
+  margin: 20px;
+  height: 22rem;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
 }
 .pet-preview img {
-  height: 50%;
-  width: 50%;
+  height: 12rem;
+  width: 15rem;
+  position: Absolute;
+  top: 0px;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-.pet-preview .reactions-container {
-  cursor: auto;
+.pet-preview .card-description {
+  background-color: #FAFAFC;
+  height: 10rem;
+  width: 15rem;
+  position: absolute;
+  bottom: 0em;
+  padding: 0.5em 1em;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.pet-preview .card-description .card-description-header .pet-name {
+  font-family: montserrat, sans-serif;
+  font-size: 1.1rem;
+  margin: 5px;
+  text-align: start;
+}
+.pet-preview .card-description .card-description-header .pet-gender-male-icon {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  color: #4f7fd8;
+}
+.pet-preview .card-description .card-description-header .pet-gender-female-icon {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  color: #d288db;
+}
+.pet-preview .card-description h4 {
+  font-family: roboto, sans-serif;
+  font-size: 0.8rem;
+  margin: 10px 5px;
+  text-align: start;
+  color: #2c2b2b;
+}
+
+.pet-preview:hover .card-description {
+  height: 8rem;
+}
+.pet-preview:hover .card-description h4 {
+  color: #1dbf73;
+}
+
+.pet-preview:hover img {
+  height: 14rem;
 }
 
 .category-list {
@@ -275,9 +341,70 @@ hr {
   width: 100%;
 }
 
+.pet-list {
+  display: flex;
+}
+
+.order-list {
+  overflow-y: auto;
+  max-height: 75vh;
+}
+.order-list .order-loading {
+  max-width: 30em;
+  max-height: 40em;
+}
+.order-list .doubleAccept {
+  position: absolute;
+  right: 2.5%;
+  top: 40%;
+  width: 30%;
+  height: 30vh;
+  font-size: 2.5rem;
+  background-color: teal;
+  border: solid 3px lightgrey;
+}
+
 .order-preview {
   padding: 10px;
   border: solid 1px lightgrey;
+}
+.order-preview button {
+  margin: 5px;
+  border-radius: 30px;
+}
+.order-preview.accepted {
+  background-color: limegreen;
+}
+.order-preview.denied {
+  background-color: rgba(255, 0, 0, 0.445);
+}
+
+.tags-modal {
+  width: 250px;
+  height: 220px;
+  position: fixed;
+  z-index: 4;
+  background-color: #d4d8dd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid grey;
+}
+
+.chat-container {
+  width: 250px;
+  height: 220px;
+  position: fixed;
+  z-index: 4;
+  background-color: #d4d8dd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid grey;
 }
 
 .data-container {
@@ -286,10 +413,12 @@ hr {
 }
 .data-container .shop-section {
   min-width: 33%;
+  max-height: 90vh;
   text-align: center;
 }
 
 .shop-section {
+  border: #3b3939 solid 2px;
   border: #3b3939 solid 2px;
 }
 

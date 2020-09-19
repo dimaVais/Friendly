@@ -1,3 +1,6 @@
+import {
+    faFan
+} from "@fortawesome/free-solid-svg-icons";
 import userService from "../../services/userService";
 
 export function loadUsers() {
@@ -13,6 +16,12 @@ export function loadUsers() {
         }
     }
 }
+
+export async function getUserById(id) {
+    const user = await userService.getById(id);
+    return user;
+}
+
 export function removeUser(userId) {
     return async dispatch => {
         try {
@@ -26,6 +35,17 @@ export function removeUser(userId) {
         }
     };
 }
+
+export function updateUser(user){
+    return async dispatch => {
+        const userToSave = await userService.update(user);
+        dispatch({
+            type: 'UPDATE_USER',
+            userToSave
+        });
+    };
+}
+
 export function login(userCreds) {
     return async dispatch => {
         const user = await userService.login(userCreds);

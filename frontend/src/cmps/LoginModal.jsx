@@ -53,35 +53,35 @@ class _LoginModal extends Component {
         return (
             <div>
                 {/* <div onClick={()=>{this.props.onNavBarClick()}} className="modal-screen">heyyyyyyyy</div> */}
-            <div className="login-modal">
-                <form onSubmit={this.doLogin}>
-                    <TextField
-                    autoFocus={true}
-                    required={true}
-                        type="text"
-                        name="userName"
-                        value={this.state.loginCred.userName}
-                        onChange={this.loginHandleChange}
-                        placeholder="User Name"
-                    />
-                    <br />
-                    <br />
+                <div className="login-modal">
+                    <form onSubmit={this.doLogin}>
+                        <TextField
+                            autoFocus={true}
+                            required={true}
+                            type="text"
+                            name="userName"
+                            value={this.state.loginCred.userName}
+                            onChange={this.loginHandleChange}
+                            placeholder="User Name"
+                        />
+                        <br />
+                        <br />
 
-                    <TextField
-                    required={true}
-                        type="password"
-                        name="password"
-                        value={this.state.loginCred.password}
-                        onChange={this.loginHandleChange}
-                        placeholder="Password"
-                    />
-                    <br />
-                    <br />
+                        <TextField
+                            required={true}
+                            type="password"
+                            name="password"
+                            value={this.state.loginCred.password}
+                            onChange={this.loginHandleChange}
+                            placeholder="Password"
+                        />
+                        <br />
+                        <br />
 
-                    <Button onClick={this.doLogin} variant="text" variant="outlined" color="primary" >Login</Button>
+                        <Button onClick={this.doLogin} variant="text" variant="outlined" color="primary" >Login</Button>
 
-                </form>
-            </div>
+                    </form>
+                </div>
             </div>
         )
     }

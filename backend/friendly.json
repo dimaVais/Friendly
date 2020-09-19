@@ -47,11 +47,11 @@
         },
         {
           "type": "pet",
-          "count": 11
+          "count": 12
         },
         {
           "type": "feed",
-          "count": 6
+          "count": 8
         }
       ]
     },
@@ -244,13 +244,11 @@
         "https://i.pinimg.com/originals/77/4f/67/774f67a7f0cffb95bc2f7a0432b41594.jpg",
         "https://i.ytimg.com/vi/yYKbF67ilIs/maxresdefault.jpg",
         "https://www.highlandranchtwh.com/wp-content/uploads/2017/08/Shadowfax-198x300.png"
-
       ],
       "tags": [
         "Kids Friendly",
         "Calm",
         "Trained"
-        
       ],
       "reacts": [
         {
@@ -263,7 +261,7 @@
         },
         {
           "type": "feed",
-          "count": 8
+          "count": 9
         }
       ]
     },
@@ -374,42 +372,6 @@
     {
       "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
       "buyer": {
-        "_id": "guest",
-        "fullName": "guest"
-      },
-      "shop": {
-        "_id": "s101",
-        "name": "Freedom farm"
-      },
-      "pet": {
-        "_id": "p140",
-        "name": "Johnny"
-      },
-      "status": "Pending",
-      "_id": "PSk2Tb",
-      "createdAt": "9/19/2020, 2:20:02 PM"
-    },
-    {
-      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
-      "buyer": {
-        "_id": "guest",
-        "fullName": "guest"
-      },
-      "shop": {
-        "_id": "s101",
-        "name": "Freedom farm"
-      },
-      "pet": {
-        "_id": "p140",
-        "name": "Johnny"
-      },
-      "status": "Pending",
-      "_id": "cjYKwa",
-      "createdAt": "9/19/2020, 2:20:21 PM"
-    },
-    {
-      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
-      "buyer": {
         "_id": "u102",
         "fullName": "User 2",
         "imgUrl": "/img/img2.jpg"
@@ -514,11 +476,11 @@
       "chats": [
         {
           "_id": "c101",
-          "targetUserId":"u102"
+          "targetUserId": "u102"
         },
         {
           "_id": "c102",
-          "targetUserId":"u103"
+          "targetUserId": "u103"
         }
       ]
     },
@@ -527,18 +489,17 @@
       "fullName": "User 2",
       "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png",
       "isAdmin": false,
+      "isOwner": false,
       "userName": "user2",
       "password": "secret",
       "chats": [
         {
           "_id": "c101",
-          "targetUserId":"u102"
-
+          "targetUserId": "u102"
         },
         {
           "_id": "c103",
-          "targetUserId":"u103"
-        
+          "targetUserId": "u103"
         }
       ]
     },
@@ -557,24 +518,29 @@
       "fullName": "guest",
       "imgUrl": "guest-img",
       "isAdmin": false,
+      "isOwner": false,
       "userName": "guest",
       "password": "guest",
       "chats": [
         {
           "_id": "c101",
-          "targetUserId":"u101"
+          "targetUserId": "u101"
         },
         {
           "_id": "c102",
-          "targetUserId":"u103"
+          "targetUserId": "u103"
         }
       ],
       "isGuest": "true"
     },
     {
       "fullName": "beri tzakala",
+      "userName": "user3",
       "password": "123",
+      "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png",
       "address": "sing",
+      "isAdmin": false,
+      "isOwner": true,
       "_id": "LCDs4gs"
     }
   ],
@@ -583,7 +549,7 @@
       "_id": "c101",
       "messages": [
         {
-          "from": "Alex",
+          "from": "guest",
           "txt": "I have a question",
           "createdAt": 123456412,
           "isRead": true

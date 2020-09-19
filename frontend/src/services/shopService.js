@@ -11,7 +11,7 @@ export const shopService = {
 }
 
 async function query() {
-    const res = await httpService.get(`${BASE_URL}`);   
+    const res = await httpService.get(`${BASE_URL}`);
     return res;
 }
 
@@ -37,10 +37,18 @@ async function save(shop) {
     } else {
         shop._id = _makeId();
         shop.createdAt = new Date(Date.now()).toLocaleString();
-        const res = await httpService.post(`${BASE_URL}`, shop)
-        return res;
+        shop.location = {
+            name: shop.location, 
+            lat: parseFloat(shop.lat),
+            lng: parseFloat(shop.lng)
+        };
     }
+    shop.pets = [];
+    shop.reviews = [];
+    const res = await httpService.post(`${BASE_URL}`, shop)
+    return res;
 }
+
 
 async function remove(shopId) {
     await httpService.delete(`${BASE_URL}/${shopId}`)

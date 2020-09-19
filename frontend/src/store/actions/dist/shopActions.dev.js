@@ -48,13 +48,12 @@ function getShopById(shopId) {
 
           case 2:
             shop = _context2.sent;
-            console.log('kkkk', shop);
             dispatch({
               type: 'GET_SHOP',
               shop: shop
             });
 
-          case 5:
+          case 4:
           case "end":
             return _context2.stop();
         }
