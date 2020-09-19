@@ -70,6 +70,7 @@ class _PetDetails extends Component {
         this.setState({ isChatOn: !this.state.isChatOn })
         console.log(this.state.isChatOn);
     }
+    
     render() {
         const pet = this.state.pet;
         let { loggedInUser } = this.props
@@ -111,6 +112,7 @@ class _PetDetails extends Component {
                     </div>
                     <div className="shop_details">
                         {pet.shop && <p><span>{pet.shop.fullName}</span><button onClick={this.onChat}>Chat</button></p>}
+                    {pet.shop && <p><span>{pet.shop.fullName}</span><button onClick={this.onToggleChat} >Chat</button></p>}
                     </div>
                     <p><span>Age: </span>
                         {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
@@ -141,6 +143,7 @@ class _PetDetails extends Component {
                     <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
                 </div>
                 {this.state.isChatOn && <Chat pet={pet} />}
+                {this.state.isChatOn && <Chat onClose={this.onToggleChat}/>}
             </section>
         )
     }
