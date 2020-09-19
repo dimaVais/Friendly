@@ -9,7 +9,9 @@ import {chatService} from '../services/chatService.js'
  class _Chat extends Component {
 
     state = {
-        msg: {from: 'Me',txt:''},
+
+        fromName:'',
+        msg: {from: 'Sender',txt:''},
         topic:null,
         msgs:[]
     }
@@ -17,6 +19,16 @@ import {chatService} from '../services/chatService.js'
             
             const loggedInUserId=  this.props.loggedInUser._id;
             const user = await userService.getById(loggedInUserId);
+            this.setState({ user });
+            if (user.isOwner){
+                const owner=await shopService.getByUserId(user._id);
+                this.setState({fromName:owner.name})
+            }else this.setState({fromName:user.fullName})
+            const msg={
+                from:this.state.user.fullName,
+                txt:''
+            }
+            this.setState({ msg })
             const shop = await shopService.getById(this.props.shopOwnerId);
             const shopOwnerId = await shop.owner._id;
             let topic="c105";
@@ -54,9 +66,13 @@ import {chatService} from '../services/chatService.js'
       sendMsg=ev=>{
         ev.preventDefault();
         socketService.emit('chat addMsg', this.state.msg);
-        this.setState({ msg: { from: 'Me', txt: '' } }); 
-
+        const msg={
+            from:this.state.user.fullName,
+            txt:''
+        }
+        this.setState({ msg: msg }); 
      }
+
       msgHandleChange=ev=>{
         const { name, value } = ev.target;
         this.setState(prevState => {
@@ -73,15 +89,30 @@ import {chatService} from '../services/chatService.js'
           this.props.onClose();
       }
 
+      displayMsg=(msg,idx)=>{
+        let classTxt = 'message ';
+        classTxt += (msg.from===this.state.user.fullName)?'user':'';
+
+        return(<li className={classTxt} key={idx}>{msg.from}:{msg.txt}</li>
+)
+      }
+
+
+
     render() {
         return (
             <div className="chat-container">
-                    <ul>
-                    {this.state.msgs.map((msg, idx) => (
-                        <li className="message" key={idx}>{msg.from}:{msg.txt}</li>)
-                        )}
-                    </ul>
+                    <button className="btn-close" onClick={this.onClose}>X</button>
+                    <section className="msgs-container">
+                        <ul>
+                        {this.state.msgs.map((msg, idx) => (
+                            this.displayMsg(msg,idx))
+                            )}
+                        </ul>
+
+                    </section>
                 <form onSubmit={this.sendMsg}>
+                    <section className="input-container">
                     <input
                         type="text"
                         value={this.state.msg.txt}
@@ -89,8 +120,9 @@ import {chatService} from '../services/chatService.js'
                         name="txt"
                         />
                         <button>Send</button>
+
+                    </section>
                 </form>
-             <button onClick={this.onClose}>Close</button>
             </div>
         )
     }

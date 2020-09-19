@@ -5,6 +5,7 @@ const BASE_URL = 'shop'
 export const shopService = {
     query,
     getById,
+    getByUserId,
     save,
     remove
 }
@@ -17,6 +18,12 @@ async function query() {
 async function getById(id) {
 
     const res = await httpService.get(`${BASE_URL}/${id}`);
+
+    return res;
+}
+async function getByUserId(id) {
+
+    const res = await httpService.get(`${BASE_URL}/owner/${id}`);
 
     return res;
 }
