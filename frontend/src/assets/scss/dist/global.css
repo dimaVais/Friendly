@@ -84,7 +84,7 @@ h1 {
 
 .pet-preview {
   background-color: #edeeee;
-  margin: 10px;
+  margin: 20px;
   height: 22rem;
   width: 15rem;
   display: flex;
@@ -343,7 +343,6 @@ hr {
 
 .pet-list {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .order-list {
@@ -378,6 +377,34 @@ hr {
 }
 .order-preview.denied {
   background-color: rgba(255, 0, 0, 0.445);
+}
+
+.tags-modal {
+  width: 250px;
+  height: 220px;
+  position: fixed;
+  z-index: 4;
+  background-color: #d4d8dd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid grey;
+}
+
+.chat-container {
+  width: 250px;
+  height: 220px;
+  position: fixed;
+  z-index: 4;
+  background-color: #d4d8dd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid grey;
 }
 
 .data-container {
