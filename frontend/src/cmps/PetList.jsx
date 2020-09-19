@@ -10,7 +10,6 @@ export function PetList({pets, onRemove,onEdit}) {
                    pets.map(pet => <PetPreview pet={pet} onRemove={onRemove} onEdit={onEdit} />)
                 }
             </ul>
-
         </div>
     )
 }

@@ -12,10 +12,8 @@ export function CategoryList() {
     }
     return (
         <div className="category-list">
-            
             {
                 categories.map(category=>disCategories(category) )
-              
             }
         </div>
     )
