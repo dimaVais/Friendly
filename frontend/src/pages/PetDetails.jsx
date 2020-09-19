@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { shopService } from '../services/shopService.js';
 import { loadPets } from '../store/actions/petActions.js';
 import { saveOrder } from '../store/actions/orderActions.js';
-import {Chat} from '../cmps/Chat'
+import {Chat} from '../cmps/Chat.jsx'
 
 
 class _PetDetails extends Component {
