@@ -89,7 +89,7 @@ class _PetDetails extends Component {
                     </div>
                     <hr />
                     <div className="shop_details">
-                        <p><span>Shop</span><button onClick={this.onChat}>Chat</button></p>
+                    <p><span>{pet.shop.fullName}</span><button onClick={this.onChat}>Chat</button></p>
                     </div>
                     <p><span>Age: </span>
                         {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
