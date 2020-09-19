@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { shopService } from '../services/shopService.js';
 import { loadPets } from '../store/actions/petActions.js';
 import { saveOrder } from '../store/actions/orderActions.js';
-import {Chat} from '../cmps/Chat.jsx'
+import { Chat } from '../cmps/Chat.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faBone } from '@fortawesome/free-solid-svg-icons'
@@ -15,7 +15,7 @@ class _PetDetails extends Component {
 
     state = {
         pet: {},
-        isChatOn:false
+        isChatOn: false
     }
 
     async componentDidMount() {
@@ -39,7 +39,7 @@ class _PetDetails extends Component {
     onAdopt = async () => {
         const { loggedInUser } = this.props
         if (loggedInUser.isGuest) return
-        
+
         const pet = this.state.pet
         const shopId = pet.shop._id
         const shop = await shopService.getById(shopId)
@@ -66,8 +66,8 @@ class _PetDetails extends Component {
         this.props.saveOrder(order)
     }
 
-    onChat=()=>{
-        this.setState({isChatOn:!this.state.isChatOn})
+    onChat = () => {
+        this.setState({ isChatOn: !this.state.isChatOn })
         console.log(this.state.isChatOn);
     }
     render() {
@@ -96,21 +96,21 @@ class _PetDetails extends Component {
                             {
                                 (pet.reacts) ?
                                     pet.reacts.map(react => {
-                                        if  (react.type === 'love')  {
+                                        if (react.type === 'love') {
                                             return <li><FontAwesomeIcon className="heart-icon" icon={faHeart} /> ({`${react.count}`})</li>
                                         }
                                         else if ((react.type === 'feed')) return <li><FontAwesomeIcon className="bone-icon" icon={faBone} /> ({`${react.count}`})</li>
                                         else if ((react.type === 'pet')) return <li><FontAwesomeIcon className="hand-sparkles-icon" icon={faHandSparkles} /> ({`${react.count}`})</li>
-                                            
-                                        
-                                        
+
+
+
                                     })
                                     : ''
                             }
                         </ul>
                     </div>
                     <div className="shop_details">
-                    {pet.shop && <p><span>{pet.shop.fullName}</span><button onClick={this.onChat}>Chat</button></p>}
+                        {pet.shop && <p><span>{pet.shop.fullName}</span><button onClick={this.onChat}>Chat</button></p>}
                     </div>
                     <p><span>Age: </span>
                         {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
@@ -129,7 +129,7 @@ class _PetDetails extends Component {
                                 : ''
                         }
                     </ul>
-                    
+
 
                     <p><span>Description:</span> {'\n' + pet.description}</p>
                 </div>
@@ -140,7 +140,7 @@ class _PetDetails extends Component {
                     <p>You help stop cruelty in mass breeding facilities.</p>
                     <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
                 </div>
-                {this.state.isChatOn && <Chat pet={pet}/>}
+                {this.state.isChatOn && <Chat pet={pet} />}
             </section>
         )
     }
