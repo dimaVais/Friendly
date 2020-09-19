@@ -139,7 +139,7 @@ class _PetDetails extends Component {
                     <p>You help stop cruelty in mass breeding facilities.</p>
                     <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
                 </div>
-                {this.state.isChatOn && <Chat onClose={this.onToggleChat}/>}
+                {this.state.isChatOn && <Chat onClose={this.onToggleChat} />}
             </section>
         )
     }

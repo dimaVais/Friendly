@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import socketService from '../services/socketService'
 import { connect } from 'react-redux';
 import { loadPets } from '../store/actions/petActions.js';
+import userService, {getById} from '../services/userService.js'
 
  class _Chat extends Component {
 
@@ -14,15 +15,18 @@ import { loadPets } from '../store/actions/petActions.js';
     }
       async componentDidMount() {
              
-        await console.log(this.state);
-        await console.log(this.props);
         // const petId = this.props.match.params.id
         // const petToShow = this.props.pets.find(pet => pet._id === petId)
         // this.setState({ pet: { ...petToShow } });
-
-            socketService.setup();
-            socketService.emit('chat topic', this.state.topic);
-            socketService.on('chat addMsg', this.addMsg);
+            const userId = this.props.loggedInUser;
+            const user = await userService.getById(userId);
+             if(user.chats){
+                 const topics=[...user.chats]
+             }
+            // const chatTopic=
+            // socketService.setup();
+            // socketService.emit('chat topic', this.state.topic);
+            // socketService.on('chat addMsg', this.addMsg);
       }
     
       componentWillUnmount() {
