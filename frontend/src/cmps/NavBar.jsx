@@ -39,6 +39,7 @@ export class _NavBar extends Component {
         return (
             <div>
                 <NavLink to="/">Logo</NavLink>
+                <NavLink to="/pet">Gallery</NavLink>
                 <NavLink to="/about">About Us</NavLink>
                 <NavLink to="/signup">Sign Up</NavLink>
                 {user && user.isOwner && this.state.shopId && <NavLink to={`/shop/${this.state.shopId}`}>My Shop </NavLink>}

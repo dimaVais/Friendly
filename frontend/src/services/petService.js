@@ -10,14 +10,19 @@ export const petService = {
 }
 
 async function query(filterBy) {
+    let queryStr='';
     if (filterBy){
         filterBy.type = filterBy.type.charAt(0).toUpperCase()+filterBy.type.slice(1);
+        queryStr = '?' + Object.keys(filterBy).map(key => key + '=' + filterBy[key]).join('&');
+
+     
     }
-    const queryStr = (filterBy)? `?type=${filterBy.type}&gender=${filterBy.gender}`: '';
-    // const queryStr = (filterBy)? `?name=${filterBy.name}&type=${filterBy.type}`: '';
+    console.log(queryStr);
+    
     const res = await httpService.get(`${BASE_URL}${queryStr}`, {
         params: filterBy
     });
+    
     return res;
 }
 

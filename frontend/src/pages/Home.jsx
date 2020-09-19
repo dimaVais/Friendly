@@ -58,7 +58,6 @@ class _Home extends Component {
         const {user} = this.props
         return (
             <div>
-                {user && <h1>hey {user.fullName}</h1>}
                 <Hero />
                 <hr />
                 <CategoryList />

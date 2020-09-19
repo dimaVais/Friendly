@@ -1,45 +1,79 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { TextField } from '@material-ui/core';
+import { Input } from '@material-ui/core';
+import { signup } from '../store/actions/userActions'
+
+
+
 
 export class _SignUp extends Component {
 
     state = {
         userAdopt: false,
-        userShop: false
+        userShop: false,
+        signupCred: ''
     }
 
     setUserAdopt = () => {
-        this.setState({userAdopt: true, userShop: false})
+        this.setState({ userAdopt: true, userShop: false })
     }
     setUserShop = () => {
-        this.setState({userShop: true, userAdopt: false})
+        this.setState({ userShop: true, userAdopt: false })
     }
 
+    signupHandleChange = ev => {
+        const { name, value } = ev.target;
+        this.setState(prevState => ({
+            signupCred: {
+                ...prevState.signupCred,
+                [name]: value
+            }
+        }));
+    };
+
+    doSignup = async ev => {
+        ev.preventDefault();
+        const { fullName, password, address } = this.state.signupCred;
+        if (!fullName || !password || !address) {
+            return this.setState({ msg: 'All inputs are required!' });
+        }
+        const signupCreds = { fullName, password, address };
+        this.props.signup(signupCreds);
+        this.setState({ signupCred: { fullName: '', password: '', address: '' } });
+    };
+
     render() {
-        const {userAdopt, userShop} = this.state
+        const { userAdopt, userShop } = this.state
+        const { loggedInUser } = this.props
+        console.log('this.state.signupCred', this.state.signupCred);
         return (
             <div>
-               <h1>We are happy you decided to join us!</h1>
-               <p>Do you want to adopt or to find adopters for your animals?</p>
-               <button onClick={()=>{this.setUserAdopt()}}>Adopt</button>
-               <button onClick={()=>{this.setUserShop()}}>Find Adopters</button>
-               {userAdopt && 
-               <h3>Please filled out this form so we will be able to know you better</h3>
-               }
-               {userShop && <div>
-                <h3>Please filled out this form so we will be able to get to you know and your animals</h3>
-                <TextField
-                    required={true}
-                        type="text"
-                        name="userName"
-                        value={this.state.loginCred.userName}
-                        onChange={this.loginHandleChange}
-                        placeholder="Your Full Name"
-                    />
-               </div>
-               
-               }
+                <h1>We are happy you decided to join us!</h1>
+                <p>Do you want to adopt or to find adopters for your animals?</p>
+                <button onClick={() => { this.setUserAdopt() }}>Adopt</button>
+                <button onClick={() => { this.setUserShop() }}>Find Adopters</button>
+                {userAdopt &&
+                    <div>
+                        <h3>New Adopter</h3>
+                        <form onSubmit={this.doSignup}>
+
+                            <br />
+                            <Input type="text" name="fullName" placeholder="Your Full Name" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
+                            <Input type="password" name="password" placeholder="Password" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
+                            <Input type="text" name="address" placeholder="Address" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
+                            {/* <Input type="text" name="address" placeholder="Address" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input> */}
+
+                            <br />
+                            <button>Signup</button>
+                        </form>
+                    </div>
+                }
+                {userShop && <div>
+                    <h3>Please filled out this form so we will be able to get to know you and your animals</h3>
+                    <input type="text" name="name" value={loggedInUser.fullName} onChange={this.handleInput} />
+                </div>
+
+                }
             </div>
         )
     }
@@ -72,12 +106,12 @@ export class _SignUp extends Component {
 const mapStateToProps = state => {
     return {
         users: state.userReducer.users,
-        // loggedInUser: state.userReducer.loggedInUser,
+        loggedInUser: state.userReducer.loggedInUser,
     };
 };
 
 const mapDispatchToProps = {
-    // signup,
+    signup
     // loadUsers
 };
 

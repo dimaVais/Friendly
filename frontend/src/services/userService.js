@@ -36,8 +36,11 @@ async function login(userCred) {
     // return _handleLogin(user)
 }
 async function signup(userCred) {
-    const user = await httpService.post('auth/signup', userCred)
-    return _handleLogin(user)
+    const queryStr =  `?user=Name=${userCred.fullName}&password=${userCred.password}`;
+    const res = await httpService.post(`user`, userCred);
+    return res[0] 
+    // const user = await httpService.post('auth/signup', userCred)
+    // return _handleLogin(user)
 }
 async function logout() {
     await httpService.post('auth/logout');
