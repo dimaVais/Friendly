@@ -30,6 +30,10 @@ class _PetDetails extends Component {
         }
     }
 
+    onAdopt = async () => {
+        
+    }
+
 
     render() {
         const pet = this.state.pet;
@@ -96,7 +100,7 @@ class _PetDetails extends Component {
                     <p>You save a life. </p>
                     <p>You adopt a pet, and find a friend.</p>
                     <p>You help stop cruelty in mass breeding facilities.</p>
-                    <button className="adopt-btn">Adopt</button>
+                    <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
                 </div>
             </section>
         )
@@ -112,7 +116,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    loadPets
+    loadPets,
+    
 }
 
 

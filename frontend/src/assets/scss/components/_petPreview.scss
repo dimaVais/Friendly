@@ -1,19 +1,95 @@
 .pet-preview {
-    background-color: rgb(188, 190, 190);
-    padding: 20px;
+    background-color: rgb(237, 238, 238);
     margin: 10px;
-    width: 300px;
-    height: 280px;
-    border-radius: 8px;
-    display: inline-block;
+    height: 22rem;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
 
-    img{
-        height: 50%;
-        width: 50%;
+
+
+    img {
+        // height: 50%;
+        // width: 100%;
+        // object-fit: cover;
+        height: 12rem;
+        width: 15rem;
+        position: Absolute;
+        top: 0px;
+        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+
     }
 
-    .reactions-container{
-        cursor:auto;
+    .card-description {
+        background-color: #FAFAFC;
+        height: 10rem;
+        width: 15rem;
+        position: absolute;
+        bottom: 0em;
+        padding: 0.5em 1em;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+        .card-description-header {
+
+
+            .pet-name {
+                font-family: montserrat, sans-serif;
+                font-size: 1.1rem;
+                margin: 5px;
+                text-align: start;
+            }
+
+            .pet-gender-male-icon {
+                width: 25px;
+                height: 25px;
+                position: absolute;
+                right: 7px;
+                top: 7px;
+                color: rgb(79, 127, 216)
+            }
+            .pet-gender-female-icon {
+                width: 25px;
+                height: 25px;
+                position: absolute;
+                right: 7px;
+                top: 7px;
+                color: rgb(210, 136, 219)
+            }
+        }
+
+       
+
+        h4 {
+            font-family: roboto, sans-serif;
+            font-size: 0.8rem;
+            margin: 10px 5px;
+            text-align: start;
+            color: rgb(44, 43, 43);
+        }
+    }
+
+
+
+
+
+}
+
+
+
+.pet-preview:hover .card-description {
+    height: 8rem;
+
+    h4 {
+        color: #1dbf73
     }
 }
 
+.pet-preview:hover img {
+    height: 14rem;
+}
