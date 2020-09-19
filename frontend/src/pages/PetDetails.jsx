@@ -4,6 +4,11 @@ import { shopService } from '../services/shopService.js';
 import { loadPets } from '../store/actions/petActions.js';
 import { saveOrder } from '../store/actions/orderActions.js';
 import {Chat} from '../cmps/Chat.jsx'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faBone } from '@fortawesome/free-solid-svg-icons'
+import { faHandSparkles } from '@fortawesome/free-solid-svg-icons'
+
 
 
 class _PetDetails extends Component {
@@ -72,10 +77,8 @@ class _PetDetails extends Component {
         return (
             <section className="pet-details-main-container">
                 <div className="pet-details-box">
-                    <div >
+                    <div>
                         <h2 className="pet-details-heading">{pet.name}</h2>
-                        {/* like icon */}
-                        {/* <span>⭐⭐⭐</span> */}
                     </div>
                     <h4> {pet.summary}</h4>
                     <div className="pet-details-img-box">
@@ -88,6 +91,24 @@ class _PetDetails extends Component {
                         }
                     </div>
                     <hr />
+                    <div>
+                        <ul>
+                            {
+                                (pet.reacts) ?
+                                    pet.reacts.map(react => {
+                                        if  (react.type === 'love')  {
+                                            return <li><FontAwesomeIcon className="heart-icon" icon={faHeart} /> ({`${react.count}`})</li>
+                                        }
+                                        else if ((react.type === 'feed')) return <li><FontAwesomeIcon className="bone-icon" icon={faBone} /> ({`${react.count}`})</li>
+                                        else if ((react.type === 'pet')) return <li><FontAwesomeIcon className="hand-sparkles-icon" icon={faHandSparkles} /> ({`${react.count}`})</li>
+                                            
+                                        
+                                        
+                                    })
+                                    : ''
+                            }
+                        </ul>
+                    </div>
                     <div className="shop_details">
                     {pet.shop && <p><span>{pet.shop.fullName}</span><button onClick={this.onChat}>Chat</button></p>}
                     </div>
@@ -108,22 +129,7 @@ class _PetDetails extends Component {
                                 : ''
                         }
                     </ul>
-                    <div>
-                        <ul>
-                            {
-                                (pet.reacts) ?
-                                    pet.reacts.map(react => {
-
-
-                                        var icon;
-                                        if (react.type === 'love') icon = '❤️';
-                                        else if ((react.type === 'pet')) icon = '🐶';
-                                        return <li>{`${icon} ${react.count}`}</li>
-                                    })
-                                    : ''
-                            }
-                        </ul>
-                    </div>
+                    
 
                     <p><span>Description:</span> {'\n' + pet.description}</p>
                 </div>
