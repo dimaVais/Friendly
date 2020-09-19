@@ -4,6 +4,7 @@ import {TagsFilter} from './TagsFilter'
 export  class PetFilter extends Component {
 
     state={
+            isModalShown:false,
             type:'',
             gender:'',
             breed:'',
@@ -47,12 +48,18 @@ export  class PetFilter extends Component {
         }
         this.setState({ [field]:value },() => this.props.onSetFilter(this.state));
     }
+    onToggleFilterModal =()=>{
+        this.setState({isModalShown:!this.state.isModalShown})
+    }
+    onApplyFilter=()=>{
+        this.onToggleFilterModal()
+    }
 
     render() {
         return (
             <div>
                 <p>Filter</p>
-                <TagsFilter onToggleTag={this.onToggleTag}/>
+                {this.state.isModalShown && <TagsFilter onToggleTag={this.onToggleTag} onToggleFilterModal={this.onApplyFilter}/>}
                 <form>
                     <label htmlFor="">By animal type</label>
                     <input name="type" autoComplete="off" value={ this.state.type } onChange={ this.handleChange } type="text" />
@@ -64,7 +71,7 @@ export  class PetFilter extends Component {
                     <input type="age" name="minAge" onChange={ this.handleChange } />
                     <label htmlFor="">Max Age</label>
                     <input type="age" name="maxAge" onChange={ this.handleChange } />
-                    
+                    <button onClick={this.onToggleFilterModal}>More filter</button>
                 </form>
             </div>
         )
