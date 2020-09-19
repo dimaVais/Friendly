@@ -19,24 +19,19 @@ var shopService = {
 exports.shopService = shopService;
 
 function query() {
-  var filterBy,
-      res,
-      _args = arguments;
+  var res;
   return regeneratorRuntime.async(function query$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          filterBy = _args.length > 0 && _args[0] !== undefined ? _args[0] : {};
-          _context.next = 3;
-          return regeneratorRuntime.awrap(_httpService["default"].get("".concat(BASE_URL), {
-            params: filterBy
-          }));
+          _context.next = 2;
+          return regeneratorRuntime.awrap(_httpService["default"].get("".concat(BASE_URL)));
 
-        case 3:
+        case 2:
           res = _context.sent;
           return _context.abrupt("return", res);
 
-        case 5:
+        case 4:
         case "end":
           return _context.stop();
       }
@@ -50,16 +45,14 @@ function getById(id) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          console.log('ee', id);
-          _context2.next = 3;
+          _context2.next = 2;
           return regeneratorRuntime.awrap(_httpService["default"].get("".concat(BASE_URL, "/").concat(id)));
 
-        case 3:
+        case 2:
           res = _context2.sent;
-          console.log('zzz', res);
           return _context2.abrupt("return", res);
 
-        case 6:
+        case 4:
         case "end":
           return _context2.stop();
       }
@@ -68,7 +61,7 @@ function getById(id) {
 }
 
 function save(shop) {
-  var res, _res;
+  var _res, res;
 
   return regeneratorRuntime.async(function save$(_context3) {
     while (1) {
@@ -84,20 +77,34 @@ function save(shop) {
           return regeneratorRuntime.awrap(_httpService["default"].put("".concat(BASE_URL, "/").concat(shop._id), shop));
 
         case 4:
-          res = _context3.sent;
-          return _context3.abrupt("return", res);
+          _res = _context3.sent;
+          return _context3.abrupt("return", _res);
 
         case 8:
           shop._id = _makeId();
           shop.createdAt = new Date(Date.now()).toLocaleString();
-          _context3.next = 12;
-          return regeneratorRuntime.awrap(_httpService["default"].post("".concat(BASE_URL), shop));
+          shop.owner = {
+            _id: shop._id,
+            fullName: shop.fullName,
+            imageUrl: shop.imgUrl
+          };
+          shop.location = {
+            name: shop.name,
+            lat: shop.lat,
+            lng: shop.lng
+          };
 
         case 12:
-          _res = _context3.sent;
-          return _context3.abrupt("return", _res);
+          shop.pets = [];
+          shop.reviews = [];
+          _context3.next = 16;
+          return regeneratorRuntime.awrap(_httpService["default"].post("".concat(BASE_URL), shop));
 
-        case 14:
+        case 16:
+          res = _context3.sent;
+          return _context3.abrupt("return", res);
+
+        case 18:
         case "end":
           return _context3.stop();
       }

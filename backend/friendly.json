@@ -44,11 +44,11 @@
         },
         {
           "type": "pet",
-          "count": 11
+          "count": 12
         },
         {
           "type": "feed",
-          "count": 6
+          "count": 8
         }
       ]
     },
@@ -266,7 +266,7 @@
         }
       ],
       "title": "Saving lives",
-      "desc": "We are here for the animals",
+       "desc": "We are here for the animals",
       "location": {
         "name": "Tel Aviv",
         "lat": 32.0853,

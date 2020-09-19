@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Input } from '@material-ui/core';
-import { signup } from '../store/actions/userActions'
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
 
+import { signup, getUserById } from '../store/actions/userActions'
+import { saveShop } from '../store/actions/shopActions'
 
 
 
@@ -33,6 +38,15 @@ export class _SignUp extends Component {
 
     doSignup = async ev => {
         ev.preventDefault();
+        const { userAdopt, userShop } = this.state
+        if (userAdopt) {
+            this.signUpAdopt()
+        } else if (userShop) {
+            this.signUpShop()
+        }
+    }
+
+    signUpAdopt = () => {
         const { fullName, password, address } = this.state.signupCred;
         if (!fullName || !password || !address) {
             return this.setState({ msg: 'All inputs are required!' });
@@ -40,7 +54,22 @@ export class _SignUp extends Component {
         const signupCreds = { fullName, password, address };
         this.props.signup(signupCreds);
         this.setState({ signupCred: { fullName: '', password: '', address: '' } });
-    };
+    }
+
+    signUpShop = () => {
+        const { fullName, name, type, title, description, location, lat, lng } = this.state.signupCred;
+        if (!fullName || !name || !type || !title || !description || !location || !lat || !lng) {
+            return this.setState({ msg: 'All inputs are required!' });
+        }
+        const { _id, imgUrl } = this.props.loggedInUser;
+        const signupCreds = { _id, imgUrl, fullName, name, type, title, description, location, lat, lng };
+        this.props.saveShop(signupCreds);
+        this.setState({
+            signupCred: {
+                fullName: '', name: '', type: '', title: '', description: '', location: '', lat: '', lng: ''
+            }
+        });
+    }
 
     render() {
         const { userAdopt, userShop } = this.state
@@ -68,10 +97,42 @@ export class _SignUp extends Component {
                         </form>
                     </div>
                 }
-                {userShop && <div>
+                {userShop && <form className="flex column align-center" onSubmit={this.doSignup}>
                     <h3>Please filled out this form so we will be able to get to know you and your animals</h3>
-                    <input type="text" name="name" value={loggedInUser.fullName} onChange={this.handleInput} />
-                </div>
+                    <Input type="text" name="fullName" placeholder="Your Full Name"
+                        value={loggedInUser.fullName} onChange={this.signupHandleChange}>
+                    </Input>
+                    <Input type="text" name="name" placeholder="Your Shop Name"
+                        onChange={this.signupHandleChange}></Input>
+                    <FormControl>
+                        <InputLabel htmlFor="type">Shop Type:</InputLabel>
+                        <Select
+                            native
+                            onChange={this.signupHandleChange}
+                            inputProps={{
+                                name: "type",
+                            }}>
+                            <option value={"shelter"}>Shelter</option>
+                            <option value={"volunteer"}>Volunteer</option>
+                            <option value={"private"}>Private</option>
+                        </Select>
+                    </FormControl>
+                    <Input type="text" name="title" placeholder="Your shop title/catchFrase"
+                        onChange={this.signupHandleChange}></Input>
+                    <TextField
+                        id="standard-textarea"
+                        label="Shop Description:"
+                        placeholder="Your shop short description"
+                        multiline
+                        name="description"
+                    />
+                    <Input type="text" name="location" placeholder="Your Shop Adress"
+                        onChange={this.signupHandleChange}></Input>
+                    <Input type="number" name="lat" placeholder="Your Shop Latitude"
+                        onChange={this.signupHandleChange}></Input>
+                    <Input type="number" name="lng" placeholder="Your Shop Longitute"
+                        onChange={this.signupHandleChange}></Input>
+                </form>
 
                 }
             </div>
@@ -111,8 +172,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    signup
-    // loadUsers
+    signup,
+    saveShop,
+    getUserById
 };
 
 

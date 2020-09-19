@@ -10,7 +10,7 @@ export const shopService = {
 }
 
 async function query() {
-    const res = await httpService.get(`${BASE_URL}`);   
+    const res = await httpService.get(`${BASE_URL}`);
     return res;
 }
 
@@ -30,10 +30,23 @@ async function save(shop) {
     } else {
         shop._id = _makeId();
         shop.createdAt = new Date(Date.now()).toLocaleString();
-        const res = await httpService.post(`${BASE_URL}`, shop)
-        return res;
+        shop.owner = {
+            _id:shop._id,
+            fullName: shop.fullName,
+            imageUrl:shop.imgUrl
+        };
+        shop.location = {
+            name: shop.name, 
+            lat: shop.lat,
+            lng: shop.lng
+        };
     }
+    shop.pets = [];
+    shop.reviews = [];
+    const res = await httpService.post(`${BASE_URL}`, shop)
+    return res;
 }
+
 
 async function remove(shopId) {
     await httpService.delete(`${BASE_URL}/${shopId}`)
