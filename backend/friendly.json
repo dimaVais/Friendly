@@ -222,42 +222,6 @@
     {
       "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
       "buyer": {
-        "_id": "guest",
-        "fullName": "guest"
-      },
-      "shop": {
-        "_id": "s101",
-        "name": "Freedom farm"
-      },
-      "pet": {
-        "_id": "p140",
-        "name": "Johnny"
-      },
-      "status": "Pending",
-      "_id": "PSk2Tb",
-      "createdAt": "9/19/2020, 2:20:02 PM"
-    },
-    {
-      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
-      "buyer": {
-        "_id": "guest",
-        "fullName": "guest"
-      },
-      "shop": {
-        "_id": "s101",
-        "name": "Freedom farm"
-      },
-      "pet": {
-        "_id": "p140",
-        "name": "Johnny"
-      },
-      "status": "Pending",
-      "_id": "cjYKwa",
-      "createdAt": "9/19/2020, 2:20:21 PM"
-    },
-    {
-      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
-      "buyer": {
         "_id": "u102",
         "fullName": "User 2",
         "imgUrl": "/img/img2.jpg"
