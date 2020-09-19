@@ -13,13 +13,17 @@ var _petReducer = require("./reducers/petReducer");
 
 var _shopReducer = require("./reducers/shopReducer");
 
+var _userReducer = require("./reducers/userReducer");
+
+var _orderReducer = require("./reducers/orderReducer");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// import { userReducer } from './reducers/userReducer';
-// import { reviewReducer } from './reducers/reviewReducer';
 var rootReducer = (0, _redux.combineReducers)({
   petReducer: _petReducer.petReducer,
-  shopReducer: _shopReducer.shopReducer
+  shopReducer: _shopReducer.shopReducer,
+  userReducer: _userReducer.userReducer,
+  orderReducer: _orderReducer.orderReducer
 });
 var composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || _redux.compose;
 var store = (0, _redux.createStore)(rootReducer, composeEnhancers((0, _redux.applyMiddleware)(_reduxThunk["default"])));

@@ -4,10 +4,12 @@
 }
 .data-container .shop-section {
   min-width: 33%;
+  max-height: 90vh;
   text-align: center;
 }
 
 .shop-section {
+  border: #3b3939 solid 2px;
   border: #3b3939 solid 2px;
 }
 

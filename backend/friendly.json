@@ -168,13 +168,14 @@
     {
       "_id": "o1225",
       "cretatedAt": 9898989,
+      "msg": "Hi there, I saw your lovely pet and really whish to adopt him",
       "buyer": {
         "_id": "u101",
         "fullName": "Hapirat HaRaev",
         "imgUrl": "url"
       },
       "shop": {
-        "_id": "u102",
+        "_id": "s101",
         "name": "Freedom Farm",
         "type": "Shelter",
         "imgUrl": "/img/img1.jpg",
@@ -188,7 +189,35 @@
           "http://cloudinery.com/img2"
         ]
       },
-      "status": "pending"
+      "status": "accepted",
+      "updatedAt": "9/19/2020, 1:41:45 PM"
+    },
+    {
+      "_id": "o1226",
+      "cretatedAt": 9898989,
+      "msg": "Hi there, I saw your lovely pet and really whish to adopt him",
+      "buyer": {
+        "_id": "u101",
+        "fullName": "Hapirat HaRaev",
+        "imgUrl": "url"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom Farm",
+        "type": "Shelter",
+        "imgUrl": "/img/img1.jpg",
+        "rate": 4
+      },
+      "pet": {
+        "_id": "p140",
+        "name": "Johnny",
+        "imgUrls": [
+          "http://cloudinery.com/img1",
+          "http://cloudinery.com/img2"
+        ]
+      },
+      "status": "pending",
+      "updatedAt": "9/19/2020, 1:38:11 PM"
     }
   ],
   "shop": [

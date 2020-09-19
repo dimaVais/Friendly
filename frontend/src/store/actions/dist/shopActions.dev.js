@@ -10,7 +10,7 @@ exports.removeShop = removeShop;
 
 var _shopService = require("../../services/shopService.js");
 
-function loadShops(filterBy) {
+function loadShops() {
   return function _callee(dispatch) {
     var shops;
     return regeneratorRuntime.async(function _callee$(_context) {
@@ -18,7 +18,7 @@ function loadShops(filterBy) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return regeneratorRuntime.awrap(_shopService.shopService.query(filterBy));
+            return regeneratorRuntime.awrap(_shopService.shopService.query());
 
           case 2:
             shops = _context.sent;

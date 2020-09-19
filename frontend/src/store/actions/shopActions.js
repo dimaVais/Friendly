@@ -1,6 +1,5 @@
 import { shopService } from "../../services/shopService.js"
 
-
 export function loadShops() {
     return async dispatch => {
         const shops = await shopService.query();

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PetList } from '../cmps/PetList';
+import { OrderList } from '../cmps/OrderList';
 import { getShopById } from '../store/actions/shopActions.js';
 import { savePet, loadPets } from '../store/actions/petActions.js'
 import { GoogleMap } from '../cmps/GoogleMap';
@@ -17,13 +18,12 @@ class _ShopDetails extends Component {
         const shopId = this.props.match.params.id;
         await this.props.loadPets();
         await this.props.getShopById(shopId);
-        console.log(this.props.currShop);
         this.setState({ shop: { ...this.props.currShop } });
         const shopPets = this.props.pets.filter(pet => {
             if (pet.shop) return pet.shop._id === this.state.shop._id
 
         })
-        await this.setState({
+         this.setState({
             shopPets: [...shopPets]
         })
     }
@@ -62,6 +62,7 @@ class _ShopDetails extends Component {
                                 </div>
                                 <div  className="shop-section">
                                     <h1>Adoption Requests:</h1>
+                                    <OrderList shopId={this.state.shop._id}/>
                                 </div>
                             </div>
                             <div className="shop-section">
