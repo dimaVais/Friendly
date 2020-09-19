@@ -460,7 +460,7 @@
       "_id": "c101",
       "messages": [
         {
-          "from": "Alex",
+          "from": "guest",
           "txt": "I have a question",
           "createdAt": 123456412,
           "isRead": true
