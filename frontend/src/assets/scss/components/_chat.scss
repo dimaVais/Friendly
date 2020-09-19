@@ -1,18 +1,32 @@
 .chat-container {
+    position: fixed;
+    left: 0;
+    bottom: 0;
     width: 250px;
     height: 220px;
     position: fixed;
     z-index: 4;
-    background-color: rgb(212, 216, 221);
+    background-color: #f9fefc;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
     border: 1px solid grey;
 
- }
-
+    
+}
+ 
+.btn-close{
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+.input-container{
+    position: absolute;
+    left: 2px;
+    bottom: 2px; 
+}
+       
 //  .modal-screen {
 //     z-index: 3;
 //     background-color: rgb(26, 96, 167);
