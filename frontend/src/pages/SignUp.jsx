@@ -6,8 +6,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 
-import { signup, getUserById } from '../store/actions/userActions'
-import { saveShop } from '../store/actions/shopActions'
+import { signup, getUserById, updateUser } from '../store/actions/userActions'
+import { saveShop, loadShops } from '../store/actions/shopActions'
 
 
 
@@ -56,20 +56,37 @@ export class _SignUp extends Component {
         this.setState({ signupCred: { fullName: '', password: '', address: '' } });
     }
 
-    signUpShop = () => {
+    signUpShop = async () => {
         const { fullName, name, type, title, description, location, lat, lng } = this.state.signupCred;
-        if (!fullName || !name || !type || !title || !description || !location || !lat || !lng) {
-            return this.setState({ msg: 'All inputs are required!' });
+        // if (!fullName || !name || !type || !title || !description || !location || !lat || !lng) {
+        //     return this.setState({ msg: 'All inputs are required!' });
+        // }
+        console.log('bbb,');
+
+        const currUser = this.props.loggedInUser;
+        const owner = {
+            _id: currUser._id,
+            fullName: currUser.fullName,
+            imgUrl: currUser.imgUrl
         }
-        const { _id, imgUrl } = this.props.loggedInUser;
-        const signupCreds = { _id, imgUrl, fullName, name, type, title, description, location, lat, lng };
+        console.log('btttbb,');
+
+        const signupCreds = { name, type, owner, title, description, location, lat, lng };
+        console.log('hhhh,', signupCreds);
         this.props.saveShop(signupCreds);
+        currUser.isOwner = true;
+        await this.props.updateUser(currUser)
         this.setState({
             signupCred: {
-                fullName: '', name: '', type: '', title: '', description: '', location: '', lat: '', lng: ''
+                name: '', type: '', owner: '', title: '', description: '', location: '', lat: '', lng: ''
             }
         });
+       await this.props.loadShops();
+        const shopId = this.props.shops.find(shop => { return shop.owner._id === currUser._id })._id;
+        this.props.history.push(`/shop/${shopId}`)
     }
+
+
 
     render() {
         const { userAdopt, userShop } = this.state
@@ -132,6 +149,7 @@ export class _SignUp extends Component {
                         onChange={this.signupHandleChange}></Input>
                     <Input type="number" name="lng" placeholder="Your Shop Longitute"
                         onChange={this.signupHandleChange}></Input>
+                    <button>SAVE</button>
                 </form>
 
                 }
@@ -140,41 +158,20 @@ export class _SignUp extends Component {
     }
 }
 
-// "shop": [
-//     {
-//       "_id": "s101",
-//       "name": "Freedom farm",
-//       "owner": {
-//         "_id": "u101",
-//         "fullName": "Moshi Dadiya",
-//         "imgUrl": "/img/img1.jpg"
-//       },
-//       "pets": [
-//         {
-//           "_id": "p140",
-//           "name": "Johnny",
-//           "amount": 2
-//         }
-//       ],
-//       "title": "Saving lives",
-//       "desc": "We are here for the animals",
-//       "location": {
-//         "name": "Tel Aviv",
-//         "lat": 32.0853,
-//         "lng": 34.7818
-//       },
-
 const mapStateToProps = state => {
     return {
         users: state.userReducer.users,
         loggedInUser: state.userReducer.loggedInUser,
+        shops: state.shopReducer.shops
     };
 };
 
 const mapDispatchToProps = {
     signup,
     saveShop,
-    getUserById
+    loadShops,
+    getUserById,
+    updateUser
 };
 
 

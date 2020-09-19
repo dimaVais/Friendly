@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.loadUsers = loadUsers;
 exports.getUserById = getUserById;
 exports.removeUser = removeUser;
+exports.updateUser = updateUser;
 exports.login = login;
 exports.signup = signup;
 exports.logout = logout;
@@ -103,21 +104,21 @@ function removeUser(userId) {
   };
 }
 
-function login(userCreds) {
+function updateUser(user) {
   return function _callee3(dispatch) {
-    var user;
+    var userToSave;
     return regeneratorRuntime.async(function _callee3$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.next = 2;
-            return regeneratorRuntime.awrap(_userService["default"].login(userCreds));
+            return regeneratorRuntime.awrap(_userService["default"].update(user));
 
           case 2:
-            user = _context4.sent;
+            userToSave = _context4.sent;
             dispatch({
-              type: 'SET_USER',
-              user: user
+              type: 'UPDATE_USER',
+              userToSave: userToSave
             });
 
           case 4:
@@ -129,7 +130,7 @@ function login(userCreds) {
   };
 }
 
-function signup(userCreds) {
+function login(userCreds) {
   return function _callee4(dispatch) {
     var user;
     return regeneratorRuntime.async(function _callee4$(_context5) {
@@ -137,7 +138,7 @@ function signup(userCreds) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.next = 2;
-            return regeneratorRuntime.awrap(_userService["default"].signup(userCreds));
+            return regeneratorRuntime.awrap(_userService["default"].login(userCreds));
 
           case 2:
             user = _context5.sent;
@@ -155,13 +156,39 @@ function signup(userCreds) {
   };
 }
 
-function logout() {
+function signup(userCreds) {
   return function _callee5(dispatch) {
+    var user;
     return regeneratorRuntime.async(function _callee5$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
             _context6.next = 2;
+            return regeneratorRuntime.awrap(_userService["default"].signup(userCreds));
+
+          case 2:
+            user = _context6.sent;
+            dispatch({
+              type: 'SET_USER',
+              user: user
+            });
+
+          case 4:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    });
+  };
+}
+
+function logout() {
+  return function _callee6(dispatch) {
+    return regeneratorRuntime.async(function _callee6$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            _context7.next = 2;
             return regeneratorRuntime.awrap(_userService["default"].logout());
 
           case 2:
@@ -172,7 +199,7 @@ function logout() {
 
           case 3:
           case "end":
-            return _context6.stop();
+            return _context7.stop();
         }
       }
     });

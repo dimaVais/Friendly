@@ -33,12 +33,12 @@ async function save(shop) {
         shop.owner = {
             _id:shop._id,
             fullName: shop.fullName,
-            imageUrl:shop.imgUrl
+            imgUrl:shop.imgUrl
         };
         shop.location = {
             name: shop.name, 
-            lat: shop.lat,
-            lng: shop.lng
+            lat: parseFloat(shop.lat),
+            lng: parseFloat(shop.lng)
         };
     }
     shop.pets = [];
