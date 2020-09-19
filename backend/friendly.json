@@ -327,14 +327,15 @@
       "isOwner": true,
       "userName": "user1",
       "password": "secret1",
-      "messages": [
+      "chats":[
         {
-          "from": "Didi Harari",
-          "txt": "hello there",
-          "date": 123456412,
-          "isRead": false
+          "_id":"c101"
+        },
+        {
+          "_id":"c101"
         }
-      ]
+      ] 
+  
     },
     {
       "_id": "u102",
@@ -343,14 +344,14 @@
       "isAdmin": false,
       "userName": "user2",
       "password": "secret",
-      "messages": [
+      "chats":[
         {
-          "from": "Dudu",
-          "txt": "I have a question",
-          "date": 123456412,
-          "isRead": false
+          "_id":"ch101"
+        },
+        {
+          "_id":"ch101"
         }
-      ]
+      ] 
     },
     {
       "_id": "guest",
