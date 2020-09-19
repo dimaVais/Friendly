@@ -14,8 +14,26 @@ export function OrderPreview({ order, onSave, onRemove, isShop}) {
     if (!order) return <img className="order-loading" src={require('../assets/img/loading.gif')} />
     return (
         <div className={`order-preview ${orderClass()}`}>
-            <p><span>From:</span> {order.buyer.fullName} </p>
-            <p><span>I want to Adopt:</span> {order.pet.name} </p>
+            {
+            isShop && <div>
+                <p><span>From:</span> {order.buyer.fullName} </p>
+                <p><span>I want to Adopt:</span> {order.pet.name} </p>
+                <img src={order.buyer.imgUrl} alt="user image"/>
+                </div>
+                        
+            }
+
+            {!isShop &&
+            <div>
+             <p><span>To:</span> {order.shop.name} </p>
+             {console.log('order.shop.type', order.shop.type)}
+             <p> {order.shop.type} </p>
+             <p><span>I want to Adopt:</span> {order.pet.name} </p> 
+             <img src={order.shop.imgUrl} alt="shop image"/>
+                <span>{order.shop.rate}</span> 
+             </div>
+             }
+
             <div>
                 <p><span>Adoption Request:</span> {order.msg} </p>
             </div>

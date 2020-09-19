@@ -32,6 +32,7 @@ export class _userProfile extends Component {
             <div>
                 <h1>{user.fullName}</h1>
                 <img src={user.imgUrl} alt=""/>
+                <h3>My Adoption Requests</h3>
                 <OrderList isShop={false} orderFilterName={"buyer._id"} filterById={user._id}/>
             </div>
         )
