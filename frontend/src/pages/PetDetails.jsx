@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { shopService } from '../services/shopService.js';
-import { loadPets } from '../store/actions/petActions.js';
+import { loadPets, savePet } from '../store/actions/petActions.js';
 import { saveOrder } from '../store/actions/orderActions.js';
-import {Chat} from '../cmps/Chat.jsx'
+import { Chat } from '../cmps/Chat.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faBone } from '@fortawesome/free-solid-svg-icons'
@@ -15,16 +15,20 @@ class _PetDetails extends Component {
 
     state = {
         pet: {},
-        isChatOn:false
+        isChatOn: false
     }
 
-    async componentDidMount() {
+     componentDidMount() {
+         this.getCurrPet()
+
+    }
+
+    getCurrPet = async () => {
         await this.props.loadPets();
         const petId = this.props.match.params.id
         const petToShow = this.props.pets.find(pet => pet._id === petId)
         this.setState({ pet: { ...petToShow } });
-
-    }
+    } 
 
     isOwnerOfPet = async () => {
         const { loggedInUser } = this.props
@@ -39,7 +43,7 @@ class _PetDetails extends Component {
     onAdopt = async () => {
         const { loggedInUser } = this.props
         if (loggedInUser.isGuest) return
-        
+
         const pet = this.state.pet
         const shopId = pet.shop._id
         const shop = await shopService.getById(shopId)
@@ -66,9 +70,22 @@ class _PetDetails extends Component {
         this.props.saveOrder(order)
     }
 
-    onToggleChat=()=>{
-        this.setState({isChatOn:!this.state.isChatOn})
+    onChat = () => {
+        this.setState({ isChatOn: !this.state.isChatOn })
+        console.log(this.state.isChatOn);
     }
+
+    onUpdateReaction = (reaction) => {
+        const pet = this.state.pet;
+        pet.reacts.map(react => {
+            if (react.type === reaction) react.count++
+            console.log('reaction clicked' , reaction);
+            return react
+        })
+        this.props.savePet(pet)
+        this.getCurrPet()
+    }
+    
     render() {
         const pet = this.state.pet;
         let { loggedInUser } = this.props
@@ -95,14 +112,11 @@ class _PetDetails extends Component {
                             {
                                 (pet.reacts) ?
                                     pet.reacts.map(react => {
-                                        if  (react.type === 'love')  {
-                                            return <li><FontAwesomeIcon className="heart-icon" icon={faHeart} /> ({`${react.count}`})</li>
+                                        if (react.type === 'love') {
+                                            return <li><FontAwesomeIcon onClick={()=>{this.onUpdateReaction('love')}} className="heart-icon" icon={faHeart} /> ({`${react.count}`})</li>
                                         }
-                                        else if ((react.type === 'feed')) return <li><FontAwesomeIcon className="bone-icon" icon={faBone} /> ({`${react.count}`})</li>
-                                        else if ((react.type === 'pet')) return <li><FontAwesomeIcon className="hand-sparkles-icon" icon={faHandSparkles} /> ({`${react.count}`})</li>
-                                            
-                                        
-                                        
+                                        else if ((react.type === 'feed')) return <li><FontAwesomeIcon onClick={()=>{this.onUpdateReaction('feed')}} className="bone-icon" icon={faBone} /> ({`${react.count}`})</li>
+                                        else if ((react.type === 'pet')) return <li><FontAwesomeIcon onClick={()=>{this.onUpdateReaction('pet')}} className="hand-sparkles-icon" icon={faHandSparkles} /> ({`${react.count}`})</li>
                                     })
                                     : ''
                             }
@@ -128,7 +142,7 @@ class _PetDetails extends Component {
                                 : ''
                         }
                     </ul>
-                    
+
 
                     <p><span>Description:</span> {'\n' + pet.description}</p>
                 </div>
@@ -155,6 +169,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadPets,
+    savePet,
     saveOrder
 
 }
