@@ -77,7 +77,10 @@
       },
       "imgUrls": [
         "https://companieshouse.blog.gov.uk/wp-content/uploads/sites/148/2019/02/New-name.jpg",
-        "http://cloudinery.com/img2"
+        "https://cdn.pixabay.com/photo/2017/12/19/23/18/cat-3028916_960_720.jpg",
+        "https://p0.pikist.com/photos/747/406/cat-kitten-red-mackerel-tabby-red-cat-young-cat-cat-baby.jpg",
+        "https://cdn.pixabay.com/photo/2016/09/17/00/53/cat-1675429_960_720.jpg",
+        "https://cdn.pixabay.com/photo/2019/06/10/20/49/cat-4265304_960_720.jpg"
       ],
       "tags": [
         "Kids Friendly",
@@ -94,6 +97,10 @@
         {
           "type": "pet",
           "count": 5
+        },
+        {
+          "type": "feed",
+          "count": 6
         }
       ]
     },
@@ -103,7 +110,7 @@
       "type": "Dog",
       "adoptedAt": 12321312,
       "bDate": 12321312,
-      "gender": "Femail",
+      "gender": "Female",
       "breed": "Poodle",
       "size": "medium",
       "isInRisk": true,
@@ -138,6 +145,62 @@
         {
           "type": "pet",
           "count": 4
+        },
+        {
+          "type": "feed",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "_id": "p148",
+      "name": "Shadowfax",
+      "type": "Horse",
+      "adoptedAt": 1390513411992,
+      "bDate": 1390513411992,
+      "gender": "Male",
+      "breed": "Silver Bow",
+      "size": "Large",
+      "isInRisk": false,
+      "shop": {
+        "_id": "s101",
+        "fullName": "Freedom Farm",
+        "imgUrl": "https://i.pinimg.com/originals/05/0f/65/050f655bc2c1cf40c85bad9cf2f289f9.jpg",
+        "rate": 5
+      },
+      "summary": "Showing the meaning of haste",
+      "description": "This special one wont be here for long. This historic creature is one of a kind",
+      "location": {
+        "address": "Middle Earth",
+        "lat": 20.9,
+        "lng": 29.44
+      },
+      "imgUrls": [
+        "https://i.pinimg.com/originals/05/0f/65/050f655bc2c1cf40c85bad9cf2f289f9.jpg",
+        "https://i.ytimg.com/vi/K3I8I_i8Syw/maxresdefault.jpg",
+        "https://i.pinimg.com/originals/77/4f/67/774f67a7f0cffb95bc2f7a0432b41594.jpg",
+        "https://i.ytimg.com/vi/yYKbF67ilIs/maxresdefault.jpg",
+        "https://www.highlandranchtwh.com/wp-content/uploads/2017/08/Shadowfax-198x300.png"
+
+      ],
+      "tags": [
+        "Kids Friendly",
+        "Calm",
+        "Trained"
+        
+      ],
+      "reacts": [
+        {
+          "type": "love",
+          "count": 19
+        },
+        {
+          "type": "pet",
+          "count": 34
+        },
+        {
+          "type": "feed",
+          "count": 8
         }
       ]
     },
@@ -168,6 +231,10 @@
         {
           "type": "pet",
           "count": 4
+        },
+        {
+          "type": "feed",
+          "count": 6
         }
       ]
     }
