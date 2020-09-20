@@ -75,11 +75,11 @@ export class _SignUp extends Component {
             lat: parseFloat(lat),
             lng: parseFloat(lng)
         }
-        console.log('locName',locName);
-        console.log('location',location);
-        console.log('lat',lat);
-        console.log('lng',lng);
-  
+        console.log('locName', locName);
+        console.log('location', location);
+        console.log('lat', lat);
+        console.log('lng', lng);
+
         const signupCreds = { name, type, owner, title, desc, location };
         this.props.saveShop(signupCreds);
         currUser.isOwner = true;
@@ -99,16 +99,17 @@ export class _SignUp extends Component {
         const { loggedInUser } = this.props
         console.log('this.state.signupCred', this.state.signupCred);
         return (
-            <div className="below-nav">
+            <div className="main-container flex column align-center">
                 <h1>We are happy you decided to join us!</h1>
                 <p>Do you want to adopt or to find adopters for your animals?</p>
-                <button onClick={() => { this.setUserAdopt() }}>Adopt</button>
-                <button onClick={() => { this.setUserShop() }}>Find Adopters</button>
+                <div className="btn-menu flex">
+                    <button onClick={() => { this.setUserAdopt() }}>Adopt</button>
+                    <button onClick={() => { this.setUserShop() }}>Find Adopters</button>
+                </div>
                 {userAdopt &&
-                    <div>
+                    <div className="main-adopt-container flex column align-center">
                         <h3>New Adopter</h3>
-                        <form onSubmit={this.doSignup}>
-
+                        <form className="flex column align-center" onSubmit={this.doSignup}>
                             <br />
                             <Input type="text" name="fullName" placeholder="Your Full Name" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
                             <Input type="password" name="password" placeholder="Password" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
@@ -120,7 +121,7 @@ export class _SignUp extends Component {
                         </form>
                     </div>
                 }
-                {userShop && <form className="flex column align-center" onSubmit={this.doSignup}>
+                {userShop && <form className="main-shop-container flex column align-center" onSubmit={this.doSignup}>
                     <h3>Please filled out this form so we will be able to get to know you and your animals</h3>
                     <Input type="text" name="fullName" placeholder="Your Full Name"
                         value={loggedInUser.fullName} onChange={this.signupHandleChange}>
@@ -151,8 +152,6 @@ export class _SignUp extends Component {
                         name="desc"
                         onChange={this.signupHandleChange}
                     />
-                    {/* <Input type="text" name="location" placeholder="Your Shop Adress"
-                        onChange={this.signupHandleChange}></Input> */}
                     <Geolocation signupHandleChange={this.signupHandleChange} />
                     <button>SAVE</button>
                 </form>

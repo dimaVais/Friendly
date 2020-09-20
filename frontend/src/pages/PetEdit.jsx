@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { savePet, loadPets } from '../store/actions/petActions.js'
+import { Input } from '@material-ui/core';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
 
 
 export class _PetEdit extends Component {
@@ -47,6 +52,8 @@ export class _PetEdit extends Component {
             <form className={"flex column align-center below-nav"} onSubmit={(event) => { this.onSubmitForm(event) }}>
                 <label>  Pet Name:
                     <input type="text" name="name" value={pet.name} onChange={this.handleInput} />
+                    <Input type="text" name="name" placeholder="Pet Name:"
+                        value={pet.name} onChange={this.handleInput}></Input>
                 </label>
                 <label> Pet Type:
                     <input type="text" name="type" value={pet.type} onChange={this.handleInput} />

@@ -1,0 +1,42 @@
+.main-container {
+    max-width: 80%;
+    min-height: 100vh;
+    border: 1px solid gray;
+    margin: auto;
+    background-color: rgb(240, 253, 238);
+    border-radius:30px;
+
+    button {
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid rgb(38, 145, 233);
+        cursor: pointer;
+        font-family: roboto, sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        color: rgb(38, 145, 233);
+        border-radius: 5px;
+        margin-top: 5px;
+        min-width: 10em;
+        max-width: 10em;
+    }
+
+}
+
+.main-shop-container,.main-adopt-container {
+    min-width: 60%;
+    padding: 10px;
+
+    * {
+        margin-bottom: 10px;
+        min-width: 20em;
+        padding: 10px;
+    }
+}
+
+.btn-menu{
+        
+    button{
+        margin-right:10px;
+    }
+}
