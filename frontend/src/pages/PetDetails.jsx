@@ -18,8 +18,9 @@ class _PetDetails extends Component {
         isChatOn: false
     }
 
-     componentDidMount() {
-         this.getCurrPet()
+    async componentDidMount() {
+         await  this.getCurrPet()
+         await this.getUserId();
 
     }
 
@@ -86,6 +87,13 @@ class _PetDetails extends Component {
         this.getCurrPet()
     }
     
+     getUserId = async _=>{
+        console.log(this.state.pet);
+        const shop = await shopService.getById(this.state.pet.shop._id);
+        const ownerId= await shop.owner._id;
+        this.setState({ownerId})
+    }
+
     render() {
         const pet = this.state.pet;
         let { loggedInUser } = this.props
@@ -152,7 +160,7 @@ class _PetDetails extends Component {
                     <p>You help stop cruelty in mass breeding facilities.</p>
                     <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
                 </div>
-                {this.state.isChatOn  && <Chat onClose={this.onToggleChat} shopOwnerId={pet.shop._id} />}
+                {this.state.isChatOn  && <Chat onClose={this.onToggleChat} recipientId={this.state.ownerId} />}
             </section>
         )
     }
@@ -163,6 +171,7 @@ const mapStateToProps = state => {
     return {
         pets: state.petReducer.pets,
         loggedInUser: state.userReducer.loggedInUser,
+        
     }
 }
 
