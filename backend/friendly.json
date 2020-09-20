@@ -17,7 +17,7 @@
         "rate": {
           "rating": 4.7,
           "count": 113
-        } 
+        }
       },
       "summary": "Energetic and happy dog",
       "description": "One of the best dogs we have here. Need a lot of attention and love but be sure you will get it back, big time.",
@@ -72,7 +72,7 @@
         "rate": {
           "rating": 4.7,
           "count": 113
-        } 
+        }
       },
       "summary": "Milk and Happiness",
       "description": "This cow need you to take care of her. Is that too much to ask?",
@@ -123,7 +123,7 @@
         "rate": {
           "rating": 4.7,
           "count": 113
-        } 
+        }
       },
       "summary": "Very playful and loving",
       "description": "Active and loyal dog, greate with kids, prefare a family which loves sport and activity.",
@@ -178,7 +178,7 @@
         "rate": {
           "rating": 4.7,
           "count": 113
-        } 
+        }
       },
       "summary": "Calm and shy dog that needs experinced owner ",
       "description": "Doly is asenior and shy dog that needs a family without small kids and prefare to rest all day.",
@@ -229,7 +229,7 @@
         "rate": {
           "rating": 4.8,
           "count": 62
-        } 
+        }
       },
       "summary": "Showing the meaning of haste",
       "description": "This special one wont be here for long. This historic creature is one of a kind",
@@ -284,7 +284,7 @@
         "rate": {
           "rating": 4.8,
           "count": 62
-        } 
+        }
       },
       "size": "medium",
       "summary": "Our gentle giant",
@@ -462,6 +462,26 @@
           }
         }
       ]
+    },
+    {
+      "name": "Save The Cats",
+      "type": "shelter",
+      "owner": {
+        "_id": "LCDs4gs",
+        "fullName": "beri tzakala",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "title": "We here for the cats",
+      "desc": "We here for the cats",
+      "location": {
+        "name": "haifa port",
+        "lat": 32.8213072,
+        "lng": 35.0007031
+      },
+      "_id": "r6pfGl",
+      "createdAt": "9/20/2020, 4:44:11 PM",
+      "pets": [],
+      "reviews": []
     }
   ],
   "user": [

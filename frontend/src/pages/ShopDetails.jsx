@@ -38,7 +38,6 @@ class _ShopDetails extends Component {
 
     render() {
         const shop = this.state.shop;
-
         return (
             <section>
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
@@ -49,9 +48,10 @@ class _ShopDetails extends Component {
                                 <div className="shop-section">
                                     <h2><span> Name: </span>{shop.name}</h2>
                                     <h3>{shop.title}</h3>
+                                    <p><span>We are: </span>{shop.type}</p>
                                     <p><span>Owner Full Name: </span>{shop.owner.fullName}</p>
                                     <img src={require(`../assets/img/user.jpg`)} />
-                                    <p><span>Short Description: </span>{shop.desc}</p>
+                                    <p><span>About Us: </span>{shop.desc}</p>
                                 </div>
                                 <div className="shop-section">
                                     <h2><span>Our Location: </span>{shop.location.name}</h2>
