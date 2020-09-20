@@ -99,7 +99,7 @@ export class _SignUp extends Component {
         const { loggedInUser } = this.props
         console.log('this.state.signupCred', this.state.signupCred);
         return (
-            <div>
+            <div className="below-nav">
                 <h1>We are happy you decided to join us!</h1>
                 <p>Do you want to adopt or to find adopters for your animals?</p>
                 <button onClick={() => { this.setUserAdopt() }}>Adopt</button>

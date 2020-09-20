@@ -15,10 +15,7 @@ async function query(filterBy) {
         filterBy.type = filterBy.type.charAt(0).toUpperCase()+filterBy.type.slice(1);
         queryStr = '?' + Object.keys(filterBy).map(key => key + '=' + filterBy[key]).join('&');
 
-     
-    }
-    console.log(queryStr);
-    
+    }    
     const res = await httpService.get(`${BASE_URL}${queryStr}`, {
         params: filterBy
     });

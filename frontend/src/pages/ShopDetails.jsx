@@ -39,7 +39,7 @@ class _ShopDetails extends Component {
     render() {
         const shop = this.state.shop;
         return (
-            <section>
+            <section className="below-nav">
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
                     <React.Fragment>
                         

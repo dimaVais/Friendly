@@ -29,7 +29,7 @@ export class _userProfile extends Component {
         const { user } = this.state
         if (!user) return <h3>Loading...</h3>
         return (
-            <div>
+            <div className="below-nav">
                 <h1>{user.fullName}</h1>
                 <img src={user.imgUrl} alt=""/>
                 <h3>My Adoption Requests</h3>

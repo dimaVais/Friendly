@@ -21,8 +21,6 @@ export  class PetFilter extends Component {
               await this.setState({ type:this.props.type })
               console.log(this.state);
          }
-         
-
      }
      onToggleTag=ev=>{
         console.log('toggled:', ev.target.value);
