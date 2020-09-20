@@ -61,7 +61,6 @@ export class _SignUp extends Component {
         // if (!fullName || !name || !type || !title || !description || !location || !lat || !lng) {
         //     return this.setState({ msg: 'All inputs are required!' });
         // }
-        console.log('bbb,');
 
         const currUser = this.props.loggedInUser;
         const owner = {
@@ -69,8 +68,6 @@ export class _SignUp extends Component {
             fullName: currUser.fullName,
             imgUrl: currUser.imgUrl
         }
-        console.log('btttbb,');
-
         const signupCreds = { name, type, owner, title, description, location, lat, lng };
         console.log('hhhh,', signupCreds);
         this.props.saveShop(signupCreds);
