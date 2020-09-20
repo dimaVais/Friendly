@@ -43,24 +43,25 @@ class _ShopDetails extends Component {
             <section>
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
                     <React.Fragment>
-                        <h1>Profile Page For {shop.name}</h1>
+                        
                         <div className="flex column">
                             <div className="data-container flex space-around">
-                                <div className="shop-section">
-                                    <h2><span> Name: </span>{shop.name}</h2>
+                                <div className="shop-details-section">
+                                 <h2>{shop.name}</h2>    
                                     <h3>{shop.title}</h3>
-                                    <p><span>Owner Full Name: </span>{shop.owner.fullName}</p>
-                                    <img src={require(`../assets/img/user.jpg`)} />
+                                    <p><span>Owner Name </span>{shop.owner.fullName}</p>
+                                    <img className="shop-owner-img" src={shop.owner.imgUrl} />
                                     <p><span>Short Description: </span>{shop.desc}</p>
-                                </div>
-                                <div className="shop-section">
-                                    <h2><span>Our Location: </span>{shop.location.name}</h2>
+                                    <div className="shop-section">
+                                    <h2><span>We are located in </span>{shop.location.name}</h2>
                                     <div>
                                         <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
                                     </div>
                                 </div>
+                                </div>
+                                
                                 <div  className="shop-section">
-                                    <h1>Adoption Requests:</h1>
+                                    <h3>Adoption Requests:</h3>
                                     <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id}/>
                                 </div>
                             </div>
@@ -81,7 +82,7 @@ class _ShopDetails extends Component {
                             </div>
                         </div>
                         <div className="shop-section" >
-                            <h2>Our Pet For Adoption:</h2>
+                            <h2>Our Pets</h2>
                             <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
                         </div>
                     </React.Fragment>}
@@ -93,7 +94,8 @@ class _ShopDetails extends Component {
 const mapStateToProps = state => {
     return {
         currShop: state.shopReducer.currShop,
-        pets: state.petReducer.pets
+        pets: state.petReducer.pets,
+        loggedInUser: state.userReducer.loggedInUser,
     }
 }
 

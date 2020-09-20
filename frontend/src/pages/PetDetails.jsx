@@ -19,7 +19,8 @@ class _PetDetails extends Component {
     state = {
         pet: {},
         isChatOn: false,
-        isOwnerOfPet: false
+        isOwnerOfPet: false,
+        shopId: ''
     }
 
     async componentDidMount() {
@@ -78,8 +79,10 @@ class _PetDetails extends Component {
     }
 
     onRemovePet = (petId) => {
-        console.log('petId', petId);
         // this.props.removePet(petId)
+        const pet = this.state.pet
+        const shopId = pet.shop._id
+        this.props.history.push(`/shop/${shopId}`)
     }
 
 
