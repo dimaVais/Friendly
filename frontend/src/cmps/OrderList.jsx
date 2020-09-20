@@ -36,12 +36,11 @@ class _OrderList extends Component {
 
     render() {
         const orders = this.props.orders;
-        console.log('orders', orders);
         return (!orders) ? <h1>LOADING...</h1> :
             (
                 <div className="order-list" >
-                    <div className={`doubleAccept ${this.state.msgDivClass}`}>
-                        * You Cannot Aprrove more then one Adoption request</div>
+                    
+                    <div className={`doubleAccept ${this.state.msgDivClass}`}>Only one approval please.</div>
                     {orders.map(order => <OrderPreview isShop={this.props.isShop} order={order} onRemove={this.onRemove} onSave={this.onSave} />)}
                 </div>
             )

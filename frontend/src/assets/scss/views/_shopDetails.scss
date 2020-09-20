@@ -5,6 +5,7 @@
 
 .top-screen-box {
     display: flex;
+    justify-content: space-between;
 }
 
 .shop-details-section {
@@ -12,11 +13,20 @@
     text-align: start;
 }
 
+.shop-location-box {
+    position: relative;
+
+}
+
+.map-container {
+}
+
 .map {
-    border: grey solid 2px;  
-    margin-left: 20px;
+    position: absolute;
+    right: 10px;
     max-width: 250px;
     max-height: 300px;
+
 }
 
 .shop-owner-img {
