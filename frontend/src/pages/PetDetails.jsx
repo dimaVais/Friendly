@@ -114,7 +114,7 @@ class _PetDetails extends Component {
 
         if (!pet) return <h1>Loading...</h1>
         return (
-            <section className="pet-details-main-container">
+            <section className="pet-details-main-container below-nav">
                 <div className="pet-details-box">
                     <div>
                         <h2 className="pet-details-heading">{pet.name}</h2>
