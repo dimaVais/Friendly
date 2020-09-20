@@ -1,6 +1,6 @@
 .order-list {
-    overflow-y: auto;
-    max-height: 75vh;
+    
+    margin-top: 20px;
 
     .order-loading {
         max-width: 30em;
@@ -22,7 +22,7 @@
 }
 
 .order-preview {
-    padding: 10px;
+    padding: 5px;
     border: solid 1px lightgrey;
 
     button {
@@ -30,11 +30,15 @@
         border-radius: 30px;
     }
 
+    p {
+        margin: 10px;
+    }
+
     &.accepted {
-        background-color: limegreen;
+        background-color: rgba(159, 255, 159, 0.199);
     }
 
     &.denied {
-        background-color: rgba(255, 0, 0, 0.445);
+        background-color: rgba(252, 138, 138, 0.281);
     }
 }

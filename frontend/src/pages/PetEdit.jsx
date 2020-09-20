@@ -49,7 +49,7 @@ export class _PetEdit extends Component {
     render() {
         const pet = { ...this.state.pet }
         return (
-            <form className={"flex column align-center"} onSubmit={(event) => { this.onSubmitForm(event) }}>
+            <form className={"flex column align-center below-nav"} onSubmit={(event) => { this.onSubmitForm(event) }}>
                 <label>  Pet Name:
                     <input type="text" name="name" value={pet.name} onChange={this.handleInput} />
                     <Input type="text" name="name" placeholder="Pet Name:"

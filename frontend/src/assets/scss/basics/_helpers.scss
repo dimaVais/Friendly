@@ -54,6 +54,14 @@
     display:none;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+.below-nav{
+    margin-top: 55px;}
 // .square-ratio {
 //     @include aspect-ratio(1, 1);
 // }    

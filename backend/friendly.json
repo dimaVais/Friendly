@@ -94,15 +94,15 @@
       "reacts": [
         {
           "type": "love",
-          "count": 22
+          "count": 24
         },
         {
           "type": "pet",
-          "count": 6
+          "count": 9
         },
         {
           "type": "feed",
-          "count": 30
+          "count": 34
         }
       ]
     },
@@ -321,7 +321,7 @@
       "msg": "Hi there, I saw your lovely pet and really whish to adopt him",
       "buyer": {
         "_id": "u101",
-        "fullName": "Hapirat HaRaev",
+        "fullName": "Josh Hart",
         "imgUrl": "url"
       },
       "shop": {
@@ -348,7 +348,7 @@
       "msg": "Hi there, I saw your lovely pet and really whish to adopt him",
       "buyer": {
         "_id": "u101",
-        "fullName": "Hapirat HaRaev",
+        "fullName": "Jimmi Shelvi",
         "imgUrl": "url"
       },
       "shop": {
@@ -397,8 +397,8 @@
       "type": "Shelter",
       "owner": {
         "_id": "u101",
-        "fullName": "Moshi Dadiya",
-        "imgUrl": "/img/img1.jpg"
+        "fullName": "Uma Mitchell",
+        "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg"
       },
       "pets": [
         {
@@ -487,12 +487,12 @@
   "user": [
     {
       "_id": "u101",
-      "fullName": "Adam Mitchell",
-      "imgUrl": "/img/img1.jpg",
+      "fullName": "Uma Mitchell",
+      "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg",
       "isAdmin": false,
       "isOwner": true,
-      "userName": "adam",
-      "password": "adam",
+      "userName": "uma",
+      "password": "uma",
       "chats": [
         {
           "_id": "c101",

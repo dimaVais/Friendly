@@ -41,27 +41,27 @@ export class _NavBar extends Component {
     render() {
         const { user } = this.props        
         return (
-            <div className="main-nav">
+            <div className="main-nav sticky">
                 <div className="left-nav">
-                <NavLink to="/"><img className="logo-up" src={require('../assets/img/logo.png')} alt="Home"/></NavLink>
-                <NavLink to="/pet">Gallery</NavLink>
-                <NavLink to="/about">About Us</NavLink>
+                    <NavLink to="/"><img className="logo-up" src={require('../assets/img/logo.png')} alt="Home"/></NavLink>
+                    <NavLink className="nav-btn" to="/pet">Gallery</NavLink>
+                    <NavLink className="nav-btn" to="/about">About Us</NavLink>
                 </div>
             <div className="right-nav">
                 
-                {user && user.isOwner && this.state.shopId && <NavLink to={`/shop/${this.state.shopId}`}>{this.state.shop.name}</NavLink>}
+                {user && user.isOwner && this.state.shopId && <NavLink className="nav-btn" to={`/shop/${this.state.shopId}`}>{this.state.shop.name}</NavLink>}
 
-                {user && !user.isOwner && !user.isGuest && <NavLink to={`/profile/${user._id}`}>{user.fullName}</NavLink>}
+                {user && !user.isOwner && !user.isGuest && <NavLink className="nav-btn" to={`/profile/${user._id}`}>{user.fullName}</NavLink>}
 
 
-                {user && user.isGuest && <button className="login-btn" onClick={() => { this.onNavBarClick() }}>Login</button>}
-                {user && !user.isGuest && <button className="logout-btn" onClick={() => { this.onLogOut() }}>Logout</button>}
+                {user && user.isGuest && <button className="login-btn nav-btn" onClick={() => { this.onNavBarClick() }}>Login</button>}
+                {user && !user.isGuest && <button className="logout-btn nav - btn" onClick={() => { this.onLogOut() }}>Logout</button>}
 
                 {this.state.showModal && <LoginModal onNavBarClick={this.onNavBarClick} />}
 
                 
 
-                <NavLink to="/signup">Sign Up</NavLink>
+                <NavLink className="nav-btn" to="/signup">Sign Up</NavLink>
             </div>
 
 

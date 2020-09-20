@@ -25,6 +25,7 @@
 
 
     .edit-btn {
+        width: 100%;
         padding: 10px;
         background-color: #fff;
         border: 1px solid rgb(42, 170, 42);
@@ -33,6 +34,7 @@
         font-weight: 800;
         color: rgb(42, 170, 42);
         border-radius: 5px;    
+
     }
 
     .edit-btn:focus {
@@ -44,7 +46,7 @@
     }
 
     .remove-btn {
-        margin-top: 15px;
+        margin-top: 25px;
         padding: 10px;
         background-color: #fff;
         border: 1px solid rgb(209, 62, 82);
