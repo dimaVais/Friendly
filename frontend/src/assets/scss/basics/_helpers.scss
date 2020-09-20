@@ -54,6 +54,11 @@
     display:none;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 // .square-ratio {
 //     @include aspect-ratio(1, 1);
 // }    

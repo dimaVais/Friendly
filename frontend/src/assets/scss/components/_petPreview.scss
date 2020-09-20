@@ -1,5 +1,5 @@
 .pet-preview {
-    background-color: rgb(237, 238, 238);
+    background-color: $clr2;
     margin: 20px;
     height: 22rem;
     width: 16rem;
@@ -24,7 +24,7 @@
     }
 
     .card-description {
-        background-color: #FAFAFC;
+        background-color: $clr2;
         height: 10rem;
         width: 16rem;
         position: absolute;

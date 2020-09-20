@@ -94,15 +94,15 @@
       "reacts": [
         {
           "type": "love",
-          "count": 22
+          "count": 24
         },
         {
           "type": "pet",
-          "count": 6
+          "count": 9
         },
         {
           "type": "feed",
-          "count": 30
+          "count": 34
         }
       ]
     },
