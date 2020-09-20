@@ -5,6 +5,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
+import { Geolocation } from '../cmps/Geolocation';
 
 import { signup, getUserById, updateUser } from '../store/actions/userActions'
 import { saveShop, loadShops } from '../store/actions/shopActions'
@@ -26,14 +27,15 @@ export class _SignUp extends Component {
         this.setState({ userShop: true, userAdopt: false })
     }
 
-    signupHandleChange = ev => {
+    signupHandleChange = async ev => {
         const { name, value } = ev.target;
-        this.setState(prevState => ({
+        await this.setState(prevState => ({
             signupCred: {
                 ...prevState.signupCred,
                 [name]: value
             }
         }));
+        console.log('This State:', this.state);
     };
 
     doSignup = async ev => {
@@ -57,11 +59,10 @@ export class _SignUp extends Component {
     }
 
     signUpShop = async () => {
-        const { fullName, name, type, title, description, location, lat, lng } = this.state.signupCred;
-        // if (!fullName || !name || !type || !title || !description || !location || !lat || !lng) {
-        //     return this.setState({ msg: 'All inputs are required!' });
-        // }
-        console.log('bbb,');
+        const { fullName, name, type, title, desc, locName, lat, lng } = this.state.signupCred;
+        if (!name || !type || !title || !desc || !locName) {
+            return this.setState({ msg: 'All inputs are required!' });
+        }
 
         const currUser = this.props.loggedInUser;
         const owner = {
@@ -69,24 +70,29 @@ export class _SignUp extends Component {
             fullName: currUser.fullName,
             imgUrl: currUser.imgUrl
         }
-        console.log('btttbb,');
-
-        const signupCreds = { name, type, owner, title, description, location, lat, lng };
-        console.log('hhhh,', signupCreds);
+        const location = {
+            name: locName,
+            lat: parseFloat(lat),
+            lng: parseFloat(lng)
+        }
+        console.log('locName',locName);
+        console.log('location',location);
+        console.log('lat',lat);
+        console.log('lng',lng);
+  
+        const signupCreds = { name, type, owner, title, desc, location };
         this.props.saveShop(signupCreds);
         currUser.isOwner = true;
         await this.props.updateUser(currUser)
         this.setState({
             signupCred: {
-                name: '', type: '', owner: '', title: '', description: '', location: '', lat: '', lng: ''
+                name: '', type: '', owner: '', title: '', description: '', location: ''
             }
         });
         await this.props.loadShops();
         const shopId = this.props.shops.find(shop => { return shop.owner._id === currUser._id })._id;
         this.props.history.push(`/shop/${shopId}`)
     }
-
-
 
     render() {
         const { userAdopt, userShop } = this.state
@@ -129,6 +135,7 @@ export class _SignUp extends Component {
                             inputProps={{
                                 name: "type",
                             }}>
+                            <option aria-label="None" value="" />
                             <option value={"shelter"}>Shelter</option>
                             <option value={"volunteer"}>Volunteer</option>
                             <option value={"private"}>Private</option>
@@ -141,14 +148,12 @@ export class _SignUp extends Component {
                         label="Shop Description:"
                         placeholder="Your shop short description"
                         multiline
-                        name="description"
+                        name="desc"
+                        onChange={this.signupHandleChange}
                     />
-                    <Input type="text" name="location" placeholder="Your Shop Adress"
-                        onChange={this.signupHandleChange}></Input>
-                    <Input type="number" step="0.00000001" name="lat" placeholder="Your Shop Latitude"
-                        onChange={this.signupHandleChange}></Input>
-                    <Input type="number" step="0.00000001" name="lng" placeholder="Your Shop Longitute"
-                        onChange={this.signupHandleChange}></Input>
+                    {/* <Input type="text" name="location" placeholder="Your Shop Adress"
+                        onChange={this.signupHandleChange}></Input> */}
+                    <Geolocation signupHandleChange={this.signupHandleChange} />
                     <button>SAVE</button>
                 </form>
 

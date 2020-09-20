@@ -462,6 +462,26 @@
           }
         }
       ]
+    },
+    {
+      "name": "Save The Cats",
+      "type": "shelter",
+      "owner": {
+        "_id": "LCDs4gs",
+        "fullName": "beri tzakala",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "title": "We here for the cats",
+      "desc": "We here for the cats",
+      "location": {
+        "name": "haifa port",
+        "lat": 32.8213072,
+        "lng": 35.0007031
+      },
+      "_id": "r6pfGl",
+      "createdAt": "9/20/2020, 4:44:11 PM",
+      "pets": [],
+      "reviews": []
     }
   ],
   "user": [
