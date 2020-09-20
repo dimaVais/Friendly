@@ -9,8 +9,8 @@ import {chatService} from '../services/chatService.js'
  class _Chat extends Component {
 
     state = {
-        recipientName:{},
-        senderName:{},
+        recipientName:'',
+        senderName:'',
         msg: {from: 'Sender',txt:''},
         topic:null,
         msgs:[]
@@ -96,7 +96,7 @@ import {chatService} from '../services/chatService.js'
       displayMsg=(msg,idx)=>{
         let classTxt = 'message ';
         classTxt += (msg.from===this.state.senderName)?'sender':'recipient';
-        return(<li className={classTxt} key={idx}>{msg.from}:{msg.txt}</li>
+        return(<div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
 )
       }
 
@@ -106,17 +106,17 @@ import {chatService} from '../services/chatService.js'
         return (
             <div className="chat-container">
                 <section className="chat-title flex space-between">
-                    <span>Name</span>
-                    <button className="btn-close" onClick={this.onClose}>X</button>
+                <span>{ this.state.recipientName}</span>
+                    <button className="btn-close btn" onClick={this.onClose}>X</button>
                 </section>
-                    <section className="msgs-container">
+                <section className="msgs-container">
                         <ul>
                         {this.state.msgs.map((msg, idx) => (
                             this.displayMsg(msg,idx))
                             )}
                         </ul>
 
-                    </section>
+                </section>
                 <form onSubmit={this.sendMsg}>
                     <section className="input-container">
                     <input
@@ -128,7 +128,6 @@ import {chatService} from '../services/chatService.js'
                         placeholder="Aa"
                         />
                         <button>Send</button>
-
                     </section>
                 </form>
             </div>
