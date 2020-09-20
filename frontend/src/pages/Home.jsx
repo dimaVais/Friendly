@@ -27,7 +27,7 @@ class _Home extends Component {
     render() {
         const {user} = this.props
         return (
-            <div>
+            <div className="main-container">
                 <Hero />
                 <CategoryList />
                 <PetApp pets={this.props.pets} />
