@@ -1,12 +1,10 @@
-.data-container {
-    width: 100%;
-    margin: 0 auto;
-    font-family: roboto, sans-serif;
+.shop-details-main-box {
+    width: 90%;
+    margin: 10px auto;
+}
 
-    .shop-section {
-        min-width: 33%;
-        max-height: 90vh;
-    }
+.top-screen-box {
+    display: flex;
 }
 
 .shop-details-section {
