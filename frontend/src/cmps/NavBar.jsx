@@ -32,19 +32,24 @@ export class _NavBar extends Component {
 
 
     render() {
-        const { user } = this.props
-        // const shopId = this.getShopId()
-        
+        const { user } = this.props        
         return (
-            <div>
-                <NavLink to="/">Logo</NavLink>
+            <div className="main-nav">
+                <div className="left-nav">
+                <NavLink to="/"><img className="logo-up" src={require('../assets/img/logo.png')} alt="Home"/></NavLink>
                 <NavLink to="/pet">Gallery</NavLink>
                 <NavLink to="/about">About Us</NavLink>
-                <NavLink to="/signup">Sign Up</NavLink>
+                </div>
+            <div className="right-nav">
+                
                 {user && user.isOwner && this.state.shopId && <NavLink to={`/shop/${this.state.shopId}`}>My Shop </NavLink>}
                 {user && !user.isOwner && !user.isGuest && <NavLink to={`/profile/${user._id}`}>{user.fullName}</NavLink>}
-                <button onClick={() => { this.onNavBarClick() }}>Login</button>
+                <button className="login-btn" onClick={() => { this.onNavBarClick() }}>Login</button>
                 {this.state.showModal && <LoginModal onNavBarClick={this.onNavBarClick} />}
+                <NavLink to="/signup">Sign Up</NavLink>
+            </div>
+
+
             </div>
         )
     }

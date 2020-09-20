@@ -14,10 +14,8 @@ import { userProfile } from './pages/userProfile';
 function _App(props) {
   return (
     <div className="App">
-      <header className="flex align-center App-header">
-        <div className="flex align-center header-div">
+      <header >
         <NavBar />
-        </div>
       </header>
       <main>
         <Switch>

@@ -11,36 +11,6 @@ class _Home extends Component {
     state = {
 
         pets: [],
-        //     pets: [
-        //     {
-        //         _id: 'p160',
-        //         name: 'Bobby',
-        //         type: 'Dog',
-        //         imgUrl: '',
-        //         summary: 'Energetic and happy dog'
-        //     },
-        //     {
-        //         _id: 'p161',
-        //         name: 'Johnny',
-        //         type: 'Cat',
-        //         imgUrl: '',
-        //         summary: 'Will kill you in your sleep'
-        //     },
-        //     {
-        //         _id: 'p162',
-        //         name: 'Charlie',
-        //         type: 'Dog',
-        //         imgUrl: '',
-        //         summary: 'You will fall in love'
-        //     },
-        //     {
-        //         _id: 'p163',
-        //         name: 'Popi',
-        //         type: 'Horse',
-        //         imgUrl: '',
-        //         summary: 'Showing the meaning of haste'
-        //     },
-        // ],
         categories: ['Dogs', 'Cats', 'Farm', 'Other']
     }
 
