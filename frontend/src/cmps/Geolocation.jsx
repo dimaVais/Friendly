@@ -31,7 +31,7 @@ export class Geolocation extends React.Component {
 
     getLatLng = async (err, res) => {
         const data = await res;
-        if (data) {
+        if (data[0]) {
             await this.setState({
                 lat: data[0].location.lat,
                 lng: data[0].location.lng
