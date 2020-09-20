@@ -23,7 +23,7 @@ class _ShopDetails extends Component {
             if (pet.shop) return pet.shop._id === this.state.shop._id
 
         })
-         this.setState({
+        this.setState({
             shopPets: [...shopPets]
         })
     }
@@ -41,31 +41,31 @@ class _ShopDetails extends Component {
         return (
             <section className="below-nav">
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
-                    <React.Fragment>
-                        
-                        <div className="flex column">
-                            <div className="data-container flex space-around">
+                   
+
+                        <div className="shop-details-main-box">
+                            <div className="top-screen-box">
                                 <div className="shop-details-section">
-                                 <h2>{shop.name}</h2>    
+                                    <h2>{shop.name}</h2>
                                     <h3>{shop.title}</h3>
                                     <p><span>Owner Name </span>{shop.owner.fullName}</p>
                                     <img className="shop-owner-img" src={shop.owner.imgUrl} />
                                     <p><span>Short Description: </span>{shop.desc}</p>
                                     <div className="shop-section">
-                                    <h2><span>We are located in </span>{shop.location.name}</h2>
-                                    <div>
-                                        <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
+                                        <h2><span>We are located in </span>{shop.location.name}</h2>
+                                        <div>
+                                            <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
+                                        </div>
                                     </div>
                                 </div>
+                                <div className="order-list-box"> 
+                                <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />
                                 </div>
+
                                 
-                                <div  className="shop-section">
-                                    <h3>Adoption Requests:</h3>
-                                    <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id}/>
-                                </div>
                             </div>
-                            <div className="shop-section">
-                                <h3>Reviews for {shop.name}:</h3>
+                            <div className="reviews-box">
+                                <h3>What they say about us</h3>
                                 {(!shop.reviews) ? <h1>LOADING Reviews....</h1> :
                                     <ul>
                                         {shop.reviews.map(review => {
@@ -79,12 +79,13 @@ class _ShopDetails extends Component {
                                         )}
                                     </ul>}
                             </div>
-                        </div>
-                        <div className="shop-section" >
+                            <div className="pets-box" >
                             <h2>Our Pets</h2>
                             <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
                         </div>
-                    </React.Fragment>}
+                        </div>
+
+                   }
             </section>
         )
     }
