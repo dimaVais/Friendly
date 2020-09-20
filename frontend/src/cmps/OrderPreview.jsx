@@ -18,7 +18,6 @@ export function OrderPreview({ order, onSave, onRemove, isShop}) {
             isShop && <div>
                 <p><span>From:</span> {order.buyer.fullName} </p>
                 <p><span>I want to Adopt:</span> {order.pet.name} </p>
-                <img src={order.buyer.imgUrl} alt="user image"/>
                 </div>
                         
             }

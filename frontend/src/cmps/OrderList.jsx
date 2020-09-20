@@ -41,7 +41,7 @@ class _OrderList extends Component {
             (
                 <div className="order-list" >
                     <div className={`doubleAccept ${this.state.msgDivClass}`}>
-                        * You Cannot Aproove more then one Adoption request</div>
+                        * You Cannot Aprrove more then one Adoption request</div>
                     {orders.map(order => <OrderPreview isShop={this.props.isShop} order={order} onRemove={this.onRemove} onSave={this.onSave} />)}
                 </div>
             )

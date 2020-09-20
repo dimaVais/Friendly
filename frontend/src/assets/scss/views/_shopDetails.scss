@@ -1,22 +1,29 @@
 .data-container {
     width: 100%;
     margin: 0 auto;
+    font-family: roboto, sans-serif;
 
     .shop-section {
         min-width: 33%;
         max-height: 90vh;
-        text-align: center;
     }
 }
 
-.shop-section {
-    border: rgb(59, 57, 57) solid 2px;
-    border: rgb(59, 57, 57) solid 2px;
+.shop-details-section {
+    padding: 20px;
+    text-align: start;
 }
 
 .map {
     border: grey solid 2px;  
     margin-left: 20px;
-    max-width: 30%;
-    max-height: 60vh;
+    max-width: 250px;
+    max-height: 300px;
+}
+
+.shop-owner-img {
+    width: 220px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
 }
