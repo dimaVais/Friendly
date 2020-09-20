@@ -1,15 +1,15 @@
 .tags-modal {
-    width: 250px;
-    height: 220px;
+    @include center-modal;
+    width: 350px;
+    height: 400px;
     position: fixed;
     z-index: 4;
-    background-color: rgb(212, 216, 221);
+    background-color:$clr2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
-    border: 1px solid grey;
+    border-radius: 3px;
 
  }
 
