@@ -106,7 +106,6 @@ class _PetDetails extends Component {
                                 : ''
                         }
                     </div>
-                    <hr />
                     <div>
                         <ul>
                             {

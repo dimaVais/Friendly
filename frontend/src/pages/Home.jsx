@@ -29,9 +29,7 @@ class _Home extends Component {
         return (
             <div>
                 <Hero />
-                <hr />
                 <CategoryList />
-                <hr />
                 <PetApp pets={this.props.pets} />
             </div>
         )

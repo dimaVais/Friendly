@@ -7,7 +7,7 @@ export function CategoryList() {
 
     function disCategories(category){
         return(
-            <NavLink to={`pet/${category}`}><img src={require(`../assets/img/category-${category}.jpg`)} alt="Category"/></NavLink> 
+            <NavLink to={`pet/${category}`}><img src={require(`../assets/img/category/${category}.png`)} alt="Category"/></NavLink> 
         )
     }
     return (
