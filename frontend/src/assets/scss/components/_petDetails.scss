@@ -6,7 +6,65 @@
     position: relative;
 }
 
-.actions-box {
+.actions-box-edit {
+    width: 220px;
+    min-height: 120px;
+    border: 1px solid lightgray;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px;
+    flex-grow: 2;
+    position: fixed;
+    right: 120px;
+    top: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    
+
+
+    .edit-btn {
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid rgb(42, 170, 42);
+        cursor: pointer;
+        font-family: roboto, sans-serif;
+        font-weight: 800;
+        color: rgb(42, 170, 42);
+        border-radius: 5px;    
+    }
+
+    .edit-btn:focus {
+        outline: none;
+    }
+
+    .edit-btn:hover {
+        border: 1px solid rgb(74, 134, 74);
+    }
+
+    .remove-btn {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid rgb(209, 62, 82);
+        cursor: pointer;
+        font-family: roboto, sans-serif;
+        font-weight: 800;
+        color: rgb(209, 62, 82);
+        border-radius: 5px;
+    }
+
+    .remove-btn:focus {
+        outline: none;
+    }
+
+    .remove-btn:hover {
+        border: 1px solid rgb(119, 3, 19);
+    }
+}
+
+.actions-box-adopt {
     width: 220px;
     min-height: 250px;
     border: 1px solid lightgray;
@@ -15,8 +73,8 @@
     margin: 20px;
     flex-grow: 2;
     position: fixed;
-    right: 40px;
-    top: 200px;
+    right: 120px;
+    top: 170px;
     display: flex;
     flex-direction: column;
 
@@ -31,7 +89,7 @@
 }
 
 .pet-details-box {
-    flex-grow: 3;
+    width: 95%;
 }
 
 .pet-details-img-box {
@@ -44,7 +102,7 @@
 
 .pet-details-img-0 {
 
-    width: 350px;
+    max-width: 400px;
     height: 400px;
     grid-column: 1 / 2;
     grid-row: 1 / 3;
@@ -101,6 +159,33 @@
 
     li {
         margin: 10px;
+    }
+}
+
+.reactions-list {
+    display: flex;
+    margin: 10px 0;
+    padding: 0;
+    li:not(:first-child) {
+        margin: 0 5px;
+        
+    }
+
+
+    //icons
+
+    .heart-icon {
+        color: rgb(250, 98, 98);
+        cursor: pointer;
+
+    }
+    .bone-icon{
+        color:rgb(252, 216, 17);
+    cursor: pointer;
+    }
+    .hand-sparkles-icon{
+        color: lightskyblue;
+        cursor: pointer;
     }
 }
 

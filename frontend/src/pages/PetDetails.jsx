@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { shopService } from '../services/shopService.js';
-import { loadPets, savePet } from '../store/actions/petActions.js';
+import { loadPets, savePet, removePet } from '../store/actions/petActions.js';
 import { saveOrder } from '../store/actions/orderActions.js';
 import { Chat } from '../cmps/Chat.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faBone } from '@fortawesome/free-solid-svg-icons'
 import { faHandSparkles } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
+
+
 
 
 
@@ -15,12 +18,15 @@ class _PetDetails extends Component {
 
     state = {
         pet: {},
-        isChatOn: false
+        isChatOn: false,
+        isOwnerOfPet: false
     }
 
     async componentDidMount() {
-         await  this.getCurrPet()
-         await this.getUserId();
+        await this.getCurrPet();
+        await this.getUserId();
+        await this.isOwnerOfPet();
+
 
     }
 
@@ -29,7 +35,7 @@ class _PetDetails extends Component {
         const petId = this.props.match.params.id
         const petToShow = this.props.pets.find(pet => pet._id === petId)
         this.setState({ pet: { ...petToShow } });
-    } 
+    }
 
     isOwnerOfPet = async () => {
         const { loggedInUser } = this.props
@@ -37,7 +43,7 @@ class _PetDetails extends Component {
         if (loggedInUser && pet.shop) {
             const shopId = pet.shop._id
             const shop = await shopService.getById(shopId)
-            return loggedInUser._id === shop.owner._id
+            this.setState({ isOwnerOfPet: loggedInUser._id === shop.owner._id })
         }
     }
 
@@ -71,6 +77,12 @@ class _PetDetails extends Component {
         this.props.saveOrder(order)
     }
 
+    onRemovePet = (petId) => {
+        console.log('petId', petId);
+        // this.props.removePet(petId)
+    }
+
+
     onToggleChat = () => {
         this.setState({ isChatOn: !this.state.isChatOn })
         console.log(this.state.isChatOn);
@@ -80,23 +92,23 @@ class _PetDetails extends Component {
         const pet = this.state.pet;
         pet.reacts.map(react => {
             if (react.type === reaction) react.count++
-            console.log('reaction clicked' , reaction);
+            console.log('reaction clicked', reaction);
             return react
         })
         this.props.savePet(pet)
         this.getCurrPet()
     }
-    
-     getUserId = async _=>{
+
+    getUserId = async _ => {
         console.log(this.state.pet);
         const shop = await shopService.getById(this.state.pet.shop._id);
-        const ownerId= await shop.owner._id;
-        this.setState({ownerId})
+        const ownerId = await shop.owner._id;
+        this.setState({ ownerId })
     }
 
     render() {
         const pet = this.state.pet;
-        let { loggedInUser } = this.props
+
         if (!pet) return <h1>Loading...</h1>
         return (
             <section className="pet-details-main-container">
@@ -115,22 +127,25 @@ class _PetDetails extends Component {
                         }
                     </div>
                     <div>
-                        <ul>
+                        <ul className="reactions-list">
                             {
                                 (pet.reacts) ?
                                     pet.reacts.map(react => {
                                         if (react.type === 'love') {
-                                            return <li><FontAwesomeIcon onClick={()=>{this.onUpdateReaction('love')}} className="heart-icon" icon={faHeart} /> ({`${react.count}`})</li>
+                                            return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('love') }}
+                                                className="heart-icon" icon={faHeart} /> ({`${react.count}`})</li>
                                         }
-                                        else if ((react.type === 'feed')) return <li><FontAwesomeIcon onClick={()=>{this.onUpdateReaction('feed')}} className="bone-icon" icon={faBone} /> ({`${react.count}`})</li>
-                                        else if ((react.type === 'pet')) return <li><FontAwesomeIcon onClick={()=>{this.onUpdateReaction('pet')}} className="hand-sparkles-icon" icon={faHandSparkles} /> ({`${react.count}`})</li>
+                                        else if ((react.type === 'feed')) return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('feed') }}
+                                            className="bone-icon" icon={faBone} /> ({`${react.count}`})</li>
+                                        else if ((react.type === 'pet')) return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('pet') }}
+                                            className="hand-sparkles-icon" icon={faHandSparkles} /> ({`${react.count}`})</li>
                                     })
                                     : ''
                             }
                         </ul>
                     </div>
                     <div className="shop_details">
-                    {pet.shop && <p><span>{pet.shop.fullName}</span><button onClick={this.onToggleChat} >Chat</button></p>}
+                        {pet.shop && <p><span>{pet.shop.fullName}</span><button onClick={this.onToggleChat} >Chat</button></p>}
                     </div>
                     <p><span>Age: </span>
                         {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
@@ -154,13 +169,26 @@ class _PetDetails extends Component {
                     <p><span>Description:</span> {'\n' + pet.description}</p>
                 </div>
                 <div className="actions-box">
-                    <h3>Reasons To Adopt</h3>
-                    <p>You save a life. </p>
-                    <p>You adopt a pet, and find a friend.</p>
-                    <p>You help stop cruelty in mass breeding facilities.</p>
-                    <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
+                    {
+                        this.state.isOwnerOfPet ?
+                            <div className="actions-box-edit">
+                               <Link to={`/edit/${pet._id}`}><button onClick={this.onGoToEdit} className="edit-btn">Edit Pet</button></Link> 
+                                <button onClick={()=>{this.onRemovePet(pet._id)}} className="remove-btn">Delete Pet</button>
+                            </div>
+                            :
+                            <div className="actions-box-adopt">
+                                <h3>Reasons To Adopt</h3>
+                                <p>You save a life. </p>
+                                <p>You adopt a pet, and find a friend.</p>
+                                <p>You help stop cruelty in mass breeding facilities.</p>
+                                <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
+                            </div>
+
+                    }
+
+
                 </div>
-                {this.state.isChatOn  && <Chat onClose={this.onToggleChat} recipientId={this.state.ownerId} />}
+                {this.state.isChatOn && <Chat onClose={this.onToggleChat} recipientId={this.state.ownerId} />}
             </section>
         )
     }
@@ -171,14 +199,15 @@ const mapStateToProps = state => {
     return {
         pets: state.petReducer.pets,
         loggedInUser: state.userReducer.loggedInUser,
-        
+
     }
 }
 
 const mapDispatchToProps = {
     loadPets,
     savePet,
-    saveOrder
+    saveOrder,
+    removePet
 
 }
 
