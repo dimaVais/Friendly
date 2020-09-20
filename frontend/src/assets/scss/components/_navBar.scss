@@ -1,0 +1,39 @@
+.main-nav {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+        font-family: roboto, sans-serif;
+        text-decoration: none;
+        color: rgb(46, 46, 46);
+        font-weight: 800;
+        margin: 5px;
+    }
+
+    .left-nav {
+        margin-left: 5px;
+        display: flex;
+        align-items: center;
+
+    }
+}
+
+.login-btn {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid rgb(42, 170, 42);
+    cursor: pointer;
+    font-family: roboto, sans-serif;
+    font-weight: 800;
+    color: rgb(42, 170, 42);
+    border-radius: 5px;
+
+}
+
+
+.logo-up {
+    width: 50px;
+    height: 50px;
+}
