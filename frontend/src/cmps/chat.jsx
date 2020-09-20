@@ -9,8 +9,8 @@ import {chatService} from '../services/chatService.js'
  class _Chat extends Component {
 
     state = {
-
-        fromName:'',
+        recipientName:'',
+        senderName:'',
         msg: {from: 'Sender',txt:''},
         topic:null,
         msgs:[]
@@ -18,25 +18,29 @@ import {chatService} from '../services/chatService.js'
       async componentDidMount() {
             
             const loggedInUserId=  this.props.loggedInUser._id;
-            const user = await userService.getById(loggedInUserId);
-            this.setState({ user });
-            if (user.isOwner){
-                const owner=await shopService.getByUserId(user._id);
-                this.setState({fromName:owner.name})
-            }else this.setState({fromName:user.fullName})
+            const sender = await userService.getById(loggedInUserId);
+         
+            if (sender.isOwner){
+                const owner=await shopService.getByUserId(sender._id);
+                this.setState({senderName:owner.name});
+                
+            } else this.setState({senderName:sender.fullName})
             const msg={
-                from:this.state.user.fullName,
+                from:this.state.senderName,
                 txt:''
             }
             this.setState({ msg })
-            const shop = await shopService.getById(this.props.shopOwnerId);
-            const shopOwnerId = await shop.owner._id;
+
+            const recipient = await userService.getById(this.props.recipientId);
+            console.log(this.props.recipientId);
+            const recipientName=recipient.fullName;
+
+            this.setState({recipientName})
             let topic="c105";
-            console.log(user);
-             if(user.chats){
-                const chats=[...user.chats];
+            if(sender.chats){
+                const chats=[...sender.chats];
                 const chat= await chats.filter(chat=>(
-                     chat.targetUserId===shopOwnerId
+                     chat.recipientId===recipient._id
                  ))[0];
                  if (chat){
                      topic=chat._id;
@@ -67,7 +71,7 @@ import {chatService} from '../services/chatService.js'
         ev.preventDefault();
         socketService.emit('chat addMsg', this.state.msg);
         const msg={
-            from:this.state.user.fullName,
+            from:this.state.senderName,
             txt:''
         }
         this.setState({ msg: msg }); 
@@ -91,9 +95,8 @@ import {chatService} from '../services/chatService.js'
 
       displayMsg=(msg,idx)=>{
         let classTxt = 'message ';
-        classTxt += (msg.from===this.state.user.fullName)?'user':'';
-
-        return(<li className={classTxt} key={idx}>{msg.from}:{msg.txt}</li>
+        classTxt += (msg.from===this.state.senderName)?'sender':'recipient';
+        return(<div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
 )
       }
 
@@ -102,15 +105,18 @@ import {chatService} from '../services/chatService.js'
     render() {
         return (
             <div className="chat-container">
-                    <button className="btn-close" onClick={this.onClose}>X</button>
-                    <section className="msgs-container">
+                <section className="chat-title flex space-between">
+                <span>{ this.state.recipientName}</span>
+                    <button className="btn-close btn" onClick={this.onClose}>X</button>
+                </section>
+                <section className="msgs-container">
                         <ul>
                         {this.state.msgs.map((msg, idx) => (
                             this.displayMsg(msg,idx))
                             )}
                         </ul>
 
-                    </section>
+                </section>
                 <form onSubmit={this.sendMsg}>
                     <section className="input-container">
                     <input
@@ -118,10 +124,10 @@ import {chatService} from '../services/chatService.js'
                         value={this.state.msg.txt}
                         onChange={this.msgHandleChange}
                         name="txt"
-                        autocomplete="off"
+                        autoComplete="off"
+                        placeholder="Aa"
                         />
                         <button>Send</button>
-
                     </section>
                 </form>
             </div>

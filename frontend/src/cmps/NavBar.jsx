@@ -3,17 +3,24 @@ import { NavLink } from 'react-router-dom'
 import { LoginModal } from './LoginModal'
 import { connect } from 'react-redux';
 import { loadShops } from '../store/actions/shopActions'
+import { logout } from '../store/actions/userActions';
+
 
 
 export class _NavBar extends Component {
 
     state = {
         showModal: false,
+        shop: '',
         shopId: ''
     }
 
     onNavBarClick = () => {
         this.setState({ showModal: !this.state.showModal });
+    }
+
+    onLogOut = () => {
+        this.props.logout()
     }
 
     componentDidUpdate = async (prevProps) => {
@@ -24,7 +31,7 @@ export class _NavBar extends Component {
          const { user } = this.props
         const userId = user._id
         const userShop = shops.find(shop => shop.owner._id === userId)
-        if (userShop) this.setState({shopId: userShop._id}) 
+        if (userShop) this.setState({shopId: userShop._id, shop: userShop}) 
          }  
         } 
     }
@@ -42,10 +49,18 @@ export class _NavBar extends Component {
                 </div>
             <div className="right-nav">
                 
-                {user && user.isOwner && this.state.shopId && <NavLink to={`/shop/${this.state.shopId}`}>My Shop </NavLink>}
+                {user && user.isOwner && this.state.shopId && <NavLink to={`/shop/${this.state.shopId}`}>{this.state.shop.name}</NavLink>}
+
                 {user && !user.isOwner && !user.isGuest && <NavLink to={`/profile/${user._id}`}>{user.fullName}</NavLink>}
-                <button className="login-btn" onClick={() => { this.onNavBarClick() }}>Login</button>
+
+
+                {user && user.isGuest && <button className="login-btn" onClick={() => { this.onNavBarClick() }}>Login</button>}
+                {user && !user.isGuest && <button className="logout-btn" onClick={() => { this.onLogOut() }}>Logout</button>}
+
                 {this.state.showModal && <LoginModal onNavBarClick={this.onNavBarClick} />}
+
+                
+
                 <NavLink to="/signup">Sign Up</NavLink>
             </div>
 
@@ -64,7 +79,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    loadShops
+    loadShops,
+    logout
 }
 
 

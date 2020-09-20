@@ -43,7 +43,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 11
+          "count": 13
         },
         {
           "type": "pet",
@@ -496,11 +496,11 @@
       "chats": [
         {
           "_id": "c101",
-          "targetUserId": "u102"
+          "recipientId": "u102"
         },
         {
           "_id": "c102",
-          "targetUserId": "u103"
+          "recipientId": "u103"
         }
       ]
     },
@@ -515,11 +515,11 @@
       "chats": [
         {
           "_id": "c101",
-          "targetUserId": "u102"
+          "recipientId": "u102"
         },
         {
           "_id": "c103",
-          "targetUserId": "u103"
+          "recipientId": "u103"
         }
       ]
     },
@@ -544,11 +544,11 @@
       "chats": [
         {
           "_id": "c101",
-          "targetUserId": "u101"
+          "recipientId": "u101"
         },
         {
           "_id": "c102",
-          "targetUserId": "u103"
+          "recipientId": "u103"
         }
       ],
       "isGuest": "true"
