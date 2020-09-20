@@ -339,8 +339,8 @@
           "http://cloudinery.com/img2"
         ]
       },
-      "status": "accepted",
-      "updatedAt": "9/19/2020, 1:41:45 PM"
+      "status": "denied",
+      "updatedAt": "9/20/2020, 5:40:18 PM"
     },
     {
       "_id": "o1226",
@@ -366,28 +366,8 @@
           "http://cloudinery.com/img2"
         ]
       },
-      "status": "denied",
-      "updatedAt": "9/19/2020, 2:31:00 PM"
-    },
-    {
-      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
-      "buyer": {
-        "_id": "u102",
-        "fullName": "User 2",
-        "imgUrl": "/img/img2.jpg"
-      },
-      "shop": {
-        "_id": "s101",
-        "name": "Freedom farm",
-        "type": "Shelter"
-      },
-      "pet": {
-        "_id": "p140",
-        "name": "Johnny"
-      },
-      "status": "Pending",
-      "_id": "6a2iXE",
-      "createdAt": "9/19/2020, 4:48:46 PM"
+      "status": "accepted",
+      "updatedAt": "9/20/2020, 5:55:15 PM"
     }
   ],
   "shop": [

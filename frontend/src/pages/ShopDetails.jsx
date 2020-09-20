@@ -41,51 +41,56 @@ class _ShopDetails extends Component {
         return (
             <section className="below-nav">
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
-                   
 
-                        <div className="shop-details-main-box">
-                            <div className="top-screen-box">
-                                <div className="shop-details-section">
-                                    <h2>{shop.name}</h2>
-                                    <h3>{shop.title}</h3>
-                                    <p><span>Owner Name </span>{shop.owner.fullName}</p>
-                                    <img className="shop-owner-img" src={shop.owner.imgUrl} />
-                                    <p><span>Short Description: </span>{shop.desc}</p>
-                                    <div className="shop-section">
-                                        <h2><span>We are located in </span>{shop.location.name}</h2>
-                                        <div>
-                                            <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="order-list-box"> 
+
+                    <div className="shop-details-main-box">
+                        <div className="top-screen-box">
+                            <div className="shop-details-section">
+                                <h2>{shop.name}</h2>
+                                <h3>{shop.title}</h3>
+                                <p><span>Owner Name </span>{shop.owner.fullName}</p>
+                                <img className="shop-owner-img" src={shop.owner.imgUrl} />
+                                <p><span>Short Description: </span>{shop.desc}</p>
+
+                            </div>
+                            <div className="shop-location-box">
+                            <h2><span>We are located in </span>{shop.location.name}</h2>
+                            <div className="map-container">
+                                <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
+                            </div>
+                        </div>
+                            <div className="order-list-box">
                                 <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />
-                                </div>
-
-                                
                             </div>
-                            <div className="reviews-box">
-                                <h3>What they say about us</h3>
-                                {(!shop.reviews) ? <h1>LOADING Reviews....</h1> :
-                                    <ul>
-                                        {shop.reviews.map(review => {
-                                            return <li>
-                                                <p><span>From: </span>{review.by.fullName}</p>
-                                                <p><span>Rate: </span>{review.rate}</p>
-                                                <p>{review.txt}</p>
-                                            </li>
-                                        }
 
-                                        )}
-                                    </ul>}
-                            </div>
-                            <div className="pets-box" >
+
+                        </div>
+                        <div className="flex">
+                       
+                        <div className="reviews-box">
+                            <h3>What they say about us</h3>
+                            {(!shop.reviews) ? <h1>LOADING Reviews....</h1> :
+                                <ul>
+                                    {shop.reviews.map(review => {
+                                        return <li>
+                                            <p><span>From: </span>{review.by.fullName}</p>
+                                            <p><span>Rate: </span>{review.rate}</p>
+                                            <p>{review.txt}</p>
+                                        </li>
+                                    }
+
+                                    )}
+                                </ul>}
+                        </div>
+                        
+                        </div>
+                        <div className="pets-box" >
                             <h2>Our Pets</h2>
                             <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
                         </div>
-                        </div>
+                    </div>
 
-                   }
+                }
             </section>
         )
     }
