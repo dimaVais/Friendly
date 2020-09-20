@@ -99,7 +99,7 @@ export class _SignUp extends Component {
         const { loggedInUser } = this.props
         console.log('this.state.signupCred', this.state.signupCred);
         return (
-            <div className="signup-container flex column align-center">
+            <div className="form-container flex column align-center">
                 <h1>We are happy you decided to join us!</h1>
                 <p>Do you want to adopt or to find adopters for your animals?</p>
                 <div className="btn-menu flex">
@@ -107,7 +107,7 @@ export class _SignUp extends Component {
                     <button onClick={() => { this.setUserShop() }}>Find Adopters</button>
                 </div>
                 {userAdopt &&
-                    <div className="main-adopt-container flex column align-center">
+                    <div className="fields-container flex column align-center">
                         <h3>New Adopter</h3>
                         <form className="flex column align-center" onSubmit={this.doSignup}>
                             <br />
@@ -121,7 +121,7 @@ export class _SignUp extends Component {
                         </form>
                     </div>
                 }
-                {userShop && <form className="main-shop-container flex column align-center" onSubmit={this.doSignup}>
+                {userShop && <form className="fields-container flex column align-center" onSubmit={this.doSignup}>
                     <h3>Please filled out this form so we will be able to get to know you and your animals</h3>
                     <Input type="text" name="fullName" placeholder="Your Full Name"
                         value={loggedInUser.fullName} onChange={this.signupHandleChange}>

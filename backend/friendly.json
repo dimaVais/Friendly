@@ -8,7 +8,7 @@
       "bDate": 1390513411992,
       "gender": "Male",
       "breed": "Golden retreiver",
-      "size": "Small",
+      "size": "Large",
       "isInRisk": true,
       "shop": {
         "_id": "s101",
