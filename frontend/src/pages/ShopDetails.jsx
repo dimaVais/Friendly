@@ -63,7 +63,8 @@ class _ShopDetails extends Component {
         })
     }
 
-    onAddReview = async () => {
+    onAddReview = async (ev) => {
+        ev.preventDefault();
         const shop = { ...this.state.shop };
         const review = { ...this.state.currReview };
         review.id = `r${100 + shop.reviews.length + 1}`
@@ -164,9 +165,9 @@ class _ShopDetails extends Component {
                                     <ul>
                                         {shop.reviews.map(review => {
                                             return <li className="review">
-                                                <p><span>From: </span>{review.by.fullName}</p>
-                                                <p><span>Rate: </span>{this.drawStars(review.rate)}</p>
                                                 <p>{review.txt}</p>
+                                                <p><span>Rate: </span>{this.drawStars(review.rate)}</p>
+                                                <p><span>From: </span>{review.by.fullName}</p>
                                             </li>
                                         }
 

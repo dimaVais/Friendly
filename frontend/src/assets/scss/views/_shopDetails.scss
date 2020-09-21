@@ -50,10 +50,11 @@
 
 .review{
     border: solid rgb(158, 158, 158) 1px;
-    border-radius: 30px;
+    border-radius: 20px;
     margin-top: 10px;
     padding: 5px;
     min-width:75em;
+    background-color: $clr2;
 }
 
 .review-form{
