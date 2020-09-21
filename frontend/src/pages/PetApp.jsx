@@ -26,9 +26,8 @@ class _PetApp extends Component {
     }
 
    async  componentDidUpdate(prevProps){
-           if (prevProps!==this.props){
-                this.setState({isReady:true})
-               
+        if (prevProps!==this.props){
+            this.setState({isReady:true})
            }
         if(prevProps.filterBy!==this.props.filterBy){
             await this.loadPets();
@@ -36,8 +35,9 @@ class _PetApp extends Component {
         else{
         }
     }
-     componentWillUnmount(){
-       this.resetFitler();
+    
+    async componentWillUnmount(){
+       await this.resetFitler();
     }
 
      resetFitler=async()=>{

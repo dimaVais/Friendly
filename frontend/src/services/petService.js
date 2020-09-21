@@ -49,27 +49,48 @@ async function remove(petId) {
 
 function filterPets(pets,filterBy){
     const filtered = pets.filter(pet=>{
-        let isFit=true
+        let isFit=true;
+        let isFitWord=false;
         for(const key in filterBy){
-            if(key==='word' && filterBy[key]){
-                const wordKeys=['name','type','gender','size','summary','description']
-                let isFitWord=false;
+            console.log(filterBy[key]);
+            if (!filterBy[key])break
+            debugger
+            const searchWord=filterBy[key].toLowerCase();
+            console.log(key);
+            if(key==='word'){
+                const wordKeys=['name','shop','type','gender','size','summary','description','tags']
+                let isTag=false;
+                let isShop=false;
+                let isAnyWord=false;
                 wordKeys.map(wordKey=>{
-                    if (pet[wordKey].toLowerCase().includes(filterBy[key].toLowerCase())){
-                        isFitWord=true; 
-                    }
+                    if (wordKey==='tags'){
+                        isTag=ifInArray(searchWord,pet['tags'])
+                    }else if ((wordKey==='shop')){
+                        isShop= (pet['shop'].name.toLowerCase().includes(searchWord))
+                    }else if (pet[wordKey].toLowerCase().includes(searchWord)){
+                        isAnyWord=true; 
+                        }
                 })
-        isFit=isFitWord;
-            } else if(typeof filterBy[key]==='string' && typeof pet[key]==='string') {
-                if (!pet[key].toLowerCase().includes(filterBy[key].toLowerCase())){
+            isFitWord=isTag||isShop||isAnyWord;
+            console.log(isFit);
+            } else if(typeof searchWord==='string' && typeof pet[key]==='string') {
+                if (pet[key].toLowerCase().includes(searchWord)){
                     isFit=false;
                     break
+                }else{
+                    isFit=true;;
                 }
             }
         }
-        if (isFit)return pet;
+        if (isFit && isFitWord)return pet;
     })
+    console.log(filtered);
     return filtered
+}
+
+
+function ifInArray(word,array){
+    return array.filter(arg => arg.toLowerCase(word));
 }
 
 function _makeId(length = 6) {
