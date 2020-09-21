@@ -121,7 +121,8 @@ class _ShopDetails extends Component {
                                 </div>
                             </div>
                             <div className="order-list-box">
-                                <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />
+                                {this.state.shop.owner._id === this.props.loggedInUser._id &&
+                                <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />}
                             </div>
                         </div>
                         <div className="flex">
