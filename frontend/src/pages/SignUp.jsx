@@ -94,6 +94,16 @@ export class _SignUp extends Component {
         this.props.history.push(`/shop/${shopId}`)
     }
 
+    getGeolocation = (latLng) => {
+        this.setState({
+            signupCred: {
+                ...this.state.signupCred,
+                lat: latLng.lat,
+                lng: latLng.lng
+            }
+        })
+    }
+
     render() {
         const { userAdopt, userShop } = this.state
         const { loggedInUser } = this.props
@@ -152,7 +162,8 @@ export class _SignUp extends Component {
                         name="desc"
                         onChange={this.signupHandleChange}
                     />
-                    <Geolocation signupHandleChange={this.signupHandleChange} />
+                    <Geolocation getGeolocation={this.getGeolocation}
+                        signupHandleChange={this.signupHandleChange} />
                     <button>SAVE</button>
                 </form>
 
