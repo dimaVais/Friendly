@@ -15,16 +15,9 @@ class _Home extends Component {
     }
 
     componentDidMount() {
-        this.loadPets()
-        document.querySelector('.main-nav').style.backgroundColor = 'transparent';
-        document.querySelector('.main-nav').style.position = 'fixed';
-
-        
+        this.loadPets()       
     }
-    componentWillUnmount(){
-        document.querySelector('.main-nav').style.backgroundColor = 'white';
-        document.querySelector('.main-nav').style.position = 'relative';
-    }    
+    
 
     loadPets = () => {
         this.props.loadPets()

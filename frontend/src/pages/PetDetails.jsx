@@ -72,7 +72,6 @@ class _PetDetails extends Component {
             },
             status: "Pending",
         }
-        console.log('order', order);
         this.props.saveOrder(order)
     }
 

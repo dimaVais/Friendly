@@ -14,24 +14,14 @@ class _PetPreview extends Component {
         pet: {}
     }
 
-    // async componentDidMount(){
-    //     this.setState({pet:{...this.props.pet}})
-    // }
-    // displayEditButtons = () => {
-    //     // if (!props.loggedinUser.isAdmin) return <div></div>
+    async componentDidMount() {
+        this.setState({ pet: { ...this.props.pet } })
+    }
 
-    //     return (
-    //         <div className="btn-panel">
-    //             {/* <button className="btn btn-delete" onClick={() => { this.props.onRemove(pet._id) }}>Delete</button> */}
-    //             {/* <Link to={`edit/${pet._id}`} className="btn btn-edit"> */}
-    //                 Edit
-    //                 </Link>
-    //         </div>
-    //     )
-    // }
+
 
     isMale = () => {
-        return (this.state.pet.gender === 'Male') ? true : false
+        return (this.props.pet.gender === 'Male') ? true : false
     }
 
     render() {
@@ -53,9 +43,9 @@ class _PetPreview extends Component {
                         {pet.shop && <Link to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
                         {/* {pet.shop && <h4>{pet.shop.fullName}</h4>} */}
                         <div className="shop-rate-box">
-                        <FontAwesomeIcon className="star-icon" icon={faStar} />
-                        {pet.shop && <p className="shop-rate-rating">{pet.shop.rate.rating}  </p>}
-                        {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>}
+                            <FontAwesomeIcon className="star-icon" icon={faStar} />
+                            {pet.shop && <p className="shop-rate-rating">{pet.shop.rate.rating}  </p>}
+                            {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>}
                         </div>
                     </div>
 

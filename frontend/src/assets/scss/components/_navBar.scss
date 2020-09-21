@@ -31,6 +31,38 @@
 
 }
 
+.main-nav-not-home {
+    display: flex;
+    width: 100%;
+    height: $navHeight;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    background-color: rgb(241, 241, 241);
+    z-index: 3;
+
+    a {
+        font-family: roboto, sans-serif;
+        text-decoration: none;
+        color: rgb(88, 88, 88);
+        font-weight: 800;
+        margin: 5px;
+    }
+
+    .left-nav {
+        margin-left: 5px;
+        display: flex;
+        align-items: center;
+
+    }
+
+    .nav-btn {
+        padding: 10px 10px;
+        font-size: 1.2rem;
+        font-weight: 100;
+    }
+}
+
 .login-btn {
     padding: 10px;
     background-color: #fff;
