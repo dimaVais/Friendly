@@ -254,7 +254,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 21
+          "count": 22
         },
         {
           "type": "pet",
@@ -326,7 +326,7 @@
       "adoptedAt": 1390513411992,
       "bDate": 1390513411992,
       "gender": "Male",
-      "breed": "Silver Bow",
+      "breed": "Horse",
       "size": "Large",
       "isInRisk": false,
       "shop": {
@@ -464,6 +464,45 @@
       "pet": {
         "_id": "p141",
         "name": "Kitty"
+      },
+      "status": "pending",
+      "updatedAt": "9/21/2020, 3:11:47 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "u102",
+        "fullName": "Steve Blake",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm",
+        "type": "Shelter"
+      },
+      "pet": {
+        "_id": "p142",
+        "name": "Doly"
+      },
+      "status": "Pending",
+      "_id": "nPAmdU",
+      "createdAt": "9/21/2020, 2:53:14 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "u102",
+        "fullName": "Steve Blake",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm",
+        "type": "Shelter"
+      },
+      "pet": {
+        "_id": "p142",
+        "name": "Doly"
       },
       "status": "accepted",
       "_id": "MK3MDp",
@@ -665,7 +704,7 @@
       "fullName": "Steve Blake",
       "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png",
       "isAdmin": false,
-      "isOwner": true,
+      "isOwner": false,
       "userName": "Steve",
       "password": "Steve",
       "chats": [
@@ -696,9 +735,9 @@
       "isOwner": true
     },
     {
-      "fullName": "Berry Smith",
-      "userName": "Berry",
-      "password": "Berry",
+      "fullName": "Linda Smith",
+      "userName": "Linda",
+      "password": "Linda",
       "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png",
       "address": "sing",
       "isAdmin": false,
