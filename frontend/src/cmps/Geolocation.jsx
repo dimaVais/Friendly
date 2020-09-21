@@ -4,15 +4,8 @@ import { Input } from '@material-ui/core';
 export class Geolocation extends React.Component {
 
     state = {
-        lat: '',
-        lng: ''
-    }
-
-    componentDidUpdate(prevState){
-        if(prevState !== this.state){
-            this._input.focus();
-            this._input1.focus();
-        }
+        lat: 0,
+        lng: 0
     }
 
     setLocToFind = async (ev) => {
@@ -31,11 +24,16 @@ export class Geolocation extends React.Component {
 
     getLatLng = async (err, res) => {
         const data = await res;
-        if (data[0]) {
+        if (data && data.length > 0) {
             await this.setState({
                 lat: data[0].location.lat,
                 lng: data[0].location.lng
             })
+           const latLang = {
+                lat:this.state.lat,
+                lng:this.state.lng
+            }
+            this.props.getGeolocation(latLang);
         }
     }
 
@@ -49,14 +47,6 @@ export class Geolocation extends React.Component {
                         this.setLocToFind(event);
                         this.props.signupHandleChange(event)
                     }}></Input>
-                <Input ref={
-                    (el) => this._input = el
-                } type="text" name="lat" placeholder="Your Shop lat"
-                    value={this.state.lat} onFocus={(event) => { this.props.signupHandleChange(event) }}></Input>
-                <Input ref={
-                    (el) => this._input1 = el
-                } type="text" name="lng" placeholder="Your Shop lng"
-                    value={this.state.lng} onFocus={(event) => { this.props.signupHandleChange(event) }}></Input>
             </div>
         )
     }

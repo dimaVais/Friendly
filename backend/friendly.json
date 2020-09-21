@@ -212,7 +212,6 @@
         }
       ]
     },
-    
     {
       "_id": "p142",
       "name": "Doly",
@@ -641,7 +640,7 @@
       "fullName": "Steve Blake",
       "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png",
       "isAdmin": false,
-      "isOwner": false,
+      "isOwner": true,
       "userName": "Steve",
       "password": "Steve",
       "chats": [
