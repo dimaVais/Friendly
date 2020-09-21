@@ -15,44 +15,62 @@ class _PetApp extends Component {
 
     async componentDidMount() {
     if (this.props.match){
-        console.log(this.props);
         if (this.props.match.params.filterType){
-            const filterBy={
-                type:this.props.match.params.filterType
-            }
-            await this.setState({filterBy})
+            const type=this.props.match.params.filterType
+            await this.props.setFilter({type})
         }
-       } 
+       }else{
+        this.resetFitler();
+       }
         await this.loadPets()   
     }
 
    async  componentDidUpdate(prevProps){
            if (prevProps!==this.props){
                 this.setState({isReady:true})
+               
            }
+        if(prevProps.filterBy!==this.props.filterBy){
+            await this.loadPets();
+        }
+        else{
+        }
+    }
+     componentWillUnmount(){
+       this.resetFitler();
+    }
+
+     resetFitler=async()=>{
+         console.log('reseting filter');
+        await this.props.setFilter({filterBy: {
+            type:'',
+            gender:'',
+            breed:'',
+            size:'',
+            word:''
+        }})
     }
 
     onSetFilter = (filterBy) =>  {
         this.setState({ filterBy }, () => this.loadPets())
     }
 
-    loadPets = () => {
-        this.props.loadPets(this.state.filterBy);
+    loadPets = async _ => {
+        await this.props.loadPets(this.props.filterBy);
     }
 
     onRemove = (id) => {
-        console.log('delete:' ,id);
         this.props.removePet(id)
     }
     
     render() {
-        const { pets, user } = this.props;
-      
-        if (!pets) return <h1>Loading...</h1>
+        const {  user } = this.props;
+        
+        if (!this.props.pets) return <h1>Loading...</h1>
         return (
             <div> 
                 {/* {this.state.isReady && <PetFilter onSetFilter={this.onSetFilter} type={this.state.filterBy.type} />} */}
-                <PetList pets={pets} onRemove={this.onRemove} user={user} />
+                <PetList pets={this.props.pets} onRemove={this.onRemove} user={user} />
             </div>
         )
     }
@@ -61,8 +79,8 @@ class _PetApp extends Component {
 const mapStateToProps = state => {
     return {
         pets: state.petReducer.pets,
-        // user: state.userReducer.loggedInUser
-    }
+        filterBy:state.petReducer.filterBy 
+      }
 }
 const mapDispatchToProps = {
     loadPets,

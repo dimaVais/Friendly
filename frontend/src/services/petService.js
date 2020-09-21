@@ -11,16 +11,17 @@ export const petService = {
 
 async function query(filterBy) {
     let queryStr='';
-    if (filterBy){
-        filterBy.type = filterBy.type.charAt(0).toUpperCase()+filterBy.type.slice(1);
-        queryStr = '?' + Object.keys(filterBy).map(key => key + '=' + filterBy[key]).join('&');
+    //todo - change after building backend
+    // if (filterBy){
+    //     filterBy.type = filterBy.type.charAt(0).toUpperCase()+filterBy.type.slice(1);
+    //     queryStr = '?' + Object.keys(filterBy).map(key => key + '=' + filterBy[key]).join('&');
 
-    }    
+    // }    
     const res = await httpService.get(`${BASE_URL}${queryStr}`, {
         params: filterBy
     });
-    
-    return res;
+    const filtered=filterPets(res,filterBy);
+    return filtered;
 }
 
 async function getPetById(id) {
@@ -46,6 +47,30 @@ async function remove(petId) {
     await httpService.delete(`${BASE_URL}/${petId}`)
 }
 
+function filterPets(pets,filterBy){
+    const filtered = pets.filter(pet=>{
+        let isFit=true
+        for(const key in filterBy){
+            if(key==='word' && filterBy[key]){
+                const wordKeys=['name','type','gender','size','summary','description']
+                let isFitWord=false;
+                wordKeys.map(wordKey=>{
+                    if (pet[wordKey].toLowerCase().includes(filterBy[key].toLowerCase())){
+                        isFitWord=true; 
+                    }
+                })
+        isFit=isFitWord;
+            } else if(typeof filterBy[key]==='string' && typeof pet[key]==='string') {
+                if (!pet[key].toLowerCase().includes(filterBy[key].toLowerCase())){
+                    isFit=false;
+                    break
+                }
+            }
+        }
+        if (isFit)return pet;
+    })
+    return filtered
+}
 
 function _makeId(length = 6) {
     var txt = '';

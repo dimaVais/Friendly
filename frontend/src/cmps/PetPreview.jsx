@@ -11,9 +11,12 @@ class _PetPreview extends Component {
 
 
     state = {
-        pet: this.props.pet
+        pet: {}
     }
 
+    // async componentDidMount(){
+    //     this.setState({pet:{...this.props.pet}})
+    // }
     // displayEditButtons = () => {
     //     // if (!props.loggedinUser.isAdmin) return <div></div>
 
@@ -32,8 +35,8 @@ class _PetPreview extends Component {
     }
 
     render() {
-        const { pet } = this.state
-
+        const { pet } = this.props
+        if (!pet) return <h1>loading...</h1>
         return (
             <NavLink to={`/details/${pet._id}`}>
                 <div className="pet-preview">

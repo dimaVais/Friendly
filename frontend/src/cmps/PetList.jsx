@@ -3,6 +3,7 @@ import { PetPreview } from './PetPreview'
 
 
 export function PetList({pets, onRemove,onEdit}) {
+    console.log('In pets list:',pets)
     return (
         <div >
             <ul className="pet-list">

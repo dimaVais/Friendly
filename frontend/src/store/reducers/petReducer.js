@@ -5,8 +5,7 @@ const initialState = {
         gender:'',
         breed:'',
         size:'',
-        isInRisk:'',
-        bDate:''
+        word:''
     }
 }
 
