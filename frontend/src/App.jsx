@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Home } from './pages/Home';
@@ -11,26 +11,35 @@ import { ShopDetails } from './pages/ShopDetails';
 import { NavBar } from './cmps/NavBar';
 import { userProfile } from './pages/userProfile';
 
-function _App(props) {
-  return (
-    <div className="App">
-      <header >
-        <NavBar />
-      </header>
-      <main>
-        <Switch>
-          <Route component={ShopDetails} path="/shop/:id" />
-          <Route component={PetDetails}  path="/details/:id?" />
-          <Route component={PetEdit} path="/edit/:id?" />
-          <Route component={SignUp} path="/signup" />
-          <Route component={About} path="/about" />
-          <Route component={userProfile} path="/profile/:id" />
-          <Route component={PetApp} path="/pet/:filterType?" />
-          <Route component={Home} path="/" /> 
-        </Switch>
-      </main>
-    </div >
-  );
+ class _App extends Component {
+
+
+
+  render() {
+
+    
+
+    return (
+      <div className="App">
+        <header >
+          <NavBar  />
+        </header>
+        <main>
+          <Switch>
+            <Route component={ShopDetails} path="/shop/:id" />
+            <Route component={PetDetails}  path="/details/:id?" />
+            <Route component={PetEdit} path="/edit/:id?" />
+            <Route component={SignUp} path="/signup" />
+            <Route component={About} path="/about" />
+            <Route component={userProfile} path="/profile/:id" />
+            <Route component={PetApp} path="/pet/:filterType?" />
+            <Route component={Home} path="/" /> 
+          </Switch>
+        </main>
+      </div >
+    );
+  }
+  
 }
 
 const mapStateToProps = state => {

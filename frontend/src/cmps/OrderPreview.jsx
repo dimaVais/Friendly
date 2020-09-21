@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 
-export function OrderPreview({ order, onSave, onRemove, isShop}) {
+
+export function OrderPreview({ order, onSave, onRemove, isShop }) {
 
     function orderClass() {
         let orderClass;
@@ -15,31 +17,31 @@ export function OrderPreview({ order, onSave, onRemove, isShop}) {
     return (
         <div className={`order-preview ${orderClass()}`}>
             {
-            isShop && <div>
-                <p><span>From:</span> {order.buyer.fullName} </p>
-                <p><span>I want to Adopt:</span> {order.pet.name} </p>
+                isShop && <div>
+                    <Link to={`/profile/${order.buyer._id}`}>  <p><span>From:</span> {order.buyer.fullName} </p></Link>
+                    <p><span>I want to Adopt:</span> {order.pet.name} </p>
                 </div>
-                        
+
             }
 
             {!isShop &&
-            <div>
-             <p><span>To:</span> {order.shop.name} </p>
-             {console.log('order.shop.type', order.shop.type)}
-             <p> {order.shop.type} </p>
-             <p><span>I want to Adopt:</span> {order.pet.name} </p> 
-             <img src={order.shop.imgUrl} alt="shop image"/>
-                <span>{order.shop.rate}</span> 
-             </div>
-             }
+                <div>
+                    <p><span>To:</span> {order.shop.name} </p>
+                    {console.log('order.shop.type', order.shop.type)}
+                    <p> {order.shop.type} </p>
+                    <p><span>I want to Adopt:</span> {order.pet.name} </p>
+                    <img src={order.shop.imgUrl} alt="shop image" />
+                    <span>{order.shop.rate}</span>
+                </div>
+            }
 
             <div>
                 <p><span>Adoption Request:</span> {order.msg} </p>
             </div>
             <div>
-                 {isShop && <button onClick={() => { onSave(order, 'accepted') }}>✔</button>}
-                 {isShop && <button onClick={() => { onSave(order, 'denied') }}>✖</button>}
-                 {isShop &&  <button onClick={() => { onSave(order, 'pending') }}>❓</button>}
+                {isShop && <button onClick={() => { onSave(order, 'accepted') }}>✔</button>}
+                {isShop && <button onClick={() => { onSave(order, 'denied') }}>✖</button>}
+                {isShop && <button onClick={() => { onSave(order, 'pending') }}>❓</button>}
                 <button onClick={() => { onRemove(order._id) }}>🧹</button>
             </div>
         </div>
