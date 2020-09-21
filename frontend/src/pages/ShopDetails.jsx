@@ -64,14 +64,16 @@ class _ShopDetails extends Component {
     }
 
     onAddReview = async () => {
+        const shop = { ...this.state.shop };
         const review = { ...this.state.currReview };
-        const user = this.props.loggedInUser.fullName;
+        review.id = `r${100 + shop.reviews.length + 1}`
+        const user = this.props.loggedInUser;
         review.by = {
             _id: user._id,
             fullName: user.fullName,
             imgUrl: user.imgUrl
         }
-        const shop = { ...this.state.shop };
+        console.log('review', review);
         shop.reviews.push(review);
         await this.props.saveShop(shop);
         this.loadShopData();
@@ -84,6 +86,14 @@ class _ShopDetails extends Component {
                 isOpenReviews: !this.state.isOpenReviews
             }
         )
+    }
+
+    drawStars = (rate) => {
+        var stars = '';
+        for (var i = 0; i < rate; i++) {
+            stars = stars + '⭐'
+        }
+        return stars;
     }
 
     render() {
@@ -121,7 +131,7 @@ class _ShopDetails extends Component {
                                 </button>
                                 <div className={(this.state.isOpenReviews) ? `review-modal` : `hidden`}>
                                     <form className="review-form">
-                                        <div className="flex column flex-end">
+                                        <div className="flex column">
                                             <TextField
                                                 id="standard-textarea"
                                                 label="Shelter/Owner Review:"
@@ -147,15 +157,15 @@ class _ShopDetails extends Component {
                                                 </Select>
                                             </FormControl>
                                         </div>
-                                        <button>Publish</button>
+                                        <button onClick={this.onAddReview}>Publish</button>
                                     </form>
                                 </div>
                                 {(!shop.reviews) ? <h1>LOADING Reviews....</h1> :
                                     <ul>
                                         {shop.reviews.map(review => {
-                                            return <li>
+                                            return <li className="review">
                                                 <p><span>From: </span>{review.by.fullName}</p>
-                                                <p><span>Rate: </span>{review.rate}</p>
+                                                <p><span>Rate: </span>{this.drawStars(review.rate)}</p>
                                                 <p>{review.txt}</p>
                                             </li>
                                         }

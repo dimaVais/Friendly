@@ -47,3 +47,15 @@
     object-fit: cover;
     border-radius: 5px;
 }
+
+.review{
+    border: solid rgb(158, 158, 158) 1px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 5px;
+    min-width:75em;
+}
+
+.review-form{
+    max-width:20em;
+}
