@@ -10,14 +10,21 @@ import {PetFilter} from '../cmps/PetFilter'
 class _Home extends Component {
 
     state = {
-
         pets: [],
         categories: ['Dogs', 'Cats', 'Farm', 'Other']
     }
 
     componentDidMount() {
         this.loadPets()
+        document.querySelector('.main-nav').style.backgroundColor = 'transparent';
+        document.querySelector('.main-nav').style.position = 'fixed';
+
+        
     }
+    componentWillUnmount(){
+        document.querySelector('.main-nav').style.backgroundColor = 'white';
+        document.querySelector('.main-nav').style.position = 'relative';
+    }    
 
     loadPets = () => {
         this.props.loadPets()
