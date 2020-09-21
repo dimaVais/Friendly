@@ -70,9 +70,8 @@ import Button from '@material-ui/core/Button';
             <div className="filter-container">
 
                 {/* <OutlinedInput ></OutlinedInput> */}
-                <input  type="text" name="search" autoComplete="off" placeholder="Find a friend" onInputChange={this.onInputChange} />
                 {isModalShown   && <TagsFilter onToggleTag={this.onToggleTag} onToggleFilterModal={this.onApplyFilter}/>}
-                    {parent!=='hero' && <button onClick={this.onToggleFilterModal}>More filter</button>}
+                {parent!=='hero' && <button onClick={this.onToggleFilterModal}>More filter</button>}
             </div>
         )
     }
@@ -81,7 +80,6 @@ import Button from '@material-ui/core/Button';
 const mapStateToProps = state => {
     return {
         filterBy:state.petReducer.filterBy
-
     }
 }
 

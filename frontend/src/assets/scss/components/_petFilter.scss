@@ -1,5 +1,6 @@
-.filter-container{
+.search-container{
     position: absolute;
+    width: 40%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -9,10 +10,21 @@
         border: none;
         margin-right: 10px;
         padding-left: 10px;
-        height: 2.2rem;
-        width: 300px; 
+        height: 4rem;
+        width: 100%; 
+        font-size: 1.6rem;
         border-radius: 4px;
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 
     }
+}
+.search{
+    background-color: $clr2;
+        border: none;
+        margin-right: 10px;
+        padding-left: 10px;
+        height: 2.2rem;
+        width: 300px; 
+        border-radius: 4px;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
 }

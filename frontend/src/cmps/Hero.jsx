@@ -14,11 +14,12 @@ export class Hero extends Component {
 
     render() {
         return (
-            <div className="hero-container">
-                <img className="hero-logo" src={require(`../assets/img/logo-with-title.png`)} alt="logo"/>
-                <img className="hero-img" src={require(`../assets/img/hero-img${this.state.pic}.jpg`)} alt="hero"/>
-                <button onClick={this.onToggle}>O</button>
-                <PetFilter parent="hero"/>
+            <div className="hero-container full">
+                <h1>Discover your next four legs friend</h1>
+                <img className="hero-logo " src={require(`../assets/img/logo-with-title.png`)} alt="logo"/>
+                {/*<img className="hero-img " src={require(`../assets/img/hero-img${this.state.pic}.jpg`)} alt="hero"/>
+                <button onClick={this.onToggle}>O</button> */}
+                {/* <PetFilter parent="hero"/> */}
             </div>
         )
     }

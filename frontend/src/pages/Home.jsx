@@ -5,6 +5,7 @@ import { Hero } from '../cmps/Hero'
 import { PetList } from '../cmps/PetList'
 import { loadPets } from '../store/actions/petActions.js'
 import { PetApp } from './PetApp'
+import {FilterSearch} from '../cmps/FilterSearch'
 
 class _Home extends Component {
 
@@ -28,6 +29,7 @@ class _Home extends Component {
             <div className="main-container">
                 {/* <div className="hero-background "></div> */}
                 <Hero />
+                <FilterSearch/>
                 <CategoryList />
                 <PetApp pets={this.props.pets} />
             </div>
