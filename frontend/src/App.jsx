@@ -26,7 +26,6 @@ function _App(props) {
           <Route component={About} path="/about" />
           <Route component={userProfile} path="/profile/:id" />
           <Route component={PetApp} path="/pet/:filterType?" />
-          {/* <Route component={Login} path="/login" /> */}
           <Route component={Home} path="/" /> 
         </Switch>
       </main>
