@@ -100,11 +100,11 @@
         },
         {
           "type": "pet",
-          "count": 12
+          "count": 13
         },
         {
           "type": "feed",
-          "count": 8
+          "count": 9
         }
       ]
     },
@@ -469,6 +469,27 @@
       "_id": "MK3MDp",
       "createdAt": "9/21/2020, 2:34:03 PM",
       "updatedAt": "9/21/2020, 2:34:52 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "u102",
+        "fullName": "Steve Blake",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm",
+        "type": "Shelter"
+      },
+      "pet": {
+        "_id": "p142",
+        "name": "Doly"
+      },
+      "status": "pending",
+      "_id": "u1U7ta",
+      "createdAt": "9/21/2020, 3:17:46 PM",
+      "updatedAt": "9/21/2020, 3:21:32 PM"
     }
   ],
   "shop": [
