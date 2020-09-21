@@ -19,14 +19,16 @@ class _OrderList extends Component {
     }
 
     onSave = async (order, status) => {
-        const isAcceptedStat = this.props.orders.find(order => { return order.status === 'accepted' })
+        const isAcceptedStat = this.props.orders.find(orderCheck => {
+            return (orderCheck.status === 'accepted' && orderCheck.pet._id === order.pet._id)
+        })
         if (isAcceptedStat && status === 'accepted') {
             this.setState({ msgDivClass: '' })
             setTimeout(() => { this.setState({ msgDivClass: 'hidden' }) }, 1500);
         } else {
             order.status = status;
             await this.props.saveOrder(order);
-            this.props.loadOrders(this.props.filterById ,  this.props.orderFilterName);
+            this.props.loadOrders(this.props.filterById, this.props.orderFilterName);
         }
     }
 
@@ -39,7 +41,7 @@ class _OrderList extends Component {
         return (!orders) ? <h1>LOADING...</h1> :
             (
                 <div className="order-list" >
-                    
+
                     <div className={`doubleAccept ${this.state.msgDivClass}`}>Only one approval please.</div>
                     {orders.map(order => <OrderPreview isShop={this.props.isShop} order={order} onRemove={this.onRemove} onSave={this.onSave} />)}
                 </div>
