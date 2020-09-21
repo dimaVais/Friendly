@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { shopService } from '../services/shopService.js';
 import { loadPets, savePet, removePet } from '../store/actions/petActions.js';
 import { saveOrder } from '../store/actions/orderActions.js';
@@ -9,9 +10,6 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faBone } from '@fortawesome/free-solid-svg-icons'
 import { faHandSparkles } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
-
-
-
 
 
 class _PetDetails extends Component {
