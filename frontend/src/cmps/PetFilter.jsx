@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
-import {TagsFilter} from './TagsFilter'
+import { connect } from 'react-redux';
 
-export  class PetFilter extends Component {
+import {TagsFilter} from './TagsFilter'
+import {setFilter} from '../store/actions/petActions.js'
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import Button from '@material-ui/core/Button';
+// import SearchIcon from '@material-ui/icons/Search';
+
+  class _PetFilter extends Component {
 
     state={
+            parent:'',
             isModalShown:false,
             type:'',
             gender:'',
@@ -19,9 +26,10 @@ export  class PetFilter extends Component {
          console.log(this.props);
          if(this.props.type){
               await this.setState({ type:this.props.type })
-              console.log(this.state);
          }
-     }
+         await this.setState({parent:this.props.parent});
+         console.log(this.state);
+        }
      onToggleTag=ev=>{
         console.log('toggled:', ev.target.value);
         const tag = ev.target.value;
@@ -52,26 +60,35 @@ export  class PetFilter extends Component {
     onApplyFilter=()=>{
         this.onToggleFilterModal()
     }
+    onInputChange=_=>{
+
+    }
 
     render() {
+        const {isModalShown, parent} = this.state
         return (
-            <div>
-                <p>Filter</p>
-                {this.state.isModalShown && <TagsFilter onToggleTag={this.onToggleTag} onToggleFilterModal={this.onApplyFilter}/>}
-                <form>
-                    <label htmlFor="">By animal type</label>
-                    <input name="type" autoComplete="off" value={ this.state.type } onChange={ this.handleChange } type="text" />
-                    <label htmlFor="">By gender</label>
-                    <input name="gender" autoComplete="off"  onChange={ this.handleChange } type="text" />
-                    <label htmlFor="">By breed</label>
-                    <input name="breed" autoComplete="off" onChange={ this.handleChange } type="text" />
-                    <label htmlFor="">Min Age</label>
-                    <input type="age" name="minAge" onChange={ this.handleChange } />
-                    <label htmlFor="">Max Age</label>
-                    <input type="age" name="maxAge" onChange={ this.handleChange } />
-                    <button onClick={this.onToggleFilterModal}>More filter</button>
-                </form>
+            <div className="filter-container">
+
+                {/* <OutlinedInput ></OutlinedInput> */}
+                <input  type="text" name="search" autoComplete="off" placeholder="Find a friend" onInputChange={this.onInputChange} />
+                {isModalShown   && <TagsFilter onToggleTag={this.onToggleTag} onToggleFilterModal={this.onApplyFilter}/>}
+                    {parent!=='hero' && <button onClick={this.onToggleFilterModal}>More filter</button>}
             </div>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        filterBy:state.petReducer.filterBy
+
+    }
+}
+
+const mapDispatchToProps = {
+   setFilter
+
+}
+
+
+export const PetFilter = connect(mapStateToProps, mapDispatchToProps)(_PetFilter)

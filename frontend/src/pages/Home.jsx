@@ -22,12 +22,11 @@ class _Home extends Component {
         this.props.loadPets()
     }
 
-
-
     render() {
         const {user} = this.props
         return (
             <div className="main-container">
+                {/* <div className="hero-background "></div> */}
                 <Hero />
                 <CategoryList />
                 <PetApp pets={this.props.pets} />

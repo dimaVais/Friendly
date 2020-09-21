@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import {PetFilter} from './PetFilter'
 export class Hero extends Component {
 
     state={
@@ -15,8 +15,10 @@ export class Hero extends Component {
     render() {
         return (
             <div className="hero-container">
+                <img className="hero-logo" src={require(`../assets/img/logo-with-title.png`)} alt="logo"/>
                 <img className="hero-img" src={require(`../assets/img/hero-img${this.state.pic}.jpg`)} alt="hero"/>
                 <button onClick={this.onToggle}>O</button>
+                <PetFilter parent="hero"/>
             </div>
         )
     }

@@ -43,11 +43,11 @@
       "reacts": [
         {
           "type": "love",
-          "count": 13
+          "count": 14
         },
         {
           "type": "pet",
-          "count": 12
+          "count": 13
         },
         {
           "type": "feed",
@@ -340,7 +340,7 @@
         ]
       },
       "status": "denied",
-      "updatedAt": "9/20/2020, 5:40:18 PM"
+      "updatedAt": "9/20/2020, 8:30:29 PM"
     },
     {
       "_id": "o1226",
@@ -462,6 +462,44 @@
       "createdAt": "9/20/2020, 4:44:11 PM",
       "pets": [],
       "reviews": []
+    },
+    {
+      "name": "sdsd",
+      "type": "shelter",
+      "owner": {
+        "_id": "guest",
+        "fullName": "guest"
+      },
+      "title": "sdsd",
+      "desc": "eewfwe",
+      "location": {
+        "name": "hashomer10 Ramat gan",
+        "lat": 32.0812299,
+        "lng": 34.8221228
+      },
+      "_id": "O4TqNR",
+      "createdAt": "9/20/2020, 8:32:11 PM",
+      "pets": [],
+      "reviews": []
+    },
+    {
+      "name": "ere",
+      "type": "shelter",
+      "owner": {
+        "_id": "guest",
+        "fullName": "guest"
+      },
+      "title": "erwer",
+      "desc": "erewr",
+      "location": {
+        "name": "erewr",
+        "lat": null,
+        "lng": null
+      },
+      "_id": "zPMn69",
+      "createdAt": "9/20/2020, 8:44:11 PM",
+      "pets": [],
+      "reviews": []
     }
   ],
   "user": [
@@ -516,22 +554,8 @@
     {
       "_id": "guest",
       "fullName": "guest",
-      "imgUrl": "guest-img",
-      "isAdmin": false,
-      "isOwner": false,
-      "userName": "guest",
-      "password": "guest",
-      "chats": [
-        {
-          "_id": "c101",
-          "recipientId": "u101"
-        },
-        {
-          "_id": "c102",
-          "recipientId": "u103"
-        }
-      ],
-      "isGuest": "true"
+      "isGuest": true,
+      "isOwner": true
     },
     {
       "fullName": "beri tzakala",
