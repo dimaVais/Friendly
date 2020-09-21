@@ -57,6 +57,59 @@
     },
     {
       "_id": "p150",
+      "name": "Milly",
+      "type": "Dog",
+      "adoptedAt": 160513411992,
+      "bDate": 1190513411992,
+      "gender": "Female",
+      "breed": "Mixed Pitbull",
+      "size": "Large",
+      "isInRisk": true,
+      "shop": {
+        "_id": "s104",
+        "fullName": "We Love Animals",
+        "imgUrl": "https://i.pinimg.com/originals/05/0f/65/050f655bc2c1cf40c85bad9cf2f289f9.jpg",
+        "rate": {
+          "rating": 4.7,
+          "count": 113
+        }
+      },
+      "summary": "We call her Wiggle Butt, you can guess why",
+      "description": "Meet Milly—aka “Wiggle Butt!” Described by our staff as “an absolute angel,” this little tank of a dog greets everyone with a smile and full-body wiggle before forcing you to love on her",
+      "location": {
+        "address": "Hashomer 10, Ramat Gan",
+        "lat": 23.9,
+        "lng": 21.44
+      },
+      "imgUrls": [
+        "https://www.aspca.org/sites/default/files/styles/full_width_2_col/public/field/image/adoptable_animal/milly_lily-a44393855_2020aug13_0001.jpg",
+        "https://www.aspca.org/sites/default/files/milly_lily-a44393855_2020aug13_0009.jpg",
+        "https://www.aspca.org/sites/default/files/milly_lily-a44393855_2020aug13_0013.jpg",
+        "https://www.loveyourdog.com/wp-content/uploads/2019/12/Catahoula-Pitbull-Mix-900x500.jpg",
+        "https://www.loveyourdog.com/wp-content/uploads/2019/12/Catahoula-Pitbully-Mix-Puppy.jpg"
+      ],
+      "tags": [
+        "Kids Friendly",
+        "Healthy",
+        "Energetic"
+      ],
+      "reacts": [
+        {
+          "type": "love",
+          "count": 13
+        },
+        {
+          "type": "pet",
+          "count": 12
+        },
+        {
+          "type": "feed",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "_id": "p150",
       "name": "Elza",
       "type": "Farm",
       "adoptedAt": 160513411992,
@@ -112,21 +165,21 @@
       "type": "Cat",
       "adoptedAt": 12321312,
       "bDate": 12321312,
-      "gender": "Male",
-      "breed": "Mixed German shepeard",
-      "size": "large",
+      "gender": "Female",
+      "breed": "Mixed",
+      "size": "Medium",
       "isInRisk": false,
       "shop": {
-        "_id": "s101",
-        "fullName": "Freedom Farm",
+        "_id": "s106",
+        "fullName": "Cats R' Us",
         "imgUrl": "url",
         "rate": {
-          "rating": 4.7,
-          "count": 113
+          "rating": 4.4,
+          "count": 38
         }
       },
-      "summary": "Very playful and loving",
-      "description": "Active and loyal dog, greate with kids, prefare a family which loves sport and activity.",
+      "summary": "A Stay at home and dont move cat",
+      "description": "Not so active but loyal cat, great with kids, prefare a family which loves to stay home.",
       "location": {
         "address": "Hashomer 10, Ramat Gan",
         "lat": 23.9,
@@ -142,34 +195,33 @@
       "tags": [
         "Kids Friendly",
         "Healthy",
-        "Energetic",
-        "Trained",
         "Sterilized"
       ],
       "reacts": [
         {
           "type": "love",
-          "count": 7
+          "count": 34
         },
         {
           "type": "pet",
-          "count": 5
+          "count": 9
         },
         {
           "type": "feed",
-          "count": 6
+          "count": 3
         }
       ]
     },
+    
     {
       "_id": "p142",
       "name": "Doly",
       "type": "Dog",
       "adoptedAt": 12321312,
-      "bDate": 12321312,
+      "bDate": 1244112131211,
       "gender": "Female",
-      "breed": "Poodle",
-      "size": "medium",
+      "breed": "Pug",
+      "size": "Small",
       "isInRisk": true,
       "shop": {
         "_id": "s101",
@@ -189,7 +241,10 @@
       },
       "imgUrls": [
         "https://cdn.akc.org/content/article-body-image/pugsmalldogs.jpg",
-        "http://cloudinery.com/img2"
+        "https://i1.wp.com/nypost.com/wp-content/uploads/sites/2/2020/04/pugs-coronavirus.jpg",
+        "https://d17fnq9dkz9hgj.cloudfront.net/breed-uploads/2018/08/pug-detail.jpg",
+        "https://vetstreet.brightspotcdn.com/dims4/default/65bbc05/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2Fc1%2Ff9%2F13fe778446f1b8a4fcbe7146e4a4%2FAP-TVQEZK-ph645080113.jpg",
+        "https://miro.medium.com/max/4896/1*XBC9diIIlWIbbE8BVXgulA.jpeg"
       ],
       "tags": [
         "Adults Only",
@@ -200,15 +255,68 @@
       "reacts": [
         {
           "type": "love",
-          "count": 10
+          "count": 21
         },
         {
           "type": "pet",
-          "count": 4
+          "count": 16
         },
         {
           "type": "feed",
-          "count": 6
+          "count": 7
+        }
+      ]
+    },
+    {
+      "_id": "p151",
+      "name": "Mishmish",
+      "type": "Cat",
+      "adoptedAt": 12321312,
+      "bDate": 1390513411992,
+      "gender": "Male",
+      "breed": "Mixed",
+      "size": "Medium",
+      "isInRisk": false,
+      "shop": {
+        "_id": "s106",
+        "fullName": "Cats R' Us",
+        "imgUrl": "url",
+        "rate": {
+          "rating": 4.4,
+          "count": 38
+        }
+      },
+      "summary": "Lovable cat, very human oriented",
+      "description": "This one is a real star. He had a rough life but you would now notice.",
+      "location": {
+        "address": "Hashomer 10, Ramat Gan",
+        "lat": 23.9,
+        "lng": 21.44
+      },
+      "imgUrls": [
+        "https://cf.ltkcdn.net/cats/images/std/259027-425x274-british-shorthair-grey.jpg",
+        "https://www.zooplus.co.uk/magazine/wp-content/uploads/2018/03/russian-blue-1024x680.jpg",
+        "https://azure.wgp-cdn.co.uk/app-yourcat/posts/russian_blue1.jpg",
+        "https://www.abc.net.au/news/image/10493304-3x2-940x627.jpg",
+        "https://cf.ltkcdn.net/cats/images/orig/259025-1600x1030-gorgeous-grey-cat-breeds.jpg"
+      ],
+      "tags": [
+        "Kids Friendly",
+        "Healthy",
+        "Sterilized"
+      ],
+      "reacts": [
+        {
+          "type": "love",
+          "count": 61
+        },
+        {
+          "type": "pet",
+          "count": 19
+        },
+        {
+          "type": "feed",
+          "count": 23
         }
       ]
     },
@@ -401,7 +509,7 @@
           "rate": 4,
           "by": {
             "_id": "u102",
-            "fullName": "user2",
+            "fullName": "Steve Blake",
             "imgUrl": "/img/img2.jpg"
           }
         }
@@ -414,7 +522,7 @@
       "owner": {
         "_id": "u105",
         "fullName": "Julie Lambert",
-        "imgUrl": "/img/img1.jpg"
+        "imgUrl": "https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F200318180302-04-animal-shelters-coronavirus-0312.jpg"
       },
       "pets": [
         {
@@ -437,30 +545,36 @@
           "rate": 4,
           "by": {
             "_id": "u102",
-            "fullName": "user2",
+            "fullName": "Steve Blake",
             "imgUrl": "/img/img2.jpg"
           }
         }
       ]
     },
     {
-      "name": "Save The Cats",
-      "type": "shelter",
+      "_id": "s106",
+      "name": "Cats R' Us",
+      "type": "Shelter",
       "owner": {
         "_id": "LCDs4gs",
-        "fullName": "beri tzakala",
+        "fullName": "Berry Smith",
         "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
       },
       "title": "We here for the cats",
-      "desc": "We here for the cats",
+      "desc": "We think that we need cats today as much as they need us. That is why we are operating in the entire nation.",
+      "pets": [
+        {
+          "_id": "p141",
+          "name": "Kitty",
+          "amount": 1
+        }
+      ],
       "location": {
-        "name": "haifa port",
+        "name": "Haifa port",
         "lat": 32.8213072,
         "lng": 35.0007031
       },
-      "_id": "r6pfGl",
       "createdAt": "9/20/2020, 4:44:11 PM",
-      "pets": [],
       "reviews": []
     }
   ],
@@ -486,12 +600,12 @@
     },
     {
       "_id": "u102",
-      "fullName": "User 2",
+      "fullName": "Steve Blake",
       "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png",
       "isAdmin": false,
       "isOwner": false,
-      "userName": "user2",
-      "password": "secret",
+      "userName": "Steve",
+      "password": "Steve",
       "chats": [
         {
           "_id": "c101",
@@ -534,9 +648,9 @@
       "isGuest": "true"
     },
     {
-      "fullName": "beri tzakala",
-      "userName": "user3",
-      "password": "123",
+      "fullName": "Berry Smith",
+      "userName": "Berry",
+      "password": "Berry",
       "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png",
       "address": "sing",
       "isAdmin": false,

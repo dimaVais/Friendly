@@ -1,6 +1,7 @@
 .shop-details-main-box {
     width: 90%;
     margin: 10px auto;
+    font-family: roboto, sans-serif;
 }
 
 .top-screen-box {
@@ -11,14 +12,25 @@
 .shop-details-section {
     padding: 20px;
     text-align: start;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+
 }
 
 .shop-location-box {
     position: relative;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
 }
 
 .map-container {
+    
 }
 
 .map {

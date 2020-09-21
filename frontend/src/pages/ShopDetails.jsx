@@ -53,12 +53,12 @@ class _ShopDetails extends Component {
                                 <p><span>Short Description: </span>{shop.desc}</p>
 
                             </div>
-                            <div className="shop-location-box">
+                            {/* <div className="shop-location-box">
                             <h2><span>We are located in </span>{shop.location.name}</h2>
                             <div className="map-container">
                                 <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
                             </div>
-                        </div>
+                        </div> */}
                             <div className="order-list-box">
                                 <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />
                             </div>
