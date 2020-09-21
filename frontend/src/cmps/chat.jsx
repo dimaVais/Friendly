@@ -6,6 +6,11 @@ import { loadPets } from '../store/actions/petActions.js';
 import  userService from '../services/userService.js'
 import {shopService} from '../services/shopService.js'
 import {chatService} from '../services/chatService.js'
+
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+
+
  class _Chat extends Component {
 
     state = {
@@ -128,6 +133,11 @@ import {chatService} from '../services/chatService.js'
                         placeholder="Aa"
                         />
                         <button>Send</button>
+                        {/* <Button variant="contained"
+                                color="primary"
+                                className="send-btn"
+                                endIcon={<Icon>send</Icon>}>
+                         </Button> */}
                     </section>
                 </form>
             </div>

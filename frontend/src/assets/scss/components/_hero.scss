@@ -1,19 +1,34 @@
 .hero-container{
     position: relative;
     display: block;
-   
+    background-color: #71c9ce;
+    width: 100%;
+    height: 50vh;
 
+    h1{
+        position: relative;
+        text-align: center;
+        top: 235px;
+        font-size: 3rem;
+    }
 }
 
+.hero-background{
+    position: absolute;
+    width: 100%;
+    height: 90vh;
+    background-color: $clr3;
+
+}
 .hero-img {
     width: 100%;
     height: 500px;
     object-fit: cover;
 }
 .hero-logo{
-    width: 35%;
+    width: 20%;
     position: absolute;
     right: 50%;
-    top: 50%;
-    transform: translate(50%,-50%)
+    top: 25%;
+    transform: translate(50%, -50%);
 }

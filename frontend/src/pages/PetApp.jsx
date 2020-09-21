@@ -8,10 +8,7 @@ class _PetApp extends Component {
 
     state = {
         pets: [],
-        filterBy: {
-            gender:'',
-            type:''
-        },
+        filterBy:{type:''},
         sortBy: null,
         isReady:false
     }
@@ -33,19 +30,8 @@ class _PetApp extends Component {
            if (prevProps!==this.props){
                 this.setState({isReady:true})
            }
-        // if (prevProps!==this.props){
-        //     if (this.props.match){
-        //         if (this.props.match.params.filterType){
-        //             const filterBy={
-        //                 type:this.props.match.params.filterType
-        //             }
-        //             await this.setState({filterBy})
-        //         }
-        //        } 
-        // }
-        // console.log(this.state);
     }
-    
+
     onSetFilter = (filterBy) =>  {
         this.setState({ filterBy }, () => this.loadPets())
     }
@@ -64,8 +50,8 @@ class _PetApp extends Component {
       
         if (!pets) return <h1>Loading...</h1>
         return (
-            <div className="below-nav"> 
-                {this.state.isReady && <PetFilter onSetFilter={this.onSetFilter} type={this.state.filterBy.type} />}
+            <div> 
+                {/* {this.state.isReady && <PetFilter onSetFilter={this.onSetFilter} type={this.state.filterBy.type} />} */}
                 <PetList pets={pets} onRemove={this.onRemove} user={user} />
             </div>
         )
