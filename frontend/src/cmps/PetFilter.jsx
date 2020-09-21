@@ -66,6 +66,7 @@ import { FilterSearch } from './FilterSearch';
     onInputChange=(ev)=>{
         const word = ev.target.value
         this.setState({...this.state,filterBy:{...this.state.filterBy,word}},() => this.props.setFilter(this.state.filterBy))
+        console.log(this.props.filterBy);
         
     }
 
@@ -75,7 +76,7 @@ import { FilterSearch } from './FilterSearch';
             <div className="filter-container">
                 <FilterSearch onInputChange={this.onInputChange}/>
                 {isModalShown   && <TagsFilter onToggleTag={this.onToggleTag} onToggleFilterModal={this.onApplyFilter}/>}
-                {parent!==('hero' && 'home') && <button onClick={this.onToggleFilterModal}>More filter</button>}
+                {parent!=='hero' && parent!== 'home' && <button onClick={this.onToggleFilterModal}>More filter</button>}
             </div>
         )
     }

@@ -21,7 +21,6 @@ async function query(filterBy) {
         params: filterBy
     });
     const filtered=filterPets(res,filterBy);
-    console.log(filtered);
     return filtered;
 }
 
@@ -60,7 +59,7 @@ function filterPets(pets,filterBy){
                         isFitWord=true; 
                     }
                 })
-                isFit=isFitWord;
+        isFit=isFitWord;
             } else if(typeof filterBy[key]==='string' && typeof pet[key]==='string') {
                 if (!pet[key].toLowerCase().includes(filterBy[key].toLowerCase())){
                     isFit=false;

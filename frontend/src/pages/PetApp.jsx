@@ -19,6 +19,8 @@ class _PetApp extends Component {
             const type=this.props.match.params.filterType
             await this.props.setFilter({type})
         }
+       }else{
+        this.resetFitler();
        }
         await this.loadPets()   
     }
@@ -29,12 +31,18 @@ class _PetApp extends Component {
                
            }
         if(prevProps.filterBy!==this.props.filterBy){
-            console.log(this.props.filterBy)
-            this.loadPets();
+            await this.loadPets();
+        }
+        else{
         }
     }
-    componentWillUnmount(){
-        this.props.setFilter({filterBy: {
+     componentWillUnmount(){
+       this.resetFitler();
+    }
+
+     resetFitler=async()=>{
+         console.log('reseting filter');
+        await this.props.setFilter({filterBy: {
             type:'',
             gender:'',
             breed:'',
@@ -56,13 +64,13 @@ class _PetApp extends Component {
     }
     
     render() {
-        const { pets, user } = this.props;
-        console.log(pets);
-        if (!pets) return <h1>Loading...</h1>
+        const {  user } = this.props;
+        
+        if (!this.props.pets) return <h1>Loading...</h1>
         return (
             <div> 
                 {/* {this.state.isReady && <PetFilter onSetFilter={this.onSetFilter} type={this.state.filterBy.type} />} */}
-                <PetList pets={pets} onRemove={this.onRemove} user={user} />
+                <PetList pets={this.props.pets} onRemove={this.onRemove} user={user} />
             </div>
         )
     }

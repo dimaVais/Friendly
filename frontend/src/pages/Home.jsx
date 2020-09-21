@@ -29,7 +29,7 @@ class _Home extends Component {
             <div className="main-container">
                 {/* <div className="hero-background "></div> */}
                 <Hero />
-                <PetFilter parent="home"/>
+                {/* <PetFilter parent="home"/> */}
                 <CategoryList />
                 <PetApp pets={this.props.pets} />
             </div>
