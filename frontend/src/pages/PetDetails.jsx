@@ -12,13 +12,13 @@ import { faHandSparkles } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 
+
 class _PetDetails extends Component {
 
     state = {
         pet: {},
         isChatOn: false,
-        isOwnerOfPet: false,
-        shopId: ''
+        isOwnerOfPet: false
     }
 
     async componentDidMount() {
@@ -77,10 +77,8 @@ class _PetDetails extends Component {
     }
 
     onRemovePet = (petId) => {
+        console.log('petId', petId);
         // this.props.removePet(petId)
-        const pet = this.state.pet
-        const shopId = pet.shop._id
-        this.props.history.push(`/shop/${shopId}`)
     }
 
 
@@ -112,7 +110,7 @@ class _PetDetails extends Component {
 
         if (!pet) return <h1>Loading...</h1>
         return (
-            <section className="pet-details-main-container below-nav">
+            <section className="pet-details-main-container">
                 <div className="pet-details-box">
                     <div>
                         <h2 className="pet-details-heading">{pet.name}</h2>
@@ -146,7 +144,8 @@ class _PetDetails extends Component {
                         </ul>
                     </div>
                     <div className="shop_details">
-                        {pet.shop && <p><span>{pet.shop.fullName}</span><button onClick={this.onToggleChat} >Chat</button></p>}
+                        {pet.shop && <Link to={`/shop/${pet.shop._id}`}><p><span>{pet.shop.fullName}</span></p></Link>}
+                        <button onClick={this.onToggleChat}>Chat</button>
                     </div>
                     <p><span>Age: </span>
                         {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
@@ -173,8 +172,8 @@ class _PetDetails extends Component {
                     {
                         this.state.isOwnerOfPet ?
                             <div className="actions-box-edit">
-                               <Link to={`/edit/${pet._id}`}><button onClick={this.onGoToEdit} className="edit-btn">Edit Pet</button></Link> 
-                                <button onClick={()=>{this.onRemovePet(pet._id)}} className="remove-btn">Delete Pet</button>
+                                <Link to={`/edit/${pet._id}`}><button onClick={this.onGoToEdit} className="edit-btn">Edit Pet</button></Link>
+                                <button onClick={() => { this.onRemovePet(pet._id) }} className="remove-btn">Delete Pet</button>
                             </div>
                             :
                             <div className="actions-box-adopt">
