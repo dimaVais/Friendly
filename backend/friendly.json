@@ -423,38 +423,11 @@
   ],
   "order": [
     {
-      "_id": "o1225",
-      "cretatedAt": 9898989,
-      "msg": "Hi there, I saw your lovely pet and really whish to adopt him",
-      "buyer": {
-        "_id": "u101",
-        "fullName": "Josh Hart",
-        "imgUrl": "url"
-      },
-      "shop": {
-        "_id": "s101",
-        "name": "Freedom Farm",
-        "type": "Shelter",
-        "imgUrl": "/img/img1.jpg",
-        "rate": 4
-      },
-      "pet": {
-        "_id": "p140",
-        "name": "Johnny",
-        "imgUrls": [
-          "http://cloudinery.com/img1",
-          "http://cloudinery.com/img2"
-        ]
-      },
-      "status": "denied",
-      "updatedAt": "9/20/2020, 8:30:29 PM"
-    },
-    {
       "_id": "o1226",
       "cretatedAt": 9898989,
       "msg": "Hi there, I saw your lovely pet and really whish to adopt him",
       "buyer": {
-        "_id": "u101",
+        "_id": "u105",
         "fullName": "Jimmi Shelvi",
         "imgUrl": "url"
       },
@@ -475,6 +448,27 @@
       },
       "status": "accepted",
       "updatedAt": "9/20/2020, 5:55:15 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "u102",
+        "fullName": "Steve Blake",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "shop": {
+        "_id": "s106",
+        "name": "Cats R' Us",
+        "type": "Shelter"
+      },
+      "pet": {
+        "_id": "p141",
+        "name": "Kitty"
+      },
+      "status": "accepted",
+      "_id": "MK3MDp",
+      "createdAt": "9/21/2020, 2:34:03 PM",
+      "updatedAt": "9/21/2020, 2:34:52 PM"
     }
   ],
   "shop": [
