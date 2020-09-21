@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import {PetFilter} from './PetFilter'
+import { FilterSearch } from './FilterSearch'
+
+// import {PetFilter} from './PetFilter'
+
 export class Hero extends Component {
 
     state={
@@ -15,11 +18,16 @@ export class Hero extends Component {
     render() {
         return (
             <div className="hero-container full">
-                <h1>Discover your next four legs friend</h1>
-                <img className="hero-logo " src={require(`../assets/img/logo-with-title.png`)} alt="logo"/>
-                {/*<img className="hero-img " src={require(`../assets/img/hero-img${this.state.pic}.jpg`)} alt="hero"/>
-                <button onClick={this.onToggle}>O</button> */}
+                <div className="hero-content">
+                <h1 className="hero-heading-up"><span className="span">Friendly.</span> Adopt a <span className="span">pet</span> </h1>
+                <h1 className="hero-heading">Discover your next four legs friend</h1>
+                <FilterSearch/>
                 {/* <PetFilter parent="hero"/> */}
+                </div>
+                
+                {/* <img className="hero-img " src={require(`../assets/img/hero1.jpg`)} alt="hero"/> */}
+                {/* <img className="hero-logo " src={require(`../assets/img/logo-with-title.png`)} alt="logo"/> */}
+                {/* <button onClick={this.onToggle}>O</button> */} 
             </div>
         )
     }

@@ -41,7 +41,7 @@ export class _NavBar extends Component {
     render() {
         const { user } = this.props        
         return (
-            <div className="main-nav ">
+            <div className="main-nav">
                 <div className="left-nav">
                     <NavLink to="/"><img className="logo-up" src={require('../assets/img/logo.png')} alt="Home"/></NavLink>
                     <NavLink className="nav-btn" to="/pet">Gallery</NavLink>
