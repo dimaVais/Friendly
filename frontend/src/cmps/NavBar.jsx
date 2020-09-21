@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Router, withRouter } from 'react-router-dom'
 import { LoginModal } from './LoginModal'
 import { connect } from 'react-redux';
 import { loadShops } from '../store/actions/shopActions'
@@ -7,12 +7,21 @@ import { logout } from '../store/actions/userActions';
 
 
 
-export class _NavBar extends Component {
+
+
+
+
+class _NavBar extends Component {
 
     state = {
         showModal: false,
         shop: '',
-        shopId: ''
+        shopId: '',
+        pathName: ''
+    }
+    componentDidMount() {
+        console.log('this.propsnavvvv', this.props.history.location.pathname);
+        this.setState({pathName: this.props.history.location.pathname})
     }
 
     onNavBarClick = () => {
@@ -41,7 +50,7 @@ export class _NavBar extends Component {
     render() {
         const { user } = this.props        
         return (
-            <div className="main-nav">
+            <div className={this.props.history.location.pathname === '/' ? 'main-nav' : 'main-nav-not-home'}>
                 <div className="left-nav">
                     <NavLink to="/"><img className="logo-up" src={require('../assets/img/logo.png')} alt="Home"/></NavLink>
                     <NavLink className="nav-btn" to="/pet">Gallery</NavLink>
@@ -84,4 +93,6 @@ const mapDispatchToProps = {
 }
 
 
-export const NavBar = connect(mapStateToProps, mapDispatchToProps)(_NavBar)
+export const NavBar = withRouter(connect(mapStateToProps, mapDispatchToProps)(_NavBar))
+
+// export const Header = withRouter(connect(mapStateToProps, mapDispatchToProps)(_Header)
