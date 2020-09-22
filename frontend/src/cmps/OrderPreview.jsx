@@ -27,7 +27,6 @@ export function OrderPreview({ order, onSave, onRemove, isShop }) {
             {!isShop &&
                 <div>
                     <p><span>To:</span> {order.shop.name} </p>
-                    {console.log('order.shop.type', order.shop.type)}
                     <p> {order.shop.type} </p>
                     <p><span>I want to Adopt:</span> {order.pet.name} </p>
                     <img src={order.shop.imgUrl} alt="shop image" />

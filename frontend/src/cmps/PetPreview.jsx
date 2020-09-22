@@ -9,12 +9,8 @@ import { connect } from 'react-redux';
 import { loadPets, savePet } from '../store/actions/petActions';
 
 
-class _PetPreview extends Component {
+export class PetPreview extends Component {
 
-
-    state = {
-        pet: {}
-    }
 
     async componentDidMount() {
         this.setState({ pet: { ...this.props.pet } })

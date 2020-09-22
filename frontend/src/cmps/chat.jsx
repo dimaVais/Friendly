@@ -37,7 +37,6 @@ import Icon from '@material-ui/core/Icon';
             this.setState({ msg })
 
             const recipient = await userService.getById(this.props.recipientId);
-            console.log(this.props.recipientId);
             const recipientName=recipient.fullName;
 
             this.setState({recipientName})

@@ -35,6 +35,7 @@ export function petReducer(state = initialState, action) {
                 pets: state.pets.filter(pet => pet._id !== action.petId)
             }
         case 'SET_FILTER':
+            console.log(action.filterBy);
             return {
                 ...state,
                 filterBy: { ...state.filterBy, ...action.filterBy }

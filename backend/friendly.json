@@ -149,7 +149,11 @@
       "reacts": [
         {
           "type": "love",
+<<<<<<< HEAD
           "count": 16
+=======
+          "count": 14
+>>>>>>> 93b68b6d66a3b89d2cadbf2c58535970d838bba8
         },
         {
           "type": "pet",
@@ -332,7 +336,7 @@
         },
         {
           "type": "pet",
-          "count": 16
+          "count": 17
         },
         {
           "type": "feed",
