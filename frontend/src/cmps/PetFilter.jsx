@@ -36,7 +36,6 @@ import { FilterSearch } from './FilterSearch';
     }
     componentDidUpdate(prevProps){
         
-        // if (!this.props.type && prevProps!==this.props) this.resetFilter();
     }
      onToggleTag=ev=>{
         console.log('toggled:', ev.target.value);
@@ -68,11 +67,7 @@ import { FilterSearch } from './FilterSearch';
     onApplyFilter=()=>{
         this.onToggleFilterModal()
     }
-    onInputChange=(ev)=>{
-        const word = ev.target.value
-        this.setState({...this.state,filterBy:{...this.state.filterBy,word}},() => this.props.setFilter({...this.state.filterBy}))
-        
-    }
+   
     resetFilter=async()=>{
         await console.log(this.props);
       
@@ -88,11 +83,13 @@ import { FilterSearch } from './FilterSearch';
 
     render() {
         const {isModalShown, parent} = this.state
+        const btnClass=parent==='hero'?'hero-btn more-btn':'gallery-btn more-btn';
         return (
-            <div className="filter-container">
-                <FilterSearch onInputChange={this.onInputChange}/>
+            <div className="filter-container flex justify-center">
+                {/* <FilterSearch onInputChange={this.onInputChange}/> */}
                 {isModalShown   && <TagsFilter onToggleTag={this.onToggleTag} onToggleFilterModal={this.onApplyFilter}/>}
-                {parent!=='hero' && parent!== 'home' && <button onClick={this.onToggleFilterModal}>More filter</button>}
+                { <button className={btnClass} onClick={this.onToggleFilterModal}>More </button>}
+<br/>
             </div>
         )
     }

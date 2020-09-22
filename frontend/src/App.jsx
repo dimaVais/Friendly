@@ -29,7 +29,7 @@ import { userProfile } from './pages/userProfile';
             <Route component={ShopDetails} path="/shop/:id" />
             <Route component={PetDetails}  path="/details/:id?" />
             <Route component={PetEdit} path="/edit/:id?" />
-            <Route component={SignUp} path="/signup" />
+            <Route component={SignUp} path="/signup/:type?" />
             <Route component={About} path="/about" />
             <Route component={userProfile} path="/profile/:id" />
             <Route component={PetApp} path="/pet/:filterType?" />

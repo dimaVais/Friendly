@@ -119,7 +119,7 @@ export class _SignUp extends Component {
                 {userAdopt &&
                     <div className="fields-container flex column align-center">
                         <h3>New Adopter</h3>
-                        <form className="flex column align-center" onSubmit={this.doSignup}>
+                        <form className="flex column align-center" noValidate onSubmit={this.doSignup}>
                             <br />
                             <Input type="text" name="fullName" placeholder="Your Full Name" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
                             <Input type="password" name="password" placeholder="Password" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
@@ -136,6 +136,13 @@ export class _SignUp extends Component {
                     <Input type="text" name="fullName" placeholder="Your Full Name"
                         value={loggedInUser.fullName} onChange={this.signupHandleChange}>
                     </Input>
+                    <TextField id="standard-search" label="Search field" type="search" />
+                    <TextField
+                    id="standard-helperText"
+                    label="Helper text"
+                    defaultValue="Default Value"
+                    helperText="Some important text"
+                    />
                     <Input type="text" name="name" placeholder="Your Shop Name"
                         onChange={this.signupHandleChange}></Input>
                     <FormControl>

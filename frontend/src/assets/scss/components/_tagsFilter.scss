@@ -1,7 +1,7 @@
 .tags-modal {
     @include center-modal;
-    width: 350px;
-    height: 400px;
+    width: 450px;
+    height: 520px;
     position: fixed;
     z-index: 4;
     background-color:$clr2;
@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 3px;
+    border-radius: 40px;
 
  }
 
