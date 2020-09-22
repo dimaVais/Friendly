@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 
-import {TagsFilter} from './TagsFilter'
+import {TagsFilter}from './TagsFilter'
 import {setFilter,loadPets} from '../store/actions/petActions.js'
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Button from '@material-ui/core/Button';

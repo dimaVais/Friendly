@@ -6,7 +6,7 @@ import { faMars } from '@fortawesome/free-solid-svg-icons'
 import { faVenus } from '@fortawesome/free-solid-svg-icons'
 
 
-export class TagsFilter extends Component () {
+export class TagsFilter extends Component {
     
     state={
         
