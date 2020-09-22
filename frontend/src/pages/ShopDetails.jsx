@@ -10,6 +10,9 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDoubleUp, faEnvelope, faFemale, faMobileAlt, faStar } from '@fortawesome/free-solid-svg-icons'
+
 
 class _ShopDetails extends Component {
 
@@ -100,29 +103,70 @@ class _ShopDetails extends Component {
     render() {
         const shop = this.state.shop;
         return (
-            <section className="below-nav">
+            <section>
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
 
 
                     <div className="shop-details-main-box">
+                        <div className="shop-details-header">
+                            <h2 className="shop-details-heading">{shop.name}</h2>
+                            <div className="shop-rate-box">
+                                <FontAwesomeIcon className="star-icon" icon={faStar} />
+                                {shop && <p className="shop-rate-rating">{shop.rate.rating}  </p>}
+                                {shop && <p className="shop-rate-count">({shop.rate.count})  </p>}
+
+                            </div>
+                        </div>
+
+                        <div className="shop-details-img-box">
+                            {
+                                (shop.imgUrls) ?
+                                    shop.imgUrls.map((imgUrl, index) => {
+                                        return <img className={`shop-details-img-${index}`} src={imgUrl} />
+                                    })
+                                    : ''
+                            }
+                        </div>
                         <div className="top-screen-box">
                             <div className="shop-details-section">
-                                <h2>{shop.name}</h2>
-                                <h3>{shop.title}</h3>
-                                <p><span>Owner Name </span>{shop.owner.fullName}</p>
+
                                 <img className="shop-owner-img" src={shop.owner.imgUrl} />
-                                <p><span>Short Description: </span>{shop.desc}</p>
+
+                                <div className="contact-box">
+                                <FontAwesomeIcon className="contact-icon" icon={faFemale} />
+                                <p>{shop.owner.fullName}</p>
+                                </div>
+
+                                <div className="contact-box">
+                                <FontAwesomeIcon className="contact-icon" icon={faMobileAlt} />
+                                <p>{shop.owner.contact.phone}</p>
+                                </div>
+
+                                <div className="contact-box">
+                                <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
+                                <p>{shop.owner.contact.email}</p>
+                                </div>
+
+                                <div className="shop-description">
+                                    <p>{shop.desc}</p>
+
+                                </div>
 
                             </div>
                             <div className="shop-location-box">
-                                <h2><span>We are located in </span>{shop.location.name}</h2>
+
                                 <div className="map-container">
                                     <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
                                 </div>
+                                <FontAwesomeIcon className="arrow-icon" icon={faAngleDoubleUp} />
+                                <div className="shop-location-name">
+                                    <h2>We are located at {shop.location.name}</h2>
+                                </div>
+
                             </div>
                             <div className="order-list-box">
                                 {this.state.shop.owner._id === this.props.loggedInUser._id &&
-                                <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />}
+                                    <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />}
                             </div>
                         </div>
                         <div className="flex">
@@ -178,7 +222,8 @@ class _ShopDetails extends Component {
 
                         </div>
                         <div className="pets-box" >
-                            <h2>Our Pets</h2>
+                            <hr/>
+                            {/* <h2>Our Pets</h2> */}
                             <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
                         </div>
                     </div>

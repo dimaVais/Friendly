@@ -122,13 +122,24 @@ class _PetDetails extends Component {
                 id: user._id,
                 fullName: user.fullName,
                 imgUrl: user.imgUrl
-            }
+            },
+            createdAt: this.getTimeToString()
         }
 
         pet.comments.push(comment);
         await this.props.savePet(pet);
         this.getComponentData();
         this.setState({ cuurComment: '' })
+    }
+
+    getTimeToString = () => {
+        var time = new Date();
+        var dd = String(time.getDate()).padStart(2, '0');
+        var mm = String(time.getMonth() + 1).padStart(2, '0');
+        var yyyy = time.getFullYear();
+
+        time = mm + '/' + dd + '/' + yyyy;
+        return time
     }
 
     getUserId = async _ => {
@@ -183,26 +194,26 @@ class _PetDetails extends Component {
                         <div className="pet-info">
                             <div className="pet-info-up">
                                 <div className="age info-box">
-                                <FontAwesomeIcon className="age-icon info-icon" icon={faCalendarAlt} />
-                                
-                                <p><span>Age: </span>
-                                    {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
-                                </p>
+                                    <FontAwesomeIcon className="age-icon info-icon" icon={faCalendarAlt} />
+
+                                    <p><span>Age: </span>
+                                        {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
+                                    </p>
                                 </div>
                                 <div className="size info-box">
-                                <FontAwesomeIcon className="size-icon info-icon" icon={faExpandArrowsAlt} />
-                                <p><span>Size:</span> {pet.size}</p>
+                                    <FontAwesomeIcon className="size-icon info-icon" icon={faExpandArrowsAlt} />
+                                    <p><span>Size:</span> {pet.size}</p>
                                 </div>
                             </div>
                             <div className="pet-info-down ">
-                            <FontAwesomeIcon className="gender-icon info-icon" icon={faVenusMars} />
+                                <FontAwesomeIcon className="gender-icon info-icon" icon={faVenusMars} />
                                 <div className="gender info-box">
 
-                                <p><span>Gender:</span> {pet.gender}</p>
+                                    <p><span>Gender:</span> {pet.gender}</p>
                                 </div>
                                 <div className="breed info-box">
-                                <FontAwesomeIcon className="breed-icon info-icon" icon={faAlignLeft} />
-                                <p><span>Breed:</span> {pet.breed}</p>
+                                    <FontAwesomeIcon className="breed-icon info-icon" icon={faAlignLeft} />
+                                    <p><span>Breed:</span> {pet.breed}</p>
                                 </div>
                             </div>
                             {/* <h4> {pet.summary}</h4> */}
@@ -225,29 +236,29 @@ class _PetDetails extends Component {
                             </div>
                         </div>
                     </div>
-                    
+
                     <div className="tags-list-box">
-                    <ul className="tags-list">
-                        {
-                            (pet.tags) ?
-                                pet.tags.map(tag => {
-                                    return <li> {tag} </li>
-                                })
-                                : ''
-                        }
-                    </ul>
+                        <ul className="tags-list">
+                            {
+                                (pet.tags) ?
+                                    pet.tags.map(tag => {
+                                        return <li> {tag} </li>
+                                    })
+                                    : ''
+                            }
+                        </ul>
                     </div>
-                    <hr/>
+                    <hr />
                     <div className="description-box">
-                    <p>{pet.description}</p>
+                        <p>{pet.description}</p>
                     </div>
-                    <hr/>
+                    <hr />
                     <div className="comments-box">
                         {/* <h2>{this.state.pet.name}'s comments:</h2> */}
                         <div className="comment-input-box">
                             {/* <label htmlFor=""> */}
-                            <TextField name="txt" fullWidth="true" value={this.state.currComment} placeholder="Add Comment Here" onChange={this.handleCommentInput}/>
-                                {/* <textarea name="txt" rows="5" cols="50" value={this.state.currComment}
+                            <TextField name="txt" fullWidth="true" value={this.state.currComment} placeholder="Add Comment Here" onChange={this.handleCommentInput} />
+                            {/* <textarea name="txt" rows="5" cols="50" value={this.state.currComment}
                                     placeholder="Add Comment Here" onChange={this.handleCommentInput}></textarea>
                             </label> */}
                             <button className="add-comment-btn" onClick={this.onComment}>Add</button>
@@ -258,10 +269,13 @@ class _PetDetails extends Component {
                                     pet.comments.map(comment => {
                                         return <li className="single-comment-box">
                                             <div className="flex column comment-box">
-                                                    {(comment.by.imgUrl) ? <img src={comment.by.imgUrl} alt="" /> : ""}
-                                                    {(comment.by.id === 'guest') ? <img src={"https://images.macrumors.com/t/x_zUFqghBUNBxVUZN_dYoKF3D9g=/1600x0/article-new/2019/04/guest-user-250x250.jpg"} alt="" /> : ""}
-                                                    <p><span>{comment.by.fullName}:</span> </p>
-                                                    <p>{comment.txt} </p>
+                                                {(comment.by.imgUrl) ? <img src={comment.by.imgUrl} alt="" /> : ""}
+
+                                                {(comment.by.id === 'guest') ? <img src={"https://images.macrumors.com/t/x_zUFqghBUNBxVUZN_dYoKF3D9g=/1600x0/article-new/2019/04/guest-user-250x250.jpg"} alt="" /> : ""}
+
+                                                <p><span>{comment.by.fullName}:</span> </p>
+                                                <p><span>{comment.createdAt}</span> </p>
+                                                <p>{comment.txt} </p>
                                             </div>
                                         </li>
                                     })
