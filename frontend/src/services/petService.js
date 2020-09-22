@@ -1,7 +1,6 @@
 import httpService from './httpService.js'
 const BASE_URL = 'pet'
 
-
 export const petService = {
     query,
     getPetById,
@@ -10,6 +9,7 @@ export const petService = {
 }
 
 async function query(filterBy) {
+    console.log(filterBy);
     let queryStr='';
     //todo - change after building backend
     // if (filterBy){
@@ -23,18 +23,15 @@ async function query(filterBy) {
     const filtered=filterPets(res,filterBy);
     return filtered;
 }
-
 async function getPetById(id) {
     const res = await httpService.get(`${BASE_URL}/${id}`);
     return res;
 }
-
 async function save(pet) {
     if (pet._id) {
         // pet.updatedAt = new Date(date.now()).toLocaleString();
         const res = await httpService.put(`${BASE_URL}/${pet._id}`, pet)
         return res;
-
     } else {
         pet._id = _makeId();
         // pet.createdAt = new Date(date.now()).toLocaleString();
@@ -42,57 +39,41 @@ async function save(pet) {
         return res;
     }
 }
-
 async function remove(petId) {
     await httpService.delete(`${BASE_URL}/${petId}`)
 }
-
 function filterPets(pets,filterBy){
-    const filtered = pets.filter(pet=>{
-        let isFit=true;
-        let isFitWord=false;
-        for(const key in filterBy){
-            console.log(filterBy[key]);
-            if (!filterBy[key])break
-            debugger
-            const searchWord=filterBy[key].toLowerCase();
-            console.log(key);
-            if(key==='word'){
-                const wordKeys=['name','shop','type','gender','size','summary','description','tags']
-                let isTag=false;
-                let isShop=false;
-                let isAnyWord=false;
-                wordKeys.map(wordKey=>{
-                    if (wordKey==='tags'){
-                        isTag=ifInArray(searchWord,pet['tags'])
-                    }else if ((wordKey==='shop')){
-                        isShop= (pet['shop'].name.toLowerCase().includes(searchWord))
-                    }else if (pet[wordKey].toLowerCase().includes(searchWord)){
-                        isAnyWord=true; 
-                        }
-                })
-            isFitWord=isTag||isShop||isAnyWord;
-            console.log(isFit);
-            } else if(typeof searchWord==='string' && typeof pet[key]==='string') {
-                if (pet[key].toLowerCase().includes(searchWord)){
-                    isFit=false;
-                    break
-                }else{
-                    isFit=true;;
-                }
-            }
-        }
-        if (isFit && isFitWord)return pet;
-    })
-    console.log(filtered);
+   if (!filterBy) return pets
+    
+   const filtered = pets.filter(pet=>{
+
+        return pet.type.toLowerCase().includes(filterBy['type'])
+   })
+
+
+    // const filtered = pets.filter(pet=>{
+    //     let isFit=true
+    //     for(const key in filterBy){
+    //         if(key==='word' && filterBy[key]){
+    //             const wordKeys=['name','type','gender','size','summary','description']
+    //             let isFitWord=false;
+    //             wordKeys.map(wordKey=>{
+    //                 if (pet[wordKey].toLowerCase().includes(filterBy[key].toLowerCase())){
+    //                     isFitWord=true; 
+    //                 }
+    //             })
+    //     isFit=isFitWord;
+    //         } else if(typeof filterBy[key]==='string' && typeof pet[key]==='string') {
+    //             if (!pet[key].toLowerCase().includes(filterBy[key].toLowerCase())){
+    //                 isFit=false;
+    //                 break
+    //             }
+    //         }
+    //     }
+    //     if (isFit)return pet;
+    // })
     return filtered
 }
-
-
-function ifInArray(word,array){
-    return array.filter(arg => arg.toLowerCase(word));
-}
-
 function _makeId(length = 6) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

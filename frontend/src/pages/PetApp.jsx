@@ -14,15 +14,15 @@ class _PetApp extends Component {
     }
 
     async componentDidMount() {
-    if (this.props.match){
-        if (this.props.match.params.filterType){
-            const type=this.props.match.params.filterType
-            await this.props.setFilter({type})
+        if (this.props.match){
+            if (this.props.match.params.filterType){
+                const type=this.props.match.params.filterType
+                await this.props.setFilter({type})
+            }
+        }else{
+            await this.resetFitler();
         }
-       }else{
-        this.resetFitler();
-       }
-        await this.loadPets()   
+        await this.loadPets()  
     }
 
    async  componentDidUpdate(prevProps){
@@ -32,27 +32,20 @@ class _PetApp extends Component {
         if(prevProps.filterBy!==this.props.filterBy){
             await this.loadPets();
         }
-        else{
-        }
+
     }
-    
     async componentWillUnmount(){
        await this.resetFitler();
     }
 
      resetFitler=async()=>{
-         console.log('reseting filter');
-        await this.props.setFilter({filterBy: {
+        await this.props.setFilter({
             type:'',
             gender:'',
             breed:'',
             size:'',
             word:''
-        }})
-    }
-
-    onSetFilter = (filterBy) =>  {
-        this.setState({ filterBy }, () => this.loadPets())
+        },()=>this.loadPets())
     }
 
     loadPets = async _ => {
@@ -65,11 +58,9 @@ class _PetApp extends Component {
     
     render() {
         const {  user } = this.props;
-        
         if (!this.props.pets) return <h1>Loading...</h1>
         return (
             <div> 
-                {/* {this.state.isReady && <PetFilter onSetFilter={this.onSetFilter} type={this.state.filterBy.type} />} */}
                 <PetList pets={this.props.pets} onRemove={this.onRemove} user={user} />
             </div>
         )

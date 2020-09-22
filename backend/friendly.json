@@ -96,11 +96,11 @@
       "reacts": [
         {
           "type": "love",
-          "count": 13
+          "count": 14
         },
         {
           "type": "pet",
-          "count": 12
+          "count": 13
         },
         {
           "type": "feed",
