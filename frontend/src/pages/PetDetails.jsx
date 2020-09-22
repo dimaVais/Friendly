@@ -10,6 +10,13 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faBone } from '@fortawesome/free-solid-svg-icons'
 import { faHandSparkles } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import { faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons'
+import { faVenusMars } from '@fortawesome/free-solid-svg-icons'
+import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { TextField } from '@material-ui/core';
+
 
 
 
@@ -19,6 +26,7 @@ class _PetDetails extends Component {
         pet: {},
         isChatOn: false,
         isOwnerOfPet: false,
+        adoptButton: 'Adopt',
         currComment: ''
     }
 
@@ -76,6 +84,7 @@ class _PetDetails extends Component {
             status: "Pending",
         }
         this.props.saveOrder(order)
+        this.setState({ adoptButton: 'Request Sent' })
     }
 
     onRemovePet = (petId) => {
@@ -86,14 +95,12 @@ class _PetDetails extends Component {
 
     onToggleChat = () => {
         this.setState({ isChatOn: !this.state.isChatOn })
-        console.log(this.state.isChatOn);
     }
 
     onUpdateReaction = (reaction) => {
         const pet = this.state.pet;
         pet.reacts.map(react => {
             if (react.type === reaction) react.count++
-            console.log('reaction clicked', reaction);
             return react
         })
         this.props.savePet(pet)
@@ -139,10 +146,11 @@ class _PetDetails extends Component {
         return (
             <section className="pet-details-main-container">
                 <div className="pet-details-box">
-                    <div>
+                    <div className="pet-details-header">
                         <h2 className="pet-details-heading">{pet.name}</h2>
+                        <button className="adoption-btn">Adopt</button>
                     </div>
-                    <h4> {pet.summary}</h4>
+
                     <div className="pet-details-img-box">
                         {
                             (pet.imgUrls) ?
@@ -158,30 +166,68 @@ class _PetDetails extends Component {
                                 (pet.reacts) ?
                                     pet.reacts.map(react => {
                                         if (react.type === 'love') {
-                                            return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('love') }}
-                                                className="heart-icon" icon={faHeart} /> ({`${react.count}`})</li>
+                                            return <li className="react-count"><FontAwesomeIcon onClick={() => { this.onUpdateReaction('love') }}
+                                                className="heart-icon" icon={faHeart} /> {`${react.count}`}</li>
                                         }
-                                        else if ((react.type === 'feed')) return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('feed') }}
-                                            className="bone-icon" icon={faBone} /> ({`${react.count}`})</li>
-                                        else if ((react.type === 'pet')) return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('pet') }}
-                                            className="hand-sparkles-icon" icon={faHandSparkles} /> ({`${react.count}`})</li>
+                                        // else if ((react.type === 'feed')) return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('feed') }}
+                                        //     className="bone-icon" icon={faBone} /> ({`${react.count}`})</li>
+                                        // else if ((react.type === 'pet')) return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('pet') }}
+                                        //     className="hand-sparkles-icon" icon={faHandSparkles} /> ({`${react.count}`})</li>
                                     })
                                     : ''
                             }
                         </ul>
                     </div>
-                    <div className="shop_details">
-                        {pet.shop && <Link to={`/shop/${pet.shop._id}`}><p><span>{pet.shop.fullName}</span></p></Link>}
-                        <button onClick={this.onToggleChat}>Chat</button>
+                    <div className="shop-and-pet-info">
+
+
+                        <div className="pet-info">
+                            <div className="pet-info-up">
+                                <div className="age info-box">
+                                <FontAwesomeIcon className="age-icon info-icon" icon={faCalendarAlt} />
+                                
+                                <p><span>Age: </span>
+                                    {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
+                                </p>
+                                </div>
+                                <div className="size info-box">
+                                <FontAwesomeIcon className="size-icon info-icon" icon={faExpandArrowsAlt} />
+                                <p><span>Size:</span> {pet.size}</p>
+                                </div>
+                            </div>
+                            <div className="pet-info-down ">
+                            <FontAwesomeIcon className="gender-icon info-icon" icon={faVenusMars} />
+                                <div className="gender info-box">
+
+                                <p><span>Gender:</span> {pet.gender}</p>
+                                </div>
+                                <div className="breed info-box">
+                                <FontAwesomeIcon className="breed-icon info-icon" icon={faAlignLeft} />
+                                <p><span>Breed:</span> {pet.breed}</p>
+                                </div>
+                            </div>
+                            {/* <h4> {pet.summary}</h4> */}
+                        </div>
+
+
+
+                        <div className="shop-details">
+                            <div className="shop-details-up">
+                                {pet.shop && <img className="shop-img" src={`${pet.shop.imgUrl}`} alt="" />}
+                                {pet.shop && <Link to={`/shop/${pet.shop._id}`}><p>{pet.shop.fullName}</p></Link>}
+                            </div>
+                            <div className="shop-details-bottom">
+                                <div className="shop-rate-box">
+                                    <FontAwesomeIcon className="star-icon" icon={faStar} />
+                                    {pet.shop && <p className="shop-rate-rating">{pet.shop.rate.rating}  </p>}
+                                    {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>}
+                                </div>
+                                {pet.shop && <button onClick={this.onToggleChat}>Message {pet.shop.fullName}</button>}
+                            </div>
+                        </div>
                     </div>
-                    <p><span>Age: </span>
-                        {`${parseFloat((Date.now() - new Date(pet.bDate)) / (1000 * 60 * 60 * 24 * 30 * 12)).toFixed(1)}`}
-                    </p>
-                    <p><span>Size:</span> {pet.size}</p>
-                    <p><span>Gender:</span> {pet.gender}</p>
-                    <p><span>Breed:</span> {pet.breed}</p>
-                    <hr />
-                    {/* <span> About {pet.name}</span> */}
+                    
+                    <div className="tags-list-box">
                     <ul className="tags-list">
                         {
                             (pet.tags) ?
@@ -191,27 +237,32 @@ class _PetDetails extends Component {
                                 : ''
                         }
                     </ul>
-                    <p><span>Description:</span> {'\n' + pet.description}</p>
-                    <div>
-                        <h2>{this.state.pet.name}'s comments:</h2>
-                        <div>
-                            <label htmlFor="">
-                                <textarea name="txt" rows="5" cols="50" value={this.state.currComment}
+                    </div>
+                    <hr/>
+                    <div className="description-box">
+                    <p>{pet.description}</p>
+                    </div>
+                    <hr/>
+                    <div className="comments-box">
+                        {/* <h2>{this.state.pet.name}'s comments:</h2> */}
+                        <div className="comment-input-box">
+                            {/* <label htmlFor=""> */}
+                            <TextField name="txt" fullWidth="true" value={this.state.currComment} placeholder="Add Comment Here" onChange={this.handleCommentInput}/>
+                                {/* <textarea name="txt" rows="5" cols="50" value={this.state.currComment}
                                     placeholder="Add Comment Here" onChange={this.handleCommentInput}></textarea>
-                            </label>
-                            <button onClick={this.onComment}>Add</button>
+                            </label> */}
+                            <button className="add-comment-btn" onClick={this.onComment}>Add</button>
                         </div>
                         <ul className="comment-list">
                             {
                                 (pet.comments) ?
                                     pet.comments.map(comment => {
-                                        return <li >
+                                        return <li className="single-comment-box">
                                             <div className="flex column comment-box">
-                                                <div className="flex" >
                                                     {(comment.by.imgUrl) ? <img src={comment.by.imgUrl} alt="" /> : ""}
+                                                    {(comment.by.id === 'guest') ? <img src={"https://images.macrumors.com/t/x_zUFqghBUNBxVUZN_dYoKF3D9g=/1600x0/article-new/2019/04/guest-user-250x250.jpg"} alt="" /> : ""}
                                                     <p><span>{comment.by.fullName}:</span> </p>
-                                                </div>
-                                                <p>{comment.txt} </p>
+                                                    <p>{comment.txt} </p>
                                             </div>
                                         </li>
                                     })
@@ -220,7 +271,7 @@ class _PetDetails extends Component {
                         </ul>
                     </div>
                 </div>
-                <div className="actions-box">
+                {/* <div className="actions-box">
                     {
                         this.state.isOwnerOfPet ?
                             <div className="actions-box-edit">
@@ -233,13 +284,13 @@ class _PetDetails extends Component {
                                 <p>You save a life. </p>
                                 <p>You adopt a pet, and find a friend.</p>
                                 <p>You help stop cruelty in mass breeding facilities.</p>
-                                <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
+                                <button onClick={this.onAdopt} className="adopt-btn">{this.state.adoptButton}</button>
                             </div>
 
                     }
 
 
-                </div>
+                </div> */}
                 {this.state.isChatOn && <Chat onClose={this.onToggleChat} recipientId={this.state.ownerId} />}
             </section>
         )

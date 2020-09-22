@@ -68,9 +68,7 @@ class _NavBar extends Component {
 
                 {this.state.showModal && <LoginModal onNavBarClick={this.onNavBarClick} />}
 
-                
-
-                <NavLink className="nav-btn" to="/signup">Sign Up</NavLink>
+                {user && user.isGuest && <NavLink className="nav-btn"  to="/signup">Sign Up</NavLink>}
             </div>
 
 

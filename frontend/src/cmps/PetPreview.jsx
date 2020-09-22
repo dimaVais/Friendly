@@ -1,9 +1,12 @@
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faMars } from '@fortawesome/free-solid-svg-icons'
 import { faVenus } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { loadPets, savePet } from '../store/actions/petActions';
 
 
 export class PetPreview extends Component {
@@ -11,6 +14,17 @@ export class PetPreview extends Component {
 
     async componentDidMount() {
         this.setState({ pet: { ...this.props.pet } })
+    }
+
+    onUpdateReaction = async (ev, reaction) => {
+        ev.preventDefault()
+        const pet = this.state.pet;
+        pet.reacts.map(react => {
+            if (react.type === reaction) react.count++
+            return react
+        })
+        this.props.savePet(pet)
+        await this.props.loadPets();
     }
 
     isMale = () => {
@@ -35,24 +49,17 @@ export class PetPreview extends Component {
                     <div className="shop-container">
                         {pet.shop && <Link to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
                         {/* {pet.shop && <h4>{pet.shop.fullName}</h4>} */}
-                        <div className="shop-rate-box">
-                            <FontAwesomeIcon className="star-icon" icon={faStar} />
+                        <div className="pet-rate-box">
+                            <span>{pet.reacts[0].type === 'love' ? <FontAwesomeIcon onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="love-icon" icon={faHeart} /> : ''} </span>
+                            {pet.reacts[0].type === 'love' ? <span className="love-count">{pet.reacts[0].count}</span> : ''}
+
+
+                            {/* <FontAwesomeIcon className="star-icon" icon={faStar} />
                             {pet.shop && <p className="shop-rate-rating">{pet.shop.rate.rating}  </p>}
-                            {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>}
+                            {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>} */}
                         </div>
                     </div>
 
-                    {/* <section className="pet-reacts">
-                    <ul> 
-                    { pet.reactions && pet.reactions.map(reaction ,index => {
-                        <li key={index}>
-                            <img src={`../assets/img/${reaction.type}`} alt=""/>
-                            <span>{reaction.count}</span>
-                         </li>
-                    })}
-                    </ul>
-                </section> */}
-                    {/* {displayEditButtons()} */}
 
                 </div>
             </ NavLink>
@@ -60,4 +67,18 @@ export class PetPreview extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = {
+    savePet,
+    loadPets
+
+}
+
+
+export const PetPreview = connect(mapStateToProps, mapDispatchToProps)(_PetPreview)
 
