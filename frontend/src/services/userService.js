@@ -1,4 +1,6 @@
 import httpService from './httpService'
+const BASE_URL_AUTH = 'auth'
+const BASE_URL_USER = 'user'
 
 export default {
     login,
@@ -26,18 +28,13 @@ function update(user) {
 }
 
 async function login(userCred) {
-    // const user = await httpService.post('auth/login', userCred)
-    // const user = await httpService.get('user', userCred.username)
-    const queryStr =  `?user=Name=${userCred.userName}&password=${userCred.password}`;
-    const res = await httpService.get(`user/${queryStr}`, {
-        params: userCred
-    });
-    return res[0]                               
-    // return _handleLogin(user)
+    const res = await httpService.post(`${BASE_URL_AUTH}/login`, userCred);
+    console.log('res',res);
+    return res;                              
 }
+
 async function signup(user) {
     const queryStr =  `?user=Name=${user.fullName}&password=${user.password}`;
-    user._id = _makeId()
     const res = await httpService.post(`user`, user);
     return res[0] 
     // const user = await httpService.post('auth/signup', userCred)

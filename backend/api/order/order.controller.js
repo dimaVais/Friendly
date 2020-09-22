@@ -19,7 +19,7 @@ async function getOrders(req, res) {
 async function getOrder (req, res) {
     const orderId = req.params.id;
     const order = await orderService.getById(orderId)
-    return order;
+    return res.json(order);
 }
 
 async function createOrder(req, res) {

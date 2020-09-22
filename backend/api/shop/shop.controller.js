@@ -19,14 +19,14 @@ async function getShops(req, res) {
 
 async function getShop(req, res) {
     const shopId = req.params.id;
-    const shop = await shopService.getById(shopId)
-    return shop;
+    const shop = await shopService.getById(shopId);
+    return res.json(shop);
 }
 
 async function getShopByUser(req, res) {
     const shopId = req.params.id;
     const shop = await shopService.getById(shopId)
-    return shop;
+    return res.json(shop);
 }
 
 async function createShop(req, res) {

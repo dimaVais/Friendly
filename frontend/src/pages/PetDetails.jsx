@@ -59,6 +59,7 @@ class _PetDetails extends Component {
 
     onAdopt = async () => {
         const { loggedInUser } = this.props
+        console.log('LogedinuSER',loggedInUser);
         if (loggedInUser.isGuest) return
 
         const pet = this.state.pet
@@ -159,7 +160,7 @@ class _PetDetails extends Component {
                 <div className="pet-details-box">
                     <div className="pet-details-header">
                         <h2 className="pet-details-heading">{pet.name}</h2>
-                        <button className="adoption-btn">Adopt</button>
+                        <button className="adoption-btn"onClick={this.onAdopt}>Adopt</button>
                     </div>
 
                     <div className="pet-details-img-box">

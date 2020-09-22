@@ -16,7 +16,7 @@ const shopService = require('./shop.service');
 router.get('/', getShops);
 router.post('/', createShop);
 router.get('/:id', getShop); 
-router.put('/:id',requireAuth, updateShop);
+router.put('/:id', updateShop);
 router.delete('/:id', requireAuth, requireOwner, deleteShop);
 
 module.exports = router;
