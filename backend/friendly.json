@@ -43,7 +43,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 14
+          "count": 15
         },
         {
           "type": "pet",
@@ -51,7 +51,7 @@
         },
         {
           "type": "feed",
-          "count": 8
+          "count": 9
         }
       ]
     },
@@ -504,10 +504,91 @@
         "_id": "p142",
         "name": "Doly"
       },
-      "status": "accepted",
+      "status": "pending",
       "_id": "u7kUlJ",
       "createdAt": "9/21/2020, 3:10:07 PM",
-      "updatedAt": "9/21/2020, 3:11:55 PM"
+      "updatedAt": "9/21/2020, 4:55:03 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "u102",
+        "fullName": "Steve Blake",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm",
+        "type": "Shelter"
+      },
+      "pet": {
+        "_id": "p142",
+        "name": "Doly"
+      },
+      "status": "denied",
+      "_id": "DGbWlw",
+      "createdAt": "9/21/2020, 4:52:22 PM",
+      "updatedAt": "9/21/2020, 4:54:59 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "u102",
+        "fullName": "Steve Blake",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm",
+        "type": "Shelter"
+      },
+      "pet": {
+        "_id": "p140",
+        "name": "Johnny"
+      },
+      "status": "Pending",
+      "_id": "Mn1JRv",
+      "createdAt": "9/21/2020, 6:09:09 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "u102",
+        "fullName": "Steve Blake",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm",
+        "type": "Shelter"
+      },
+      "pet": {
+        "_id": "p140",
+        "name": "Johnny"
+      },
+      "status": "Pending",
+      "_id": "zyHwnJ",
+      "createdAt": "9/21/2020, 6:09:25 PM"
+    },
+    {
+      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
+      "buyer": {
+        "_id": "u102",
+        "fullName": "Steve Blake",
+        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
+      },
+      "shop": {
+        "_id": "s101",
+        "name": "Freedom farm",
+        "type": "Shelter"
+      },
+      "pet": {
+        "_id": "p140",
+        "name": "Johnny"
+      },
+      "status": "Pending",
+      "_id": "rBc8WX",
+      "createdAt": "9/21/2020, 6:10:10 PM"
     }
   ],
   "shop": [
@@ -553,9 +634,18 @@
             "_id": "guest",
             "fullName": "guest"
           }
+        },
+        {
+          "txt": "Hey there",
+          "rate": "5",
+          "id": "r103",
+          "by": {
+            "_id": "guest",
+            "fullName": "guest"
+          }
         }
       ],
-      "updatedAt": "9/21/2020, 1:36:15 PM"
+      "updatedAt": "9/21/2020, 4:51:39 PM"
     },
     {
       "_id": "s104",

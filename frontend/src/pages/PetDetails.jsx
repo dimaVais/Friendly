@@ -18,7 +18,8 @@ class _PetDetails extends Component {
     state = {
         pet: {},
         isChatOn: false,
-        isOwnerOfPet: false
+        isOwnerOfPet: false,
+        adoptButton: 'Adopt'
     }
 
     async componentDidMount() {
@@ -73,6 +74,7 @@ class _PetDetails extends Component {
             status: "Pending",
         }
         this.props.saveOrder(order)
+        this.setState({adoptButton: 'Request Sent'})
     }
 
     onRemovePet = (petId) => {
@@ -180,7 +182,7 @@ class _PetDetails extends Component {
                                 <p>You save a life. </p>
                                 <p>You adopt a pet, and find a friend.</p>
                                 <p>You help stop cruelty in mass breeding facilities.</p>
-                                <button onClick={this.onAdopt} className="adopt-btn">Adopt</button>
+                                <button onClick={this.onAdopt} className="adopt-btn">{this.state.adoptButton}</button>
                             </div>
 
                     }
