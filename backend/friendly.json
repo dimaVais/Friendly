@@ -13,7 +13,7 @@
       "shop": {
         "_id": "s101",
         "fullName": "Freedom Farm",
-        "imgUrl": "url",
+        "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg",
         "rate": {
           "rating": 4.7,
           "count": 113
@@ -43,7 +43,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 14
+          "count": 22
         },
         {
           "type": "pet",
@@ -51,7 +51,7 @@
         },
         {
           "type": "feed",
-          "count": 8
+          "count": 9
         }
       ],
       "comments": [
@@ -68,7 +68,7 @@
           "txt": "A Great Dog!",
           "by": {
             "id": "u102",
-            "fullName": "Steve Blake",
+            "fullName": "Beth Blake",
             "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
           }
         },
@@ -78,6 +78,32 @@
           "by": {
             "id": "guest",
             "fullName": "guest"
+          }
+        },
+        {
+          "id": "c104",
+          "txt": "Johnnyyyy your are so cute!!!\n",
+          "by": {
+            "id": "guest",
+            "fullName": "guest"
+          }
+        },
+        {
+          "id": "c105",
+          "txt": "We love him",
+          "by": {
+            "id": "u101",
+            "fullName": "Uma Mitchell",
+            "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg"
+          }
+        },
+        {
+          "id": "c106",
+          "txt": "Can't get enough of this one!!!",
+          "by": {
+            "id": "u101",
+            "fullName": "Uma Mitchell",
+            "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg"
           }
         }
       ]
@@ -123,7 +149,11 @@
       "reacts": [
         {
           "type": "love",
+<<<<<<< HEAD
+          "count": 16
+=======
           "count": 14
+>>>>>>> 93b68b6d66a3b89d2cadbf2c58535970d838bba8
         },
         {
           "type": "pet",
@@ -134,10 +164,28 @@
           "count": 9
         }
       ],
-      "comments": []
+      "comments": [
+        {
+          "id": "c101",
+          "txt": "Milly is such a QT!!!",
+          "by": {
+            "id": "u101",
+            "fullName": "Uma Mitchell",
+            "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg"
+          }
+        },
+        {
+          "id": "c102",
+          "txt": "is she trained?",
+          "by": {
+            "id": "guest",
+            "fullName": "guest"
+          }
+        }
+      ]
     },
     {
-      "_id": "p150",
+      "_id": "p151",
       "name": "Elza",
       "type": "Farm",
       "adoptedAt": 160513411992,
@@ -156,7 +204,7 @@
         }
       },
       "summary": "Milk and Happiness",
-      "description": "This cow need you to take care of her. Is that too much to ask?",
+      "description": "Elza is one of the gentlest oxen in the herd and has a quiet, playful mood. She is really easy going and mingles easily with her herd mates. A healthy and sweet, She is a pleasure to be with. Often Devaki is boisterous having a lot to say about any event that is happening in the herd.",
       "location": {
         "address": "Hashomer 10, Ramat Gan",
         "lat": 23.9,
@@ -175,7 +223,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 24
+          "count": 33
         },
         {
           "type": "pet",
@@ -229,7 +277,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 34
+          "count": 38
         },
         {
           "type": "pet",
@@ -255,7 +303,7 @@
       "shop": {
         "_id": "s101",
         "fullName": "Freedom Farm",
-        "imgUrl": "url",
+        "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg",
         "rate": {
           "rating": 4.7,
           "count": 113
@@ -298,7 +346,7 @@
       "comments": []
     },
     {
-      "_id": "p151",
+      "_id": "p152",
       "name": "Mishmish",
       "type": "Cat",
       "adoptedAt": 12321312,
@@ -371,7 +419,7 @@
         }
       },
       "summary": "Showing the meaning of haste",
-      "description": "This special one wont be here for long. This historic creature is one of a kind",
+      "description": "This special one wont be here for long. This historic creature is one of a kind. Shadowfax was vital during the Siege of Gondor, where Gandalf supported the army of Gondor defending the Rammas Echor, while regularly escorting medical transport to the City. Because of the horse's speed he was also able to save Faramir, who had commanded the retreating army's rearguard, from an attack by the Nazgûl",
       "location": {
         "address": "Middle Earth",
         "lat": 20.9,
@@ -469,7 +517,7 @@
         "_id": "s101",
         "name": "Freedom Farm",
         "type": "Shelter",
-        "imgUrl": "/img/img1.jpg",
+        "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg",
         "rate": 4
       },
       "pet": {
@@ -487,7 +535,7 @@
       "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
       "buyer": {
         "_id": "u102",
-        "fullName": "Steve Blake",
+        "fullName": "Beth Blake",
         "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
       },
       "shop": {
@@ -506,7 +554,7 @@
       "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
       "buyer": {
         "_id": "u102",
-        "fullName": "Steve Blake",
+        "fullName": "Beth Blake",
         "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
       },
       "shop": {
@@ -526,7 +574,7 @@
       "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
       "buyer": {
         "_id": "u102",
-        "fullName": "Steve Blake",
+        "fullName": "Beth Blake",
         "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
       },
       "shop": {
@@ -547,7 +595,7 @@
       "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
       "buyer": {
         "_id": "u102",
-        "fullName": "Steve Blake",
+        "fullName": "Beth Blake",
         "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
       },
       "shop": {
@@ -596,7 +644,7 @@
           "rate": 4,
           "by": {
             "_id": "u102",
-            "fullName": "Steve Blake",
+            "fullName": "Beth Blake",
             "imgUrl": "/img/img2.jpg"
           }
         },
@@ -608,9 +656,18 @@
             "_id": "guest",
             "fullName": "guest"
           }
+        },
+        {
+          "txt": "Hey there",
+          "rate": "5",
+          "id": "r103",
+          "by": {
+            "_id": "guest",
+            "fullName": "guest"
+          }
         }
       ],
-      "updatedAt": "9/21/2020, 1:36:15 PM"
+      "updatedAt": "9/21/2020, 4:51:39 PM"
     },
     {
       "_id": "s104",
@@ -642,7 +699,7 @@
           "rate": 4,
           "by": {
             "_id": "u102",
-            "fullName": "Steve Blake",
+            "fullName": "Beth Blake",
             "imgUrl": "/img/img2.jpg"
           }
         }
@@ -716,12 +773,12 @@
     },
     {
       "_id": "u102",
-      "fullName": "Steve Blake",
+      "fullName": "Beth Blake",
       "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png",
       "isAdmin": false,
       "isOwner": false,
-      "userName": "Steve",
-      "password": "Steve",
+      "userName": "Beth",
+      "password": "Beth",
       "chats": [
         {
           "_id": "c101",

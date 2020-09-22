@@ -45,12 +45,11 @@ async function remove(petId) {
 function filterPets(pets,filterBy){
    if (!filterBy) return pets
     
-   const filtered = pets.filter(pet=>{
+   let filtered = pets.filter(pet=>{
 
-        return pet.type.toLowerCase().includes(filterBy['type'])
+     return pet.type.toLowerCase().includes(filterBy.type)
    })
-
-
+   
     // const filtered = pets.filter(pet=>{
     //     let isFit=true
     //     for(const key in filterBy){

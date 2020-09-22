@@ -14,7 +14,7 @@
 
 
     img {
-        height: 12rem;
+        height: 13rem;
         width: 16rem;
         position: Absolute;
         top: 0px;
@@ -25,7 +25,7 @@
 
     .card-description {
         background-color: $clr2;
-        height: 10rem;
+        height: 9rem;
         width: 16rem;
         position: absolute;
         bottom: 0em;
@@ -95,6 +95,30 @@
 
         h4 {
             color: rgb(87, 87, 87);
+        }
+
+        .pet-rate-box {
+            display: flex;
+            padding: 5px;
+            justify-content: space-between;
+            
+            .love-icon {
+                color: #ffbf00;
+                font-size: 1.2rem;
+                margin-right: 5px;
+                cursor: pointer;
+
+
+            }
+
+            .love-count {
+                font-size: 1rem;
+                color: #979595;
+                font-family: roboto,sans-serif;
+                transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+            }
+
         }
 
         .shop-rate-box {

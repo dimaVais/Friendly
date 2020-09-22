@@ -38,7 +38,7 @@
     justify-content: space-between;
     align-items: center;
     position: relative;
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(255, 255, 255);
     z-index: 3;
 
     a {
@@ -77,12 +77,13 @@
 
 .logout-btn {
     padding: 10px;
-    background-color: #fff;
-    border: 1px solid rgb(209, 62, 82);
+    border: none;
+    background: none;
     cursor: pointer;
     font-family: roboto, sans-serif;
     font-weight: 800;
-    color: rgb(209, 62, 82);
+    // color: rgb(209, 62, 82);
+    color: rgb(88, 88, 88);
     border-radius: 5px;
 }
 
