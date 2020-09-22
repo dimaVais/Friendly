@@ -692,25 +692,6 @@
       "createdAt": "9/20/2020, 8:32:11 PM",
       "pets": [],
       "reviews": []
-    },
-    {
-      "name": "ere",
-      "type": "shelter",
-      "owner": {
-        "_id": "guest",
-        "fullName": "guest"
-      },
-      "title": "erwer",
-      "desc": "erewr",
-      "location": {
-        "name": "erewr",
-        "lat": null,
-        "lng": null
-      },
-      "_id": "zPMn69",
-      "createdAt": "9/20/2020, 8:44:11 PM",
-      "pets": [],
-      "reviews": []
     }
   ],
   "user": [

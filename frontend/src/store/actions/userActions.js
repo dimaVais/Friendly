@@ -55,9 +55,9 @@ export function login(userCreds) {
         });
     };
 }
-export function signup(userCreds) {
+export function signup(_user) {
     return async dispatch => {
-        const user = await userService.signup(userCreds);
+        const user = await userService.signup(_user);
         dispatch({
             type: 'SET_USER',
             user

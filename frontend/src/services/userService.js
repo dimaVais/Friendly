@@ -35,9 +35,10 @@ async function login(userCred) {
     return res[0]                               
     // return _handleLogin(user)
 }
-async function signup(userCred) {
-    const queryStr =  `?user=Name=${userCred.fullName}&password=${userCred.password}`;
-    const res = await httpService.post(`user`, userCred);
+async function signup(user) {
+    const queryStr =  `?user=Name=${user.fullName}&password=${user.password}`;
+    user._id = _makeId()
+    const res = await httpService.post(`user`, user);
     return res[0] 
     // const user = await httpService.post('auth/signup', userCred)
     // return _handleLogin(user)
@@ -49,4 +50,13 @@ async function logout() {
 function _handleLogin(user) {
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
+}
+
+function _makeId(length = 6) {
+    var txt = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (var i = 0; i < length; i++) {
+        txt += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return txt;
 }

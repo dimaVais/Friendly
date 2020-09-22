@@ -8,9 +8,9 @@ async function requireAuth(req, res, next) {
   next();
 }
 
-async function requireAdmin(req, res, next) {
+async function requireOwner(req, res, next) {
   const user = req.session.user;
-  if (!user.isAdmin) {
+  if (!user.isOwner) {
     res.status(403).end('Unauthorized Enough..');
     return;
   }
@@ -19,5 +19,5 @@ async function requireAdmin(req, res, next) {
 
 module.exports = {
   requireAuth,
-  requireAdmin
+  requireOwner
 }
