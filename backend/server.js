@@ -37,8 +37,8 @@ const shopRoutes = require('./api/shop/shop.routes');
 const orderRoutes = require('./api/order/order.routes');
 const userRoutes = require('./api/user/user.routes');
 const authRoutes = require('./api/auth/auth.routes');
-const chatRoutes = require('./api/chat/chat.routes');
-const connectSockets = require('./api/socket/socket.routes');
+// const chatRoutes = require('./api/chat/chat.routes');
+// const connectSockets = require('./api/socket/socket.routes');
 
 
 app.use('/api/pet', petRoutes);
@@ -46,23 +46,23 @@ app.use('/api/shop', shopRoutes);
 app.use('/api/order', orderRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/chat', chatRoutes);
-connectSockets(io);
+// app.use('/api/chat', chatRoutes);
+// connectSockets(io);
 
-const port = process.env.PORT || devPort;
-app.get('/**', (req, res) => {
- res.sendFile(path.join(__dirname, 'public', 'index.html'));
-})
+// const port = process.env.PORT || devPort;
+// app.get('/**', (req, res) => {
+//  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// })
 
 // const logger = require('./services/logger.service')
 
-http.listen(port, () => {
-    // logger.info('Server is running on port: ' + port)
-});
+// http.listen(port, () => {
+//     // logger.info('Server is running on port: ' + port)
+// });
 
 
-// app.listen(port, () => {
-//     console.log(`Example app listening at http://localhost:${port}`);
-// })
+app.listen(devPort, () => {
+    console.log(`Example app listening at http://localhost:${devPort}`);
+})
 
 

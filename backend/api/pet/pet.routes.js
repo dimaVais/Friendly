@@ -16,7 +16,7 @@ const petService = require('./pet.service');
 router.get('/', getPets);
 router.post('/', requireAuth, requireOwner, createPet);
 router.get('/:id', getPet); 
-router.put('/:id',requireAuth, requireOwner, updatePet);
+router.put('/:id', updatePet);
 router.delete('/:id', requireAuth, requireOwner, deletePet);
 
 module.exports = router;

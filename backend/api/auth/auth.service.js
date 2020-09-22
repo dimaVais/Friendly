@@ -7,7 +7,7 @@ const saltRounds = 10
 async function login(username, password) {
     // logger.debug(`auth.service - login with username: ${username}`)
     if (!username || !password) return Promise.reject('username and password are required!')
-    const user = await userService.getByEmail(username);
+    const user = await userService.getByUsername(username);
     if (!user) return Promise.reject('Invalid email or password');
     const match = await bcrypt.compare(password, user.password);
     if (!match) return Promise.reject('Invalid email or password')
