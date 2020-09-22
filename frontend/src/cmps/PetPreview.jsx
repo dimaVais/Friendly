@@ -3,13 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faMars } from '@fortawesome/free-solid-svg-icons'
 import { faVenus } from '@fortawesome/free-solid-svg-icons'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadPets, savePet } from '../store/actions/petActions';
 
 
- class _PetPreview extends Component {
+class _PetPreview extends Component {
 
 
     async componentDidMount() {

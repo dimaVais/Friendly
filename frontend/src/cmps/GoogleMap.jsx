@@ -16,7 +16,7 @@ class _GoogleMap extends React.Component {
             {
                 lat: this.props.lat,
                 lng: this.props.lng,
-                zoom: 16,
+                zoom: 14,
                 loc: this.props.name
             }
         )
