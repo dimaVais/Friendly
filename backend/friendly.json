@@ -123,7 +123,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 13
+          "count": 14
         },
         {
           "type": "pet",
@@ -288,7 +288,7 @@
         },
         {
           "type": "pet",
-          "count": 16
+          "count": 17
         },
         {
           "type": "feed",

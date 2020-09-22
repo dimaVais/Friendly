@@ -32,7 +32,6 @@ class _LoginModal extends Component {
     };
 
     closeModal = () => {
-        console.log('close');
         this.props.onNavBarClick()
     }
 

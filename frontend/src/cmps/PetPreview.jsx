@@ -4,21 +4,14 @@ import { faMars } from '@fortawesome/free-solid-svg-icons'
 import { faVenus } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 
-class _PetPreview extends Component {
+export class PetPreview extends Component {
 
-
-    state = {
-        pet: {}
-    }
 
     async componentDidMount() {
         this.setState({ pet: { ...this.props.pet } })
     }
-
-
 
     isMale = () => {
         return (this.props.pet.gender === 'Male') ? true : false
@@ -67,17 +60,4 @@ class _PetPreview extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-
-    }
-}
-
-const mapDispatchToProps = {
-
-
-}
-
-
-export const PetPreview = connect(mapStateToProps, mapDispatchToProps)(_PetPreview)
 
