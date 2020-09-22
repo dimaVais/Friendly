@@ -2,15 +2,25 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "json-server --watch friendly.json --id=_id"
+    "start": "json-server --watch friendly.json --id=_id",
+    "startdev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.16.1"
+    "json-server": "^0.16.1",
+    "axios": "^0.20.0",
+    "bcrypt": "^5.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongodb": "^3.6.1",
+    "nodemon": "^2.0.4",
+    "socket.io": "^2.3.0"
   }
 }
