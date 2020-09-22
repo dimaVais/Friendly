@@ -151,6 +151,7 @@ class _PetDetails extends Component {
 
     render() {
         const pet = this.state.pet;
+        const loggedInUser= this.props.loggedInUser
 
         if (!pet) return <h1>Loading...</h1>
         return (
