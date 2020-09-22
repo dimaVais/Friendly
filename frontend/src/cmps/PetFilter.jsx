@@ -87,9 +87,9 @@ import { FilterSearch } from './FilterSearch';
         return (
             <div className="filter-container flex justify-center">
                 {/* <FilterSearch onInputChange={this.onInputChange}/> */}
-                {isModalShown   && <TagsFilter onToggleTag={this.onToggleTag} onToggleFilterModal={this.onApplyFilter}/>}
+                {isModalShown   && <TagsFilter onToggleTag={this.onToggleTag} onToggleFilterModal={this.onToggleFilterModal}/>}
                 { <button className={btnClass} onClick={this.onToggleFilterModal}>More </button>}
-<br/>
+            <br/>   
             </div>
         )
     }
