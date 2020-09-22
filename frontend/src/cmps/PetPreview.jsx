@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { loadPets, savePet } from '../store/actions/petActions';
 
 
-export class PetPreview extends Component {
+ class _PetPreview extends Component {
 
 
     async componentDidMount() {
