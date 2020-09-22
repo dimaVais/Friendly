@@ -1,0 +1,26 @@
+.comment-box{
+
+    border: solid rgb(158, 158, 158) 1px;
+    border-radius: 10px;
+    margin-top: 5px;
+    padding: 5px;
+    max-width:60em;
+    height: 20vh;
+    background-color: rgb(224, 224, 245);
+    justify-content: flex-start ;
+
+    *{
+        font-size: 1.5rem;
+    }
+
+    span{
+        font-size: 1.2rem;
+
+    }
+
+    img{
+        max-width:60px;
+        max-height: 60px;
+        border-radius: 50%;
+    }
+}

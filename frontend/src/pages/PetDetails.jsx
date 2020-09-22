@@ -18,15 +18,18 @@ class _PetDetails extends Component {
     state = {
         pet: {},
         isChatOn: false,
-        isOwnerOfPet: false
+        isOwnerOfPet: false,
+        currComment: ''
     }
 
     async componentDidMount() {
+        this.getComponentData();
+    }
+
+    async getComponentData() {
         await this.getCurrPet();
         await this.getUserId();
         await this.isOwnerOfPet();
-
-
     }
 
     getCurrPet = async () => {
@@ -97,6 +100,30 @@ class _PetDetails extends Component {
         this.getCurrPet()
     }
 
+    handleCommentInput = ({ target }) => {
+        const value = target.value;
+        this.setState({ currComment: value })
+    }
+
+    onComment = async () => {
+        const pet = this.state.pet;
+        const user = this.props.loggedInUser
+        const comment = {
+            id: `c${100 + pet.comments.length + 1}`,
+            txt: this.state.currComment,
+            by: {
+                id: user._id,
+                fullName: user.fullName,
+                imgUrl: user.imgUrl
+            }
+        }
+
+        pet.comments.push(comment);
+        await this.props.savePet(pet);
+        this.getComponentData();
+        this.setState({ cuurComment: '' })
+    }
+
     getUserId = async _ => {
         console.log(this.state.pet);
         const shop = await shopService.getById(this.state.pet.shop._id);
@@ -163,9 +190,34 @@ class _PetDetails extends Component {
                                 : ''
                         }
                     </ul>
-
-
                     <p><span>Description:</span> {'\n' + pet.description}</p>
+                    <div>
+                        <h2>{this.state.pet.name}'s comments:</h2>
+                        <div>
+                            <label htmlFor="">
+                                <textarea name="txt" rows="5" cols="50" value={this.state.currComment}
+                                    placeholder="Add Comment Here" onChange={this.handleCommentInput}></textarea>
+                            </label>
+                            <button onClick={this.onComment}>Add</button>
+                        </div>
+                        <ul className="comment-list">
+                            {
+                                (pet.comments) ?
+                                    pet.comments.map(comment => {
+                                        return <li >
+                                            <div className="flex column comment-box">
+                                                <div className="flex" >
+                                                    {(comment.by.imgUrl) ? <img src={comment.by.imgUrl} alt="" /> : ""}
+                                                    <p><span>{comment.by.fullName}:</span> </p>
+                                                </div>
+                                                <p>{comment.txt} </p>
+                                            </div>
+                                        </li>
+                                    })
+                                    : ''
+                            }
+                        </ul>
+                    </div>
                 </div>
                 <div className="actions-box">
                     {
