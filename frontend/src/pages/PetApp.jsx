@@ -44,7 +44,7 @@ class _PetApp extends Component {
             gender:'',
             breed:'',
             size:'',
-            word:''
+            txt:''
         },()=>this.loadPets())
     }
 
