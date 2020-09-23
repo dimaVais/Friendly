@@ -19,6 +19,9 @@ export function OrderPreview({ order, onSave, onRemove, isShop }) {
             {
                 isShop && <div>
                     <Link to={`/profile/${order.buyer._id}`}>  <p><span>From:</span> {order.buyer.fullName} </p></Link>
+                    {/* <div>
+                        <p><span>Adoption Request:</span> {order.msg} </p>
+                    </div> */}
                     <p><span>I want to Adopt:</span> {order.pet.name} </p>
                 </div>
 
@@ -28,20 +31,18 @@ export function OrderPreview({ order, onSave, onRemove, isShop }) {
                 <div>
                     <p><span>To:</span> {order.shop.name} </p>
                     <p> {order.shop.type} </p>
-                    <p><span>I want to Adopt:</span> {order.pet.name} </p>
-                    <img src={order.shop.imgUrl} alt="shop image" />
-                    <span>{order.shop.rate}</span>
+                    <p><span>Who am I adopting?</span> {order.pet.name} </p>
+                    {/* <img src={order.shop.imgUrl} alt="shop image" />
+                    <span>{order.shop.rate}</span> */}
                 </div>
             }
 
+
             <div>
-                <p><span>Adoption Request:</span> {order.msg} </p>
-            </div>
-            <div>
-                {isShop && <button onClick={() => { onSave(order, 'accepted') }}>✔</button>}
-                {isShop && <button onClick={() => { onSave(order, 'denied') }}>✖</button>}
-                {isShop && <button onClick={() => { onSave(order, 'pending') }}>❓</button>}
-                <button onClick={() => { onRemove(order._id) }}>🧹</button>
+                {isShop && <button className="accept-order-btn" onClick={() => { onSave(order, 'accepted') }}>✔</button>}
+                {isShop && <button className="reject-order-btn" onClick={() => { onSave(order, 'denied') }}>✖</button>}
+                {isShop && <button className="pending-order-btn" onClick={() => { onSave(order, 'pending') }}>❓</button>}
+                <button className="remove-order-btn" onClick={() => { onRemove(order._id) }}>🧹</button>
             </div>
         </div>
     )

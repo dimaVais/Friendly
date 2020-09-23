@@ -182,13 +182,36 @@
     border-radius: 50%;
 }
 
+.bottom-screen-box {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+
+.pets-box {
+    margin: 0 0 0 120px;
+    // width: 100%;
+    // justify-content: center;
+}
+
+.reviews-list {
+    padding: 0;
+
+    .review-text {
+        color: rgb(32, 32, 32);
+        font-size: 1.3rem;
+    }
+}
+
 .review {
-    border: solid rgb(158, 158, 158) 1px;
-    border-radius: 20px;
-    margin-top: 10px;
-    padding: 5px;
-    min-width: 75em;
-    background-color: $clr2;
+    margin: 80px 0;
+    border-bottom: rgb(230, 230, 230);
+
+    p {
+        color:rgb(107, 107, 107)
+    }
+
 }
 
 .review-form {
@@ -198,3 +221,32 @@
         margin-bottom: 5px;
     }
 }
+
+.open-reviews-btn {
+    padding: 10px 10px; 
+    background-color: #ffbf00;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 1rem;
+    color: #fafafa;
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.add-review-btn {
+    padding: 10px 10px; 
+    background-color: #ffbf00;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 1rem;
+    color: #fafafa;
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+

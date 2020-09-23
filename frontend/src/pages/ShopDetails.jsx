@@ -133,18 +133,18 @@ class _ShopDetails extends Component {
                                 <img className="shop-owner-img" src={shop.owner.imgUrl} />
 
                                 <div className="contact-box">
-                                <FontAwesomeIcon className="contact-icon" icon={faFemale} />
-                                <p>{shop.owner.fullName}</p>
+                                    <FontAwesomeIcon className="contact-icon" icon={faFemale} />
+                                    <p>{shop.owner.fullName}</p>
                                 </div>
 
                                 <div className="contact-box">
-                                <FontAwesomeIcon className="contact-icon" icon={faMobileAlt} />
-                                <p>{shop.owner.contact.phone}</p>
+                                    <FontAwesomeIcon className="contact-icon" icon={faMobileAlt} />
+                                    <p>{shop.owner.contact.phone}</p>
                                 </div>
 
                                 <div className="contact-box">
-                                <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
-                                <p>{shop.owner.contact.email}</p>
+                                    <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
+                                    <p>{shop.owner.contact.email}</p>
                                 </div>
 
                                 <div className="shop-description">
@@ -152,6 +152,10 @@ class _ShopDetails extends Component {
 
                                 </div>
 
+                            </div>
+                            <div className="order-list-box">
+                                {this.state.shop.owner._id === this.props.loggedInUser._id &&
+                                    <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />}
                             </div>
                             <div className="shop-location-box">
 
@@ -164,15 +168,13 @@ class _ShopDetails extends Component {
                                 </div>
 
                             </div>
-                            <div className="order-list-box">
-                                {this.state.shop.owner._id === this.props.loggedInUser._id &&
-                                    <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />}
-                            </div>
+   
                         </div>
-                        <div className="flex">
+                        <div className="bottom-screen-box">
+
                             <div className="reviews-box">
                                 <h3>What they say about us</h3>
-                                <button onClick={this.onToggleReviewModal}>
+                                <button className="open-reviews-btn" onClick={this.onToggleReviewModal}>
                                     {(!this.state.isOpenReviews) ? 'Tell Us What You Think' : `Close review form`}
                                 </button>
                                 <div className={(this.state.isOpenReviews) ? `review-modal` : `hidden`}>
@@ -203,14 +205,14 @@ class _ShopDetails extends Component {
                                                 </Select>
                                             </FormControl>
                                         </div>
-                                        <button onClick={this.onAddReview}>Publish</button>
+                                        <button className="add-review-btn" onClick={this.onAddReview}>Publish</button>
                                     </form>
                                 </div>
-                                {(!shop.reviews) ? <h1>LOADING Reviews....</h1> :
-                                    <ul>
+                                {(!shop.reviews) ? <h1>Loading Reviews...</h1> :
+                                    <ul className="reviews-list">
                                         {shop.reviews.map(review => {
                                             return <li className="review">
-                                                <p>{review.txt}</p>
+                                                <p className="review-text">{review.txt}</p>
                                                 <p><span>Rate: </span>{this.drawStars(review.rate)}</p>
                                                 <p><span>From: </span>{review.by.fullName}</p>
                                             </li>
@@ -219,13 +221,12 @@ class _ShopDetails extends Component {
                                         )}
                                     </ul>}
                             </div>
+                            <div className="pets-box" >
+                                {/* <h2>Our Pets</h2> */}
+                                <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
+                            </div>
+                        </div>
 
-                        </div>
-                        <div className="pets-box" >
-                            <hr/>
-                            {/* <h2>Our Pets</h2> */}
-                            <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
-                        </div>
                     </div>
 
                 }

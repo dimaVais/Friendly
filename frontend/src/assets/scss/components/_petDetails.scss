@@ -208,11 +208,9 @@
 
 .pet-info {
     display: flex;
-    background-color: #fff;
     justify-content: space-between;
     padding: 20px;
-    border-radius: 15px;
-    width: 45%;
+    width: 32%;
 
     .info-icon {
         font-size: 1.7rem;
@@ -250,11 +248,9 @@
 
 .shop-details {
     background-color: #fff;
-    padding: 10px;
-    width: 30%;
+    width: 20%;
     display: inline-block;
-    border-radius: 15px;
-    min-height: 150px;
+    height: 160px;
     display: flex;
     flex-wrap: wrap;
     margin: 0;
@@ -337,7 +333,7 @@
 }
 
     .description-box {
-        width: 60%;
+        width: 50%;
         background-color: #fff;
         border-radius: 15px;
         font-family: roboto, sans-serif;
@@ -388,7 +384,7 @@
 
 .comment-input-box {
     margin-top: 40px;
-    width: 60%;
+    width: 30%;
     display: flex;
 
     .add-comment-btn {
@@ -453,7 +449,7 @@ h2 {
 }
 
 hr {
-    width: 80%;
+    width: 60%;
     border: none;
     border-top: 1px solid rgb(218, 216, 216);
 
