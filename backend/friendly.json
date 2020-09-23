@@ -12,8 +12,8 @@
       "isInRisk": true,
       "shop": {
         "_id": "s101",
-        "fullName": "Freedom Farm",
-        "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg",
+        "fullName": "Hope For Paws",
+        "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",
         "rate": {
           "rating": 4.7,
           "count": 113
@@ -43,7 +43,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 23
+          "count": 27
         },
         {
           "type": "pet",
@@ -94,7 +94,7 @@
           "by": {
             "id": "u101",
             "fullName": "Uma Mitchell",
-            "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg"
+            "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg"
           }
         },
         {
@@ -103,7 +103,7 @@
           "by": {
             "id": "u101",
             "fullName": "Uma Mitchell",
-            "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg"
+            "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg"
           }
         }
       ]
@@ -149,7 +149,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 14
+          "count": 16
         },
         {
           "type": "pet",
@@ -167,7 +167,7 @@
           "by": {
             "id": "u101",
             "fullName": "Uma Mitchell",
-            "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg"
+            "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg"
           }
         },
         {
@@ -177,6 +177,15 @@
             "id": "guest",
             "fullName": "guest"
           }
+        },
+        {
+          "id": "c103",
+          "txt": "Milly!! Amazing!",
+          "by": {
+            "id": "guest",
+            "fullName": "guest"
+          },
+          "createdAt": "09/22/2020"
         }
       ]
     },
@@ -273,7 +282,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 38
+          "count": 39
         },
         {
           "type": "pet",
@@ -298,8 +307,8 @@
       "isInRisk": true,
       "shop": {
         "_id": "s101",
-        "fullName": "Freedom Farm",
-        "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg",
+        "fullName": "Hope For Paws",
+        "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",
         "rate": {
           "rating": 4.7,
           "count": 113
@@ -332,7 +341,7 @@
         },
         {
           "type": "pet",
-          "count": 17
+          "count": 16
         },
         {
           "type": "feed",
@@ -354,7 +363,7 @@
       "shop": {
         "_id": "s106",
         "fullName": "Cats R' Us",
-        "imgUrl": "url",
+        "imgUrl": "https://images-na.ssl-images-amazon.com/images/I/91pF8Pm5nlL._SY355_.jpg",
         "rate": {
           "rating": 4.4,
           "count": 38
@@ -393,7 +402,48 @@
           "count": 23
         }
       ],
-      "comments": []
+      "comments": [
+        {
+          "id": "c101",
+          "txt": "His eyes switching colors!!!",
+          "by": {
+            "id": "guest",
+            "fullName": "Vincent Vega"
+          }
+        },
+        {
+          "id": "c102",
+          "txt": "I love this grey furry friend",
+          "by": {
+            "id": "guest",
+            "fullName": "Amanda Gate"
+          }
+        },
+        {
+          "id": "c103",
+          "txt": "Hey buddy!",
+          "by": {
+            "id": "guest",
+            "fullName": "Warren Dell"
+          }
+        },
+        {
+          "id": "c104",
+          "txt": "He is gorgeous",
+          "by": {
+            "id": "guest",
+            "fullName": "guest"
+          }
+        },
+        {
+          "id": "c105",
+          "txt": "Such a good boy, not!",
+          "by": {
+            "id": "guest",
+            "fullName": "Lilly Miller"
+          }
+        }
+      ]
     },
     {
       "_id": "p148",
@@ -445,6 +495,54 @@
         {
           "type": "feed",
           "count": 9
+        }
+      ],
+      "comments": []
+    },
+    {
+      "_id": "p168",
+      "name": "JoJo",
+      "type": "Other",
+      "adoptedAt": "2020-09-10",
+      "bDate": "2020-09-08",
+      "gender": "Male",
+      "breed": "Red City Rabbit",
+      "imgUrls": [
+        "https://storage.googleapis.com/scratchpay-com-assets/images/How%20Much%20Is%20a%20Pet%20Bunny/how_much_is_a_pet_bunny.jpg",
+        "http://cloudinery.com/img2"
+      ],
+      "isInRisk": false,
+      "shop": {
+        "_id": "s101",
+        "fullName": "Hope For Paws",
+        "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",
+        "rate": {
+          "rating": 4.7,
+          "count": 113
+        }
+      },
+      "size": "Small",
+      "summary": "Energetic fellow. Can only go to a house with another rabbit",
+      "description": "Energetic fellow. Can only go to a house with another rabbit. a carzy little rabbit",
+      "energy": "high",
+      "location": {
+        "address": "Chicago",
+        "lat": 20.9,
+        "lng": 29.44
+      },
+      "createdAt": "9/17/2020, 9:19:40 AM",
+      "reacts": [
+        {
+          "type": "love",
+          "count": 112
+        },
+        {
+          "type": "pet",
+          "count": 6
+        },
+        {
+          "type": "feed",
+          "count": 2
         }
       ],
       "comments": []
@@ -511,9 +609,9 @@
       },
       "shop": {
         "_id": "s101",
-        "name": "Freedom Farm",
+        "name": "Hope For Paws",
         "type": "Shelter",
-        "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg",
+        "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",       
         "rate": 4
       },
       "pet": {
@@ -555,7 +653,7 @@
       },
       "shop": {
         "_id": "s101",
-        "name": "Freedom farm",
+        "name": "Hope For Paws",
         "type": "Shelter"
       },
       "pet": {
@@ -575,7 +673,7 @@
       },
       "shop": {
         "_id": "s101",
-        "name": "Freedom farm",
+        "name": "Hope For Paws",
         "type": "Shelter"
       },
       "pet": {
@@ -596,7 +694,7 @@
       },
       "shop": {
         "_id": "s101",
-        "name": "Freedom farm",
+        "name": "Hope For Paws",
         "type": "Shelter"
       },
       "pet": {
@@ -612,12 +710,20 @@
   "shop": [
     {
       "_id": "s101",
-      "name": "Freedom farm",
+      "name": "Hope For Paws",
       "type": "Shelter",
       "owner": {
         "_id": "u101",
         "fullName": "Uma Mitchell",
-        "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg"
+        "imgUrl": "https://yellowdogblogdotnet.files.wordpress.com/2014/01/spca1.jpg",
+        "contact": {
+          "phone": "947 - 6622218",
+          "email": "uma@hope4paws.com"
+        }
+      },
+      "rate": {
+        "rating": 4.7,
+        "count": 113
       },
       "pets": [
         {
@@ -626,11 +732,15 @@
           "amount": 2
         }
       ],
+      "imgUrls": ["https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",
+        "https://www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-2.jpg",
+        "https://www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-3.jpg"
+      ],
       "title": "Saving lives",
-      "desc": "We are here for the animals",
+      "desc": "We are here for the animals. Everybody here at Hope For Paws are doing this with pure passion. We think we are helping the animals but truth is, they help us much more. Each one of them is a whole world and a great soul. Please, dont wait and reach out, maybe we can find you a new best friend.",
       "location": {
         "name": "Tel Aviv",
-        "lat": 32.0853,
+        "lat": 32.0813,
         "lng": 34.7818
       },
       "reviews": [
@@ -770,7 +880,7 @@
     {
       "_id": "u101",
       "fullName": "Uma Mitchell",
-      "imgUrl": "https://timeoutil-static.s3.eu-central-1.amazonaws.com/media/2017/09/sizes/%D7%97%D7%95%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%A4%D7%A9-%D7%A6%D7%99%D7%9C%D7%95%D7%9D-%D7%A1%D7%A4%D7%99%D7%A8-%D7%9C%D7%95%D7%A1%D7%98%D7%99%D7%92%D7%9E%D7%9F5_P_wo_500_367.jpg",
+      "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",
       "isAdmin": false,
       "isOwner": true,
       "userName": "uma",
