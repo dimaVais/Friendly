@@ -9,9 +9,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
  class _FilterSearch extends Component{
      
  onInputChange=async (ev)=>{
-        const word = ev.target.value
+        const txt = ev.target.value
         
-        await this.props.setFilter({word},()=>this.props.loadPets())        
+        await this.props.setFilter({txt},()=>this.props.loadPets())        
     } 
 render(){
     return (
