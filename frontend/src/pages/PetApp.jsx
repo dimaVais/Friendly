@@ -14,6 +14,7 @@ class _PetApp extends Component {
     }
 
     async componentDidMount() {
+        await this.loadPets();
         // if (this.props.match){
         //     if (this.props.match.params.filterType){
         //         const type=this.props.match.params.filterType
@@ -22,7 +23,8 @@ class _PetApp extends Component {
         // }else{
         //     await this.resetFitler();
         // }
-        await this.loadPets()  
+
+        // await this.loadPets()  
     }
 
    async  componentDidUpdate(prevProps){
@@ -49,7 +51,10 @@ class _PetApp extends Component {
     }
 
     loadPets = async _ => {
+        //loading from props with filter and setting the local state
         await this.props.loadPets(this.props.filterBy);
+        const pets=this.props.pets;
+        await this.setState({...this.state,pets})
     }
 
     onRemove = (id) => {
@@ -58,10 +63,10 @@ class _PetApp extends Component {
     
     render() {
         const {  user } = this.props;
-        if (!this.props.pets) return <h1>Loading...</h1>
+        if (!this.state.pets) return <h1>Loading...</h1>
         return (
             <div> 
-                <PetList pets={this.props.pets} onRemove={this.onRemove} user={user} />
+                <PetList pets={this.state.pets} onRemove={this.onRemove} user={user} />
             </div>
         )
     }

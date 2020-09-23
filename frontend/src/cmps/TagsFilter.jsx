@@ -59,10 +59,8 @@ export class TagsFilter extends Component {
             <div className="tags-modal">
                 <div className="container">
                 <FormGroup>
-                   
                     {this.displayGenderBtns()}
                     <section>
-                        {/* <Input  list="breed" name="breed" autoComplete="off"  type="list" /> */}
 
                         <InputLabel htmlFor="age">Age</InputLabel>
                             <Select
@@ -78,19 +76,6 @@ export class TagsFilter extends Component {
                                 <option value={7}>Grown up</option>
                                 <option value={15}>Old</option>
                             </Select>
-
-                            {/* <InputLabel htmlFor="">Breed</InputLabel>
-
-                        <input list="breed"/>
-
-                                <datalist id="breed">
-                                    <option value="kfj"/>
-                                    <option value="Firefox"/>
-                                    <option value="Google Chrome"/>
-                                    <option value="Opera"/>
-                                    <option value="Safari"/>
-                                </datalist> */}
-                        
                     </section>
                     <section>
                     <InputLabel htmlFor="size">Size</InputLabel>
