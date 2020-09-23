@@ -46,8 +46,8 @@ function filterPets(pets,filterBy){
     console.log('Filter in service:',filterBy);
     if (!filterBy) return pets
     let filteredPets=pets
-    if(filterBy.word){
-        const searchWord = filterBy.word.toLowerCase()
+    if(filterBy.txt){
+        const searchWord = filterBy.txt.toLowerCase()
     
         filteredPets = pets.filter(pet =>{
             if(pet.name.toLowerCase().includes(searchWord) ||

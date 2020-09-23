@@ -13,7 +13,8 @@ export function OrderPreview({ order, onSave, onRemove, isShop }) {
         return orderClass;
     }
 
-    if (!order) return <img className="order-loading" src={require('../assets/img/loading.gif')} />
+    if (!order) return <h3 style={{display: 'none'}}>loading...</h3>
+    // <img className="order-loading" src={require('../assets/img/loading.gif')} />
     return (
         <div className={`order-preview ${orderClass()}`}>
             {

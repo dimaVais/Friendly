@@ -18,23 +18,13 @@ import {CategoryList} from  './CategoryList'
                 gender:'',
                 breed:'',
                 size:'',
-                word:''
+                txt:''
             },
             isModalShown:false,
             tags:[]
         
     }
 
-     async componentDidMount(){
-        // if (this.props.parent && this.props.parent==='hero'){
-        //     console.log(this.props);
-        //     await this.resetFilter();
-        // }
-        // if(this.props.type){
-        //       await this.setState({ ...this.state.filterBy,type:this.props.type })
-        //  }else this.resetFilter();
-        //  await this.setState({parent:this.props.parent});
-    }
    
      onToggleTag=ev=>{
         console.log('toggled:', ev.target.value);
@@ -82,7 +72,7 @@ import {CategoryList} from  './CategoryList'
             gender:'',
             breed:'',
             size:'',
-            word:''
+            txt:''
         },()=>this.props.loadPets())
         await console.log(this.props);
     }
@@ -98,9 +88,12 @@ import {CategoryList} from  './CategoryList'
         return (
             <div className="filter-container flex column align-center">
                 <CategoryList onCategoryChange={this.onFilterChange}/>
-                {/* <FilterSearch onInputChange={this.onInputChange}/> */}
+                    <section className="flex align-center">
+                        <FilterSearch onInputChange={this.onInputChange}/>
+                        { <button className={btnClass}   onClick={this.onToggleFilterModal}>More</button>}
+                    </section>
                 {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onFilterChange={this.onFilterChange} onToggleFilterModal={this.onToggleFilterModal}/>}
-                { <button className={btnClass}   onClick={this.onToggleFilterModal}>More</button>}
+              
             <br/>   
             </div>
         )

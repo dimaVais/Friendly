@@ -5,7 +5,7 @@ const initialState = {
         gender:'',
         breed:'',
         size:'',
-        word:''
+        txt:''
     }
 }
 

@@ -1,10 +1,5 @@
 .search-container{
-    // position: absolute;
-    // width: 30%;
-    // top: 60%;
-    // left: 25%;
-    // transform: translate(-50%, -50%);
-
+ 
     input {
         background-color: rgba(255, 255, 255, 0.747);
         border: none;
@@ -54,6 +49,21 @@
         left: 50%;
         transform: translateX(-50%);
 
+    }
+}
+
+.filter-container{
+    input{
+        width: 450px;
+    }
+
+        .search-icon {
+        color: rgb(129, 129, 129);
+        position: absolute;
+        right: 910px;
+        top: 1065px;
+        font-size: 1.5rem;
+        cursor: pointer;
     }
 }
 

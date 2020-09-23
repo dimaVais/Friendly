@@ -54,9 +54,9 @@ class _PetPreview extends Component {
                     <div className="shop-container">
                         {pet.shop && <Link to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
                         {/* {pet.shop && <h4>{pet.shop.fullName}</h4>} */}
-                        <div className="pet-rate-box">
-                            <span>{pet.reacts[0].type === 'love' ? <FontAwesomeIcon onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="love-icon" icon={faHeart} /> : ''} </span>
-                            {pet.reacts[0].type === 'love' ? <span className="love-count">{pet.reacts[0].count}</span> : ''}
+                        <div onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="pet-rate-box">
+                            <span>{pet.reacts && pet.reacts[0].type === 'love' ? <FontAwesomeIcon  className="love-icon" icon={faHeart} /> : ''} </span>
+                            {pet.reacts &&pet.reacts[0].type === 'love' ? <span className="love-count">{pet.reacts[0].count}</span> : ''}
 
 
                             {/* <FontAwesomeIcon className="star-icon" icon={faStar} />
