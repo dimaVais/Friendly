@@ -17,8 +17,18 @@
             justify-content: space-between;
             align-items: center;
             font-size: 30px;
-            label{
-                
+            
+            &.gender{
+                form{
+                    display: flex;
+                    align-items: center;
+                }
+                input{
+                    display: none;
+                }
+                label{
+                    margin-right: 10px;
+                }
             }
     }
     
