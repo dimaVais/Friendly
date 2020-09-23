@@ -14,14 +14,14 @@ class _PetApp extends Component {
     }
 
     async componentDidMount() {
-        if (this.props.match){
-            if (this.props.match.params.filterType){
-                const type=this.props.match.params.filterType
-                await this.props.setFilter({type})
-            }
-        }else{
-            await this.resetFitler();
-        }
+        // if (this.props.match){
+        //     if (this.props.match.params.filterType){
+        //         const type=this.props.match.params.filterType
+        //         await this.props.setFilter({type})
+        //     }
+        // }else{
+        //     await this.resetFitler();
+        // }
         await this.loadPets()  
     }
 

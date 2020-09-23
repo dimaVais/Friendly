@@ -1,6 +1,7 @@
 .order-list {
-
-    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 130px 0 0;
 
     .order-loading {
         max-width: 30em;
@@ -12,17 +13,21 @@
         right: 2.5%;
         top: 40%;
         width: 30%;
-        height: 30vh;
-        font-size: 2.5rem;
-        background-color: teal;
-        border: solid 3px lightgrey;
+        height: 20vh;
+        font-size: 1.5rem;
+        background-color: rgb(172, 252, 252);
+        border: solid 1px lightgrey;
+
 
     }
 
 }
 
 .order-preview {
-    padding: 5px;
+    width: 350px;
+    display: flex;
+    margin: 15px;
+    align-items: center;
 
     button {
         margin: 5px;
@@ -30,16 +35,32 @@
     }
 
     p {
-        margin: 10px;
+        font-size: 1rem;
     }
+
+
 
     
 
     &.accepted {
-        background-color: rgba(159, 255, 159, 0.199);
+        background-color: rgba(182, 252, 182, 0.199);
     }
 
     &.denied {
-        background-color: rgba(252, 138, 138, 0.281);
+        background-color: rgba(248, 168, 168, 0.281);
     }
+}
+
+a {
+    text-decoration: none;
+}
+
+.accept-order-btn {
+    background-color: rgb(39, 170, 39);
+}
+.reject-order-btn {
+    background-color: rgb(209, 54, 54);
+}
+.pending-order-btn {
+    background-color: rgb(255, 196, 0);
 }

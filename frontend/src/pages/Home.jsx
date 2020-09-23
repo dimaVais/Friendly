@@ -29,7 +29,6 @@ class _Home extends Component {
             <div className="main-container">
                 {/* <div className="hero-background "></div> */}
                 <Hero />
-                <CategoryList />
                 <PetFilter parent="home"/>
 
                 <br/>

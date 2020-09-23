@@ -17,7 +17,7 @@ render(){
     return (
             <div className="search-container">
                 <FontAwesomeIcon className="search-icon" icon={faSearch} />
-                 <input className="search" type="text" name="search" autoComplete="off" placeholder="Find a friend" onChange={(ev)=>this.onInputChange(ev)} />
+                 <input className="search" type="text" name="search" autoComplete="off" placeholder="Find a friend (i.e. small, cat, puppy)" onChange={(ev)=>this.onInputChange(ev)} />
              </div>
         )
 
@@ -34,7 +34,6 @@ const mapDispatchToProps = {
    setFilter,
    loadPets
 }
-
 
 export const FilterSearch = connect(mapStateToProps, mapDispatchToProps)(_FilterSearch)
 

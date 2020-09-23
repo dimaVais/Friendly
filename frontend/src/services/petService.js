@@ -42,35 +42,36 @@ async function remove(petId) {
     await httpService.delete(`${BASE_URL}/${petId}`)
 }
 function filterPets(pets,filterBy){
-   if (!filterBy) return pets
-    
-   let filtered = pets.filter(pet=>{
 
-     return pet.type.toLowerCase().includes(filterBy.type)
+    console.log('Filter in service:',filterBy);
+    if (!filterBy) return pets
+    let filteredPets=pets
+    if(filterBy.word){
+        const searchWord = filterBy.word.toLowerCase()
+    
+        filteredPets = pets.filter(pet =>{
+            if(pet.name.toLowerCase().includes(searchWord) ||
+             pet.type.toLowerCase().includes(searchWord)||
+             pet.gender.toLowerCase().includes(searchWord)||
+             pet.size.toLowerCase().includes(searchWord)||
+             pet.summary.toLowerCase().includes(searchWord)||
+             pet.description.toLowerCase().includes(searchWord)||
+             pet.shop.fullName.toLowerCase().includes(searchWord)) return pet
+        })
+
+    }
+    
+    filteredPets = filteredPets.filter(pet=>{
+        
+        return pet.type.toLowerCase().includes(filterBy.type)
    })
+     filteredPets = filteredPets.filter(pet=>{
+        
+        return pet.gender.toLowerCase().includes(filterBy.gender)
+   })
+
    
-    // const filtered = pets.filter(pet=>{
-    //     let isFit=true
-    //     for(const key in filterBy){
-    //         if(key==='word' && filterBy[key]){
-    //             const wordKeys=['name','type','gender','size','summary','description']
-    //             let isFitWord=false;
-    //             wordKeys.map(wordKey=>{
-    //                 if (pet[wordKey].toLowerCase().includes(filterBy[key].toLowerCase())){
-    //                     isFitWord=true; 
-    //                 }
-    //             })
-    //     isFit=isFitWord;
-    //         } else if(typeof filterBy[key]==='string' && typeof pet[key]==='string') {
-    //             if (!pet[key].toLowerCase().includes(filterBy[key].toLowerCase())){
-    //                 isFit=false;
-    //                 break
-    //             }
-    //         }
-    //     }
-    //     if (isFit)return pet;
-    // })
-    return filtered
+    return filteredPets
 }
 function _makeId(length = 6) {
     var txt = '';

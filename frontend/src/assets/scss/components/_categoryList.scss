@@ -18,6 +18,9 @@
             // box-shadow: inset 0px -1px 10px -1px rgba(66, 67, 136, 0.6);
             transition: box-shadow 0.3s
         }
+        &.pressed{
+            background-color: lightgray;
+        }
     }
 
 

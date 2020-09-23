@@ -20,7 +20,7 @@
         }
       },
       "summary": "Energetic and happy dog",
-      "description": "One of the best dogs we have here. Need a lot of attention and love but be sure you will get it back, big time.",
+      "description": "One of the best dogs we have here. Need a lot of attention and love but be sure you will get it back, big time. The breed is a prominent participant in conformation shows for purebred dogs. The Golden Retriever is popular as a disability assistance dog, such as being a guide dog for the blind and a hearing dog for the deaf.",
       "location": {
         "address": "Hashomer 10, Ramat Gan",
         "lat": 23.9,
@@ -43,7 +43,7 @@
       "reacts": [
         {
           "type": "love",
-          "count": 27
+          "count": 28
         },
         {
           "type": "pet",
@@ -611,7 +611,7 @@
         "_id": "s101",
         "name": "Hope For Paws",
         "type": "Shelter",
-        "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",       
+        "imgUrl": "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",
         "rate": 4
       },
       "pet": {
@@ -622,8 +622,8 @@
           "http://cloudinery.com/img2"
         ]
       },
-      "status": "accepted",
-      "updatedAt": "9/20/2020, 5:55:15 PM"
+      "status": "pending",
+      "updatedAt": "9/23/2020, 9:35:26 AM"
     },
     {
       "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
@@ -660,51 +660,10 @@
         "_id": "p142",
         "name": "Doly"
       },
-      "status": "Pending",
-      "_id": "nPAmdU",
-      "createdAt": "9/21/2020, 2:53:14 PM"
-    },
-    {
-      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
-      "buyer": {
-        "_id": "u102",
-        "fullName": "Beth Blake",
-        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
-      },
-      "shop": {
-        "_id": "s101",
-        "name": "Hope For Paws",
-        "type": "Shelter"
-      },
-      "pet": {
-        "_id": "p142",
-        "name": "Doly"
-      },
-      "status": "accepted",
-      "_id": "MK3MDp",
-      "createdAt": "9/21/2020, 2:34:03 PM",
-      "updatedAt": "9/21/2020, 2:34:52 PM"
-    },
-    {
-      "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
-      "buyer": {
-        "_id": "u102",
-        "fullName": "Beth Blake",
-        "imgUrl": "https://www.oregonlive.com/resizer/CI_DI9cMXK8XxR05dAOnL5NJpYs=/1280x0/smart/cloudfront-us-east-1.images.arcpublishing.com/advancelocal/6PWAWGTKTFHOZF4VJALHFHE3VU.png"
-      },
-      "shop": {
-        "_id": "s101",
-        "name": "Hope For Paws",
-        "type": "Shelter"
-      },
-      "pet": {
-        "_id": "p142",
-        "name": "Doly"
-      },
       "status": "pending",
-      "_id": "u1U7ta",
-      "createdAt": "9/21/2020, 3:17:46 PM",
-      "updatedAt": "9/21/2020, 3:21:32 PM"
+      "_id": "nPAmdU",
+      "createdAt": "9/21/2020, 2:53:14 PM",
+      "updatedAt": "9/23/2020, 9:35:24 AM"
     }
   ],
   "shop": [
@@ -732,7 +691,8 @@
           "amount": 2
         }
       ],
-      "imgUrls": ["https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",
+      "imgUrls": [
+        "https://i0.wp.com/www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-1.jpg",
         "https://www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-2.jpg",
         "https://www.vanir.com/wp-content/uploads/2018/02/vcm-placer-county-animal-services-3.jpg"
       ],
