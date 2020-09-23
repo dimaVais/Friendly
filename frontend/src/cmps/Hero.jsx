@@ -11,7 +11,7 @@ export class Hero extends Component {
                 <div className="hero-content">
                     <h1 className="hero-heading-up"><span className="span">Friendly.</span> Adopt a <span className="span">pet</span> </h1>
                     <h1 className="hero-heading">Discover your next best friend</h1>
-                    <FilterSearch/>
+                    <FilterSearch />
                 </div>
             </div>
         )

@@ -159,7 +159,7 @@ class _PetDetails extends Component {
                 <div className="pet-details-box">
                     <div className="pet-details-header">
                         <h2 className="pet-details-heading">{pet.name}</h2>
-                        <button className="adoption-btn">Adopt</button>
+                        <button onClick={this.onAdopt} className="adoption-btn">Adopt</button> 
                     </div>
 
                     <div className="pet-details-img-box">
@@ -255,13 +255,9 @@ class _PetDetails extends Component {
                     </div>
                     <hr />
                     <div className="comments-box">
-                        {/* <h2>{this.state.pet.name}'s comments:</h2> */}
                         <div className="comment-input-box">
-                            {/* <label htmlFor=""> */}
                             <TextField name="txt" fullWidth="true" value={this.state.currComment} placeholder="Add Comment Here" onChange={this.handleCommentInput} />
-                            {/* <textarea name="txt" rows="5" cols="50" value={this.state.currComment}
-                                    placeholder="Add Comment Here" onChange={this.handleCommentInput}></textarea>
-                            </label> */}
+       
                             <button className="add-comment-btn" onClick={this.onComment}>Add</button>
                         </div>
                         <ul className="comment-list">
@@ -269,7 +265,7 @@ class _PetDetails extends Component {
                                 (pet.comments) ?
                                     pet.comments.map(comment => {
                                         return <li className="single-comment-box">
-                                            <div className="flex column comment-box">
+                                            <div className="flex comment-box">
                                                 {(comment.by.imgUrl) ? <img src={comment.by.imgUrl} alt="" /> : ""}
 
                                                 {(comment.by.id === 'guest') ? <img src={"https://images.macrumors.com/t/x_zUFqghBUNBxVUZN_dYoKF3D9g=/1600x0/article-new/2019/04/guest-user-250x250.jpg"} alt="" /> : ""}

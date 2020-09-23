@@ -1,5 +1,5 @@
 .pet-details-main-container {
-    width: 70%;
+    width: 960px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -115,14 +115,13 @@
 }
 
 .pet-details-box {
-    width: 95%;
+    width: 100%;
 }
 
 .pet-details-img-box {
     display: grid;
-    // width: 80vw;
     height: 60vh;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 50%);
     grid-gap: 10px;
 }
@@ -203,14 +202,13 @@
 .shop-and-pet-info {
     display: flex;
     justify-content: space-between;
-    width: 103%;
 }
 
 .pet-info {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    width: 32%;
+    width: 350px;
+    margin-top: 20px;
 
     .info-icon {
         font-size: 1.7rem;
@@ -248,8 +246,7 @@
 
 .shop-details {
     background-color: #fff;
-    width: 20%;
-    display: inline-block;
+    width: 300px;
     height: 160px;
     display: flex;
     flex-wrap: wrap;
@@ -337,7 +334,6 @@
         background-color: #fff;
         border-radius: 15px;
         font-family: roboto, sans-serif;
-        padding: 20px;
         line-height: 1.8;
 
 
@@ -403,11 +399,13 @@
     }
 }
 
+.comment-list {
+    padding: 0;
+}
+
 .single-comment-box {
     width: 100%;
-    margin-bottom: 10px;
-    padding: 15px;
-
+    border-bottom: 1px solid #ccc;
 
 
     p {
@@ -418,11 +416,14 @@
 .comment-box{
 
     justify-content: flex-start ;
+    align-items: center;
+    margin: 15px 0;
 
     img{
-        max-width:30px;
-        max-height: 30px;
+        max-width: 35px;
+        max-height: 35px;
         border-radius: 50%;
+        margin-right: 10px;
     }
 }
 
