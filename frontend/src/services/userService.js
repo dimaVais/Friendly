@@ -29,17 +29,14 @@ function update(user) {
 
 async function login(userCred) {
     const res = await httpService.post(`${BASE_URL_AUTH}/login`, userCred);
-    console.log('res',res);
     return res;                              
 }
 
 async function signup(user) {
-    const queryStr =  `?user=Name=${user.fullName}&password=${user.password}`;
     const res = await httpService.post(`user`, user);
     return res[0] 
-    // const user = await httpService.post('auth/signup', userCred)
-    // return _handleLogin(user)
 }
+
 async function logout() {
     await httpService.post('auth/logout');
     sessionStorage.clear();
