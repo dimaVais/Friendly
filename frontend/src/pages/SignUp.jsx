@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Input } from '@material-ui/core';
+import { OutlinedInput } from '@material-ui/core';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import { Geolocation } from '../cmps/Geolocation';
 
-import { signup, getUserById, updateUser } from '../store/actions/userActions'
+import { signup, getUserById, updateUser, login, loadUsers } from '../store/actions/userActions'
 import { saveShop, loadShops } from '../store/actions/shopActions'
-
 
 
 export class _SignUp extends Component {
@@ -40,31 +39,39 @@ export class _SignUp extends Component {
 
     doSignup = async ev => {
         ev.preventDefault();
-        const { userAdopt, userShop } = this.state
-        if (userAdopt) {
-            this.signUpAdopt()
-        } else if (userShop) {
-            this.signUpShop()
-        }
-    }
-
-    signUpAdopt = () => {
-        const { fullName, password, address } = this.state.signupCred;
-        if (!fullName || !password || !address) {
+        const { userAdopt, userShop } = this.state;
+        const { fullName, username, password, address, email, phone } = this.state.signupCred;
+        if (!fullName || !username || !password || !address) {
             return this.setState({ msg: 'All inputs are required!' });
         }
-        const signupCreds = { fullName, password, address };
-        this.props.signup(signupCreds);
-        this.setState({ signupCred: { fullName: '', password: '', address: '' } });
+        const user = {
+            fullName: fullName,
+            username: username,
+            password: password,
+            imgUrl: `https://ui-avatars.com/api/?name=${fullName.substring(0, 1)}+${fullName.substring(fullName.indexOf(' ') + 1, fullName.indexOf(' ') + 2)}`,
+            address: address,
+            email: email,
+            phone: phone,
+            isOwner: userShop,
+            isGuest: false
+        };
+        await this.props.signup(user);
+        await this.props.loadUsers();
+        const lastSignUpUser = this.props.users[this.props.users.length - 1]
+        console.log('userNow:',lastSignUpUser);
+        this.setState({ signupCred: { fullName: '', username: '', password: '', address: '', email: '', phone: '' } });
+        if (userShop) {
+            this.signUpShop(lastSignUpUser);
+        } 
+        this.props.history.push(`/`);
     }
 
-    signUpShop = async () => {
-        const { fullName, name, type, title, desc, locName, lat, lng } = this.state.signupCred;
+    signUpShop = async (currUser) => {
+        const { name, type, title, desc, locName, lat, lng } = this.state.signupCred;
         if (!name || !type || !title || !desc || !locName) {
             return this.setState({ msg: 'All inputs are required!' });
         }
 
-        const currUser = this.props.loggedInUser;
         const owner = {
             _id: currUser._id,
             fullName: currUser.fullName,
@@ -75,11 +82,6 @@ export class _SignUp extends Component {
             lat: parseFloat(lat),
             lng: parseFloat(lng)
         }
-        console.log('locName', locName);
-        console.log('location', location);
-        console.log('lat', lat);
-        console.log('lng', lng);
-
         const signupCreds = { name, type, owner, title, desc, location };
         this.props.saveShop(signupCreds);
         currUser.isOwner = true;
@@ -89,9 +91,9 @@ export class _SignUp extends Component {
                 name: '', type: '', owner: '', title: '', description: '', location: ''
             }
         });
-        await this.props.loadShops();
-        const shopId = this.props.shops.find(shop => { return shop.owner._id === currUser._id })._id;
-        this.props.history.push(`/shop/${shopId}`)
+        // await this.props.loadShops();
+        // const shopId = this.props.shops.find(shop => { return shop.owner._id === currUser._id })._id;
+        // this.props.history.push(`/shop/${shopId}`)
     }
 
     getGeolocation = (latLng) => {
@@ -116,66 +118,57 @@ export class _SignUp extends Component {
                     <button onClick={() => { this.setUserAdopt() }}>Adopt</button>
                     <button onClick={() => { this.setUserShop() }}>Find Adopters</button>
                 </div>
-                {userAdopt &&
-                    <div className="fields-container flex column align-center">
-                        <h3>New Adopter</h3>
-                        <form className="flex column align-center" noValidate onSubmit={this.doSignup}>
-                            <br />
-                            <Input type="text" name="fullName" placeholder="Your Full Name" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
-                            <Input type="password" name="password" placeholder="Password" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
-                            <Input type="text" name="address" placeholder="Address" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input>
-                            {/* <Input type="text" name="address" placeholder="Address" onChange={this.signupHandleChange} value={this.state.signupCred.username}></Input> */}
-
-                            <br />
-                            <button>Signup</button>
-                        </form>
-                    </div>
-                }
-                {userShop && <form className="fields-container flex column align-center" onSubmit={this.doSignup}>
-                    <h3>Please filled out this form so we will be able to get to know you and your animals</h3>
-                    <Input type="text" name="fullName" placeholder="Your Full Name"
-                        value={loggedInUser.fullName} onChange={this.signupHandleChange}>
-                    </Input>
-                    <TextField id="standard-search" label="Search field" type="search" />
-                    <TextField
-                    id="standard-helperText"
-                    label="Helper text"
-                    defaultValue="Default Value"
-                    helperText="Some important text"
-                    />
-                    <Input type="text" name="name" placeholder="Your Shop Name"
-                        onChange={this.signupHandleChange}></Input>
-                    <FormControl>
-                        <InputLabel htmlFor="type">Shop Type:</InputLabel>
-                        <Select
-                            native
-                            onChange={this.signupHandleChange}
-                            inputProps={{
-                                name: "type",
-                            }}>
-                            <option aria-label="None" value="" />
-                            <option value={"shelter"}>Shelter</option>
-                            <option value={"volunteer"}>Volunteer</option>
-                            <option value={"private"}>Private</option>
-                        </Select>
-                    </FormControl>
-                    <Input type="text" name="title" placeholder="Your shop title/catchFrase"
-                        onChange={this.signupHandleChange}></Input>
-                    <TextField
-                        id="standard-textarea"
-                        label="Shop Description:"
-                        placeholder="Your shop short description"
-                        multiline
-                        name="desc"
-                        onChange={this.signupHandleChange}
-                    />
-                    <Geolocation getGeolocation={this.getGeolocation}
-                        signupHandleChange={this.signupHandleChange} />
-                    <button>SAVE</button>
-                </form>
-
-                }
-            </div>
+                <div className="fields-container flex column align-center">
+                    {(userAdopt) ? <h3>New Adopter</h3> :
+                        <h3>Please filled out this form so we will be able to get to know you and your animals</h3>}
+                    <form className="flex column align-center" onSubmit={this.doSignup}>
+                        <div className="flex">
+                            <div className="flex column align-center">
+                                <br />
+                                <OutlinedInput type="text" name="fullName" placeholder="Full Name" onChange={this.signupHandleChange} value={this.state.signupCred.fullName}></OutlinedInput>
+                                <OutlinedInput type="text" name="username" placeholder="User Name" onChange={this.signupHandleChange} value={this.state.signupCred.username}></OutlinedInput>
+                                <OutlinedInput type="password" name="password" placeholder="Password" onChange={this.signupHandleChange} value={this.state.signupCred.password}></OutlinedInput>
+                                <OutlinedInput type="text" name="address" placeholder="Personal Address" onChange={this.signupHandleChange} value={this.state.signupCred.address}></OutlinedInput>
+                                <OutlinedInput type="text" name="email" placeholder="Email" onChange={this.signupHandleChange} value={this.state.signupCred.email}></OutlinedInput>
+                                <OutlinedInput type="text" name="phone" placeholder="Phone" onChange={this.signupHandleChange} value={this.state.signupCred.phone}></OutlinedInput>
+                            </div>
+                            {userShop &&
+                                <div className="flex column align-center">
+                                    <OutlinedInput type="text" name="name" placeholder="Your Shop Name"
+                                        onChange={this.signupHandleChange}></OutlinedInput>
+                                    <FormControl>
+                                        <InputLabel htmlFor="type">Shop Type:</InputLabel>
+                                        <Select
+                                            native
+                                            onChange={this.signupHandleChange}
+                                            inputProps={{
+                                                name: "type",
+                                            }}>
+                                            <option aria-label="None" value="" />
+                                            <option value={"shelter"}>Shelter</option>
+                                            <option value={"volunteer"}>Volunteer</option>
+                                            <option value={"private"}>Private</option>
+                                        </Select>
+                                    </FormControl>
+                                    <OutlinedInput type="text" name="title" placeholder="Your shop title/catchFrase"
+                                        onChange={this.signupHandleChange}></OutlinedInput>
+                                    <OutlinedInput
+                                        id="standard-textarea"
+                                        label="Shop Description:"
+                                        placeholder="Your shop short description"
+                                        multiline
+                                        name="desc"
+                                        onChange={this.signupHandleChange}
+                                    />
+                                    <Geolocation getGeolocation={this.getGeolocation}
+                                        signupHandleChange={this.signupHandleChange} />
+                                    <br />
+                                </div>}
+                        </div>
+                        <button>Signup</button>
+                    </form>
+                </div >
+            </div >
         )
     }
 }
@@ -190,12 +183,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     signup,
+    login,
+    loadUsers,
     saveShop,
     loadShops,
     getUserById,
     updateUser
 };
-
-
 
 export const SignUp = connect(mapStateToProps, mapDispatchToProps)(_SignUp);

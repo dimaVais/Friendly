@@ -42,13 +42,9 @@ class _PetPreview extends Component {
         await this.props.savePet(petToSave);
     }
 
-    isMale = () => {
-        return (this.state.pet.gender === 'Male')
-    }
-
     render() {
-        const pet = this.state.pet
-        if (!pet) return <h1>loading...</h1>
+        const {pet} = (Object.keys(this.state.pet).length === 0)? this.props : this.state;
+        if (!pet || !pet.reacts) return <h1>loading...</h1>
         return (
             <NavLink to={`/details/${pet._id}`}>
                 <div className="pet-preview">
@@ -56,16 +52,16 @@ class _PetPreview extends Component {
                     <div className="card-description">
                         <div className="card-description-header">
                             <h2 className="pet-name">{pet.name}</h2>
-                            {this.isMale() && <FontAwesomeIcon className="pet-gender-male-icon" icon={faMars} />}
-                            {!this.isMale() && <FontAwesomeIcon className="pet-gender-female-icon" icon={faVenus} />}
+                            {(pet.gender === 'Male') && <FontAwesomeIcon className="pet-gender-male-icon" icon={faMars} />}
+                            {(pet.gender !== 'Male') && <FontAwesomeIcon className="pet-gender-female-icon" icon={faVenus} />}
                         </div>
                         <h4>{pet.summary}</h4>
                     </div>
                     <div className="shop-container">
                         {pet.shop && <Link to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
                         {/* {pet.shop && <h4>{pet.shop.fullName}</h4>} */}
-                        <div className="pet-rate-box">
-                            <span>{pet.reacts && pet.reacts[0].type === 'love' ? <FontAwesomeIcon onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="love-icon" icon={faHeart} /> : ''} </span>
+                        <div onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="pet-rate-box">
+                            <span>{pet.reacts && pet.reacts[0].type === 'love' ? <FontAwesomeIcon  className="love-icon" icon={faHeart} /> : ''} </span>
                             {pet.reacts &&pet.reacts[0].type === 'love' ? <span className="love-count">{pet.reacts[0].count}</span> : ''}
 
 

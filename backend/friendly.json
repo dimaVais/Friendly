@@ -623,7 +623,7 @@
         ]
       },
       "status": "pending",
-      "updatedAt": "9/23/2020, 9:35:26 AM"
+      "updatedAt": "9/23/2020, 2:36:51 PM"
     },
     {
       "msg": "Hi, I saw your lovely pet and really wish to adopt it!",
@@ -663,7 +663,7 @@
       "status": "pending",
       "_id": "nPAmdU",
       "createdAt": "9/21/2020, 2:53:14 PM",
-      "updatedAt": "9/23/2020, 9:35:24 AM"
+      "updatedAt": "9/23/2020, 2:36:52 PM"
     }
   ],
   "shop": [
@@ -813,25 +813,6 @@
       },
       "_id": "O4TqNR",
       "createdAt": "9/20/2020, 8:32:11 PM",
-      "pets": [],
-      "reviews": []
-    },
-    {
-      "name": "ere",
-      "type": "shelter",
-      "owner": {
-        "_id": "guest",
-        "fullName": "guest"
-      },
-      "title": "erwer",
-      "desc": "erewr",
-      "location": {
-        "name": "erewr",
-        "lat": null,
-        "lng": null
-      },
-      "_id": "zPMn69",
-      "createdAt": "9/20/2020, 8:44:11 PM",
       "pets": [],
       "reviews": []
     }

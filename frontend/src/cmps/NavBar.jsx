@@ -7,10 +7,6 @@ import { logout } from '../store/actions/userActions';
 
 
 
-
-
-
-
 class _NavBar extends Component {
 
     state = {

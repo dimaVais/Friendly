@@ -54,7 +54,16 @@
 
 .filter-container{
     input{
-        width: 500px;
+        width: 450px;
+    }
+
+        .search-icon {
+        color: rgb(129, 129, 129);
+        position: absolute;
+        right: 910px;
+        top: 1065px;
+        font-size: 1.5rem;
+        cursor: pointer;
     }
 }
 

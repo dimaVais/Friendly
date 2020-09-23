@@ -31,7 +31,6 @@ async function save(order) {
         return res;
 
     } else {
-        order._id = _makeId();
         order.createdAt = new Date(Date.now()).toLocaleString();
         const res = await httpService.post(`${BASE_URL}`, order)
         return res;

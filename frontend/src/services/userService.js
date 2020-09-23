@@ -1,4 +1,6 @@
 import httpService from './httpService'
+const BASE_URL_AUTH = 'auth'
+const BASE_URL_USER = 'user'
 
 export default {
     login,
@@ -26,18 +28,14 @@ function update(user) {
 }
 
 async function login(userCred) {
-    // const user = await httpService.post('auth/login', userCred)
-    // const user = await httpService.get('user', userCred.username)
-    const queryStr =  `?user=Name=${userCred.userName}&password=${userCred.password}`;
-    const res = await httpService.get(`user/${queryStr}`, {
-        params: userCred
-    });
-    return res[0]                               
-    // return _handleLogin(user)
+    const res = await httpService.post(`${BASE_URL_AUTH}/login`, userCred);
+    console.log('res',res);
+    return res;                              
 }
-async function signup(userCred) {
-    const queryStr =  `?user=Name=${userCred.fullName}&password=${userCred.password}`;
-    const res = await httpService.post(`user`, userCred);
+
+async function signup(user) {
+    const queryStr =  `?user=Name=${user.fullName}&password=${user.password}`;
+    const res = await httpService.post(`user`, user);
     return res[0] 
     // const user = await httpService.post('auth/signup', userCred)
     // return _handleLogin(user)
@@ -49,4 +47,13 @@ async function logout() {
 function _handleLogin(user) {
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
+}
+
+function _makeId(length = 6) {
+    var txt = '';
+    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (var i = 0; i < length; i++) {
+        txt += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return txt;
 }

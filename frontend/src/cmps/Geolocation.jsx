@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from '@material-ui/core';
+import { OutlinedInput } from '@material-ui/core';
 
 export class Geolocation extends React.Component {
 
@@ -42,11 +42,11 @@ export class Geolocation extends React.Component {
         if (!latLng) return <h1>LOADING...</h1>
         return (
             <div className="flex column align-center">
-                <Input type="text" name="locName" placeholder="Your Shop Adress"
+                <OutlinedInput type="text" name="locName" placeholder="Your Shop Location"
                     onChange={(event) => {
                         this.setLocToFind(event);
                         this.props.signupHandleChange(event)
-                    }}></Input>
+                    }}/>
             </div>
         )
     }
