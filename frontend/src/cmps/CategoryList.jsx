@@ -12,8 +12,7 @@ export class CategoryList extends Component {
     
 
 
-    disCategories(type){
-        console.log(Object.keys(this.state))
+    displayTypesBtn(type){
         const classStr=this.state[type]?'pressed':'';
         return(
              <img src={require(`../assets/img/category/${type}.png`)} className={classStr} alt="Category" onClick={()=>this.imgClicked(type)}/>
@@ -38,7 +37,7 @@ export class CategoryList extends Component {
         return (
             <div className="category-list">
                 {
-                    Object.keys(this.state).map(type=>this.disCategories(type) )
+                    Object.keys(this.state).map(type=>this.displayTypesBtn(type) )
                 }
             </div>
         )

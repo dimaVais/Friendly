@@ -19,6 +19,32 @@
             font-size: 30px;
             
             &.gender{
+                .pet-gender-male-icon {
+            
+                    color: rgb(79, 127, 216)
+                }
+                .pet-gender-female-icon {
+                    
+                    color: rgb(210, 136, 219)
+                }
+                .pet-gender{
+
+                    width: 40px;
+                    height: 40px;
+                    border: 1px solid lightgray;
+                    border-radius: 10px;
+                    text-align: center;
+                    &:hover{
+                        cursor: pointer;
+                        border: 1px solid black;
+                    }
+                    
+                }
+                .pressed{
+                    background-color: lightgray;
+                }
+
+
                 form{
                     display: flex;
                     align-items: center;
@@ -29,34 +55,12 @@
                 label{
                     margin-right: 10px;
                 }
+                
             }
     }
     
-    .pet-gender{
-
-        width: 40px;
-        height: 40px;
-        border: 1px solid lightgray;
-        border-radius: 10px;
-
-
-        &.pet-gender-male-icon {
-
-            color: rgb(79, 127, 216)
-        }
-        &.pet-gender-female-icon {
-            
-            color: rgb(210, 136, 219)
-        }
-
-        &:hover{
-            cursor: pointer;
-            border: 1px solid black;
-        }
-        &checked{
-            background-color: grey;
-        }
-    }
+    
+    
  }
 
 //  .modal-screen {

@@ -49,7 +49,7 @@ import {CategoryList} from  './CategoryList'
         console.log(this.state.tags);
     }
     
-    onCategoryChange=(obj)=>{
+    onFilterChange=(obj)=>{
         this.updateFilterAndLoad(obj)
     }
      
@@ -97,9 +97,9 @@ import {CategoryList} from  './CategoryList'
         const btnClass=parent==='hero'?'hero-btn more-btn':'gallery-btn more-btn';
         return (
             <div className="filter-container flex column align-center">
-                <CategoryList onCategoryChange={this.onCategoryChange}/>
+                <CategoryList onCategoryChange={this.onFilterChange}/>
                 {/* <FilterSearch onInputChange={this.onInputChange}/> */}
-                {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onCategoryChange={this.onCategoryChange} onToggleFilterModal={this.onToggleFilterModal}/>}
+                {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onFilterChange={this.onFilterChange} onToggleFilterModal={this.onToggleFilterModal}/>}
                 { <button className={btnClass}   onClick={this.onToggleFilterModal}>More</button>}
             <br/>   
             </div>

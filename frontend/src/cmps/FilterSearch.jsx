@@ -35,7 +35,6 @@ const mapDispatchToProps = {
    loadPets
 }
 
-
 export const FilterSearch = connect(mapStateToProps, mapDispatchToProps)(_FilterSearch)
 
 

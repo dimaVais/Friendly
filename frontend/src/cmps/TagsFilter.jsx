@@ -9,7 +9,10 @@ import { faVenus } from '@fortawesome/free-solid-svg-icons'
 export class TagsFilter extends Component {
     
     state={
-        
+        gender:{
+            male:false,
+            female:false
+        }
 
     }
 
@@ -26,9 +29,29 @@ export class TagsFilter extends Component {
             </div>
         )
     }
-    onToggle(){
 
+    onGenderChange=async (gender)=>{
+        let genderDefault={
+            male:false,
+            female:false
+        }
+        genderDefault = {...genderDefault,[gender]:!this.state.gender[gender]}
+        console.log(genderDefault);
+        await this.setState({...this.state,gender:{...genderDefault}})
+        this.props.onFilterChange({'gender':gender})
     }
+
+    displayGenderBtns(){
+        const {gender}=this.state
+        return(
+            <section className="gender">                    
+                <InputLabel htmlFor="">Gender</InputLabel>
+                <div className={gender.male?'pet-gender pressed':'pet-gender'} onClick={()=>this.onGenderChange('male')}><FontAwesomeIcon  className=" pet-gender-male-icon"  icon={faMars} /></div>
+                <div className={gender.female?'pet-gender pressed':'pet-gender'} onClick={()=>this.onGenderChange('female')}><FontAwesomeIcon  className=" pet-gender-female-icon"  icon={faVenus} /></div>
+            </section>
+        )
+    }
+
     render(){
         const tags = ["Kids friendly","Healthy","Energetic","Sterilized"]
 
@@ -36,20 +59,8 @@ export class TagsFilter extends Component {
             <div className="tags-modal">
                 <div className="container">
                 <FormGroup>
-                    {/* <section>
-                        <InputLabel htmlFor="">Animal type</InputLabel>
-                        <Input name="type" autoComplete="off"  type="text" value={this.state.type} />
-
-                    </section> */}
-                    <section className="gender">
-                        <form >
-                            <InputLabel htmlFor="">Gender</InputLabel>
-                            <label htmlFor="male"><FontAwesomeIcon  className="pet-gender pet-gender-male-icon"  icon={faMars} /></label>
-                             <label htmlFor="female"><FontAwesomeIcon name="gender" value="male" className="pet-gender pet-gender-female-icon"  icon={faVenus} /></label> 
-                            <input type="radio" name="gender" id="male" value="male" onChange={this.props.handleChange}/>
-                            <input type="radio" name="gender" id="female" value="female"  onChange={this.props.handleChange}/>
-                        </form>
-                     </section>
+                   
+                    {this.displayGenderBtns()}
                     <section>
                         {/* <Input  list="breed" name="breed" autoComplete="off"  type="list" /> */}
 

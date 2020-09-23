@@ -62,8 +62,13 @@ function filterPets(pets,filterBy){
 
     }
     
+    filteredPets = filteredPets.filter(pet=>{
+        
+        return pet.type.toLowerCase().includes(filterBy.type)
+   })
      filteredPets = filteredPets.filter(pet=>{
-     return pet.type.toLowerCase().includes(filterBy.type)
+        
+        return pet.gender.toLowerCase().includes(filterBy.gender)
    })
 
    
