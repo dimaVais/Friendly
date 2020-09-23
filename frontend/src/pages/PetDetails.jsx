@@ -124,10 +124,9 @@ class _PetDetails extends Component {
                 fullName: user.fullName,
                 imgUrl: user.imgUrl
             },
-            createdAt: this.getTimeToString()
         }
 
-        pet.comments.push(comment);
+        pet.comments.unshift(comment);
         await this.props.savePet(pet);
         this.getComponentData();
         this.setState({ cuurComment: '' })
