@@ -11,7 +11,8 @@ import { loadPets, savePet } from '../store/actions/petActions';
 class _PetPreview extends Component {
 
     state={
-        pet:{}
+        pet:{},
+        isLiked:false
     }
 
     async componentDidMount() {
@@ -23,13 +24,16 @@ class _PetPreview extends Component {
         ev.preventDefault()
         const pet = this.state.pet;
         const updatedReacts=pet.reacts.map(react => {
-            if (react.type === reaction) react.count++
+            if (react.type === reaction){
+
+                react.count+=this.state.isLiked?-1:+1;
+                this.setState({...this.state,isLiked:!this.state.isLiked})
+            }
             return react
         })
-        console.log(updatedReacts);
         await this.setState({...pet,reacts:[...updatedReacts]})
-
-        // const petToSave = await JSON.parse(JSON.stringify(this.state));
+        const petToSave = await JSON.parse(JSON.stringify(this.state.pet));
+        await this.props.savePet(petToSave);
     }
 
     isMale = () => {

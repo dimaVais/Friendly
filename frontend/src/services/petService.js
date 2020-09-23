@@ -48,16 +48,22 @@ function filterPets(pets,filterBy){
     if (!filterBy) return pets
     let filteredPets=pets
     if(filterBy.txt){
-        const searchWord = filterBy.txt.toLowerCase()
-    
-        filteredPets = pets.filter(pet =>{
-            if(pet.name.toLowerCase().includes(searchWord) ||
-             pet.type.toLowerCase().includes(searchWord)||
-             pet.gender.toLowerCase().includes(searchWord)||
-             pet.size.toLowerCase().includes(searchWord)||
-             pet.summary.toLowerCase().includes(searchWord)||
-             pet.description.toLowerCase().includes(searchWord)||
-             pet.shop.fullName.toLowerCase().includes(searchWord)) return pet
+        if (filterBy.txt.charAt(filterBy.txt.length-1)===' '||',') filterBy.txt = filterBy.txt.substring(0,filterBy.txt.length-2)
+        let words = filterBy.txt.split(' ');
+        if (words.length=1) words=filterBy.txt.split(',')
+        words.forEach(word=>{
+            const searchWord = word.toLowerCase()
+        
+            filteredPets = filteredPets.filter(pet =>{
+                if(pet.name.toLowerCase().includes(searchWord) ||
+                 pet.type.toLowerCase().includes(searchWord)||
+                 pet.gender.toLowerCase().includes(searchWord)||
+                 pet.size.toLowerCase().includes(searchWord)||
+                 pet.summary.toLowerCase().includes(searchWord)||
+                 pet.description.toLowerCase().includes(searchWord)||
+                 pet.shop.fullName.toLowerCase().includes(searchWord)) return pet
+            })
+
         })
 
     }
