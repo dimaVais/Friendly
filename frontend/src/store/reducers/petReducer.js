@@ -23,10 +23,13 @@ export function petReducer(state = initialState, action) {
                 pets: [...state.pets, action.petToSave]
             }
         case 'EDIT_PET':
+            console.log('Saved Pet:',action.petToSave._id);
             return {
                 ...state,
                 pets: state.pets.map(pet => {
-                    if (pet._id === action.petToSave._id) pet = action.petToSave;
+                    console.log('Theis is pet:', pet);
+                    if (pet._id === action.petToSave._id) return action.petToSave;
+                    return pet;
                 })
             }
         case 'REMOVE_PET':

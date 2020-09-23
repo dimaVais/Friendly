@@ -26,7 +26,8 @@ export function shopReducer(state = initialState, action) {
             return {
                 ...state,
                 shops: state.shops.map(shop => {
-                    if (shop._id === action.shopToSave._id) shop = action.shopToSave;
+                    if (shop._id === action.shopToSave._id) return action.shopToSave;
+                    return shop;
                 })
             }
         case 'REMOVE_SHOP':

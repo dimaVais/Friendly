@@ -10,42 +10,35 @@ import { loadPets, savePet } from '../store/actions/petActions';
 
 class _PetPreview extends Component {
 
-    state = {
-        pet: {}
+    state={
+        pet:{},
+        isLiked:false
     }
 
     async componentDidMount() {
-        this.setState({ pet: { ...this.props.pet } })
+       await this.setState({ pet: { ...this.props.pet } })
     }
 
-    async componentDidUpdate() {
-        const newReacts = this.state.pet.reacts;
-        const oldeReacts = this.props.pet.reacts;
-        oldeReacts.forEach(async (react, idx) => {
-            if (oldeReacts[idx].count !== newReacts[idx].count) {
-                await this.props.savePet(this.state.pet);
-                await this.props.loadPets();
-            }
-        });
-    }
 
     onUpdateReaction = async (ev, reaction) => {
         ev.preventDefault()
-        const pet = this.props.pet;
-        const reacts = pet.reacts.map(react => {
-            if (react.type === reaction) react.count++
+        const pet = this.state.pet;
+        const updatedReacts=pet.reacts.map(react => {
+            if (react.type === reaction){
+
+                react.count+=this.state.isLiked?-1:+1;
+                this.setState({...this.state,isLiked:!this.state.isLiked})
+            }
             return react
         })
-        this.setState({ pet: { ...this.props.pet } });
-    }
-
-    isMale = () => {
-        return (this.props.pet.gender === 'Male') ? true : false
+        await this.setState({...pet,reacts:[...updatedReacts]})
+        const petToSave = await JSON.parse(JSON.stringify(this.state.pet));
+        await this.props.savePet(petToSave);
     }
 
     render() {
-        const { pet } = (Object.keys(this.state.pet).length === 0)? this.state.pet : this.props
-        if (!pet) return <h1>loading...</h1>
+        const {pet} = (Object.keys(this.state.pet).length === 0)? this.props : this.state;
+        if (!pet || !pet.reacts) return <h1>loading...</h1>
         return (
             <NavLink to={`/details/${pet._id}`}>
                 <div className="pet-preview">
@@ -53,8 +46,8 @@ class _PetPreview extends Component {
                     <div className="card-description">
                         <div className="card-description-header">
                             <h2 className="pet-name">{pet.name}</h2>
-                            {this.isMale() && <FontAwesomeIcon className="pet-gender-male-icon" icon={faMars} />}
-                            {!this.isMale() && <FontAwesomeIcon className="pet-gender-female-icon" icon={faVenus} />}
+                            {(pet.gender === 'Male') && <FontAwesomeIcon className="pet-gender-male-icon" icon={faMars} />}
+                            {(pet.gender !== 'Male') && <FontAwesomeIcon className="pet-gender-female-icon" icon={faVenus} />}
                         </div>
                         <h4>{pet.summary}</h4>
                     </div>
