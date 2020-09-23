@@ -127,7 +127,7 @@ class _PetDetails extends Component {
             createdAt: this.getTimeToString()
         }
 
-        pet.comments.push(comment);
+        pet.comments.unshift(comment);
         await this.props.savePet(pet);
         this.getComponentData();
         this.setState({ cuurComment: '' })
