@@ -9,7 +9,6 @@ export const petService = {
 }
 
 async function query(filterBy) {
-    console.log(filterBy);
     let queryStr='';
     //todo - change after building backend
     // if (filterBy){
@@ -46,40 +45,40 @@ function filterPets(pets,filterBy){
 
     console.log('Filter in service:',filterBy);
     if (!filterBy) return pets
+
     let filteredPets=pets
     if(filterBy.txt){
-        if (filterBy.txt.charAt(filterBy.txt.length-1)===' '||',') filterBy.txt = filterBy.txt.substring(0,filterBy.txt.length-2)
-        let words = filterBy.txt.split(' ');
-        if (words.length=1) words=filterBy.txt.split(',')
-        words.forEach(word=>{
-            const searchWord = word.toLowerCase()
-        
-            filteredPets = filteredPets.filter(pet =>{
-                if(pet.name.toLowerCase().includes(searchWord) ||
-                 pet.type.toLowerCase().includes(searchWord)||
-                 pet.gender.toLowerCase().includes(searchWord)||
-                 pet.size.toLowerCase().includes(searchWord)||
-                 pet.summary.toLowerCase().includes(searchWord)||
-                 pet.description.toLowerCase().includes(searchWord)||
-                 pet.shop.fullName.toLowerCase().includes(searchWord)) return pet
-            })
+        if (filterBy.txt.charAt(filterBy.txt.length-1)===' '||',') filterBy.txt = filterBy.txt.substring(0,filterBy.txt.length-1)
 
+        let words = filterBy.txt.split(' ');
+        if (words.length=1) words=filterBy.txt.split(',');
+        words.forEach(word=>{
+            console.log('word is',word);
+            // const searchWord = filterBy.txt.toLowerCase()
+            filteredPets = filteredPets.filter(pet =>{
+                if(pet.name.toLowerCase().includes(word) ||
+                 pet.type.toLowerCase().includes(word)||
+                 pet.gender.toLowerCase().includes(word)||
+                 pet.size.toLowerCase().includes(word)||
+                 pet.summary.toLowerCase().includes(word)||
+                 pet.description.toLowerCase().includes(word)||
+                 pet.shop.fullName.toLowerCase().includes(word)) return pet
+            })
+        })
+    }
+
+    filteredPets = filteredPets.filter(pet=>{
+        return pet.type.toLowerCase().includes(filterBy.type)
         })
 
-    }
-    
     filteredPets = filteredPets.filter(pet=>{
-        
-        return pet.type.toLowerCase().includes(filterBy.type)
-   })
-     filteredPets = filteredPets.filter(pet=>{
-        
         return pet.gender.toLowerCase().includes(filterBy.gender)
-   })
+        })
 
-   
+    console.log(filteredPets);
     return filteredPets
 }
+
 function _makeId(length = 6) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
