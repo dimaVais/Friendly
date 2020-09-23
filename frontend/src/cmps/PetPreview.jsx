@@ -10,20 +10,33 @@ import { loadPets, savePet } from '../store/actions/petActions';
 
 class _PetPreview extends Component {
 
+    state = {
+        pet: {}
+    }
 
     async componentDidMount() {
         this.setState({ pet: { ...this.props.pet } })
     }
 
+    async componentDidUpdate() {
+        const newReacts = this.state.pet.reacts;
+        const oldeReacts = this.props.pet.reacts;
+        oldeReacts.forEach(async (react, idx) => {
+            if (oldeReacts[idx].count !== newReacts[idx].count) {
+                await this.props.savePet(this.state.pet);
+                await this.props.loadPets();
+            }
+        });
+    }
+
     onUpdateReaction = async (ev, reaction) => {
         ev.preventDefault()
-        const pet = this.state.pet;
-        pet.reacts.map(react => {
+        const pet = this.props.pet;
+        const reacts = pet.reacts.map(react => {
             if (react.type === reaction) react.count++
             return react
         })
-        this.props.savePet(pet)
-        await this.props.loadPets();
+        this.setState({ pet: { ...this.props.pet } });
     }
 
     isMale = () => {
@@ -31,7 +44,7 @@ class _PetPreview extends Component {
     }
 
     render() {
-        const { pet } = this.props
+        const { pet } = (Object.keys(this.state.pet).length === 0)? this.state.pet : this.props
         if (!pet) return <h1>loading...</h1>
         return (
             <NavLink to={`/details/${pet._id}`}>
