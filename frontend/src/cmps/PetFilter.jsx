@@ -25,20 +25,13 @@ import {CategoryList} from  './CategoryList'
         
     }
 
-   
-     onToggleTag=ev=>{
-        console.log('toggled:', ev.target.value);
-        const tag = ev.target.value;
-        let tags = [...this.state.tags]
-        if (tags.includes(tag)){
-            tags.splice(tags.indexOf(tag),1);
-        }else{
-            tags.push(tag)
-        }
-        this.setState({tags})
-        console.log(this.state.tags);
-    }
+   componentDidMount(){
+       this.setState({...this.state,filterBy:this.props.filterBy})
+   }
     
+   componentDidUpdate(){
+       console.log(this.props.pets);
+   }
     onFilterChange=(obj)=>{
         this.updateFilterAndLoad(obj)
     }
@@ -65,30 +58,42 @@ import {CategoryList} from  './CategoryList'
     }
    
     resetFilter=async()=>{
-        await console.log(this.props);
-      
-        await this.props.setFilter({
+        
+        await this.setState({...this.state.filterBy,
             type:'',
             gender:'',
             breed:'',
             size:'',
             txt:''
-        },()=>this.props.loadPets())
+        });
+        this.props.setFilter(this.state.filterBy,()=>this.props.loadPets())
     }
 
     async updateFilterAndLoad(obj){
         await this.props.setFilter({...this.props.filterBy,...obj},()=>this.loadPets())
     }
+    onToggleTag=ev=>{
+        console.log('toggled:', ev.target.value);
+        const tag = ev.target.value;
+        let tags = [...this.state.tags]
+        if (tags.includes(tag)){
+            tags.splice(tags.indexOf(tag),1);
+        }else{
+            tags.push(tag)
+        }
+        this.setState({tags})
+        console.log(this.state.tags);
+    }
 
     render() {
         const {isModalShown, parent} = this.state
-        const btnClass=parent==='hero'?'hero-btn more-btn':'gallery-btn more-btn';
+        // const btnClass=parent==='hero'?'hero-btn more-btn':'gallery-btn more-btn';
         return (
             <div className="filter-container flex column align-center">
                 <CategoryList onCategoryChange={this.onFilterChange}/>
-                    <section className="flex align-center">
+                    <section className="search-container flex space-around">
                         <FilterSearch onInputChange={this.onInputChange}/>
-                        { <button className={btnClass}   onClick={this.onToggleFilterModal}>More</button>}
+                        { <button className="more-btn"  onClick={this.onToggleFilterModal}>More</button>}
                     </section>
                 {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onFilterChange={this.onFilterChange} onToggleFilterModal={this.onToggleFilterModal}/>}
               

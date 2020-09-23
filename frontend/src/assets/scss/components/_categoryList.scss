@@ -19,7 +19,8 @@
             transition: box-shadow 0.3s
         }
         &.pressed{
-            background-color: lightgray;
+            filter: invert(100%);
+            background-color: #003c98;
         }
     }
 

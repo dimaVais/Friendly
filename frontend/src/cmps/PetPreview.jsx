@@ -22,8 +22,6 @@ class _PetPreview extends Component {
         if (prevProps!=this.props){
             await this.setState({ pet: { ...this.props.pet } })
         }
-        console.log('Pet in preview:',this.state.pet);
-
     }
 
     onUpdateReaction = async (ev, reaction) => {
