@@ -1,25 +1,47 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { Component } from 'react'
 
 
-export function CategoryList() {
-    const categories=["dog","cat","farm","other"];
+export class CategoryList extends Component {
+    
+    state={
+        dog:false,
+        cat:false,
+        farm:false,
+        other:false
+    }
+    
 
 
-    function disCategories(category){
+    disCategories(type){
+        console.log(Object.keys(this.state))
+        const classStr=this.state[type]?'pressed':'';
         return(
-            // <NavLink to={`pet/${category}`}><img src={require(`../assets/img/category/${category}.png`)} alt="Category"/></NavLink> 
-             <img src={require(`../assets/img/category/${category}.png`)} alt="Category" onClick={imgClicked}/>
+             <img src={require(`../assets/img/category/${type}.png`)} className={classStr} alt="Category" onClick={()=>this.imgClicked(type)}/>
         )
     }
-    function imgClicked(){
+     imgClicked=async (type)=>{
+         const state= {
+            dog:false,
+            cat:false,
+            farm:false,
+            other:false
+         }
+        if(this.state[type]) {
+            await this.setState({...state})
+            type='';
+        }else await this.setState({...state,[type]:!this.state.type})
+        this.props.onCategoryChange({'type':type})
         
     }
-    return (
-        <div className="category-list">
-            {
-                categories.map(category=>disCategories(category) )
-            }
-        </div>
-    )
+    render(){
+        
+        return (
+            <div className="category-list">
+                {
+                    Object.keys(this.state).map(type=>this.disCategories(type) )
+                }
+            </div>
+        )
+
+    }
 }

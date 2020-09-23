@@ -49,18 +49,22 @@ import {CategoryList} from  './CategoryList'
         console.log(this.state.tags);
     }
     
-    handleChange = ({ target }) => {
-        console.log(target);
-       
-        const field = target.name;
-        const value = target.type === 'number' ? +target.value : target.value;
-        if (field==='minAge'){
-            const minBDate = new Date()- value;
-            console.log();
-        }
-        if (field==='maxAge'){
-            const maxBDate = new Date()- value;
-        }
+    onCategoryChange=(obj)=>{
+        this.updateFilterAndLoad(obj)
+    }
+     
+    handleChange = (ev) => {
+       console.log(ev);
+
+        // const field = target.name;
+        // const value = target.type === 'number' ? +target.value : target.value;
+        // if (field==='minAge'){
+        //     const minBDate = new Date()- value;
+        //     console.log();
+        // }
+        // if (field==='maxAge'){
+        //     const maxBDate = new Date()- value;
+        // }
         
     }
     onToggleFilterModal =()=>{
@@ -83,8 +87,9 @@ import {CategoryList} from  './CategoryList'
         await console.log(this.props);
     }
 
-    async updateFilter(obj){
-        await this.props.setFilter({...this.props.filterBy,obj},()=>this.loadPets())
+    async updateFilterAndLoad(obj){
+        console.log(obj);
+        await this.props.setFilter({...this.props.filterBy,...obj},()=>this.loadPets())
     }
 
     render() {
@@ -92,9 +97,9 @@ import {CategoryList} from  './CategoryList'
         const btnClass=parent==='hero'?'hero-btn more-btn':'gallery-btn more-btn';
         return (
             <div className="filter-container flex column align-center">
-                <CategoryList handleChange={this.handleChange}/>
+                <CategoryList onCategoryChange={this.onCategoryChange}/>
                 {/* <FilterSearch onInputChange={this.onInputChange}/> */}
-                {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} handleChange={this.handleChange} onToggleFilterModal={this.onToggleFilterModal}/>}
+                {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onCategoryChange={this.onCategoryChange} onToggleFilterModal={this.onToggleFilterModal}/>}
                 { <button className={btnClass}   onClick={this.onToggleFilterModal}>More</button>}
             <br/>   
             </div>
