@@ -74,11 +74,9 @@ import {CategoryList} from  './CategoryList'
             size:'',
             txt:''
         },()=>this.props.loadPets())
-        await console.log(this.props);
     }
 
     async updateFilterAndLoad(obj){
-        console.log(obj);
         await this.props.setFilter({...this.props.filterBy,...obj},()=>this.loadPets())
     }
 

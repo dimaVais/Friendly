@@ -124,7 +124,6 @@ class _PetDetails extends Component {
                 fullName: user.fullName,
                 imgUrl: user.imgUrl
             },
-            createdAt: this.getTimeToString()
         }
 
         pet.comments.unshift(comment);
