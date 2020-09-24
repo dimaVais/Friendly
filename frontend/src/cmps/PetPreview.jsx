@@ -46,6 +46,7 @@ class _PetPreview extends Component {
         return (
             <NavLink to={`/details/${pet._id}`}>
                 <div className="pet-preview">
+                {pet.isAdopted && <div class="ribbon ribbon-top-right"><span>Adopted</span></div>}
                     <img src={(pet.imgUrls) ? pet.imgUrls[0] : ''} alt="pet" />
                     <div className="card-description">
                         <div className="card-description-header">
@@ -57,7 +58,6 @@ class _PetPreview extends Component {
                     </div>
                     <div className="shop-container">
                         {pet.shop && <Link to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
-                        {/* {pet.shop && <h4>{pet.shop.fullName}</h4>} */}
                         <div onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="pet-rate-box">
                             <span>{pet.reacts && pet.reacts[0].type === 'love' ? <FontAwesomeIcon  className="love-icon" icon={faHeart} /> : ''} </span>
                             {pet.reacts &&pet.reacts[0].type === 'love' ? <span className="love-count">{pet.reacts[0].count}</span> : ''}

@@ -80,7 +80,7 @@ class _ShopDetails extends Component {
             imgUrl: user.imgUrl
         }
         console.log('review', review);
-        shop.reviews.push(review);
+        shop.reviews.unshift(review);
         await this.props.saveShop(shop);
         this.loadShopData();
     }
@@ -131,9 +131,9 @@ class _ShopDetails extends Component {
                         </div>
                         <div className="top-screen-box">
                             <div className="shop-details-section">
-
+                                <div className="owner-details">
                                 <img className="shop-owner-img" src={shop.owner.imgUrl} />
-
+                                <div className="owner-contact"> 
                                 <div className="contact-box">
                                     <FontAwesomeIcon className="contact-icon" icon={faFemale} />
                                     <p>{shop.owner.fullName}</p>
@@ -148,6 +148,11 @@ class _ShopDetails extends Component {
                                     <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
                                     <p>{shop.owner.contact.email}</p>
                                 </div>
+                                </div>
+
+                                </div>
+
+
 
                                 <div className="shop-description">
                                     <p>{shop.desc}</p>
@@ -157,20 +162,13 @@ class _ShopDetails extends Component {
                             </div>
                             <div className="order-list-box">
                                 {this.state.shop.owner._id === this.props.loggedInUser._id &&
-                                    <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />}
+                                    <div>
+                                        <h3 className="adoption-requests-heading">Adoption Requests</h3>
+                                        <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />
+                                    </div>}
                             </div>
-                            <div className="shop-location-box">
 
-                                <div className="map-container">
-                                    <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
-                                </div>
-                                <FontAwesomeIcon className="arrow-icon" icon={faAngleDoubleUp} />
-                                <div className="shop-location-name">
-                                    <h2>We are located at {shop.location.name}</h2>
-                                </div>
 
-                            </div>
-   
                         </div>
                         <div className="bottom-screen-box">
 
@@ -223,11 +221,26 @@ class _ShopDetails extends Component {
                                         )}
                                     </ul>}
                             </div>
-                            <div className="pets-box" >
-                                {/* <h2>Our Pets</h2> */}
+
+                            <div className="shop-location-box">
+
+                                <div className="map-container">
+                                    <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
+                                </div>
+                                <FontAwesomeIcon className="arrow-icon" icon={faAngleDoubleUp} />
+                                <div className="shop-location-name">
+                                    <h2>We are located at {shop.location.name}</h2>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                        <div className="pets-box" >
+                                <h2 className="our-pets-heading">Our Pets</h2>
                                 <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
                             </div>
-                        </div>
 
                     </div>
 

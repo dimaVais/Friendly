@@ -93,7 +93,7 @@ import {CategoryList} from  './CategoryList'
                 <CategoryList onCategoryChange={this.onFilterChange}/>
                     <section className="search-container flex space-around">
                         <FilterSearch onInputChange={this.onInputChange}/>
-                        { <button className="more-btn"  onClick={this.onToggleFilterModal}>More</button>}
+                        {/* { <button className="more-btn"  onClick={this.onToggleFilterModal}>More</button>} */}
                     </section>
                 {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onFilterChange={this.onFilterChange} onToggleFilterModal={this.onToggleFilterModal}/>}
               
