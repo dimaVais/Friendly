@@ -47,7 +47,7 @@ function filterPets(pets,filterBy){
 
     let filteredPets=pets
     if(filterBy.txt){
-        if (filterBy.txt.charAt(filterBy.txt.length-1)===' '||',') filterBy.txt = filterBy.txt.substring(0,filterBy.txt.length-1)
+        if (filterBy.txt.charAt(filterBy.txt.length-1)===(' '||',')) filterBy.txt = filterBy.txt.substring(0,filterBy.txt.length)
 
         let words = filterBy.txt.split(' ');
         if (words.length=1) words=filterBy.txt.split(',');

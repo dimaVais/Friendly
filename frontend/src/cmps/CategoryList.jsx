@@ -15,7 +15,7 @@ export class CategoryList extends Component {
     displayTypesBtn(type){
         const classStr=this.state[type]?'pressed':'';
         return(
-             <img src={require(`../assets/img/category/${type}.png`)} className={classStr} alt="Category" onClick={()=>this.imgClicked(type)}/>
+             <img key={type} src={require(`../assets/img/category/${type}.png`)} className={classStr} alt="Category" onClick={()=>this.imgClicked(type)}/>
         )
     }
      imgClicked=async (type)=>{

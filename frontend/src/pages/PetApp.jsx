@@ -65,7 +65,8 @@ class _PetApp extends Component {
         const {  user } = this.props;
         if (!this.state.pets) return <h1>Loading...</h1>
         return (
-            <div> 
+            <div className="pets-container"> 
+                <div id="center"></div>
                 <PetList pets={this.state.pets} onRemove={this.onRemove} user={user} />
             </div>
         )

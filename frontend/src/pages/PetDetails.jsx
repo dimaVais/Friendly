@@ -16,6 +16,7 @@ import { faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons'
 import { faVenusMars } from '@fortawesome/free-solid-svg-icons'
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
 import { TextField } from '@material-ui/core';
+import { animateScroll as scroll } from "react-scroll";
 
 
 
@@ -32,6 +33,7 @@ class _PetDetails extends Component {
 
     async componentDidMount() {
         this.getComponentData();
+        scroll.scrollToTop();
     }
 
     async getComponentData() {
