@@ -74,6 +74,16 @@ function filterPets(pets,filterBy){
         return pet.gender.toLowerCase().includes(filterBy.gender)
         })
 
+    if (filterBy.distance.range){
+        const geocoder = require('google-geocoder');
+        const geo = geocoder({
+            key: 'AIzaSyDGql0MyVMEQeH89LQj0TtpM66SoLpkAhw'
+        });
+        const distance=geo.computeDistanceBetween()
+        filteredPets = filteredPets.filter(pet=>{
+            return pet
+            })
+    }
     console.log(filteredPets);
     return filteredPets
 }

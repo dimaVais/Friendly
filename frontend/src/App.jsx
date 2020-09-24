@@ -13,10 +13,12 @@ import { userProfile } from './pages/userProfile';
 
  class _App extends Component {
 
-
+  componentDidMount(){
+    document.title = "Friendly"
+  }
 
   render() {
-
+   
     
 
     return (
@@ -34,6 +36,7 @@ import { userProfile } from './pages/userProfile';
             <Route component={userProfile} path="/profile/:id" />
             <Route component={PetApp} path="/pet/:filterType?" />
             <Route component={Home} path="/" /> 
+
           </Switch>
         </main>
       </div >
