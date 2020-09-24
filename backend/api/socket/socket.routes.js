@@ -11,10 +11,7 @@ function connectSockets(io) {
             socket.join(topic)
             socket.myTopic = topic;
         })
-        socket.on('chat addMsg', msg => {
-            console.log(msg)
-            // io.emit('chat addMsg', msg)
-            // emits only to sockets in the same room
+        socket.on('chat addMsg', msg => {          
             io.to(socket.myTopic).emit('chat addMsg', msg)
         })
     })
