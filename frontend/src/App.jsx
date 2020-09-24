@@ -13,12 +13,7 @@ import { userProfile } from './pages/userProfile';
 
  class _App extends Component {
 
-
-
   render() {
-
-    
-
     return (
       <div className="App">
         <header >

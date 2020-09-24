@@ -483,3 +483,6 @@ Wed, 23 Sep 2020 13:52:16 GMT - Info - Pet 5f6a1578417318fe8d1ee03c was updated 
 Wed, 23 Sep 2020 15:07:11 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
 Wed, 23 Sep 2020 15:07:37 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
 Wed, 23 Sep 2020 15:09:37 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Thu, 24 Sep 2020 10:03:03 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
+Thu, 24 Sep 2020 10:03:50 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
+Thu, 24 Sep 2020 10:04:08 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
