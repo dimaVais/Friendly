@@ -12,6 +12,7 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp, faEnvelope, faFemale, faMobileAlt, faStar } from '@fortawesome/free-solid-svg-icons'
+import { animateScroll as scroll } from "react-scroll";
 
 
 class _ShopDetails extends Component {
@@ -28,6 +29,7 @@ class _ShopDetails extends Component {
 
     componentDidMount() {
         this.loadShopData();
+        scroll.scrollToTop();
     }
 
     loadShopData = async () => {

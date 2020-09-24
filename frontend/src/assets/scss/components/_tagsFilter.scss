@@ -1,8 +1,10 @@
 .tags-modal {
-    @include center-modal;
-    width: 450px;
-    height: 520px;
+    // @include center-modal;
+    width: 320px;
+    height: 365px;
     position: fixed;
+    right: 200px;
+    top: 100px;
     z-index: 4;
     background-color:$clr2;
     display: flex;
@@ -42,7 +44,8 @@
                     
                 }
                 .pressed{
-                    background-color: lightgray;
+                    background-color:$clr7;
+                    ;
                 }
 
 
