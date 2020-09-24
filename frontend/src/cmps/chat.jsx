@@ -7,6 +7,11 @@ import  userService from '../services/userService.js'
 import {shopService} from '../services/shopService.js'
 import {chatService} from '../services/chatService.js'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { faTimes,faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+
+
  class _Chat extends Component {
 
     state = {
@@ -103,18 +108,16 @@ import {chatService} from '../services/chatService.js'
             <div className="chat-container">
                 <section className="chat-title flex space-between">
                 <span>{ this.state.recipientName}</span>
-                    <button className="btn-close btn" onClick={this.onClose}>X</button>
+                    <button className="btn-close btn" onClick={this.onClose}><FontAwesomeIcon  className="close-icon" icon={faTimes} /></button>
                 </section>
                 <section className="msgs-container">
-                        <ul>
                         {this.state.msgs.map((msg, idx) => (
                             this.displayMsg(msg,idx))
                             )}
-                        </ul>
 
                 </section>
                 <form onSubmit={this.sendMsg}>
-                    <section className="input-container">
+                    <section className="input-container flex space-around">
                     <input
                         type="text"
                         value={this.state.msg.txt}
@@ -123,7 +126,7 @@ import {chatService} from '../services/chatService.js'
                         autoComplete="off"
                         placeholder="Aa"
                         />
-                        <button>Send</button>
+                        <button className="btn-send"><FontAwesomeIcon  className="send-icon" icon={faPaperPlane} /></button>
                         {/* <Button variant="contained"
                                 color="primary"
                                 className="send-btn"

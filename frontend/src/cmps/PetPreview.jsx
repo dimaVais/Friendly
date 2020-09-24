@@ -1,8 +1,6 @@
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { faMars } from '@fortawesome/free-solid-svg-icons'
-import { faVenus } from '@fortawesome/free-solid-svg-icons'
+import { faHeart,faMars,faVenus } from '@fortawesome/free-solid-svg-icons'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadPets, savePet } from '../store/actions/petActions';
@@ -29,7 +27,6 @@ class _PetPreview extends Component {
         const pet = this.state.pet;
         const updatedReacts=pet.reacts.map(react => {
             if (react.type === reaction){
-
                 react.count+=this.state.isLiked?-1:+1;
                 this.setState({...this.state,isLiked:!this.state.isLiked})
             }
@@ -61,15 +58,8 @@ class _PetPreview extends Component {
                         <div onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="pet-rate-box">
                             <span>{pet.reacts && pet.reacts[0].type === 'love' ? <FontAwesomeIcon  className="love-icon" icon={faHeart} /> : ''} </span>
                             {pet.reacts &&pet.reacts[0].type === 'love' ? <span className="love-count">{pet.reacts[0].count}</span> : ''}
-
-
-                            {/* <FontAwesomeIcon className="star-icon" icon={faStar} />
-                            {pet.shop && <p className="shop-rate-rating">{pet.shop.rate.rating}  </p>}
-                            {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>} */}
                         </div>
                     </div>
-
-
                 </div>
             </ NavLink>
         )
@@ -87,7 +77,6 @@ const mapDispatchToProps = {
     loadPets
 
 }
-
 
 export const PetPreview = connect(mapStateToProps, mapDispatchToProps)(_PetPreview)
 

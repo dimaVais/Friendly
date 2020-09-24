@@ -41,19 +41,17 @@ async function remove(petId) {
     await httpService.delete(`${BASE_URL}/${petId}`)
 }
 function filterPets(pets,filterBy){
-
-    console.log('Filter in service:',filterBy);
     if (!filterBy) return pets
 
     let filteredPets=pets
     if(filterBy.txt){
-        if (filterBy.txt.charAt(filterBy.txt.length-1)===(' '||',')) filterBy.txt = filterBy.txt.substring(0,filterBy.txt.length)
+        filterBy.txt=filterBy.txt.trim(' ');
+        filterBy.txt=filterBy.txt.trim(',');
 
         let words = filterBy.txt.split(' ');
         if (words.length=1) words=filterBy.txt.split(',');
+
         words.forEach(word=>{
-            console.log('word is',word);
-            // const searchWord = filterBy.txt.toLowerCase()
             filteredPets = filteredPets.filter(pet =>{
                 if(pet.name.toLowerCase().includes(word) ||
                  pet.type.toLowerCase().includes(word)||
@@ -84,7 +82,6 @@ function filterPets(pets,filterBy){
             return pet
             })
     }
-    console.log(filteredPets);
     return filteredPets
 }
 

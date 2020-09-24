@@ -37,7 +37,6 @@ import {CategoryList} from  './CategoryList'
             lon:position.coords.longitude,
             range:0
         }
-
         this.setState({...this.state.filterBy,distance:distance});
         
         },
