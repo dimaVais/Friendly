@@ -35,7 +35,7 @@ export class CategoryList extends Component {
     render(){
         
         return (
-            <div className="category-list">
+            <div className="category-list anchor">
                 {
                     Object.keys(this.state).map(type=>this.displayTypesBtn(type) )
                 }

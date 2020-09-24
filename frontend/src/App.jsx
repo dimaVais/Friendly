@@ -36,6 +36,7 @@ import { userProfile } from './pages/userProfile';
             <Route component={userProfile} path="/profile/:id" />
             <Route component={PetApp} path="/pet/:filterType?" />
             <Route component={Home} path="/" /> 
+
           </Switch>
         </main>
       </div >
