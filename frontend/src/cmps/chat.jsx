@@ -7,10 +7,6 @@ import  userService from '../services/userService.js'
 import {shopService} from '../services/shopService.js'
 import {chatService} from '../services/chatService.js'
 
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
-
-
  class _Chat extends Component {
 
     state = {
@@ -30,12 +26,7 @@ import Icon from '@material-ui/core/Icon';
                 this.setState({senderName:owner.name});
                 
             } else this.setState({senderName:sender.fullName})
-            const msg={
-                from:this.state.senderName,
-                txt:''
-            }
-            this.setState({ msg })
-
+           
             const recipient = await userService.getById(this.props.recipientId);
             const recipientName=recipient.fullName;
 
@@ -71,8 +62,9 @@ import Icon from '@material-ui/core/Icon';
         console.log('adding');
       };
       
-      sendMsg=ev=>{
+      sendMsg=(ev)=>{
         ev.preventDefault();
+        this.addMsg(this.state.msg);
         socketService.emit('chat addMsg', this.state.msg);
         const msg={
             from:this.state.senderName,
