@@ -4,14 +4,15 @@ import { petReducer } from './reducers/petReducer';
 import { shopReducer } from './reducers/shopReducer';
 import { userReducer } from './reducers/userReducer'
 import { orderReducer } from './reducers/orderReducer'
-// import { userReducer } from './reducers/userReducer';
+import { chatReducer } from './reducers/chatReducer';
 // import { reviewReducer } from './reducers/reviewReducer';
 
 const rootReducer = combineReducers({
     petReducer,
     shopReducer,
     userReducer,
-    orderReducer
+    orderReducer,
+    chatReducer
 })
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

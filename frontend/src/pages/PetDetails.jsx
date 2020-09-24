@@ -27,6 +27,7 @@ class _PetDetails extends Component {
         pet: {},
         isChatOn: false,
         isOwnerOfPet: false,
+        ownerId: '',
         adoptButton: 'Adopt',
         currComment: ''
     }
@@ -38,7 +39,7 @@ class _PetDetails extends Component {
 
     async getComponentData() {
         await this.getCurrPet();
-        await this.getUserId();
+        await this.getOwnerId();
         await this.isOwnerOfPet();
     }
 
@@ -61,7 +62,7 @@ class _PetDetails extends Component {
 
     onAdopt = async () => {
         const { loggedInUser } = this.props
-        console.log('LogedinuSER',loggedInUser);
+        console.log('LogedinuSER', loggedInUser);
         if (loggedInUser.isGuest) return
 
         const pet = this.state.pet
@@ -144,16 +145,15 @@ class _PetDetails extends Component {
         return time
     }
 
-    getUserId = async _ => {
-        console.log(this.state.pet);
+    getOwnerId = async () => {
         const shop = await shopService.getById(this.state.pet.shop._id);
         const ownerId = await shop.owner._id;
-        this.setState({ ownerId })
+        this.setState({ ownerId: ownerId });
     }
 
     render() {
         const pet = this.state.pet;
-        const loggedInUser= this.props.loggedInUser
+        const loggedInUser = this.props.loggedInUser;
 
         if (!pet) return <h1>Loading...</h1>
         return (
@@ -161,7 +161,7 @@ class _PetDetails extends Component {
                 <div className="pet-details-box">
                     <div className="pet-details-header">
                         <h2 className="pet-details-heading">{pet.name}</h2>
-                        <button onClick={this.onAdopt} className="adoption-btn">Adopt</button> 
+                        <button onClick={this.onAdopt} className="adoption-btn">Adopt</button>
                     </div>
 
                     <div className="pet-details-img-box">
@@ -259,7 +259,7 @@ class _PetDetails extends Component {
                     <div className="comments-box">
                         <div className="comment-input-box">
                             <TextField name="txt" fullWidth="true" value={this.state.currComment} placeholder="Add Comment Here" onChange={this.handleCommentInput} />
-       
+
                             <button className="add-comment-btn" onClick={this.onComment}>Add</button>
                         </div>
                         <ul className="comment-list">
@@ -303,7 +303,8 @@ class _PetDetails extends Component {
 
 
                 </div> */}
-                {this.state.isChatOn && <Chat onClose={this.onToggleChat} recipientId={this.state.ownerId} />}
+                {this.state.isChatOn && < Chat pet={pet} recipientId={this.state.ownerId}
+                    onClose={this.onToggleChat} recipientId={this.state.ownerId} />}
             </section>
         )
     }

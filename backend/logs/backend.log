@@ -486,3 +486,12 @@ Wed, 23 Sep 2020 15:09:37 GMT - Error - ERROR: cannot find shop by id  s101, err
 Thu, 24 Sep 2020 10:03:03 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
 Thu, 24 Sep 2020 10:03:50 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
 Thu, 24 Sep 2020 10:04:08 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
+Thu, 24 Sep 2020 20:01:40 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 20:01:40 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 20:01:40 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 20:01:40 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 20:01:43 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 20:01:48 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 20:01:52 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 20:01:59 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 23:09:27 GMT - Info - Order 5f6d272784497965b845b155 was creted well!
