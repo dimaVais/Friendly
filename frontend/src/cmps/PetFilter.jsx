@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 
 import {TagsFilter}from './TagsFilter'
 import {setFilter,loadPets} from '../store/actions/petActions.js'
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Button from '@material-ui/core/Button';
 import { FilterSearch } from './FilterSearch';
 import {CategoryList} from  './CategoryList'
 // import SearchIcon from '@material-ui/icons/Search';
@@ -18,15 +16,38 @@ import {CategoryList} from  './CategoryList'
                 gender:'',
                 breed:'',
                 size:'',
-                txt:''
+                txt:'',
+                distance:{
+                    lat:0,
+                    lon:0,
+                    range:0
+                }
             },
             isModalShown:false,
             tags:[]
         
     }
 
-   componentDidMount(){
-       this.setState({...this.state,filterBy:this.props.filterBy})
+   async componentDidMount(){
+       const position= await navigator.geolocation.getCurrentPosition(
+        function(position) {
+          return position
+          const distance={
+            lat:position.coords.latitude,
+            lon:position.coords.longitude,
+            range:0
+        }
+
+        this.setState({...this.state.filterBy,distance:distance});
+        
+        },
+        function(error) {
+          console.error("Error Code = " + error.code + " - " + error.message);
+        }
+      );
+      console.log(position);
+      this.setState({...this.state,filterBy:this.props.filterBy})
+
    }
     
    componentDidUpdate(){
@@ -38,16 +59,6 @@ import {CategoryList} from  './CategoryList'
      
     handleChange = (ev) => {
        console.log(ev);
-
-        // const field = target.name;
-        // const value = target.type === 'number' ? +target.value : target.value;
-        // if (field==='minAge'){
-        //     const minBDate = new Date()- value;
-        //     console.log();
-        // }
-        // if (field==='maxAge'){
-        //     const maxBDate = new Date()- value;
-        // }
         
     }
     onToggleFilterModal =()=>{
@@ -92,8 +103,8 @@ import {CategoryList} from  './CategoryList'
             <div className="filter-container flex column align-center">
                 <CategoryList onCategoryChange={this.onFilterChange}/>
                     <section className="search-container flex space-around">
-                        <FilterSearch onInputChange={this.onInputChange}/>
-                        { <button className="more-btn"  onClick={this.onToggleFilterModal}>More</button>}
+                        <FilterSearch parent="main" onInputChange={this.onInputChange}/>
+                        {/* { <button className="more-btn"  onClick={this.onToggleFilterModal}>More</button>} */}
                     </section>
                 {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onFilterChange={this.onFilterChange} onToggleFilterModal={this.onToggleFilterModal}/>}
               

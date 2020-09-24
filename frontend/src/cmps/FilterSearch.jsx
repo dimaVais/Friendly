@@ -14,20 +14,28 @@ import { animateScroll as scroll } from "react-scroll";
         isClearShown:false
     }
 
-    componentDidMount(){
-        this.setState({txt:this.props.filterBy.txt});
+   async componentDidMount(){
+        await this.setState({txt:this.props.filterBy.txt});
+        await this.setState({parent:this.props.parent});
+        this.setState({isClearShown:this.state.txt!==''})
+        if (this.props){
+            console.log(this.props);
+        }
+
     }
     componentDidUpdate(prevProps){
         if (prevProps!==this.props){
             this.setState({txt:this.props.filterBy.txt});
+            this.setState({isClearShown:this.state.txt!==''})
         }
     }
 
-    onInputChange= (ev)=>{
+    onInputChange= async(ev)=>{
         console.log(ev.target.value);
         const txt = ev.target.value;
-        this.setState({isClearShown:txt!==''})
-        this.setState({txt});   
+         this.setState({isClearShown:txt!==''})
+        await this.setState({txt});
+        if (!txt)  await this.onSearch();
     } 
     keyPress=(e)=>{
         if(e.keyCode == 13){
@@ -37,13 +45,13 @@ import { animateScroll as scroll } from "react-scroll";
     }
     onClear=async()=>{
         this.setState({txt:''})
-         this.props.setFilter({txt:''},()=>this.props.loadPets())
+        this.props.setFilter({txt:''},()=>this.props.loadPets())
         this.setState({isClearShown:false})
     }
 
     onSearch= async ()=>{
         await this.props.setFilter({txt:this.state.txt},()=>this.props.loadPets())
-        scroll.scrollTo(750);
+        if (this.state.parent==='hero')scroll.scrollTo(750);
     }
     
 render(){

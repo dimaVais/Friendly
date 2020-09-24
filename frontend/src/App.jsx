@@ -13,10 +13,12 @@ import { userProfile } from './pages/userProfile';
 
  class _App extends Component {
 
-
+  componentDidMount(){
+    document.title = "Friendly"
+  }
 
   render() {
-
+   
     
 
     return (
