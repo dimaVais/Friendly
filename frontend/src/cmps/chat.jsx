@@ -7,8 +7,9 @@ import userService from '../services/userService.js'
 import { shopService } from '../services/shopService.js'
 import { chatService } from '../services/chatService.js'
 
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import { faTimes,faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 
 class _Chat extends Component {
@@ -20,48 +21,43 @@ class _Chat extends Component {
         topic: null,
         msgs: []
     }
+      async componentDidMount() {
+            
+            const loggedInUserId=  this.props.loggedInUser._id;
+            const sender = await userService.getById(loggedInUserId);
+         
+            if (sender.isOwner){
+                const owner=await shopService.getByUserId(sender._id);
+                this.setState({senderName:owner.name});
+                
+            } else this.setState({senderName:sender.fullName})
+           
+            const recipient = await userService.getById(this.props.recipientId);
+            const recipientName=recipient.fullName;
 
-    async componentDidMount() {
-
-        const loggedInUserId = this.props.loggedInUser._id;
-        const sender = await userService.getById(loggedInUserId);
-
-        if (sender.isOwner) {
-            const shop = await shopService.getByUserId(sender._id);
-            this.setState({ senderName: shop.name });
-
-        } else this.setState({ senderName: sender.fullName })
-        const msg = {
-            from: this.state.senderName,
-            txt: ''
-        }
-
-        const recipient = await userService.getById(this.props.recipientId);
-        const recipientName = recipient.fullName;
-
-        this.setState({ recipientName })
-        let topic = "c105";
-        if (sender.chats) {
-            const chats = [...sender.chats];
-            const chat = await chats.filter(chat => (
-                chat.recipientId === recipient._id
-            ))[0];
-            if (chat) {
-                topic = chat._id;
-                const chatHistory = await chatService.getById(topic);
-                const msgs = chatHistory.messages;
-                if (msgs) this.setState({ msgs })
-            }
-        }
-        this.setState({ topic });
-        console.log('topic is:', this.state.topic);
-        socketService.setup();
-        socketService.emit('chat topic', this.state.topic);
-        // socketService.on('chat newMsg', this.addMsg);
-        socketService.on('chat addMsg', this.addMsg);
-    }
-
-    componentWillUnmount() {
+            this.setState({recipientName})
+            let topic="c105";
+            if(sender.chats){
+                const chats=[...sender.chats];
+                const chat= await chats.filter(chat=>(
+                     chat.recipientId===recipient._id
+                 ))[0];
+                 if (chat){
+                     topic=chat._id;
+                     const chatHistory= await chatService.getById(topic);
+                     const msgs =  chatHistory.messages;
+                    if (msgs) this.setState({msgs})
+                 }
+             }
+            this.setState({topic});
+            console.log('topic is:',this.state.topic);
+            socketService.setup();
+            socketService.emit('chat topic', this.state.topic);
+            // socketService.on('chat newMsg', this.addMsg);
+            socketService.on('chat addMsg', this.addMsg);
+      }
+    
+      componentWillUnmount() {
         socketService.off('chat addMsg', this.addMsg);
         socketService.terminate();
     }
@@ -69,11 +65,11 @@ class _Chat extends Component {
     addMsg = newMsg => {
         this.setState(prevState => ({ msgs: [...prevState.msgs, newMsg] }));
         console.log('adding');
-    };
-
-    sendMsg = ev => {
+      };
+      
+      sendMsg=(ev)=>{
         ev.preventDefault();
-        console.log('msg', this.state.msg);
+        this.addMsg(this.state.msg);
         socketService.emit('chat addMsg', this.state.msg);
         const msg = {
             from: this.state.senderName,
@@ -111,28 +107,26 @@ class _Chat extends Component {
         return (
             <div className="chat-container">
                 <section className="chat-title flex space-between">
-                    <span>{this.state.recipientName}</span>
-                    <button className="btn-close btn" onClick={this.onClose}>X</button>
+                <span>{ this.state.recipientName}</span>
+                    <button className="btn-close btn" onClick={this.onClose}><FontAwesomeIcon  className="close-icon" icon={faTimes} /></button>
                 </section>
                 <section className="msgs-container">
-                    <ul>
                         {this.state.msgs.map((msg, idx) => (
-                            this.displayMsg(msg, idx))
-                        )}
-                    </ul>
+                            this.displayMsg(msg,idx))
+                            )}
 
                 </section>
                 <form onSubmit={this.sendMsg}>
-                    <section className="input-container">
-                        <input
-                            type="text"
-                            value={this.state.msg.txt}
-                            onChange={this.msgHandleChange}
-                            name="txt"
-                            autoComplete="off"
-                            placeholder="Aa"
+                    <section className="input-container flex space-around">
+                    <input
+                        type="text"
+                        value={this.state.msg.txt}
+                        onChange={this.msgHandleChange}
+                        name="txt"
+                        autoComplete="off"
+                        placeholder="Aa"
                         />
-                        <button>Send</button>
+                        <button className="btn-send"><FontAwesomeIcon  className="send-icon" icon={faPaperPlane} /></button>
                         {/* <Button variant="contained"
                                 color="primary"
                                 className="send-btn"

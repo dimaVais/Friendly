@@ -10,26 +10,22 @@ export class TagsFilter extends Component {
     
     state={
         gender:{
+            txt:'',
             male:false,
             female:false
+        },
+        distance:{
+            range:0
         }
 
     }
 
     componentDidMount(){
-        this.setState({...this.props.filterBy})
+        // this.setState({...this.state)
         console.log(this.props);
     }
 
-    displayTags(tag,index){
-        return (
-            <div  key={index}>
-                <label htmlFor="">{tag}</label>
-                <Switch type="checkbox" name="" value={tag} />
-            </div>
-        )
-    }
-
+    
     onGenderChange=async (gender)=>{
         let genderDefault={
             male:false,
@@ -38,9 +34,33 @@ export class TagsFilter extends Component {
         genderDefault = {...genderDefault,[gender]:!this.state.gender[gender]}
         console.log(genderDefault);
         await this.setState({...this.state,gender:{...genderDefault}})
-        this.props.onFilterChange({'gender':gender})
     }
+    onDistanceChange=async (ev)=>{
+        const distance=ev.target.value
+        console.log(distance);
+    }
+    
+    
+    
+    onShow=()=>{
+        if(this.state.gender.male!==this.gender.female) {
+            
+        }
+        // this.props.onFilterChange({'gender':gender})
+        console.log(this.state);
+        this.props.onToggleFilterModal();
+    }
+    onClear=()=>{
 
+    }
+    displayTags(tag,index){
+        return (
+            <div  key={index}>
+                <label htmlFor="">{tag}</label>
+                <Switch type="checkbox" name="" value={tag} />
+            </div>
+        )
+    }
     displayGenderBtns(){
         const {gender}=this.state
         return(
@@ -64,6 +84,7 @@ export class TagsFilter extends Component {
 
                         <InputLabel htmlFor="age">Age</InputLabel>
                             <Select
+                                
                                 native
                                 onChange={this.props.handleChange}
                                 inputProps={{
@@ -71,10 +92,10 @@ export class TagsFilter extends Component {
                                     id: 'age-native-simple',
                                 }}
                                 >
-                                <option aria-label="None" value="" />
-                                <option value={1}>Puppy</option>
-                                <option value={7}>Grown up</option>
-                                <option value={15}>Old</option>
+                                    <option aria-label="None" value="" />
+                                    <option value={1}>Puppy</option>
+                                    <option value={7}>Grown up</option>
+                                    <option value={15}>Old</option>
                             </Select>
                     </section>
                     <section>
@@ -97,13 +118,14 @@ export class TagsFilter extends Component {
                    
                     <section>
                             <InputLabel htmlFor="">{'Distance(km)'}</InputLabel>
-                            <Input type="number" name="" min="1" id=""/>
+                            <Input type="number" name="" min="1" id="" onChange={this.onDistanceChange}/>
                     </section>
                     {/* <section >
                         {tags.map((tag,index) => displayTags(tag,index))}
                     </section> */}
-                    <Button variant="contained" onClick={this.props.onToggleFilterModal}>Close</Button>
-                    {/* <Button variant="contained" onClick={this.props.onToggleFilterModal}>Show</Button> */}
+                    <section className="btns-container"></section>
+                        <Button variant="contained" onClick={this.onShow}>Show</Button>
+                        <Button variant="contained" onClick={this.onClear}>Clear</Button>
                 </FormGroup>  
                 </div>  
              </div>

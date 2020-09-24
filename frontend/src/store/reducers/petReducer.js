@@ -5,7 +5,12 @@ const initialState = {
         gender:'',
         breed:'',
         size:'',
-        txt:''
+        txt:'',
+        distance:{
+            lat:0,
+            lon:0,
+            range:0
+        }
     }
 }
 
