@@ -1,8 +1,8 @@
 import io from 'socket.io-client';
 
-const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3030'
-// const socketService = createSocketService();
-const socketService = createDummySocketService();
+const baseUrl = (process.env.NODE_ENV === 'production')? '' : '//localhost:3002/'
+const socketService = createSocketService();
+// const socketService = createDummySocketService();
 
 window.socketService = socketService;
 export default socketService;
@@ -20,6 +20,8 @@ function createSocketService() {
       socket.off(eventName, cb);
     },
     emit(eventName, data) {
+
+      console.log('socketservice:',eventName, 'Data', data);
       socket.emit(eventName, data);
     },
     terminate() {

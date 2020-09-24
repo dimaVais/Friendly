@@ -12,7 +12,6 @@ export function shopReducer(state = initialState, action) {
                 shops: [...action.shops]
             }
         case 'GET_SHOP':
-            console.log('ccc',action.shop);
             return {
                 ...state,
                 currShop: JSON.parse(JSON.stringify(action.shop))

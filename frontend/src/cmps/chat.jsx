@@ -3,23 +3,23 @@ import React, { Component } from 'react'
 import socketService from '../services/socketService'
 import { connect } from 'react-redux';
 import { loadPets } from '../store/actions/petActions.js';
-import  userService from '../services/userService.js'
-import {shopService} from '../services/shopService.js'
-import {chatService} from '../services/chatService.js'
+import userService from '../services/userService.js'
+import { shopService } from '../services/shopService.js'
+import { chatService } from '../services/chatService.js'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faTimes,faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 
- class _Chat extends Component {
+class _Chat extends Component {
 
     state = {
-        recipientName:'',
-        senderName:'',
-        msg: {from: 'Sender',txt:''},
-        topic:null,
-        msgs:[]
+        recipientName: '',
+        senderName: '',
+        msg: { from: 'Sender', txt: '' },
+        topic: null,
+        msgs: []
     }
       async componentDidMount() {
             
@@ -60,9 +60,9 @@ import { faTimes,faPaperPlane } from '@fortawesome/free-solid-svg-icons'
       componentWillUnmount() {
         socketService.off('chat addMsg', this.addMsg);
         socketService.terminate();
-      }
+    }
 
-      addMsg = newMsg => {
+    addMsg = newMsg => {
         this.setState(prevState => ({ msgs: [...prevState.msgs, newMsg] }));
         console.log('adding');
       };
@@ -71,35 +71,35 @@ import { faTimes,faPaperPlane } from '@fortawesome/free-solid-svg-icons'
         ev.preventDefault();
         this.addMsg(this.state.msg);
         socketService.emit('chat addMsg', this.state.msg);
-        const msg={
-            from:this.state.senderName,
-            txt:''
+        const msg = {
+            from: this.state.senderName,
+            txt: ''
         }
-        this.setState({ msg: msg }); 
-     }
+        this.setState({ msg: msg });
+    }
 
-      msgHandleChange=ev=>{
+    msgHandleChange = ev => {
         const { name, value } = ev.target;
         this.setState(prevState => {
-          return {
-            msg: {
-              ...prevState.msg,
-              [name]: value
-            }
-          };
+            return {
+                msg: {
+                    ...prevState.msg,
+                    [name]: value
+                }
+            };
         });
-          }
+    }
 
-    onClose=()=>{
-          this.props.onClose();
-      }
+    onClose = () => {
+        this.props.onClose();
+    }
 
-      displayMsg=(msg,idx)=>{
+    displayMsg = (msg, idx) => {
         let classTxt = 'message ';
-        classTxt += (msg.from===this.state.senderName)?'sender':'recipient';
-        return(<div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
-)
-      }
+        classTxt += (msg.from === this.state.senderName) ? 'sender' : 'recipient';
+        return (<div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
+        )
+    }
 
 
 

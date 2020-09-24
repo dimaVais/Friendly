@@ -24,8 +24,9 @@ async function getShop(req, res) {
 }
 
 async function getShopByUser(req, res) {
-    const shopId = req.params.id;
-    const shop = await shopService.getById(shopId)
+    const userId = req.params.id;
+    console.log('userId',userId);
+    const shop = await shopService.getShopByUser(userId)
     return res.json(shop);
 }
 
