@@ -15,6 +15,17 @@
         left: 100px;
         display: flex;
         flex-direction: column;
+        .category-container{
+            min-width: 300px;
+            height: 100px;
+            margin: auto;
+            .category-list{
+                img{
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+        }
         
     }
     
@@ -40,5 +51,4 @@
                 font-weight: 500;
                 
     }
-
 }

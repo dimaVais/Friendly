@@ -1,10 +1,11 @@
 .category-list {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     img {
-        width: 100px;
-        height: 100px;
-        margin: 30px;
+        object-fit: cover;
+        flex-shrink: 1;
+        width: 70px;
+        height: 70px;
         box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
         padding: 5px;
         background-color: $clr2;
