@@ -1,5 +1,6 @@
 .shop-details-main-box {
     width: 1140px;
+    
     margin: 0 auto;
     font-family: roboto, sans-serif;
     background-color: #fff;
@@ -21,7 +22,7 @@
         display: flex;
         justify-content: space-around;
         align-items: flex-end;
-        margin: 0  35px 15px 0 ;
+        margin: 0 0 15px 0 ;
         
         
     .shop-rate-rating {
@@ -57,9 +58,8 @@
 
 .shop-details-img-box {
     display: grid;
-    width: 95%;
     height: 50vh;
-    grid-template-columns: repeat(3, 33.3333%);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 50%);
     grid-gap: 10px;
 }
@@ -144,7 +144,6 @@
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    margin-right: 35px;
     align-items: center;
 
 }
@@ -180,6 +179,11 @@
 .shop-location-name {
     width: 80%;
     text-align: center;
+}
+
+.location-and-orders-box {
+    display: flex;
+    flex-direction: column;
 }
 
 .shop-owner-img {

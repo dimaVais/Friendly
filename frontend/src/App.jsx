@@ -3,13 +3,14 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Home } from './pages/Home';
 import { SignUp } from './pages/SignUp';
-import { About } from './pages/About';
+import { About } from './cmps/About';
 import { PetApp } from './pages/PetApp';
 import { PetEdit } from './pages/PetEdit';
 import { PetDetails } from './pages/PetDetails';
 import { ShopDetails } from './pages/ShopDetails';
 import { NavBar } from './cmps/NavBar';
 import { userProfile } from './pages/userProfile';
+import { Footer } from './cmps/Footer';
 
  class _App extends Component {
 
@@ -32,13 +33,16 @@ import { userProfile } from './pages/userProfile';
             <Route component={PetDetails}  path="/details/:id?" />
             <Route component={PetEdit} path="/edit/:id?" />
             <Route component={SignUp} path="/signup/:type?" />
-            <Route component={About} path="/about" />
+            {/* <Route component={About} path="/about" /> */}
             <Route component={userProfile} path="/profile/:id" />
             <Route component={PetApp} path="/pet/:filterType?" />
             <Route component={Home} path="/" /> 
 
           </Switch>
         </main>
+        {/* <footer>
+          <Footer />
+        </footer> */}
       </div >
     );
   }

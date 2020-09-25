@@ -1,0 +1,29 @@
+.about-main-container {
+    // background-color: #fff;
+    padding: 20px;
+    display: flex;
+    margin: 0;
+
+    .images-box {
+        width: 600px
+    }
+
+
+
+    img {
+        border-radius: 50%;
+        width: 130px;
+        height: 130px;
+    }
+
+    .img0 {
+        width: 250px;
+        height: 250px;
+
+    }
+
+    .about-headings {
+        font-family: roboto, sans-serif;
+        font-weight: 400;
+    }
+}

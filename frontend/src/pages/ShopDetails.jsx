@@ -27,6 +27,8 @@ class _ShopDetails extends Component {
         }
     }
 
+
+
     componentDidMount() {
         this.loadShopData();
         scroll.scrollToTop();
@@ -132,23 +134,23 @@ class _ShopDetails extends Component {
                         <div className="top-screen-box">
                             <div className="shop-details-section">
                                 <div className="owner-details">
-                                <img className="shop-owner-img" src={shop.owner.imgUrl} />
-                                <div className="owner-contact"> 
-                                <div className="contact-box">
-                                    <FontAwesomeIcon className="contact-icon" icon={faFemale} />
-                                    <p>{shop.owner.fullName}</p>
-                                </div>
+                                    <img className="shop-owner-img" src={shop.owner.imgUrl} />
+                                    <div className="owner-contact">
+                                        <div className="contact-box">
+                                            <FontAwesomeIcon className="contact-icon" icon={faFemale} />
+                                            <p>{shop.owner.fullName}</p>
+                                        </div>
 
-                                <div className="contact-box">
-                                    <FontAwesomeIcon className="contact-icon" icon={faMobileAlt} />
-                                    <p>{shop.owner.contact.phone}</p>
-                                </div>
+                                        <div className="contact-box">
+                                            <FontAwesomeIcon className="contact-icon" icon={faMobileAlt} />
+                                            <p>{shop.owner.contact.phone}</p>
+                                        </div>
 
-                                <div className="contact-box">
-                                    <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
-                                    <p>{shop.owner.contact.email}</p>
-                                </div>
-                                </div>
+                                        <div className="contact-box">
+                                            <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
+                                            <p>{shop.owner.contact.email}</p>
+                                        </div>
+                                    </div>
 
                                 </div>
 
@@ -160,13 +162,7 @@ class _ShopDetails extends Component {
                                 </div>
 
                             </div>
-                            <div className="order-list-box">
-                                {this.state.shop.owner._id === this.props.loggedInUser._id &&
-                                    <div>
-                                        <h3 className="adoption-requests-heading">Adoption Requests</h3>
-                                        <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />
-                                    </div>}
-                            </div>
+
 
 
                         </div>
@@ -221,26 +217,41 @@ class _ShopDetails extends Component {
                                         )}
                                     </ul>}
                             </div>
+                            <div className="location-and-orders-box">
+                                <div className="shop-location-box">
 
-                            <div className="shop-location-box">
+                                    <div className="map-container">
+                                        <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
+                                    </div>
+                                    <FontAwesomeIcon className="arrow-icon" icon={faAngleDoubleUp} />
+                                    <div className="shop-location-name">
+                                        <h2>We are located at {shop.location.name}</h2>
+                                    </div>
 
-                                <div className="map-container">
-                                    <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
                                 </div>
-                                <FontAwesomeIcon className="arrow-icon" icon={faAngleDoubleUp} />
-                                <div className="shop-location-name">
-                                    <h2>We are located at {shop.location.name}</h2>
+
+                                <div className="order-list-box">
+                                    {this.state.shop.owner._id === this.props.loggedInUser._id &&
+                                        <div>
+                                            <h3 className="adoption-requests-heading">Adoption Requests</h3>
+                                            <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />
+                                        </div>}
                                 </div>
 
                             </div>
-
 
 
                         </div>
+
+
+
+
+
+
                         <div className="pets-box" >
-                                <h2 className="our-pets-heading">Our Pets</h2>
-                                <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
-                            </div>
+                            <h2 className="our-pets-heading">Our Pets</h2>
+                            <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
+                        </div>
 
                     </div>
 

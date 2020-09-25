@@ -7,8 +7,6 @@ import { saveOrder } from '../store/actions/orderActions.js';
 import { Chat } from '../cmps/Chat.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { faBone } from '@fortawesome/free-solid-svg-icons'
-import { faHandSparkles } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
@@ -17,6 +15,10 @@ import { faVenusMars } from '@fortawesome/free-solid-svg-icons'
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
 import { TextField } from '@material-ui/core';
 import { animateScroll as scroll } from "react-scroll";
+import { WhatsappShareButton, WhatsappIcon, FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share'
+
+
+
 
 
 
@@ -61,7 +63,7 @@ class _PetDetails extends Component {
 
     onAdopt = async () => {
         const { loggedInUser } = this.props
-        console.log('LogedinuSER',loggedInUser);
+        console.log('LogedinuSER', loggedInUser);
         if (loggedInUser.isGuest) return
 
         const pet = this.state.pet
@@ -153,7 +155,7 @@ class _PetDetails extends Component {
 
     render() {
         const pet = this.state.pet;
-        const loggedInUser= this.props.loggedInUser
+        const loggedInUser = this.props.loggedInUser
 
         if (!pet) return <h1>Loading...</h1>
         return (
@@ -161,7 +163,26 @@ class _PetDetails extends Component {
                 <div className="pet-details-box">
                     <div className="pet-details-header">
                         <h2 className="pet-details-heading">{pet.name}</h2>
-                        <button onClick={this.onAdopt} className="adoption-btn">Adopt</button> 
+                        <div className="share-box">
+                            {/* <h4 className="share-heading">Share {pet.name} With Your Friends</h4> */}
+                            <FacebookShareButton
+                                url={"http://www.camperstribe.com"}
+                                quote={"See this cute pet I saw on Friendly"}
+                                hashtag="#Friendly">
+                                <FacebookIcon size={30} />
+                            </FacebookShareButton>
+                            <WhatsappShareButton
+                                url={"http://www.camperstribe.com"}
+                                quote={"See this cute pet I saw on Friendly"}>
+                                <WhatsappIcon size={30} />
+                            </WhatsappShareButton>
+                            <TwitterShareButton
+                                url={"http://www.camperstribe.com"}
+                                quote={"See this cute pet I saw on Friendly"}>
+                                <TwitterIcon size={30} />
+                            </TwitterShareButton>
+
+                        </div>
                     </div>
 
                     <div className="pet-details-img-box">
@@ -239,17 +260,22 @@ class _PetDetails extends Component {
                             </div>
                         </div>
                     </div>
+                    <div className="tags-and-adopt-btn-box">
 
-                    <div className="tags-list-box">
-                        <ul className="tags-list">
-                            {
-                                (pet.tags) ?
-                                    pet.tags.map(tag => {
-                                        return <li> {tag} </li>
-                                    })
-                                    : ''
-                            }
-                        </ul>
+                        <div className="tags-list-box">
+                            <ul className="tags-list">
+                                {
+                                    (pet.tags) ?
+                                        pet.tags.map(tag => {
+                                            return <li> {tag} </li>
+                                        })
+                                        : ''
+                                }
+                            </ul>
+                        </div>
+
+                        <button onClick={this.onAdopt} className="adoption-btn">Adopt</button>
+
                     </div>
                     <hr />
                     <div className="description-box">
@@ -259,7 +285,7 @@ class _PetDetails extends Component {
                     <div className="comments-box">
                         <div className="comment-input-box">
                             <TextField name="txt" fullWidth="true" value={this.state.currComment} placeholder="Add Comment Here" onChange={this.handleCommentInput} />
-       
+
                             <button className="add-comment-btn" onClick={this.onComment}>Add</button>
                         </div>
                         <ul className="comment-list">

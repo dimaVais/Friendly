@@ -13,17 +13,16 @@ export function OrderPreview({ order, onSave, onRemove, isShop }) {
         return orderClass;
     }
 
-       
 
-    if (!order) return <h3 style={{display: 'none'}}>loading...</h3>
+
+    if (!order) return <h3 style={{ display: 'none' }}>loading...</h3>
     // <img className="order-loading" src={require('../assets/img/loading.gif')} />
     return (
         <div className={`order-preview ${orderClass()}`}>
             {
-                isShop && <div>
-                    <Link to={`/profile/${order.buyer._id}`}>  <p><span>From:</span> {order.buyer.fullName} </p></Link>
-                    
-                    <p><span>I want to Adopt:</span> {order.pet.name} </p>
+                isShop && <div className="order-preview-details">
+                    <Link to={`/profile/${order.buyer._id}`}>  <p>{order.buyer.fullName} <span>Wants to Adopt</span> {order.pet.name} </p></Link>
+                    {/* <p><span>Wants to Adopt</span> {order.pet.name} </p> */}
                 </div>
 
             }

@@ -6,6 +6,7 @@ import { PetList } from '../cmps/PetList'
 import { loadPets } from '../store/actions/petActions.js'
 import { PetApp } from './PetApp'
 import {PetFilter} from '../cmps/PetFilter'
+import { About } from '../cmps/About'
 
 class _Home extends Component {
 
@@ -27,11 +28,8 @@ class _Home extends Component {
         const {user} = this.props
         return (
             <div className="main-container">
-                {/* <div className="hero-background "></div> */}
                 <Hero />
-                <PetFilter parent="home"/>
-                <br/>
-                <PetApp pets={this.props.pets} />
+                <About />
             </div>
         )
     }

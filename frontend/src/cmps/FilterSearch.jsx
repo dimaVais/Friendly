@@ -51,7 +51,7 @@ import { animateScroll as scroll } from "react-scroll";
 
     onSearch= async ()=>{
         await this.props.setFilter({txt:this.state.txt},()=>this.props.loadPets())
-        if (this.state.parent==='hero')scroll.scrollTo(750);
+        if (this.state.parent==='hero')scroll.scrollTo(1050);
     }
     
 render(){
