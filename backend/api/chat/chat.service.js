@@ -25,11 +25,13 @@ async function query(filterBy = {}) {
   }
 
 async function getById(_id) {
+    console.log('chatId in service:',_id);
     const collection = await dbService.getCollection('chat');
     try {
         const chat = await collection.findOne({
             "_id": ObjectId(_id)
         });
+        console.log('AFTER MONGO');
         return chat;
     } catch (err) {
         logger.error(`ERROR: cannot find chat by id  ${_id}, err: ${err}`);

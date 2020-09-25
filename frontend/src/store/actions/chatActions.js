@@ -7,6 +7,14 @@ export function loadChats(filterBy, filterName) {
     }
 }
 
+export function getChatById(chatId) {
+    console.log('chatId',chatId);
+    return async dispatch => {
+        const chat = await chatService.getById(chatId);
+        dispatch({ type: 'GET_CHAT', chat });
+    }
+}
+
 export function saveChat(chat) {
     return async dispatch => {
         const chatToSave = await chatService.save(chat);

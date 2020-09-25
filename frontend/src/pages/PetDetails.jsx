@@ -304,7 +304,7 @@ class _PetDetails extends Component {
 
                 </div> */}
                 {this.state.isChatOn && < Chat pet={pet} recipientId={this.state.ownerId}
-                    onClose={this.onToggleChat} recipientId={this.state.ownerId} />}
+                    onClose={this.onToggleChat} />}
             </section>
         )
     }

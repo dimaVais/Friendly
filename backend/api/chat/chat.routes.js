@@ -20,6 +20,6 @@ router.get('/', getChats);
 router.post('/', createChat);
 router.get('/:id', getChat);
 router.put('/:id', updateChat);
-router.delete('/:id', requireAuth, deleteChat);
+router.delete('/:id', deleteChat);
 
 module.exports = router;

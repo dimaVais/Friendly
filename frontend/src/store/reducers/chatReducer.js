@@ -11,10 +11,18 @@ export function chatReducer(state = initialState, action) {
                 ...state,
                 chats: [...action.chats]
             }
-        case 'ADD_CHAT':
+        case 'GET_CHAT':
+            console.log('chat in reducer after get',action.chat );
             return {
                 ...state,
-                chats: [...state.chats, action.chatToSave]
+                currChat: {...action.chat}
+            }
+        case 'ADD_CHAT':
+            console.log('IN REDUCER',action.chatToSave);
+            return {
+                ...state,
+                chats: [...state.chats, action.chatToSave],
+                currChat:{...action.chatToSave}
             }
         case 'EDIT_CHAT':
             return {
@@ -22,7 +30,8 @@ export function chatReducer(state = initialState, action) {
                 chats: state.chats.map(chat => {
                     if (chat._id === action.chatToSave._id) return action.chatToSave;
                     return chat;
-                })
+                }),
+                currChat:{...action.chatToSave}
             }
         case 'REMOVE_CHAT':
             return {

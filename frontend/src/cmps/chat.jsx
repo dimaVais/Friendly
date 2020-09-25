@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import socketService from '../services/socketService'
 import { connect } from 'react-redux';
 import { loadPets } from '../store/actions/petActions.js';
-import { loadChats, saveChat } from '../store/actions/chatActions.js';
+import { loadChats, saveChat, getChatById } from '../store/actions/chatActions.js';
 import { updateUser } from '../store/actions/userActions.js';
 import userService from '../services/userService.js'
 import { shopService } from '../services/shopService.js'
@@ -19,64 +19,99 @@ class _Chat extends Component {
     state = {
         chat: {
             topic: '',
-            sender: {
-                id: '',
-                fullName: ''
-            },
-            recipient: {
-                id: '',
-                fullName: ''
-            },
+            participents: [],
             msgs: []
         },
-        msg: { from: '', txt: '' }
+        msg: {
+            senderId: '',
+            createdAt:'',
+            txt: ''
+        },
+        sender: '',
+        recipient: ''
     }
 
     async componentDidMount() {
         const sender = this.props.loggedInUser;
-        console.log(this.props);
-        let chat = null;
-        if (sender.chats && sender.chats.length > 0) {
-            chat = [...sender.chats].find(chat => (
-                chat.topic === `${this.props.pet._id}_${sender._id}__${this.props.recipientId}`));
-        }
+        const recipient = await userService.getById(this.props.recipientId);
+        await this.setState({ recipient: recipient })
+        const cahtParticipents = { sender: sender, recipient: recipient }
 
-        if (chat) {
-            this.setState({ chat: { ...chat } })
+        // for (participant in cahtParticipents) {
+        //     this.setChat(cahtParticipents[participant], participant);
+        // }
+
+        this.setChat(sender, 'sender');
+        // this.setChat(recipient, 'recipient');
+    }
+
+    setChat = async (user, type) => {
+        await this.setState({ msg: { from: user.fullName, txt: '' } });
+        let userChat = null;
+        if (user.chats && user.chats.length > 0) {
+            userChat = [...user.chats].find(chat => {
+                return chat.topic === (`${this.props.loggedInUser._id}__${this.props.recipientId}`
+                || `${this.props.recipientId}__${this.props.loggedInUser._id}`)})
+        }
+        if (userChat) {
+            await this.props.getChatById(userChat._id)
+            await this.setState({ chat: { ...this.props.currChat } })
+
         }
         else {
-            const recipient = await userService.getById(this.props.recipientId);
-            this.createChat(sender, recipient, this.props.pet);
+            await this.createChat(user, type, this.props.loggedInUser, this.state.recipient, this.props.pet);
         }
+
         socketService.setup();
         socketService.emit('chat topic', this.state.chat.topic);
         socketService.on('chat addMsg', this.addMsg);
     }
+
+    // setSenderChat = async (sender,recipient) => {
+    //     await this.setState({ msg: { from: sender.fullName, txt: '' } });
+    //     let userChat = null;
+    //     if (sender.chats && sender.chats.length > 0) {
+    //         userChat = [...sender.chats].find(chat => (
+    //             chat.topic === `${this.props.pet._id}_${sender._id}__${this.props.recipientId}`));
+    //     }
+    //     if (userChat) {
+    //         await this.props.getChatById(userChat._id)
+    //         await this.setState({ chat: { ...this.props.currChat } })
+    //     }
+    //     else {
+    //         await this.createChat(sender, recipient, this.props.pet);
+    //     }
+
+    //     socketService.setup();
+    //     socketService.emit('chat topic', this.state.chat.topic);
+    //     socketService.on('chat addMsg', this.addMsg);
+    // }
 
     componentWillUnmount() {
         socketService.off('chat addMsg', this.addMsg);
         socketService.terminate();
     }
 
-    createChat = async (sender, recipient, pet) => {
+    createChat = async (user, type, sender, recipient, pet) => {
         const chat = {
-            topic: `${pet._id}_${sender._id}__${recipient._id}`,
-            sender: {
-                id: sender._id,
-                fullName: sender.fullName
-            },
-            recipient: {
-                id: recipient._id,
-                fullName: recipient.fullName
-            },
+            topic: `${sender._id}__${recipient._id}`,
+            participents: [sender._id, recipient._id],
             msgs: []
         }
-        if (!sender.chats) {
-            sender.chats = [];
-            this.props.saveChat(chat);
-            this.props.updateUser(sender);
+        if (!user.chats) {
+            user.chats = [];
         }
-        await this.setState({ chat: { ...chat } });
+
+        await this.props.saveChat(chat);
+        if (this.props.currChat._id) {
+            const chatToAdd = {
+                _id: this.props.currChat._id,
+                topic: this.props.currChat.topic,
+            };
+            user.chats.push(chatToAdd);
+        }
+        await this.props.updateUser(sender);
+        await this.setState({ chat: { ...this.props.currChat } });
     }
 
     addMsg = async newMsg => {
@@ -93,9 +128,12 @@ class _Chat extends Component {
     sendMsg = (ev) => {
         ev.preventDefault();
         this.addMsg(this.state.msg);
+        console.log(this.state.chat.topic);
         socketService.emit('chat addMsg', this.state.msg);
+        console.log('thischat', this.state.chat);
         const msg = {
-            from: this.state.chat.sender.fullName,
+            senderId: this.props.loggedInUser._id,
+            createdAt: new Date(),
             txt: ''
         }
         this.setState({ msg: msg });
@@ -119,7 +157,7 @@ class _Chat extends Component {
 
     displayMsg = (msg, idx) => {
         let classTxt = 'message ';
-        classTxt += (msg.from === this.state.senderName) ? 'sender' : 'recipient';
+        classTxt += (msg.senderId === this.props.loggedInUser._id) ? 'sender' : 'recipient';
         return (<div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
         )
     }
@@ -132,7 +170,7 @@ class _Chat extends Component {
                     <button className="btn-close btn" onClick={this.onClose}><FontAwesomeIcon className="close-icon" icon={faTimes} /></button>
                 </section>
                 <section className="msgs-container">
-                    {this.state.chat.msgs.map((msg, idx) => (
+                    {this.state.chat.msgs && this.state.chat.msgs.map((msg, idx) => (
                         this.displayMsg(msg, idx))
                     )}
 
@@ -145,14 +183,9 @@ class _Chat extends Component {
                             onChange={this.msgHandleChange}
                             name="txt"
                             autoComplete="off"
-                            placeholder="Aa"
+                            placeholder="Type Message Here"
                         />
                         <button className="btn-send"><FontAwesomeIcon className="send-icon" icon={faPaperPlane} /></button>
-                        {/* <Button variant="contained"
-                                color="primary"
-                                className="send-btn"
-                                endIcon={<Icon>send</Icon>}>
-                         </Button> */}
                     </section>
                 </form>
             </div>
@@ -162,6 +195,7 @@ class _Chat extends Component {
 const mapStateToProps = state => {
     return {
         chats: state.chatReducer.chats,
+        currChat: state.chatReducer.currChat,
         pets: state.petReducer.pets,
         loggedInUser: state.userReducer.loggedInUser,
     }
@@ -171,6 +205,7 @@ const mapDispatchToProps = {
     loadPets,
     loadChats,
     saveChat,
+    getChatById,
     updateUser
 }
 
