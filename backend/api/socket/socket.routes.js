@@ -12,7 +12,7 @@ function connectSockets(io) {
             socket.myTopic = topic;
         })
         socket.on('chat addMsg', msg => {          
-            io.to(socket.myTopic).emit('chat addMsg', msg)
+            // io.to(socket.myTopic).emit('chat addMsg', msg)
         })
     })
 }

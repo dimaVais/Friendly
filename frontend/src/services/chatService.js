@@ -24,22 +24,21 @@ async function getById(id) {
     return res;
 }
 
-async function save(order) {
-    if (order._id) {
-        order.updatedAt = new Date(Date.now()).toLocaleString();
-        const res = await httpService.put(`${BASE_URL}/${order._id}`, order)
+async function save(chat) {
+    if (chat._id) {
+        chat.updatedAt = new Date(Date.now()).toLocaleString();
+        const res = await httpService.put(`${BASE_URL}/${chat._id}`, chat)
         return res;
 
     } else {
-        order._id = _makeId();
-        order.createdAt = new Date(Date.now()).toLocaleString();
-        const res = await httpService.post(`${BASE_URL}`, order)
+        chat.createdAt = new Date(Date.now()).toLocaleString();
+        const res = await httpService.post(`${BASE_URL}`, chat)
         return res;
     }
 }
 
-async function remove(orderId) {
-    await httpService.delete(`${BASE_URL}/${orderId}`)
+async function remove(chatId) {
+    await httpService.delete(`${BASE_URL}/${chatId}`)
 }
 
 
