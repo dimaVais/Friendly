@@ -56,6 +56,7 @@ class _PetApp extends Component {
         if (!this.state.pets) return <h1>Loading...</h1>
         return (
             <div className="pets-container"> 
+                <PetFilter/>
                 <div id="center"></div>
                 <PetList pets={this.state.pets} onRemove={this.onRemove} user={user} />
             </div>

@@ -16,7 +16,6 @@ class _NavBar extends Component {
         pathName: ''
     }
     componentDidMount() {
-        console.log('this.propsnavvvv', this.props.history.location.pathname);
         this.setState({pathName: this.props.history.location.pathname})
     }
 

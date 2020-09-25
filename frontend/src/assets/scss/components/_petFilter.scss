@@ -1,62 +1,60 @@
 //search cmp basic
 .search-container{
-        width: 530px;
-        height: 4rem;
-        .input-container{
-            width: 80%;
-            input {
+    width: 530px;
+    height: 4rem;
+    position: relative;
+    .input-container{
+        display: flex;
+        align-items: center;
+        width: 80%;
+        input {
             background-color: rgba(255, 255, 255, 0.747);
             border: none;
-            margin-right: 10px;
             padding-left: 40px;
-            height: 4rem;
-            width: 100%; 
-            font-size: 1.4rem;
-            border-radius: none;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-    
-                &:focus {
-                    outline: none;
-                }
-            } 
-            
-        }
-        .search-icon {
-            color: rgb(129, 129, 129);
-            position: absolute;
-            left: 10px;
-            top: 138px;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        .clear-icon{
-            color: rgb(129, 129, 129);
-            position: absolute;
-            right: 82px;
-            top: 138px;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        .btn-search{
-            cursor: pointer;
-            font-size: 2rem;
-            line-height: 4rem;
-            text-align: center;
-            background-color: #1dbf73;
-            color: white; 
-            line-height: 4rem;
-            text-align: center;
+            width: 100%;
             height: 100%;
-            width: 20%;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
+            font-size: 1.4rem;
+            border-radius: 5px 0 0 5px;
             box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-            &:active{
-                background-color: #1d7e51;
+            
+            &:focus {
+                outline: none;
             }
+        } 
+        
+            .search-icon {
+                color: rgb(129, 129, 129);
+                position: absolute;
+               left:2%;
+                font-size: 1.5rem;
+                }
+                .clear-icon{
+                    color: rgb(129, 129, 129);
+                    position: absolute;
+                    right: 2%;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                }
+    
+            
+    }
+    .btn-search{
+        cursor: pointer;
+        align-self: auto;
+        font-size: 1.7rem;
+        line-height: 4.2rem;
+        width: 20%;
+        text-align: center;
+        padding: 0 5px;
+        background-color: #1dbf73;
+        color: white; 
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+        &:active{
+            background-color: #1d7e51;
         }
+    }
     
 }
 
@@ -89,34 +87,8 @@
 
 .filter-container{
     .search-container{
-        position: relative;
-        width: 560px;
-        height: 3rem;
-        align-items: baseline;
-        
-        .input-container{
-            width: 400px;
-            input{
-                height: 3rem;
-                font-size: 1.2rem;
-            }
-            
-        }
-        .btn-search{
-            line-height: 3.1rem;
-            font-size: 1.5rem;
-            width: 120px;
-                }
-        .search-icon {
-            position: absolute;
-            left: 10px;
-            top: 15px;
-                }
-        .clear-icon{
-            position: absolute;
-            top: 12px;
-            right: 165px;
-                }
+         
+    //
     }
 }
 
