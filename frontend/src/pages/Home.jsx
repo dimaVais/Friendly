@@ -27,11 +27,7 @@ class _Home extends Component {
         const {user} = this.props
         return (
             <div className="main-container">
-                {/* <div className="hero-background "></div> */}
                 <Hero />
-                <PetFilter parent="home"/>
-                <br/>
-                <PetApp pets={this.props.pets} />
             </div>
         )
     }
