@@ -486,3 +486,5 @@ Wed, 23 Sep 2020 15:09:37 GMT - Error - ERROR: cannot find shop by id  s101, err
 Thu, 24 Sep 2020 10:03:03 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
 Thu, 24 Sep 2020 10:03:50 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
 Thu, 24 Sep 2020 10:04:08 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
+Thu, 24 Sep 2020 15:45:52 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Thu, 24 Sep 2020 15:46:09 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
