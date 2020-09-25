@@ -38,11 +38,9 @@ async function getById(userId) {
 }
 
 async function getByUsername(userName) {
-    console.log('In Service',userName);
     const collection = await dbService.getCollection('user')
     try {
         const user = await collection.findOne({ "userName": userName});
-        console.log('user',user);
         return user;
     } catch (err) {
         console.log(`ERROR: while finding user ${userName}`)
@@ -64,9 +62,9 @@ async function remove(userId) {
 async function update(user) {
     const collection = await dbService.getCollection('user')
     user._id = ObjectId(user._id);
-
+    user.updatedAt = new Date(Date.now()).toISOString();
     try {
-        await collection.replaceOne({ "_id": user._id }, { $set: user })
+        await collection.updateOne({ "_id": user._id }, { $set: user })
         return user
     } catch (err) {
         console.log(`ERROR: cannot update user ${user._id}`)

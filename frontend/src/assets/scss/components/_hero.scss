@@ -15,98 +15,40 @@
         left: 100px;
         display: flex;
         flex-direction: column;
-
-        // .search-container{
-        //     width: 530px;
-        //     height: 4rem;
-
-        //     .input-container{
-        //         width: 80%;
-                // input {
-                //     background-color: rgba(255, 255, 255, 0.747);
-                //     border: none;
-                //     padding-left: 40px;
-                //     width: 100%; 
-                //     height: 4rem;
-                //     font-size: 1.4rem;
-                //     border-top-left-radius: 5px;
-                //     border-bottom-left-radius: 5px;
-                //     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-
-                    // &:focus {
-                    //     outline: none;
-                    // }
-                // .search-icon {
-                //     color: rgb(129, 129, 129);
-                //     position: absolute;
-                //     left: 10px;
-                //     top: 138px;
-                //     font-size: 1.5rem;
-                //     cursor: pointer;
-                // }
-                    // .clear-icon{
-                    //     color: rgb(129, 129, 129);
-                    //     position: absolute;
-                    //     right: 80px;
-                    //     top: 138px;
-                    //     font-size: 1.5rem;
-                    //     cursor: pointer;
-                    // }
-                // }
-            // }
-            // .btn-search{
-            //     cursor: pointer;
-            //     font-size: 2rem;
-            //     line-height: 4rem;
-            //     text-align: center;
-            //     background-color: #1dbf73;
-            //     color: white; 
-            //     line-height: 4rem;
-            //     text-align: center;
-            //     height: 100%;
-            //     width: 20%;
-            //     border-top-right-radius: 5px;
-            //     border-bottom-right-radius: 5px;
-            //     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-            //     &:active{
-            //         background-color: #1d7e51;
-            //     }
-            // }
-        // }
+        .category-container{
+            min-width: 300px;
+            height: 100px;
+            margin: auto;
+            .category-list{
+                img{
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+        }
+        
     }
-
-}
-
-
-.hero-heading-up {
-    font-family: roboto, sans-serif;
-    color: rgb(243, 242, 242);
-    font-size: 2.3rem;
-    margin: 0;
-}
-
-.span {
-    font-family: montserrat, sans-serif;
-    font-size: 3rem;
-    color: #fdc161;
-    font-weight: 900;
-    // color: #ffffff;
-}
-
-
-
-.hero-heading {
-    font-family: roboto, sans-serif;
-    color: rgb(243, 242, 242);
-    font-size: 1.8rem;
-    margin:  0 0 25px 0 ;
-    font-weight: 500;
     
+    .hero-heading-up {
+        font-family: roboto, sans-serif;
+        color: rgb(243, 242, 242);
+        font-size: 2.3rem;
+        margin: 0;
+
+        .span {
+            font-family: montserrat, sans-serif;
+            font-size: 3rem;
+            color: #fdc161;
+            font-weight: 900;
+            // color: #ffffff;
+        }
+    }
+    .hero-heading {
+                font-family: roboto, sans-serif;
+                color: rgb(243, 242, 242);
+                font-size: 1.8rem;
+                margin:  0 0 25px 0 ;
+                font-weight: 500;
+                
+    }
 }
-// .hero-logo{
-//     width: 15%;
-//     position: absolute;
-//     right: 50%;
-//     top: 20%;
-//     transform: translate(50%, -50%);
-// }

@@ -15,16 +15,6 @@ class _PetApp extends Component {
 
     async componentDidMount() {
         await this.loadPets();
-        // if (this.props.match){
-        //     if (this.props.match.params.filterType){
-        //         const type=this.props.match.params.filterType
-        //         await this.props.setFilter({type})
-        //     }
-        // }else{
-        //     await this.resetFitler();
-        // }
-
-        // await this.loadPets()  
     }
 
    async  componentDidUpdate(prevProps){
@@ -66,6 +56,7 @@ class _PetApp extends Component {
         if (!this.state.pets) return <h1>Loading...</h1>
         return (
             <div className="pets-container"> 
+                <PetFilter/>
                 <div id="center"></div>
                 <PetList pets={this.state.pets} onRemove={this.onRemove} user={user} />
             </div>

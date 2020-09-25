@@ -37,7 +37,6 @@ import {CategoryList} from  './CategoryList'
             lon:position.coords.longitude,
             range:0
         }
-
         this.setState({...this.state.filterBy,distance:distance});
         
         },
@@ -101,11 +100,13 @@ import {CategoryList} from  './CategoryList'
         // const btnClass=parent==='hero'?'hero-btn more-btn':'gallery-btn more-btn';
         return (
             <div className="filter-container flex column align-center">
-                <CategoryList onCategoryChange={this.onFilterChange}/>
-                    <section className="search-container flex space-around">
+                <section className="categoty-container">
+                    <CategoryList onCategoryChange={this.onFilterChange}/>
+                </section>
+                <section className="search-container flex space-around">
                         <FilterSearch parent="main" onInputChange={this.onInputChange}/>
                         {/* { <button className="more-btn"  onClick={this.onToggleFilterModal}>More</button>} */}
-                    </section>
+                </section>
                 {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onFilterChange={this.onFilterChange} onToggleFilterModal={this.onToggleFilterModal}/>}
               
             <br/>   

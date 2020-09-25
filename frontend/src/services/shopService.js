@@ -32,7 +32,6 @@ async function save(shop) {
         return res;
 
     } else {
-        shop._id = _makeId();
         shop.createdAt = new Date(Date.now()).toLocaleString();
     }
     shop.pets = [];

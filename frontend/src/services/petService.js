@@ -40,6 +40,7 @@ async function save(pet) {
 async function remove(petId) {
     await httpService.delete(`${BASE_URL}/${petId}`)
 }
+<<<<<<< HEAD
 
 function filterPets(pets, filterBy) {
     if (!filterBy) return pets
@@ -62,6 +63,28 @@ function filterPets(pets, filterBy) {
                     pet.summary.toLowerCase().includes(word) ||
                     pet.description.toLowerCase().includes(word) ||
                     pet.shop.fullName.toLowerCase().includes(word)) return pet
+=======
+function filterPets(pets,filterBy){
+    if (!filterBy) return pets
+
+    let filteredPets=pets
+    if(filterBy.txt){
+        filterBy.txt=filterBy.txt.trim(' ');
+        filterBy.txt=filterBy.txt.trim(',');
+
+        let words = filterBy.txt.split(' ');
+        if (words.length=1) words=filterBy.txt.split(',');
+
+        words.forEach(word=>{
+            filteredPets = filteredPets.filter(pet =>{
+                if(pet.name.toLowerCase().includes(word) ||
+                 pet.type.toLowerCase().includes(word)||
+                 pet.gender.toLowerCase().includes(word)||
+                 pet.size.toLowerCase().includes(word)||
+                 pet.summary.toLowerCase().includes(word)||
+                 pet.description.toLowerCase().includes(word)||
+                 pet.shop.fullName.toLowerCase().includes(word)) return pet
+>>>>>>> cce4675a6caed8b9579ec7146b66059a73f5407c
             })
         })
     }
@@ -72,9 +95,22 @@ function filterPets(pets, filterBy) {
     })
 
 
+<<<<<<< HEAD
     filteredPets = filteredPets.filter(pet => {
         return pet.gender.toLowerCase().includes(filterBy.gender)
     })
+=======
+    if (filterBy.distance.range){
+        const geocoder = require('google-geocoder');
+        const geo = geocoder({
+            key: 'AIzaSyDGql0MyVMEQeH89LQj0TtpM66SoLpkAhw'
+        });
+        const distance=geo.computeDistanceBetween()
+        filteredPets = filteredPets.filter(pet=>{
+            return pet
+            })
+    }
+>>>>>>> cce4675a6caed8b9579ec7146b66059a73f5407c
     return filteredPets
 }
 

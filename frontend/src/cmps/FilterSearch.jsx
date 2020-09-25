@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
+
 import {setFilter,loadPets} from '../store/actions/petActions.js'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -51,18 +53,20 @@ import { animateScroll as scroll } from "react-scroll";
 
     onSearch= async ()=>{
         await this.props.setFilter({txt:this.state.txt},()=>this.props.loadPets())
+<<<<<<< HEAD
         if (this.state.parent==='hero')scroll.scrollTo(1050);
+=======
+        console.log(this.props)
+        
+        if (this.state.parent==='hero') this.props.history.push('/pet')
+
+>>>>>>> cce4675a6caed8b9579ec7146b66059a73f5407c
     }
     
 render(){
     return (
-        <div>
-            <div className="search-container flex">
-                <FontAwesomeIcon className="search-icon" icon={faSearch} />
-                <FontAwesomeIcon className={this.state.isClearShown?'clear-icon':'clear-icon hidden'} 
-                                     onClick={this.onClear} icon={faTimesCircle} />
-                <section className="input-container">
-                    
+            <section className="search-container flex">
+                <div className="input-container">
                     <input className="search"
                             type="text"
                             name="search" 
@@ -71,11 +75,14 @@ render(){
                             placeholder="Find a friend (i.e. small, cat, puppy)" 
                             onChange={(ev)=>this.onInputChange(ev)}
                             onKeyDown={this.keyPress} />
-                </section>
-
+                    <FontAwesomeIcon className="search-icon" icon={faSearch} />
+                    <FontAwesomeIcon className={this.state.isClearShown?'clear-icon':'clear-icon hidden'} 
+                                        onClick={this.onClear} icon={faTimesCircle} />
+                </div>
                 <div className="btn-search" onClick={this.onSearch}>Search</div>
-             </div>
-        </div>
+                {/* <div className="icons-container">
+                </div> */}
+             </section>
         )
     }
 }
@@ -91,6 +98,6 @@ const mapDispatchToProps = {
    loadPets
 }
 
-export const FilterSearch = connect(mapStateToProps, mapDispatchToProps)(_FilterSearch)
+export const FilterSearch = withRouter(connect(mapStateToProps, mapDispatchToProps)(_FilterSearch));
 
 
