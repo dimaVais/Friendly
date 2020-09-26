@@ -156,12 +156,18 @@ class _Chat extends Component {
     }
 
     displayMsg = (msg, idx) => {
-        let classTxt = 'message ';
-        classTxt += (msg.senderId === this.props.loggedInUser._id) ? 'sender' : 'recipient';
+        console.log(msg);
+        let classTxt = 'message-row ';
+        const time=new Date(msg.createdAt);
+        const isSender=msg.senderId === this.props.loggedInUser._id;
+        classTxt += isSender ? 'sender' : 'recipient';
         return (
-            <div className="message-row">
-
-                <div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
+            <div className={classTxt} key={idx}>
+                {!isSender && <img src={this.state.recipient.imgUrl} alt=""/>}
+                <div className="message-content">
+                    <div className="txt">{msg.txt}</div>
+                    <div className="date" >{time.getHours()+':'+time.getMinutes()}</div>
+                </div>
             </div>
         )
     }
@@ -170,11 +176,11 @@ class _Chat extends Component {
         return (
             <div className="chat-container">
                 <section className="chat-title flex space-evenly">
-                    <span>{this.state.recipientName}</span>
+                    <span>{this.state.recipient.fullName}</span>
                     <button className="btn-close btn" onClick={this.onClose}><FontAwesomeIcon className="close-icon" icon={faTimes} /></button>
                 </section>
                 <section className="msgs-container">
-                    {this.state.chat.msgs && this.state.chat.msgs.map((msg, idx) => (
+                    {this.state.chat.msgs && this.state.chat.msgs.slice(0).reverse().map((msg, idx) => (
                         this.displayMsg(msg, idx))
                     )}
 

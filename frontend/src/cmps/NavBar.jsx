@@ -4,29 +4,23 @@ import { LoginModal } from './LoginModal'
 import { connect } from 'react-redux';
 import { loadShops } from '../store/actions/shopActions'
 import { logout } from '../store/actions/userActions';
+import { ChatsList } from './ChatsList';
 
 
 
 class _NavBar extends Component {
 
     state = {
-        showModal: false,
+        showLoginModal: false,
+        showChatsList:false,
         shop: '',
         shopId: '',
         pathName: ''
     }
     componentDidMount() {
         this.setState({pathName: this.props.history.location.pathname})
+        
     }
-
-    onNavBarClick = () => {
-        this.setState({ showModal: !this.state.showModal });
-    }
-
-    onLogOut = () => {
-        this.props.logout()
-    }
-
     componentDidUpdate = async (prevProps) => {
         if (this.props.user && prevProps.user._id !== this.props.user._id) {
             await this.props.loadShops()
@@ -40,7 +34,16 @@ class _NavBar extends Component {
         }
     }
 
+    onNavBarClick = () => {
+        this.setState({ showLoginModal: !this.state.showLoginModal });
+    }
 
+    onLogOut = () => {
+        this.props.logout()
+    }
+    onToggleChatsList=()=>{
+        this.setState({showChatsList:!this.state.showChatsList})
+      }
 
     render() {
         const { user } = this.props
@@ -52,16 +55,17 @@ class _NavBar extends Component {
                     <NavLink className="nav-btn" to="/about">About Us</NavLink>
                 </div>
                 <div className="right-nav">
-
                     {user && user.isOwner && this.state.shopId && <NavLink className="nav-btn" to={`/shop/${this.state.shopId}`}> <img className="shop-img" src={this.state.shop.imgUrls[0]} alt=""/> {this.state.shop.name}</NavLink>}
 
                     {user && !user.isOwner && !user.isGuest && <NavLink className="nav-btn" to={`/profile/${user._id}`}>{user.fullName}</NavLink>}
 
+                    {user && !user.isGuest && <button className="chats-btn nav - btn" onClick={this.onToggleChatsList}>Chat</button>}
+                    {this.state.showChatsList && <ChatsList/>}
 
                     {user && user.isGuest && <button className="login-btn nav-btn" onClick={() => { this.onNavBarClick() }}>Login</button>}
                     {user && !user.isGuest && <button className="logout-btn nav - btn" onClick={() => { this.onLogOut() }}>Logout</button>}
 
-                    {this.state.showModal && <LoginModal onNavBarClick={this.onNavBarClick} />}
+                    {this.state.showLoginModal && <LoginModal onNavBarClick={this.onNavBarClick} />}
 
                     {user && user.isGuest && <NavLink className="nav-btn" to="/signup">Sign Up</NavLink>}
                 </div>

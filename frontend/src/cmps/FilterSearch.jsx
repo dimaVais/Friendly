@@ -37,7 +37,7 @@ class _FilterSearch extends Component {
         const txt = ev.target.value;
         this.setState({ isClearShown: txt !== '' })
         await this.setState({ txt });
-        if (!txt) await this.onSearch();
+        if (!txt && this.state.parent !== 'hero') await this.onSearch();
     }
     keyPress = (e) => {
         if (e.keyCode == 13) {

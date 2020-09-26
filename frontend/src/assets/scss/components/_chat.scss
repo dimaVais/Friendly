@@ -38,30 +38,63 @@
         overflow-y:scroll;
         display: flex;
         flex-direction: column-reverse;
+        grid-area: msgs-container;
         
             .message-row{
                 width: 100%;
                 position: relative;
                 display: grid;
-                grid-template-columns:30px 15px 1fr 15px 30px;
-                    >* {
-                    grid-column: 4;
+                margin-bottom: 10px;
+                padding: 0 5px;
+                grid-template-columns: 70%;
+                // grid-template-columns:30px 15px 1fr 15px 30px;
+                //     >* {
+                    //     grid-column: 4;
+                    //     }
+                    &.sender{
+                        justify-content: end;
+                        .message-content{
+                            display: grid;
+                            justify-items: end;
+                            .txt{
+                                background-color: $clr5;
+                                border-radius: 14px 14px 0 14px;
+                                padding:9px 14px;
+                            }
+                        }
                     }
                 
-                &.sender{
-                    background-color: $clr5;
-                    grid-column: 3 /4;
-        
+                    &.recipient{
+                        justify-items: start;
+                        grid-template-columns: 35px 1fr;
+                        grid-column-gap:3px;
+                        .message-content{
+                            .txt{
+                                padding: 4px 14px;
+                                background-color: $clr6;
+                                border-radius: 14px 14px 14px 0;
+                            }
+                        }
                     }
-                &.recipient{
-                    background-color: $clr6;
-                    grid-column: 2 /3;
-        
+                .txt{
+                    font-size: 1.3rem;
+
+                }
+                img{
+                    grid-row:span 2;
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 100%;
                     }
+                .date{
+                    font-size: 1.1rem;
+                    color: grey;
+                }
+            }        
     } 
     
 
-    }
+    
     .btn-close{
                 position: absolute;
                 top: 2px;

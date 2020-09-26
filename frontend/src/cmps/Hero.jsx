@@ -14,7 +14,7 @@ export class Hero extends Component {
                     <h1 className="hero-heading">Discover your next best friend</h1>
                     <FilterSearch parent='hero'/>
                     <section className="category-container">
-                        <CategoryList/>
+                        {/* <CategoryList/> */}
                     </section>
                 </div>
             </div>
