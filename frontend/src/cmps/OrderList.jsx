@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { OrderPreview } from './OrderPreview'
-import {  withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import {
     loadOrders,
     saveOrder,
@@ -59,7 +59,9 @@ class _OrderList extends Component {
                 <div className="order-list flex column" >
 
                     <div className={`doubleAccept ${this.state.msgDivClass}`}>Only one approval please.</div>
-                    {orders.map(order => <OrderPreview isShop={this.props.isShop} order={order} onRemove={this.onRemove} onSave={this.onSave} />)}
+                    {orders.map(order =>
+                        <OrderPreview isShop={this.props.isShop} order={order} loggedInUser={this.props.loggedInUser}
+                            onRemove={this.onRemove} onSave={this.onSave} />)}
                 </div>
             )
     }
@@ -68,7 +70,8 @@ class _OrderList extends Component {
 const mapStateToProps = state => {
     return {
         pets: state.petReducer.pets,
-        orders: state.orderReducer.orders
+        orders: state.orderReducer.orders,
+        loggedInUser: state.userReducer.loggedInUser,
     }
 }
 

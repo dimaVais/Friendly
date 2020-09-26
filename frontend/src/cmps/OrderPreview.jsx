@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export function OrderPreview({ order, onSave, onRemove, isShop }) {
+export function OrderPreview({ order, onSave, onRemove, isShop, loggedInUser }) {
 
     function orderClass() {
         let orderClass;
@@ -27,7 +27,7 @@ export function OrderPreview({ order, onSave, onRemove, isShop }) {
 
             }
 
-            {!isShop &&
+            {!isShop && loggedInUser._id === order.buyer._id &&
                 <div>
                     <Link to={`/shop/${order.shop._id}`}>
                         {<p> <span>Request to adopt </span> {order.pet.name}
@@ -40,7 +40,8 @@ export function OrderPreview({ order, onSave, onRemove, isShop }) {
                 {isShop && <button className="accept-order-btn order-btn" onClick={() => { onSave(order, 'accepted') }}>Accept</button>}
                 {isShop && <button className="pending-order-btn order-btn" onClick={() => { onSave(order, 'pending') }}>Pending</button>}
                 {isShop && <button className="reject-order-btn order-btn" onClick={() => { onSave(order, 'denied') }}>Reject</button>}
-                <button className="remove-order-btn order-btn" onClick={() => { onRemove(order._id) }}>Remove</button>
+                {(isShop || (!isShop && loggedInUser._id === order.buyer._id)) &&
+                    <button className="remove-order-btn order-btn" onClick={() => { onRemove(order._id) }}>Remove</button>}
             </div>
         </div >
     )
