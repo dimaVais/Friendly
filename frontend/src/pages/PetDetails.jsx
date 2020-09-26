@@ -64,7 +64,6 @@ class _PetDetails extends Component {
 
     onAdopt = async () => {
         const { loggedInUser } = this.props
-        console.log('LogedinuSER', loggedInUser);
         if (loggedInUser.isGuest) return
 
         const pet = this.state.pet
@@ -330,7 +329,8 @@ class _PetDetails extends Component {
 
 
                 </div> */}
-                {this.state.isChatOn && <Chat onClose={this.onToggleChat} recipientId={this.state.ownerId} />}
+                {this.state.isChatOn && < Chat  targetId={this.state.ownerId}
+                    onClose={this.onToggleChat} />}
             </section>
         )
     }

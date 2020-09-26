@@ -282,3 +282,17 @@
     }
 }
 
+.chat-box{
+    .chat-user-img{
+        max-width:70px;
+        max-height:70px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: solid 4px  #ffbf00;
+
+        &:hover{
+            border: solid 5px  $clr5;
+        }
+    }
+}
+

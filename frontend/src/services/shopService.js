@@ -1,5 +1,5 @@
 import httpService from './httpService.js'
-const BASE_URL = 'shop'
+const BASE_URL = '/shop'
 
 
 export const shopService = {
