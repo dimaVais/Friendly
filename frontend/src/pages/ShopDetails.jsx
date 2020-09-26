@@ -44,6 +44,8 @@ class _ShopDetails extends Component {
         await this.props.getShopById(shopId);
         this.setState({ shop: { ...this.props.currShop } });
         const owner = await userService.getById(this.props.currShop.owner._id);
+        console.log('owner from DB',  owner );
+
         await this.setState({ shopOwner: { ...owner } });
         const shopPets = this.props.pets.filter(pet => {
             if (pet.shop) return pet.shop._id === this.state.shop._id
@@ -56,11 +58,10 @@ class _ShopDetails extends Component {
     }
 
     getChatImgs = async () => {
-        console.log('aaaaaaaadddd');
+        console.log('owner',  this.state.shopOwner );
         this.state.shopOwner.chats.forEach(async chat => {
             const id = chat.topic.substring(0, chat.topic.indexOf('_'));
             const user = await userService.getById(id);
-            console.log('USER FROM CHAT FOREACH', user);
             const userImg = { id: chat._id, img: user.imgUrl }
             this.setState({ chatImgs: [...this.state.chatImgs, userImg] })
         })
