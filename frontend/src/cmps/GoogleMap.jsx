@@ -34,7 +34,6 @@ class _GoogleMap extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <Map className="map" initialCenter={this.state} center={this.state} onClick={this.onMapClicked}
                 google={this.props.google} zoom={this.state.zoom} className="map" >

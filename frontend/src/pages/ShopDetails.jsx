@@ -18,8 +18,6 @@ import { getChatById } from '../store/actions/chatActions.js';
 import userService from '../services/userService.js';
 
 
-
-
 class _ShopDetails extends Component {
 
     state = {
@@ -32,11 +30,11 @@ class _ShopDetails extends Component {
             rate: ''
         },
         chatIdOn: '',
-        currChatImg: ''
+        chatImgs: []
     }
 
-    componentDidMount() {
-        this.loadShopData();
+    async componentDidMount() {
+        await this.loadShopData();
         scroll.scrollToTop();
     }
 
@@ -45,14 +43,26 @@ class _ShopDetails extends Component {
         await this.props.loadPets();
         await this.props.getShopById(shopId);
         this.setState({ shop: { ...this.props.currShop } });
-        const owner = await userService.getById(this.props.recipientId);
+        const owner = await userService.getById(this.props.currShop.owner._id);
         await this.setState({ shopOwner: { ...owner } });
         const shopPets = this.props.pets.filter(pet => {
             if (pet.shop) return pet.shop._id === this.state.shop._id
 
         })
-        this.setState({
+        await this.setState({
             shopPets: [...shopPets]
+        })
+        await this.getChatImgs();
+    }
+
+    getChatImgs = async () => {
+        console.log('aaaaaaaadddd');
+        this.state.shopOwner.chats.forEach(async chat => {
+            const id = chat.topic.substring(0, chat.topic.indexOf('_'));
+            const user = await userService.getById(id);
+            console.log('USER FROM CHAT FOREACH', user);
+            const userImg = { id: chat._id, img: user.imgUrl }
+            this.setState({ chatImgs: [...this.state.chatImgs, userImg] })
         })
     }
 
@@ -105,30 +115,23 @@ class _ShopDetails extends Component {
     }
 
     onToggleChat = async (id) => {
-        console.log('IN TOGGLE FUNC');
-        console.log('chatON iD fffffff DDDDDDD',this.state.chatIdOn);
-
         if (this.state.chatIdOn === id) {
             this.setState({ chatIdOn: '' });
         } else {
             await this.setState({ chatIdOn: id });
 
             await this.props.getChatById(id);
-            console.log('currChat DDDDDDD',this.props.currChat);
         }
     }
 
-    getUserImg = async (topic) => {
-        console.log('topic', topic);
-
-        const id = topic.substring(0, topic.indexOf('_'));
-        console.log('ccccc', id);
-        const user = await userService.getById(id);
-        console.log('userzzzzzzzzzzzzzzzzzz', user.imgUrl);
-        const img =  user.imgUrl.toString()
-        // await this.setState({ currChatImg: img});
-        console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAA', this.state.currChatImg);
-
+    getChatUserImg = (id) => {
+        const images = this.state.chatImgs;
+        console.log('aaaaadddccc', images);
+        const imgForChat = images.find(img => {
+            return img.id === id;
+        })
+        console.log('cccc', imgForChat.img);
+        return imgForChat.img;
     }
 
     drawStars = (rate) => {
@@ -144,7 +147,7 @@ class _ShopDetails extends Component {
         const currChat = this.props.currChat;
         const isUserOwner = (Object.keys(this.state.shop).length > 0
             && this.props.loggedInUser._id === this.props.currShop.owner._id)
-            console.log('chats in shop ccc',this.props.loggedInUser.chats);
+        // console.log('chats in shop ccc', this.props.loggedInUser.chats);
 
         return (
             <section>
@@ -194,14 +197,15 @@ class _ShopDetails extends Component {
                                 <div className={"chat-box flex"}>
                                     {(isUserOwner) ?
                                         this.props.loggedInUser.chats.map(chat => {
-                                            console.log('Chat in shop',chat);
+                                            // console.log('Chat in shop', chat);
                                             return (
                                                 <div>
-                                                    {/* {this.getUserImg(chat.topic)} */}
-                                                    <button onClick={() => { this.onToggleChat(chat._id) }}>
-                                                        {"CHAT"}</button>
+                                                        <img className="chat-user-img"
+                                                            src={this.getChatUserImg(chat._id)}
+                                                            alt="CHAT" 
+                                                            onClick={() => { this.onToggleChat(chat._id) }}/>
                                                     {this.state.chatIdOn === chat._id &&
-                                                     currChat && <Chat targetId={currChat.initiate._id }
+                                                        currChat && <Chat targetId={currChat.initiate._id}
                                                             onClose={() => { this.onToggleChat(chat._id) }} />}
                                                 </div>)
                                         }) : ""}
