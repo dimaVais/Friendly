@@ -13,8 +13,6 @@ import Select from '@material-ui/core/Select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp, faEnvelope, faFemale, faMobileAlt, faStar } from '@fortawesome/free-solid-svg-icons'
 import { animateScroll as scroll } from "react-scroll";
-import { Chat } from '../cmps/Chat.jsx';
-import { getChatById } from '../store/actions/chatActions.js';
 import userService from '../services/userService.js';
 
 
@@ -28,9 +26,7 @@ class _ShopDetails extends Component {
         currReview: {
             txt: '',
             rate: ''
-        },
-        chatIdOn: '',
-        chatImgs: []
+        }
     }
 
     async componentDidMount() {
@@ -54,20 +50,9 @@ class _ShopDetails extends Component {
         await this.setState({
             shopPets: [...shopPets]
         })
-        await this.getChatImgs();
     }
 
-    getChatImgs = async () => {
-        const chats = this.state.shopOwner.chats;
-        if (chats && chats.length > 0) {
-            chats.forEach(async chat => {
-                const id = chat.topic.substring(0, chat.topic.indexOf('_'));
-                const user = await userService.getById(id);
-                const userImg = { id: chat._id, img: user.imgUrl }
-                this.setState({ chatImgs: [...this.state.chatImgs, userImg] })
-            })
-        }
-    }
+    
 
     onRemove = (id) => {
         this.props.removePet(id)
@@ -117,24 +102,6 @@ class _ShopDetails extends Component {
         )
     }
 
-    onToggleChat = async (id) => {
-        if (this.state.chatIdOn === id) {
-            this.setState({ chatIdOn: '' });
-        } else {
-            await this.setState({ chatIdOn: id });
-
-            await this.props.getChatById(id);
-        }
-    }
-
-    getChatUserImg = (id) => {
-        const images = this.state.chatImgs;
-        const imgForChat = images.find(img => {
-            return img.id === id;
-        })
-        if (imgForChat) return imgForChat.img;
-        else return imgForChat;
-    }
 
     drawStars = (rate) => {
         var stars = '';
@@ -146,7 +113,6 @@ class _ShopDetails extends Component {
 
     render() {
         const shop = this.state.shop;
-        const currChat = this.props.currChat;
         const isUserOwner = (Object.keys(this.state.shop).length > 0
             && this.props.loggedInUser._id === this.props.currShop.owner._id)
         // console.log('chats in shop ccc', this.props.loggedInUser.chats);
@@ -196,22 +162,7 @@ class _ShopDetails extends Component {
                                     <p>{shop.owner.contact.email}</p>
                                 </div>
 
-                                <div className={"chat-box flex"}>
-                                    {(isUserOwner && this.props.loggedInUser.chats && this.props.loggedInUser.chats.length > 0) ?
-                                        this.props.loggedInUser.chats.map(chat => {
-                                            // console.log('Chat in shop', chat);
-                                            return (
-                                                <div>
-                                                    <img className="chat-user-img"
-                                                        src={this.getChatUserImg(chat._id)}
-                                                        alt="CHAT"
-                                                        onClick={() => { this.onToggleChat(chat._id) }} />
-                                                    {this.state.chatIdOn === chat._id &&
-                                                        currChat && <Chat targetId={currChat.initiate._id}
-                                                            onClose={() => { this.onToggleChat(chat._id) }} />}
-                                                </div>)
-                                        }) : ""}
-                                </div>
+                            
                                 < div className="shop-description">
                                     <p>{shop.desc}</p>
                                 </div>
@@ -311,8 +262,7 @@ const mapDispatchToProps = {
     getShopById,
     saveShop,
     loadPets,
-    savePet,
-    getChatById
+    savePet
 }
 
 export const ShopDetails = connect(mapStateToProps, mapDispatchToProps)(_ShopDetails);

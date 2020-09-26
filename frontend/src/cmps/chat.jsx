@@ -39,28 +39,11 @@ class _Chat extends Component {
     }
 
     async componentDidMount() {
-<<<<<<< HEAD
-        const sender = this.props.loggedInUser;
-            if (this.props.chatId){
-                
-            }
-        const recipient = await userService.getById(this.props.recipientId);
-        await this.setState({ recipient: recipient })
-        // const cahtParticipents = { sender: sender, recipient: recipient }
-
-        // for (participant in cahtParticipents) {
-        //     this.setChat(cahtParticipents[participant], participant);
-        // }
-
-        this.setChat(sender, 'sender');
-        // this.setChat(recipient, 'recipient');
-=======
         var initiate = this.props.loggedInUser;
         console.log('logedIn', initiate);
         var target = await userService.getById(this.props.targetId);
         this.setState({ target })
         this.setChat(this.props.loggedInUser);
->>>>>>> a52368c9ecfbfdf8d1f7ad441c0ed5403174b664
     }
 
     setChat = async (user) => {
@@ -167,7 +150,6 @@ class _Chat extends Component {
     }
 
     displayMsg = (msg, idx) => {
-<<<<<<< HEAD
         console.log(msg);
         let classTxt = 'message-row ';
         const time=new Date(msg.createdAt);
@@ -181,11 +163,6 @@ class _Chat extends Component {
                     <div className="date" >{time.getHours()+':'+time.getMinutes()}</div>
                 </div>
             </div>
-=======
-        let classTxt = 'message ';
-        classTxt += (msg.senderId === this.props.loggedInUser) ? 'sender' : 'recipient';
-        return (<div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
->>>>>>> a52368c9ecfbfdf8d1f7ad441c0ed5403174b664
         )
     }
 

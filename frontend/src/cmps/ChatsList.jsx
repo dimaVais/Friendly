@@ -38,6 +38,26 @@ async componentDidUpdate(prevProps){
     //     } 
     // }
 }
+// getChatUserImg = (id) => {
+//     const images = this.state.chatImgs;
+//     const imgForChat = images.find(img => {
+//         return img.id === id;
+//     })
+//     if (imgForChat) return imgForChat.img;
+//     else return imgForChat;
+// }
+
+// getChatImgs = async () => {
+//     const chats = this.state.shopOwner.chats;
+//     if (chats && chats.length > 0) {
+//         chats.forEach(async chat => {
+//             const id = chat.topic.substring(0, chat.topic.indexOf('_'));
+//             const user = await userService.getById(id);
+//             const userImg = { id: chat._id, img: user.imgUrl }
+//             this.setState({ chatImgs: [...this.state.chatImgs, userImg] })
+//         })
+//     }
+// }
 
 displayChatDetails=(chat)=>{
     console.log(chat);
@@ -70,3 +90,21 @@ const mapDispatchToProps = {
 }
 
 export const ChatsList = connect(mapStateToProps, mapDispatchToProps)(_ChatsList)
+
+
+{/* <div className={"chat-box flex"}>
+{(isUserOwner && this.props.loggedInUser.chats && this.props.loggedInUser.chats.length > 0) ?
+    this.props.loggedInUser.chats.map(chat => {
+        // console.log('Chat in shop', chat);
+        return (
+            <div>
+                <img className="chat-user-img"
+                    src={this.getChatUserImg(chat._id)}
+                    alt="CHAT"
+                    onClick={() => { this.onToggleChat(chat._id) }} />
+                {this.state.chatIdOn === chat._id &&
+                    currChat && <Chat targetId={currChat.initiate._id}
+                        onClose={() => { this.onToggleChat(chat._id) }} />}
+            </div>)
+    }) : ""}
+</div> */}
