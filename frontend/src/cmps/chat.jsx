@@ -158,14 +158,18 @@ class _Chat extends Component {
     displayMsg = (msg, idx) => {
         let classTxt = 'message ';
         classTxt += (msg.senderId === this.props.loggedInUser._id) ? 'sender' : 'recipient';
-        return (<div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
+        return (
+            <div className="message-row">
+
+                <div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
+            </div>
         )
     }
 
     render() {
         return (
             <div className="chat-container">
-                <section className="chat-title flex space-between">
+                <section className="chat-title flex space-evenly">
                     <span>{this.state.recipientName}</span>
                     <button className="btn-close btn" onClick={this.onClose}><FontAwesomeIcon className="close-icon" icon={faTimes} /></button>
                 </section>
