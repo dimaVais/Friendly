@@ -1,5 +1,5 @@
 import httpService from './httpService.js'
-const BASE_URL = 'chat'
+const BASE_URL = '/chat'
 
 
 export const chatService = {

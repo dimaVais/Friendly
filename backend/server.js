@@ -19,7 +19,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }
-}))
+}));
+app.use(express.static('public'));
 
 
 if (process.env.NODE_ENV === 'production') {
@@ -31,6 +32,7 @@ if (process.env.NODE_ENV === 'production') {
     };
     app.use(cors(corsOptions));
 }
+
 
 const petRoutes = require('./api/pet/pet.routes');
 const shopRoutes = require('./api/shop/shop.routes');
@@ -49,15 +51,16 @@ app.use('/api/auth', authRoutes);
 app.use('/api/chat', chatRoutes);
 connectSockets(io);
 
-http.listen(devPort, () => {
-    console.log(`Example app listening at http://localhost:${devPort}`);
+const port = process.env.PORT || devPort;
+app.get('/**', (req, res) => {
+ res.sendFile(path.join(__dirname, 'public', 'index.html'));
+})
+
+http.listen(port, () => {
+    // console.log(`Example app listening at http://localhost:${port}`);
 })
 
 
-// const port = process.env.PORT || devPort;
-// app.get('/**', (req, res) => {
-//  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// })
 
 // const logger = require('./services/logger.service')
 

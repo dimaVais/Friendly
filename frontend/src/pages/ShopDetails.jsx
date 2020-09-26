@@ -126,12 +126,11 @@ class _ShopDetails extends Component {
 
     getChatUserImg = (id) => {
         const images = this.state.chatImgs;
-        console.log('aaaaadddccc', images);
         const imgForChat = images.find(img => {
             return img.id === id;
         })
-        console.log('cccc', imgForChat.img);
-        return imgForChat.img;
+        if (imgForChat) return imgForChat.img;
+        else return imgForChat;
     }
 
     drawStars = (rate) => {
@@ -200,10 +199,10 @@ class _ShopDetails extends Component {
                                             // console.log('Chat in shop', chat);
                                             return (
                                                 <div>
-                                                        <img className="chat-user-img"
-                                                            src={this.getChatUserImg(chat._id)}
-                                                            alt="CHAT" 
-                                                            onClick={() => { this.onToggleChat(chat._id) }}/>
+                                                    <img className="chat-user-img"
+                                                        src={this.getChatUserImg(chat._id)}
+                                                        alt="CHAT"
+                                                        onClick={() => { this.onToggleChat(chat._id) }} />
                                                     {this.state.chatIdOn === chat._id &&
                                                         currChat && <Chat targetId={currChat.initiate._id}
                                                             onClose={() => { this.onToggleChat(chat._id) }} />}
