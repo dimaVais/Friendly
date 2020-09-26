@@ -13,6 +13,9 @@ import Select from '@material-ui/core/Select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp, faEnvelope, faFemale, faMobileAlt, faStar } from '@fortawesome/free-solid-svg-icons'
 import { animateScroll as scroll } from "react-scroll";
+import { Chat } from '../cmps/Chat.jsx';
+import { getChatById } from '../store/actions/chatActions.js';
+import userService from '../services/userService.js';
 
 
 class _ShopDetails extends Component {
@@ -20,17 +23,18 @@ class _ShopDetails extends Component {
     state = {
         shop: {},
         shopPets: [],
+        shopOwner: '',
         isOpenReviews: false,
         currReview: {
             txt: '',
             rate: ''
-        }
+        },
+        chatIdOn: '',
+        chatImgs: []
     }
 
-
-
-    componentDidMount() {
-        this.loadShopData();
+    async componentDidMount() {
+        await this.loadShopData();
         scroll.scrollToTop();
     }
 
@@ -39,13 +43,30 @@ class _ShopDetails extends Component {
         await this.props.loadPets();
         await this.props.getShopById(shopId);
         this.setState({ shop: { ...this.props.currShop } });
+        const owner = await userService.getById(this.props.currShop.owner._id);
+        console.log('owner from DB', owner);
+
+        await this.setState({ shopOwner: { ...owner } });
         const shopPets = this.props.pets.filter(pet => {
             if (pet.shop) return pet.shop._id === this.state.shop._id
 
         })
-        this.setState({
+        await this.setState({
             shopPets: [...shopPets]
         })
+        await this.getChatImgs();
+    }
+
+    getChatImgs = async () => {
+        const chats = this.state.shopOwner.chats;
+        if (chats && chats.length > 0) {
+            chats.forEach(async chat => {
+                const id = chat.topic.substring(0, chat.topic.indexOf('_'));
+                const user = await userService.getById(id);
+                const userImg = { id: chat._id, img: user.imgUrl }
+                this.setState({ chatImgs: [...this.state.chatImgs, userImg] })
+            })
+        }
     }
 
     onRemove = (id) => {
@@ -82,7 +103,7 @@ class _ShopDetails extends Component {
             imgUrl: user.imgUrl
         }
         console.log('review', review);
-        shop.reviews.unshift(review);
+        shop.reviews.push(review);
         await this.props.saveShop(shop);
         this.loadShopData();
     }
@@ -96,6 +117,25 @@ class _ShopDetails extends Component {
         )
     }
 
+    onToggleChat = async (id) => {
+        if (this.state.chatIdOn === id) {
+            this.setState({ chatIdOn: '' });
+        } else {
+            await this.setState({ chatIdOn: id });
+
+            await this.props.getChatById(id);
+        }
+    }
+
+    getChatUserImg = (id) => {
+        const images = this.state.chatImgs;
+        const imgForChat = images.find(img => {
+            return img.id === id;
+        })
+        if (imgForChat) return imgForChat.img;
+        else return imgForChat;
+    }
+
     drawStars = (rate) => {
         var stars = '';
         for (var i = 0; i < rate; i++) {
@@ -106,6 +146,11 @@ class _ShopDetails extends Component {
 
     render() {
         const shop = this.state.shop;
+        const currChat = this.props.currChat;
+        const isUserOwner = (Object.keys(this.state.shop).length > 0
+            && this.props.loggedInUser._id === this.props.currShop.owner._id)
+        // console.log('chats in shop ccc', this.props.loggedInUser.chats);
+
         return (
             <section>
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
@@ -133,37 +178,59 @@ class _ShopDetails extends Component {
                         </div>
                         <div className="top-screen-box">
                             <div className="shop-details-section">
-                                <div className="owner-details">
-                                    <img className="shop-owner-img" src={shop.owner.imgUrl} />
-                                    <div className="owner-contact">
-                                        <div className="contact-box">
-                                            <FontAwesomeIcon className="contact-icon" icon={faFemale} />
-                                            <p>{shop.owner.fullName}</p>
-                                        </div>
 
-                                        <div className="contact-box">
-                                            <FontAwesomeIcon className="contact-icon" icon={faMobileAlt} />
-                                            <p>{shop.owner.contact.phone}</p>
-                                        </div>
+                                <img className="shop-owner-img" src={shop.owner.imgUrl} />
 
-                                        <div className="contact-box">
-                                            <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
-                                            <p>{shop.owner.contact.email}</p>
-                                        </div>
-                                    </div>
-
+                                <div className="contact-box">
+                                    <FontAwesomeIcon className="contact-icon" icon={faFemale} />
+                                    <p>{shop.owner.fullName}</p>
                                 </div>
 
+                                <div className="contact-box">
+                                    <FontAwesomeIcon className="contact-icon" icon={faMobileAlt} />
+                                    <p>{shop.owner.contact.phone}</p>
+                                </div>
 
+                                <div className="contact-box">
+                                    <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
+                                    <p>{shop.owner.contact.email}</p>
+                                </div>
 
-                                <div className="shop-description">
+                                <div className={"chat-box flex"}>
+                                    {(isUserOwner && this.props.loggedInUser.chats && this.props.loggedInUser.chats.length > 0) ?
+                                        this.props.loggedInUser.chats.map(chat => {
+                                            // console.log('Chat in shop', chat);
+                                            return (
+                                                <div>
+                                                    <img className="chat-user-img"
+                                                        src={this.getChatUserImg(chat._id)}
+                                                        alt="CHAT"
+                                                        onClick={() => { this.onToggleChat(chat._id) }} />
+                                                    {this.state.chatIdOn === chat._id &&
+                                                        currChat && <Chat targetId={currChat.initiate._id}
+                                                            onClose={() => { this.onToggleChat(chat._id) }} />}
+                                                </div>)
+                                        }) : ""}
+                                </div>
+                                < div className="shop-description">
                                     <p>{shop.desc}</p>
+                                </div>
+                            </div>
+                            <div className="order-list-box">
+                                {this.state.shop.owner._id === this.props.loggedInUser._id &&
+                                    <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />}
+                            </div>
+                            <div className="shop-location-box">
 
+                                <div className="map-container">
+                                    <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
+                                </div>
+                                <FontAwesomeIcon className="arrow-icon" icon={faAngleDoubleUp} />
+                                <div className="shop-location-name">
+                                    <h2>We are located at {shop.location.name}</h2>
                                 </div>
 
                             </div>
-
-
 
                         </div>
                         <div className="bottom-screen-box">
@@ -217,40 +284,10 @@ class _ShopDetails extends Component {
                                         )}
                                     </ul>}
                             </div>
-                            <div className="location-and-orders-box">
-                                <div className="shop-location-box">
-
-                                    <div className="map-container">
-                                        <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
-                                    </div>
-                                    <FontAwesomeIcon className="arrow-icon" icon={faAngleDoubleUp} />
-                                    <div className="shop-location-name">
-                                        <h2>We are located at {shop.location.name}</h2>
-                                    </div>
-
-                                </div>
-
-                                <div className="order-list-box">
-                                    {this.state.shop.owner._id === this.props.loggedInUser._id &&
-                                        <div>
-                                            <h3 className="adoption-requests-heading">Adoption Requests</h3>
-                                            <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />
-                                        </div>}
-                                </div>
-
+                            <div className="pets-box" >
+                                {/* <h2>Our Pets</h2> */}
+                                <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
                             </div>
-
-
-                        </div>
-
-
-
-
-
-
-                        <div className="pets-box" >
-                            <h2 className="our-pets-heading">Our Pets</h2>
-                            <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
                         </div>
 
                     </div>
@@ -266,6 +303,7 @@ const mapStateToProps = state => {
         currShop: state.shopReducer.currShop,
         pets: state.petReducer.pets,
         loggedInUser: state.userReducer.loggedInUser,
+        currChat: state.chatReducer.currChat
     }
 }
 
@@ -273,7 +311,8 @@ const mapDispatchToProps = {
     getShopById,
     saveShop,
     loadPets,
-    savePet
+    savePet,
+    getChatById
 }
 
 export const ShopDetails = connect(mapStateToProps, mapDispatchToProps)(_ShopDetails);

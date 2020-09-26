@@ -19,19 +19,27 @@ class _Chat extends Component {
     state = {
         chat: {
             topic: '',
-            participents: [],
+            initiate: {
+                _id: '',
+                fullName: ''
+            },
+            target: {
+                _id: '',
+                fullName: ''
+            },
             msgs: []
         },
         msg: {
             senderId: '',
-            createdAt:'',
+            from: '',
+            createdAt: '',
             txt: ''
         },
-        sender: '',
-        recipient: ''
+        target: '',
     }
 
     async componentDidMount() {
+<<<<<<< HEAD
         const sender = this.props.loggedInUser;
             if (this.props.chatId){
                 
@@ -46,23 +54,32 @@ class _Chat extends Component {
 
         this.setChat(sender, 'sender');
         // this.setChat(recipient, 'recipient');
+=======
+        var initiate = this.props.loggedInUser;
+        console.log('logedIn', initiate);
+        var target = await userService.getById(this.props.targetId);
+        this.setState({ target })
+        this.setChat(this.props.loggedInUser);
+>>>>>>> a52368c9ecfbfdf8d1f7ad441c0ed5403174b664
     }
 
-    setChat = async (user, type) => {
-        await this.setState({ msg: { from: user.fullName, txt: '' } });
+    setChat = async (user) => {
         let userChat = null;
         if (user.chats && user.chats.length > 0) {
+            console.log('userchats', user.chats, 'of user', user);
             userChat = [...user.chats].find(chat => {
-                return chat.topic === (`${this.props.loggedInUser._id}__${this.props.recipientId}`
-                || `${this.props.recipientId}__${this.props.loggedInUser._id}`)})
+                console.log('IN USER CHAT', chat);
+                return chat.topic === `${this.props.loggedInUser._id}__${this.props.targetId}`
+                    || chat.topic === `${this.props.targetId}__${this.props.loggedInUser._id}`;
+            })
         }
+        console.log('userChat', userChat);
         if (userChat) {
             await this.props.getChatById(userChat._id)
             await this.setState({ chat: { ...this.props.currChat } })
-
         }
         else {
-            await this.createChat(user, type, this.props.loggedInUser, this.state.recipient, this.props.pet);
+            await this.createChat(this.props.loggedInUser, this.state.target);
         }
 
         socketService.setup();
@@ -70,51 +87,42 @@ class _Chat extends Component {
         socketService.on('chat addMsg', this.addMsg);
     }
 
-    // setSenderChat = async (sender,recipient) => {
-    //     await this.setState({ msg: { from: sender.fullName, txt: '' } });
-    //     let userChat = null;
-    //     if (sender.chats && sender.chats.length > 0) {
-    //         userChat = [...sender.chats].find(chat => (
-    //             chat.topic === `${this.props.pet._id}_${sender._id}__${this.props.recipientId}`));
-    //     }
-    //     if (userChat) {
-    //         await this.props.getChatById(userChat._id)
-    //         await this.setState({ chat: { ...this.props.currChat } })
-    //     }
-    //     else {
-    //         await this.createChat(sender, recipient, this.props.pet);
-    //     }
-
-    //     socketService.setup();
-    //     socketService.emit('chat topic', this.state.chat.topic);
-    //     socketService.on('chat addMsg', this.addMsg);
-    // }
-
     componentWillUnmount() {
         socketService.off('chat addMsg', this.addMsg);
         socketService.terminate();
     }
 
-    createChat = async (user, type, sender, recipient, pet) => {
+    createChat = async (initiate, target) => {
         const chat = {
-            topic: `${sender._id}__${recipient._id}`,
-            participents: [sender._id, recipient._id],
-            msgs: []
+            topic: `${initiate._id}__${target._id}`,
+            initiate: {
+                _id: initiate._id,
+                fullName: initiate.fullName
+            },
+            target: {
+                _id: target._id,
+                fullName: target.fullName
+            }, msgs: []
         }
-        if (!user.chats) {
-            user.chats = [];
-        }
-
         await this.props.saveChat(chat);
-        if (this.props.currChat._id) {
-            const chatToAdd = {
-                _id: this.props.currChat._id,
-                topic: this.props.currChat.topic,
-            };
-            user.chats.push(chatToAdd);
-        }
-        await this.props.updateUser(sender);
-        await this.setState({ chat: { ...this.props.currChat } });
+
+        const users = [initiate, target];
+        users.forEach(async user => {
+            if (!user.chats) {
+                user.chats = [];
+            }
+
+            if (this.props.currChat._id) {
+                const chatToAdd = {
+                    _id: this.props.currChat._id,
+                    topic: this.props.currChat.topic,
+                    role: (user._id === this.props.loggedInUser) ? 'initiate' : 'target'
+                };
+                user.chats.push(chatToAdd);
+            }
+            await this.props.updateUser(user);
+            await this.setState({ chat: { ...this.props.currChat } });
+        })
     }
 
     addMsg = async newMsg => {
@@ -128,18 +136,18 @@ class _Chat extends Component {
         this.props.updateUser(this.props.loggedInUser);
     }
 
-    sendMsg = (ev) => {
+    sendMsg = async (ev) => {
         ev.preventDefault();
-        this.addMsg(this.state.msg);
-        console.log(this.state.chat.topic);
-        socketService.emit('chat addMsg', this.state.msg);
-        console.log('thischat', this.state.chat);
         const msg = {
             senderId: this.props.loggedInUser._id,
+            from: this.props.loggedInUser.fullName,
             createdAt: new Date(),
-            txt: ''
+            txt: this.state.msg.txt
         }
-        this.setState({ msg: msg });
+        await this.setState({ msg: { ...msg } });
+        this.addMsg(this.state.msg);
+        socketService.emit('chat addMsg', this.state.msg);
+        this.setState({ msg: { senderId: '', from: '', createdAt: '', txt: '' } });
     }
 
     msgHandleChange = ev => {
@@ -159,6 +167,7 @@ class _Chat extends Component {
     }
 
     displayMsg = (msg, idx) => {
+<<<<<<< HEAD
         console.log(msg);
         let classTxt = 'message-row ';
         const time=new Date(msg.createdAt);
@@ -172,6 +181,11 @@ class _Chat extends Component {
                     <div className="date" >{time.getHours()+':'+time.getMinutes()}</div>
                 </div>
             </div>
+=======
+        let classTxt = 'message ';
+        classTxt += (msg.senderId === this.props.loggedInUser) ? 'sender' : 'recipient';
+        return (<div className={classTxt} key={idx}>{msg.from}:{msg.txt}</div>
+>>>>>>> a52368c9ecfbfdf8d1f7ad441c0ed5403174b664
         )
     }
 

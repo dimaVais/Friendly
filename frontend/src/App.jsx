@@ -42,9 +42,9 @@ import { Footer } from './cmps/Footer';
           {/* {this.state.isChatsList && <Route component={ChatsList} />}  */}
           </Switch>
         </main>
-        {/* <footer>
+        <footer>
           <Footer />
-        </footer> */}
+        </footer>
       </div >
     );
   }

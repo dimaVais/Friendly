@@ -1,0 +1,29 @@
+.footer {
+    background-color: #fff;
+    width: 99vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto;
+    font-family: roboto ,sans-serif;
+}
+
+.logo-footer {
+    width: 80px;
+    height: 80px;
+}
+
+.social {
+display: flex;
+
+    * {
+        margin: 5px;
+        cursor: pointer;
+    }
+}
+
+.insta-logo {
+    width: 30px;
+    height: 30px;
+}

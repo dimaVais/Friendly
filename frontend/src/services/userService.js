@@ -1,6 +1,6 @@
 import httpService from './httpService'
-const BASE_URL_AUTH = 'auth'
-const BASE_URL_USER = 'user'
+const BASE_URL_AUTH = '/auth'
+const BASE_URL_USER = '/user'
 
 export default {
     login,
@@ -17,10 +17,10 @@ function getUsers() {
 }
 
 function getById(userId) {
-    return httpService.get(`user/${userId}`)
+    return httpService.get(`${BASE_URL_USER}/${userId}`)
 }
 function remove(userId) {
-    return httpService.delete(`user/${userId}`)
+    return httpService.delete(`${BASE_URL_USER}/${userId}`)
 }
 
 function update(user) {
