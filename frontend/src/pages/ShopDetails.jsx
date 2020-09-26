@@ -44,7 +44,7 @@ class _ShopDetails extends Component {
         await this.props.getShopById(shopId);
         this.setState({ shop: { ...this.props.currShop } });
         const owner = await userService.getById(this.props.currShop.owner._id);
-        console.log('owner from DB',  owner );
+        console.log('owner from DB', owner);
 
         await this.setState({ shopOwner: { ...owner } });
         const shopPets = this.props.pets.filter(pet => {
@@ -58,13 +58,15 @@ class _ShopDetails extends Component {
     }
 
     getChatImgs = async () => {
-        console.log('owner',  this.state.shopOwner );
-        this.state.shopOwner.chats.forEach(async chat => {
-            const id = chat.topic.substring(0, chat.topic.indexOf('_'));
-            const user = await userService.getById(id);
-            const userImg = { id: chat._id, img: user.imgUrl }
-            this.setState({ chatImgs: [...this.state.chatImgs, userImg] })
-        })
+        const chats = this.state.shopOwner.chats;
+        if (chats && chats.length > 0) {
+            chats.forEach(async chat => {
+                const id = chat.topic.substring(0, chat.topic.indexOf('_'));
+                const user = await userService.getById(id);
+                const userImg = { id: chat._id, img: user.imgUrl }
+                this.setState({ chatImgs: [...this.state.chatImgs, userImg] })
+            })
+        }
     }
 
     onRemove = (id) => {
@@ -195,7 +197,7 @@ class _ShopDetails extends Component {
                                 </div>
 
                                 <div className={"chat-box flex"}>
-                                    {(isUserOwner) ?
+                                    {(isUserOwner && this.props.loggedInUser.chats && this.props.loggedInUser.chats.length > 0) ?
                                         this.props.loggedInUser.chats.map(chat => {
                                             // console.log('Chat in shop', chat);
                                             return (
