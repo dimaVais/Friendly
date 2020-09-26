@@ -52,8 +52,6 @@ class _ShopDetails extends Component {
         })
     }
 
-    
-
     onRemove = (id) => {
         this.props.removePet(id)
     }
@@ -120,7 +118,6 @@ class _ShopDetails extends Component {
         return (
             <section>
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
-
 
                     <div className="shop-details-main-box">
                         <div className="shop-details-header">

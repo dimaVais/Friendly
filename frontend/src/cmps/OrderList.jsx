@@ -56,7 +56,7 @@ class _OrderList extends Component {
         const orders = this.props.orders;
         return (!orders) ? <h1>LOADING...</h1> :
             (
-                <div className="order-list" >
+                <div className="order-list flex column" >
 
                     <div className={`doubleAccept ${this.state.msgDivClass}`}>Only one approval please.</div>
                     {orders.map(order => <OrderPreview isShop={this.props.isShop} order={order} onRemove={this.onRemove} onSave={this.onSave} />)}
