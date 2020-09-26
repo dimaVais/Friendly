@@ -19,7 +19,7 @@ async function query(filterBy={}, filterName) {
     }
 }
 
-async function getById(id) {
+async function getById(id) {    
     const res = await httpService.get(`${BASE_URL}/${id}`);
     return res;
 }

@@ -33,9 +33,12 @@ class _Chat extends Component {
 
     async componentDidMount() {
         const sender = this.props.loggedInUser;
+            if (this.props.chatId){
+                
+            }
         const recipient = await userService.getById(this.props.recipientId);
         await this.setState({ recipient: recipient })
-        const cahtParticipents = { sender: sender, recipient: recipient }
+        // const cahtParticipents = { sender: sender, recipient: recipient }
 
         // for (participant in cahtParticipents) {
         //     this.setChat(cahtParticipents[participant], participant);
