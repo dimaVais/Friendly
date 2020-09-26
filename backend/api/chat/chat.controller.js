@@ -20,6 +20,7 @@ async function getChat (req, res) {
     const chatId = req.params.id;
     console.log('chatID in controller',chatId);
     const chat = await chatService.getById(chatId)
+    console.log(chat);
     return res.json(chat);;
 }
 

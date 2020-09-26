@@ -12,7 +12,6 @@ class _Home extends Component {
 
     state = {
         pets: [],
-        categories: ['Dogs', 'Cats', 'Farm', 'Other']
     }
 
     componentDidMount() {

@@ -48,6 +48,8 @@ class _NavBar extends Component {
     render() {
         const { user } = this.props
         return (
+        <div>
+       
             <div className={this.props.history.location.pathname === '/' ? 'main-nav' : 'main-nav-not-home'}>
                 <div className="left-nav">
                     <NavLink to="/"><img className="logo-up" src={require('../assets/img/logo.png')} alt="Home" /></NavLink>
@@ -60,7 +62,6 @@ class _NavBar extends Component {
                     {user && !user.isOwner && !user.isGuest && <NavLink className="nav-btn" to={`/profile/${user._id}`}>{user.fullName}</NavLink>}
 
                     {user && !user.isGuest && <button className="chats-btn nav - btn" onClick={this.onToggleChatsList}>Chat</button>}
-                    {this.state.showChatsList && <ChatsList/>}
 
                     {user && user.isGuest && <button className="login-btn nav-btn" onClick={() => { this.onNavBarClick() }}>Login</button>}
                     {user && !user.isGuest && <button className="logout-btn nav - btn" onClick={() => { this.onLogOut() }}>Logout</button>}
@@ -69,9 +70,9 @@ class _NavBar extends Component {
 
                     {user && user.isGuest && <NavLink className="nav-btn" to="/signup">Sign Up</NavLink>}
                 </div>
-
-
             </div>
+                {this.state.showChatsList && <ChatsList/>}
+        </div>   
         )
     }
 }
