@@ -40,9 +40,9 @@ import { Footer } from './cmps/Footer';
 
           </Switch>
         </main>
-        {/* <footer>
+        <footer>
           <Footer />
-        </footer> */}
+        </footer>
       </div >
     );
   }

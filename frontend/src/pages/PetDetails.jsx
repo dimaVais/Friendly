@@ -23,6 +23,7 @@ import { WhatsappShareButton, WhatsappIcon, FacebookShareButton, FacebookIcon, T
 
 
 
+
 class _PetDetails extends Component {
 
     state = {
@@ -260,7 +261,7 @@ class _PetDetails extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="adopt-btn-box">
+                    <div className="tags-and-adopt-btn-box">
 
                         <div className="tags-list-box">
                             <ul className="tags-list">

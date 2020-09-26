@@ -1,29 +1,137 @@
 .about-main-container {
-    // background-color: #fff;
-    padding: 20px;
-    display: flex;
+    padding: 100px 80px 130px 80px;
     margin: 0;
-
-    .images-box {
-        width: 600px
-    }
-
+    background-color: rgb(250, 218, 158);
+    display: flex;
+    justify-content: space-between;
 
 
-    img {
-        border-radius: 50%;
-        width: 130px;
-        height: 130px;
-    }
 
-    .img0 {
-        width: 250px;
-        height: 250px;
+    
 
+    .about-left {
+        margin-top: 70px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
     }
 
     .about-headings {
+        width: 500px;
+        font-size: 1.8rem;
         font-family: roboto, sans-serif;
         font-weight: 400;
+        color: rgb(88, 88, 88);
     }
+
+    .go-to-gallery-btn {
+        box-shadow: inset 0px 0px 15px -7px #fce2c1;
+        background: linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+        background-color: #ffc477;
+        border-radius: 25px;
+        border: 1px solid #eeb44f;
+        display: inline-block;
+        cursor: pointer;
+        color: #ffffff;
+        font-family: montserrat, sans-serif;
+        font-size: 22px;
+        font-weight: bold;
+        padding: 18px 24px;
+        text-decoration: none;
+        text-shadow: 0px 0px 21px #cc9f52;
+    }
+
+    .go-to-gallery-btn:hover {
+        background: linear-gradient(to bottom, #fb9e25 5%, #ffc477 100%);
+        background-color: #fb9e25;
+    }
+
+    .go-to-gallery-btn:active {
+        position: relative;
+        top: 1px;
+        outline: none;
+    }
+    .go-to-gallery-btn:focus {
+        outline: none;
+    }
+
+    h2 {
+        color: rgb(88, 88, 88);
+    }
+
+
+    .about-right {
+        display: flex;
+        margin: 70px 450px 0 0;
+    }
+
+    .adoption-reasons-box {
+        width: 550px;
+        height: 550px;
+        background-color: #fff;
+        border-radius: 50%;
+        padding: 70px;
+        text-align: center;
+    }
+
+    .images-box {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .adoption-reasons-header {
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgb(204, 255, 255);
+    }
+
+    .adoption-reason-last {
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgb(204, 255, 255);
+    }
+
+    h3 {
+        color: #f79e04;
+        font-family: roboto, sans-serif;
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+        font-family: montserrat, sans-serif;
+        color: #6f6f6f;
+    }
+
+    img {
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+    }
+
+    .img-1 {
+        position: absolute;
+        right: -115px;
+        top: -100px
+        
+    }
+    .img-2 {
+        position: absolute;
+        top: 150px;
+        right: -225px;
+        
+    }
+    .img-3 {
+        position: absolute;
+        top: 400px;
+        right: -155px
+        
+    }
+
+    .call-to-action {
+        width: 300px;
+    }
+
+
+
+
 }
