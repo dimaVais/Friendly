@@ -3,6 +3,8 @@
     width: 530px;
     height: 4rem;
     position: relative;
+    margin-bottom: 20px;
+    
     .input-container{
         display: flex;
         align-items: center;
@@ -86,10 +88,11 @@
 }
 
 .filter-container{
-    .search-container{
-         
-    //
+    .categoty-container{
+        width: 380px;
+        height:90px;
     }
+    
 }
 
 

@@ -479,6 +479,86 @@ Wed, 23 Sep 2020 11:29:30 GMT - Info - Pet 5f6a1578417318fe8d1ee039 was updated 
 Wed, 23 Sep 2020 11:29:30 GMT - Info - Pet 5f6a1578417318fe8d1ee039 was updated well!
 Wed, 23 Sep 2020 11:29:31 GMT - Info - Pet 5f6a1578417318fe8d1ee039 was updated well!
 Wed, 23 Sep 2020 11:29:31 GMT - Info - Pet 5f6a1578417318fe8d1ee039 was updated well!
+<<<<<<< HEAD
+Wed, 23 Sep 2020 13:45:16 GMT - Info - Pet 5f6a1578417318fe8d1ee039 was updated well!
+Wed, 23 Sep 2020 13:45:30 GMT - Info - Pet 5f6a1578417318fe8d1ee036 was updated well!
+Wed, 23 Sep 2020 13:45:32 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Wed, 23 Sep 2020 13:46:11 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Wed, 23 Sep 2020 13:46:14 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Wed, 23 Sep 2020 13:46:16 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Wed, 23 Sep 2020 13:46:18 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Wed, 23 Sep 2020 13:52:25 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Wed, 23 Sep 2020 14:17:07 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Wed, 23 Sep 2020 14:17:08 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Wed, 23 Sep 2020 14:22:48 GMT - Info - Pet 5f6b55c2e4a7712389cab07c was updated well!
+Wed, 23 Sep 2020 14:22:51 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Wed, 23 Sep 2020 14:28:31 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Wed, 23 Sep 2020 14:44:23 GMT - Info - Pet 5f6b56b8e4a7712389cab0e5 was updated well!
+Wed, 23 Sep 2020 14:45:20 GMT - Info - Pet 5f6b55c2e4a7712389cab07c was updated well!
+Wed, 23 Sep 2020 14:47:14 GMT - Info - Pet 5f6a16ac417318fe8d1ee0ac was updated well!
+Wed, 23 Sep 2020 14:48:41 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Wed, 23 Sep 2020 14:53:24 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Wed, 23 Sep 2020 18:11:22 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Wed, 23 Sep 2020 18:13:22 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Thu, 24 Sep 2020 06:39:49 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 07:07:30 GMT - Info - Order 5f6c45b277f16b39ac751006 was creted well!
+Thu, 24 Sep 2020 07:16:33 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 07:16:47 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 07:16:55 GMT - Info - Order 5f6c45b277f16b39ac751006 was updated well!
+Thu, 24 Sep 2020 07:16:57 GMT - Info - Order 5f6c45b277f16b39ac751006 was updated well!
+Thu, 24 Sep 2020 07:17:23 GMT - Info - Order 5f6c45b277f16b39ac751006 was updated well!
+Thu, 24 Sep 2020 07:17:25 GMT - Info - Order 5f6c45b277f16b39ac751006 was updated well!
+Thu, 24 Sep 2020 07:18:31 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 07:18:34 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 07:18:35 GMT - Info - Order 5f6c45b277f16b39ac751006 was updated well!
+Thu, 24 Sep 2020 08:20:24 GMT - Info - Pet 5f6b8d05e4a7712389cabd9c was updated well!
+Thu, 24 Sep 2020 08:20:27 GMT - Info - Pet 5f6b8d05e4a7712389cabd9c was updated well!
+Thu, 24 Sep 2020 09:19:11 GMT - Info - Order 5f6c45b277f16b39ac751006 was updated well!
+Thu, 24 Sep 2020 09:26:13 GMT - Info - Order 5f6c45b277f16b39ac751006 was updated well!
+Thu, 24 Sep 2020 09:26:15 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:27:38 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:27:42 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:30:33 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:30:34 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:31:24 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:31:29 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:32:40 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:32:46 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:34:51 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:35:04 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 09:35:04 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 09:49:23 GMT - Info - Pet 5f6a16ad417318fe8d1ee0af was updated well!
+Thu, 24 Sep 2020 09:53:01 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Thu, 24 Sep 2020 10:05:24 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 10:05:45 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 10:05:46 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 10:14:10 GMT - Info - Pet 5f6a1578417318fe8d1ee03f was updated well!
+Thu, 24 Sep 2020 10:20:27 GMT - Info - Pet 5f6b8d05e4a7712389cabd9c was updated well!
+Thu, 24 Sep 2020 10:20:51 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 10:22:58 GMT - Info - Pet 5f6b55c2e4a7712389cab07c was updated well!
+Thu, 24 Sep 2020 10:23:54 GMT - Info - Pet 5f6a16ac417318fe8d1ee0ac was updated well!
+Thu, 24 Sep 2020 10:24:39 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 10:26:02 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 10:26:02 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 10:35:50 GMT - Info - Pet 5f6a16ac417318fe8d1ee0ac was updated well!
+Thu, 24 Sep 2020 10:36:03 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 10:36:05 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 10:36:45 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 10:37:16 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 10:37:16 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 10:46:57 GMT - Info - Pet 5f6a16ac417318fe8d1ee0ac was updated well!
+Thu, 24 Sep 2020 10:48:36 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 10:49:09 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 10:49:09 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 10:52:55 GMT - Info - Pet 5f6b89eee4a7712389cabc15 was updated well!
+Thu, 24 Sep 2020 10:54:10 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 11:11:45 GMT - Info - Pet 5f6b9102e4a7712389cabfaf was updated well!
+Thu, 24 Sep 2020 11:12:08 GMT - Info - Pet 5f6a16ac417318fe8d1ee0ac was updated well!
+Thu, 24 Sep 2020 11:13:22 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Thu, 24 Sep 2020 11:13:23 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Thu, 24 Sep 2020 11:27:48 GMT - Info - Order 5f6a51fed1c9714a8c019600 was updated well!
+Fri, 25 Sep 2020 07:39:57 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+=======
 Wed, 23 Sep 2020 13:52:16 GMT - Info - Pet 5f6a1578417318fe8d1ee03c was updated well!
 Wed, 23 Sep 2020 15:07:11 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
 Wed, 23 Sep 2020 15:07:37 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
@@ -486,6 +566,10 @@ Wed, 23 Sep 2020 15:09:37 GMT - Error - ERROR: cannot find shop by id  s101, err
 Thu, 24 Sep 2020 10:03:03 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
 Thu, 24 Sep 2020 10:03:50 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
 Thu, 24 Sep 2020 10:04:08 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: log is not defined
+<<<<<<< HEAD
+Thu, 24 Sep 2020 15:45:52 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Thu, 24 Sep 2020 15:46:09 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+=======
 Thu, 24 Sep 2020 20:01:40 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
 Thu, 24 Sep 2020 20:01:40 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
 Thu, 24 Sep 2020 20:01:40 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
@@ -624,6 +708,7 @@ Fri, 25 Sep 2020 14:25:55 GMT - Info - Chat 5f6dfd5fc3b83b0294d2eebc was updated
 Fri, 25 Sep 2020 14:28:38 GMT - Info - Chat 5f6dfe96c3b83b0294d2eebd was creted well!
 Fri, 25 Sep 2020 14:28:48 GMT - Info - Chat 5f6dfe96c3b83b0294d2eebd was updated well!
 Fri, 25 Sep 2020 14:28:52 GMT - Info - Chat 5f6dfa87c3b83b0294d2eeba was updated well!
+<<<<<<< HEAD
 Fri, 25 Sep 2020 14:54:41 GMT - Info - Chat 5f6e04b17bc1e7401c04e5dc was creted well!
 Fri, 25 Sep 2020 14:56:34 GMT - Info - Chat 5f6e05227bc1e7401c04e5dd was creted well!
 Fri, 25 Sep 2020 14:59:11 GMT - Info - Chat 5f6e05bf7bc1e7401c04e5de was creted well!
@@ -1054,3 +1139,8 @@ Sat, 26 Sep 2020 08:28:26 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated
 Sat, 26 Sep 2020 08:28:36 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
 Sat, 26 Sep 2020 08:28:42 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
 Sat, 26 Sep 2020 08:28:47 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+=======
+>>>>>>> d17d355648b54dea5c0889b2f0834db458cae4d2
+>>>>>>> cce4675a6caed8b9579ec7146b66059a73f5407c
+Fri, 25 Sep 2020 16:51:54 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+>>>>>>> a4b57c039dce41fedbc0768a3346bc8af95e84c4

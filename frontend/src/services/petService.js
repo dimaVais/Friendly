@@ -9,7 +9,7 @@ export const petService = {
 }
 
 async function query(filterBy) {
-    let queryStr='';
+    let queryStr = '';
     //todo - change after building backend
     // if (filterBy){
     //     filterBy.type = filterBy.type.charAt(0).toUpperCase()+filterBy.type.slice(1);
@@ -19,7 +19,7 @@ async function query(filterBy) {
     const res = await httpService.get(`${BASE_URL}${queryStr}`, {
         params: filterBy
     });
-    const filtered=filterPets(res,filterBy);
+    const filtered = filterPets(res, filterBy);
     return filtered;
 }
 async function getPetById(id) {
@@ -64,13 +64,11 @@ function filterPets(pets,filterBy){
         })
     }
 
-    filteredPets = filteredPets.filter(pet=>{
-        return pet.type.toLowerCase().includes(filterBy.type)
-        })
 
-    filteredPets = filteredPets.filter(pet=>{
-        return pet.gender.toLowerCase().includes(filterBy.gender)
-        })
+    filteredPets = filteredPets.filter(pet => {
+        return pet.type.toLowerCase().includes(filterBy.type)
+    })
+
 
     if (filterBy.distance.range){
         const geocoder = require('google-geocoder');
@@ -85,11 +83,3 @@ function filterPets(pets,filterBy){
     return filteredPets
 }
 
-function _makeId(length = 6) {
-    var txt = '';
-    var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    for (var i = 0; i < length; i++) {
-        txt += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return txt;
-}

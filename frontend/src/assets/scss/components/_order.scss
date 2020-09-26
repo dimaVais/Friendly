@@ -1,7 +1,12 @@
+.order-list-box {
+    width: 550px;
+    min-height: 250px;
+}
+
 .order-list {
     display: flex;
     flex-wrap: wrap;
-    margin: 20px 130px 0 0;
+    // margin: 20px 130px 0 0;
 
     .order-loading {
         max-width: 30em;
@@ -24,10 +29,13 @@
 }
 
 .order-preview {
-    width: 350px;
     display: flex;
-    margin: 15px;
+    margin: 15px 0;
     align-items: center;
+
+    .order-preview-details {
+        margin-right: 20px;
+    }
 
     button {
         margin: 5px;
@@ -35,19 +43,24 @@
     }
 
     p {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        color: black;
     }
 
-
-
-    
+    span {
+        color: rgb(194, 194, 194);
+    }
 
     &.accepted {
         background-color: rgba(182, 252, 182, 0.199);
+        border-radius: 10px;
+        padding: 5px;
     }
 
     &.denied {
         background-color: rgba(248, 168, 168, 0.281);
+        border-radius: 10px;
+        padding: 5px;
     }
 }
 
@@ -55,12 +68,52 @@ a {
     text-decoration: none;
 }
 
+.order-actions-btns-box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.order-btn:focus {
+    outline: none;
+}
+
 .accept-order-btn {
-    background-color: rgb(39, 170, 39);
+    background-color: #fff;
+    border: 1px solid rgb(39, 170, 39);
+    color: rgb(39, 170, 39);
+    padding: 6px 10px;
+    font-family: montserrat, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
 }
+
 .reject-order-btn {
-    background-color: rgb(209, 54, 54);
+    background-color: #fff;
+    border: 1px solid rgb(209, 54, 54);
+    color: rgb(209, 54, 54);
+    padding: 6px 10px;
+    font-family: montserrat, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
 }
+
 .pending-order-btn {
-    background-color: rgb(255, 196, 0);
+    background-color: #fff;
+    border: 1px solid rgb(255, 196, 0);
+    color: rgb(255, 196, 0);
+    padding: 6px 10px;
+    font-family: montserrat, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.remove-order-btn {
+    background-color: #fff;
+    // border: 1px solid rgb(128, 115, 252);
+    // color: rgb(128, 115, 252);
+    padding: 6px 10px;
+    font-family: montserrat, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
 }

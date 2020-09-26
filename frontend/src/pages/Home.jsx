@@ -6,6 +6,7 @@ import { PetList } from '../cmps/PetList'
 import { loadPets } from '../store/actions/petActions.js'
 import { PetApp } from './PetApp'
 import {PetFilter} from '../cmps/PetFilter'
+import { About } from '../cmps/About'
 
 class _Home extends Component {
 
@@ -28,6 +29,7 @@ class _Home extends Component {
         return (
             <div className="main-container">
                 <Hero />
+                <About />
             </div>
         )
     }

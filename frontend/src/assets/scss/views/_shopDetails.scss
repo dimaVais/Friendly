@@ -1,9 +1,10 @@
 .shop-details-main-box {
-    width: 1080px;
+    width: 1140px;
+    
     margin: 0 auto;
     font-family: roboto, sans-serif;
     background-color: #fff;
-    padding: 0 40px;
+    padding: 0 20px;
 }
 
 
@@ -21,7 +22,7 @@
         display: flex;
         justify-content: space-around;
         align-items: flex-end;
-        margin: 0  35px 15px 0 ;
+        margin: 0 0 15px 0 ;
         
         
     .shop-rate-rating {
@@ -57,9 +58,8 @@
 
 .shop-details-img-box {
     display: grid;
-    width: 95%;
     height: 50vh;
-    grid-template-columns: repeat(3, 33.3333%);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 50%);
     grid-gap: 10px;
 }
@@ -105,6 +105,15 @@
     margin-top: 25px;
     padding-bottom: 30px;
     
+    .owner-details {
+        display: flex;
+    }
+
+    .owner-contact {
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+    }
 
     .contact-box {
         display: flex;
@@ -134,8 +143,7 @@
 .shop-location-box {
     display: flex;
     flex-direction: column;
-    margin-top: 55px;
-    margin-right: 35px;
+    margin-top: 20px;
     align-items: center;
 
 }
@@ -150,15 +158,15 @@
 }
 
 .map-container {
-    width: 300px;
-    height: 250px;
+    width: 350px;
+    height: 300px;
     position: relative;
 
 }
 
 .map {
-    max-width: 300px;
-    max-height: 250px;
+    max-width: 350px;
+    max-height: 300px;
     position: absolute;
 
 }
@@ -173,6 +181,11 @@
     text-align: center;
 }
 
+.location-and-orders-box {
+    display: flex;
+    flex-direction: column;
+}
+
 .shop-owner-img {
     margin-top: 20px;
     width: 130px;
@@ -183,15 +196,35 @@
 
 .bottom-screen-box {
     display: flex;
-    justify-content: space-between;
     
 }
 
 
-.pets-box {
-    margin: 0 0 0 120px;
-    // width: 100%;
-    // justify-content: center;
+// .pets-box {
+//     // flex-grow: 1;
+//     // margin: 0 0 0 120px;
+//     // width: 100%;
+//     // justify-content: center;
+// }
+
+.adoption-requests-heading {
+    margin-top: 50px;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgb(78, 78, 78);
+    font-family: montserrat, sans-serif
+}
+
+.our-pets-heading {
+    text-align: center;
+    font-size: 2rem;
+    color: rgb(78, 78, 78);
+}
+
+.reviews-box {
+    // width: 300px;
+    flex-grow: 1;
 }
 
 .reviews-list {
