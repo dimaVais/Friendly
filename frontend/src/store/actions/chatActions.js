@@ -10,8 +10,12 @@ export function loadChats(filterBy, filterName) {
 export function getChatById(chatId) {
     console.log('chatId',chatId);
     return async dispatch => {
-        const chat = await chatService.getById(chatId);
-        dispatch({ type: 'GET_CHAT', chat });
+        try {
+            const chat = await chatService.getById(chatId);
+            dispatch({ type: 'GET_CHAT', chat });
+        } catch (err) {
+            console.log('UserActions: err in loadUsers', err);
+        }  
     }
 }
 

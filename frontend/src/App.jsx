@@ -14,9 +14,11 @@ import { Footer } from './cmps/Footer';
 
  class _App extends Component {
 
+
   componentDidMount(){
     document.title = "Friendly"
   }
+
 
   render() {
    
@@ -25,7 +27,7 @@ import { Footer } from './cmps/Footer';
     return (
       <div className="App">
         <header >
-          <NavBar  />
+          <NavBar  onToggleChatsList={this.onToggleChatsList}/>
         </header>
         <main>
           <Switch>
@@ -37,7 +39,7 @@ import { Footer } from './cmps/Footer';
             <Route component={userProfile} path="/profile/:id" />
             <Route component={PetApp} path="/pet/:filterType?" />
             <Route component={Home} path="/" /> 
-
+          {/* {this.state.isChatsList && <Route component={ChatsList} />}  */}
           </Switch>
         </main>
         <footer>

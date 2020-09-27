@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-export function OrderPreview({ order, onSave, onRemove, isShop }) {
+export function OrderPreview({ order, onSave, onRemove, isShop, loggedInUser }) {
 
     function orderClass() {
         let orderClass;
@@ -27,23 +27,22 @@ export function OrderPreview({ order, onSave, onRemove, isShop }) {
 
             }
 
-            {!isShop &&
+            {!isShop && loggedInUser._id === order.buyer._id &&
                 <div>
-                    <p><span>To:</span> {order.shop.name} </p>
-                    <p> {order.shop.type} </p>
-                    <p><span>Who am I adopting?</span> {order.pet.name} </p>
-                    {/* <img src={order.shop.imgUrl} alt="shop image" />
-                    <span>{order.shop.rate}</span> */}
+                    <Link to={`/shop/${order.shop._id}`}>
+                        {<p> <span>Request to adopt </span> {order.pet.name}
+                            <span> from:</span> {order.shop.name} {order.shop.type} </p>}
+                    </Link>
                 </div>
             }
-
 
             <div className="order-actions-btns-box">
                 {isShop && <button className="accept-order-btn order-btn" onClick={() => { onSave(order, 'accepted') }}>Accept</button>}
                 {isShop && <button className="pending-order-btn order-btn" onClick={() => { onSave(order, 'pending') }}>Pending</button>}
                 {isShop && <button className="reject-order-btn order-btn" onClick={() => { onSave(order, 'denied') }}>Reject</button>}
-                <button className="remove-order-btn order-btn" onClick={() => { onRemove(order._id) }}>Remove</button>
+                {(isShop || (!isShop && loggedInUser._id === order.buyer._id)) &&
+                    <button className="remove-order-btn order-btn" onClick={() => { onRemove(order._id) }}>Remove</button>}
             </div>
-        </div>
+        </div >
     )
 }

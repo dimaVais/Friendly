@@ -1,6 +1,4 @@
-import {
-    faFan
-} from "@fortawesome/free-solid-svg-icons";
+
 import userService from "../../services/userService";
 
 export function loadUsers() {
