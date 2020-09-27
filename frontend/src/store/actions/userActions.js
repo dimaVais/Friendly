@@ -1,4 +1,3 @@
-
 import userService from "../../services/userService";
 
 export function loadUsers() {
@@ -34,7 +33,7 @@ export function removeUser(userId) {
     };
 }
 
-export function updateUser(user){
+export function updateUser(user) {
     return async dispatch => {
         const userToSave = await userService.update(user);
         dispatch({
@@ -66,8 +65,7 @@ export function logout() {
     return async dispatch => {
         await userService.logout();
         dispatch({
-            type: 'SET_USER',
-            user: null
+            type: 'LOGOUT'
         });
     };
 }

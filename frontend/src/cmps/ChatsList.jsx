@@ -2,73 +2,77 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { chatService } from "../services/chatService.js"
-
-import { getChatById } from '../store/actions/chatActions.js';
-import { Chat } from './Chat.jsx';
+import userService from '../services/userService.js';
+import { getChatById,toggleChat } from '../store/actions/chatActions.js';
+import { shopService } from '../services/shopService.js'
 
 
 class _ChatsList extends Component {
 
 state={
-    chats:[]
+    chats:null,
+    usersInfo:{} 
 }  
-  async componentDidMount(){
+ 
+ async componentDidMount(){
     if (this.props.loggedInUser.chats){ 
-        let chats;
-        this.props.loggedInUser.chats.forEach(async (chat)=>{
+        let chats=[];
+        let imgs;
+        this.props.loggedInUser.chats.forEach(async chat=>{
             const fullChat = await chatService.getById(chat._id);
-            chats.push(JSON.parse(JSON.stringify(fullChat)));
+            chats.push(fullChat);
+            const recipientId =await this.getRecipientId(fullChat.members);
+            const user = await userService.getById(recipientId);
+            await this.setStateWithRecipient(user);
         })
-        console.log(chats);
         await this.setState({chats})
     }
 }
-
 async componentDidUpdate(prevProps){
 
-    // if (prevProps!==this.props ){
-    //     if (this.props.loggedInUser.chats){
-
-    //         let chats=[];
-    //         await this.props.loggedInUser.chats.map(chat=>{
-    //             chats.push(chatService.getById(chat._id));
-    //         })
-    //         this.setState({chats})
-    
-    //     } 
-    // }
 }
-// getChatUserImg = (id) => {
-//     const images = this.state.chatImgs;
-//     const imgForChat = images.find(img => {
-//         return img.id === id;
-//     })
-//     if (imgForChat) return imgForChat.img;
-//     else return imgForChat;
-// }
 
-// getChatImgs = async () => {
-//     const chats = this.state.shopOwner.chats;
-//     if (chats && chats.length > 0) {
-//         chats.forEach(async chat => {
-//             const id = chat.topic.substring(0, chat.topic.indexOf('_'));
-//             const user = await userService.getById(id);
-//             const userImg = { id: chat._id, img: user.imgUrl }
-//             this.setState({ chatImgs: [...this.state.chatImgs, userImg] })
-//         })
-//     }
-// }
+async setStateWithRecipient(user){
+    let userInfo={
+       [user._id]:{
+           img:user.imgUrl,
+           name:user.fullName
+       }
+    }; 
 
-displayChatDetails=(chat)=>{
-    console.log(chat);
+    if (!user.imgUrl){
+        const name=user.fullName.split(' ');
+        userInfo[user._id].img = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
+    }
+
+    if (user.isOwner) {
+        const shop = await shopService.getByUserId(user._id);
+         userInfo[user._id].name=shop.name;
+    }
+
+    await this.setState({usersInfo:{...this.state.usersInfo,...userInfo} })
+}
+
+onChatListClicked=(chatId)=>{
+    this.props.toggleChat({'chatId':chatId});
+}
+
+displayChatDetails= (chat)=>{
+    const id = this.getRecipientId(chat.members)
+    if (!this.state.usersInfo[id])return
        return (
-            <div>
-                <div onClick={<Chat chatId={chat._id}/>} >{chat.target.fullName}</div>
+            <div key={chat._id} className="chat-list-row flex" onClick={()=>this.onChatListClicked(chat._id)}>   
+              <img src={this.state.usersInfo[id].img} alt=""/>
+              <div>{this.state.usersInfo[id].name}</div>
             </div>
         )
+}
 
+getRecipientId(members){
+    return (members[0]===this.props.loggedInUser._id)?members[1]:members[0]
 }
     render() {
+     
         return (
             <div className="chat-list-container">
                 {(this.state.chats && this.state.chats.map(chat=>this.displayChatDetails(chat)))|| <div>No chats to load</div> }
@@ -79,6 +83,7 @@ displayChatDetails=(chat)=>{
 
 const mapStateToProps = state => {
     return {
+        isChatShown: state.chatReducer.isChatShown,
         chats: state.chatReducer.chats,
         currChat: state.chatReducer.currChat,
         loggedInUser: state.userReducer.loggedInUser,
@@ -86,7 +91,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    getChatById
+    getChatById,
+    toggleChat
 }
 
 export const ChatsList = connect(mapStateToProps, mapDispatchToProps)(_ChatsList)

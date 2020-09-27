@@ -11,12 +11,21 @@ import { ShopDetails } from './pages/ShopDetails';
 import { NavBar } from './cmps/NavBar';
 import { userProfile } from './pages/userProfile';
 import { Footer } from './cmps/Footer';
+import {Chat} from './cmps/Chat'
+import { toggleChat } from './store/actions/chatActions.js';
 
  class _App extends Component {
 
+  state={
+    isChatShown:false
+  }
 
   componentDidMount(){
-    document.title = "Friendly"
+    this.setState({isChatShown:this.props.isChatShown})
+  }
+  componentDidUpdate(prevProps){
+    if(prevProps!==this.props) this.setState({isChatShown:this.props.isChatShown})
+    console.log(this.props.isChatShown);
   }
 
 
@@ -30,6 +39,7 @@ import { Footer } from './cmps/Footer';
           <NavBar  onToggleChatsList={this.onToggleChatsList}/>
         </header>
         <main>
+          {this.state.isChatShown && <Chat/>}
           <Switch>
             <Route component={ShopDetails} path="/shop/:id" />
             <Route component={PetDetails}  path="/details/:id?" />
@@ -53,7 +63,13 @@ import { Footer } from './cmps/Footer';
 
 const mapStateToProps = state => {
   return {
+      isChatShown: state.chatReducer.isChatShown,
+     
   }
+}
+
+const mapDispatchToProps = {
+  toggleChat
 }
 
 export const App = connect(mapStateToProps)(_App)

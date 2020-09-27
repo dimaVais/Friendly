@@ -29,6 +29,10 @@ export function userReducer(state = initialState, action = {}) {
             return {
                 ...state, users: action.users
             };
+        case 'LOGOUT':
+            return {
+                ...state, loggedInUser: localLoggedinUser
+            };
         default:
             return state;
     }

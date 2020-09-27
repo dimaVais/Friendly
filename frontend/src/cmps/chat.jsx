@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import socketService from '../services/socketService'
 import { connect } from 'react-redux';
 import { loadPets } from '../store/actions/petActions.js';
-import { loadChats, saveChat, getChatById } from '../store/actions/chatActions.js';
+import { loadChats, saveChat, getChatById,toggleChat } from '../store/actions/chatActions.js';
 import { updateUser } from '../store/actions/userActions.js';
 import userService from '../services/userService.js'
 import { shopService } from '../services/shopService.js'
@@ -19,31 +19,69 @@ class _Chat extends Component {
     state = {
         chat: {
             topic: '',
-            initiate: {
-                _id: '',
-                fullName: ''
-            },
-            target: {
-                _id: '',
-                fullName: ''
-            },
+            members: [],
             msgs: []
         },
         msg: {
-            senderId: '',
-            from: '',
+            authorId: '',
             createdAt: '',
             txt: ''
         },
-        target: '',
     }
 
     async componentDidMount() {
-        var initiate = this.props.loggedInUser;
-        console.log('logedIn', initiate);
-        var target = await userService.getById(this.props.targetId);
-        this.setState({ target })
-        this.setChat(this.props.loggedInUser);
+        console.log(this.props);
+        if (this.props.currChatInfo.chatId){
+            const chat= await chatService.getById(this.props.currChatInfo.chatId);
+            await this.setState({chat});
+           
+            const targetId = await (chat.members[0]===this.props.loggedInUser._id)?chat.members[1]:chat.members[0];
+            const target = await userService.getById(targetId);
+
+            ///same code
+            let targetName = target.fullName;
+            let targetImg = target.imgUrl;
+            if (!target.imgUrl){
+                const name=target.fullName.split(' ');
+                targetImg = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
+            }
+        
+            if (target.isOwner) {
+                const shop = await shopService.getByUserId(target._id);
+                targetName=shop.name;
+            }
+            this.setState({targetId:target._id,targetImg,targetName})
+            socketService.setup();
+            socketService.emit('chat topic', this.state.chat.topic);
+            socketService.on('chat addMsg', this.addMsg);
+        }else{
+            var initiate = this.props.loggedInUser;
+            console.log('logedIn', initiate);
+            var target = await userService.getById(this.props.currChatInfo.targetId);
+        
+            ///same code
+            let targetName = target.fullName;
+            let targetImg = target.imgUrl;
+            if (!target.imgUrl){
+                const name=target.fullName.split(' ');
+                targetImg = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
+            }
+        
+            if (target.isOwner) {
+                const shop = await shopService.getByUserId(target._id);
+                targetName=shop.name;
+            }
+            this.setState({targetId:target._id,targetImg,targetName})
+            // if(initiate.chats){
+            //     const chatId= initiate.chats.find(chat=>)
+            // }
+            // const chat= await chatService.getById(this.props.currChatInfo.chatId);
+            // await this.setState({chat});
+            // this.setChat(this.props.loggedInUser);
+        }
+    }
+    async setChatByChatId(chatId){
+        const chat = await chatService.getChatById(chatId);
     }
 
     setChat = async (user) => {
@@ -62,12 +100,17 @@ class _Chat extends Component {
             await this.setState({ chat: { ...this.props.currChat } })
         }
         else {
-            await this.createChat(this.props.loggedInUser, this.state.target);
+            await this.createChat(this.props.loggedInUser, this.state.targetId);
         }
 
         socketService.setup();
         socketService.emit('chat topic', this.state.chat.topic);
+        console.log('TOPIC:',this.state.chat.topic);
         socketService.on('chat addMsg', this.addMsg);
+    }
+
+    async checkIfChatExists(chatID){
+
     }
 
     componentWillUnmount() {
@@ -75,37 +118,30 @@ class _Chat extends Component {
         socketService.terminate();
     }
 
-    createChat = async (initiate, target) => {
+    createChat = async (initiate, targetId) => {
         const chat = {
-            topic: `${initiate._id}__${target._id}`,
-            initiate: {
-                _id: initiate._id,
-                fullName: initiate.fullName
-            },
-            target: {
-                _id: target._id,
-                fullName: target.fullName
-            }, msgs: []
+            topic: `${initiate._id}__${targetId}`,
+            members:[initiate._id,targetId],
+            msgs: []
         }
         await this.props.saveChat(chat);
 
-        const users = [initiate, target];
-        users.forEach(async user => {
-            if (!user.chats) {
-                user.chats = [];
-            }
+        // const users = [initiate, target];
+        // users.forEach(async user => {
+        //     if (!user.chats) {
+        //         user.chats = [];
+        //     }
 
-            if (this.props.currChat._id) {
-                const chatToAdd = {
-                    _id: this.props.currChat._id,
-                    topic: this.props.currChat.topic,
-                    role: (user._id === this.props.loggedInUser) ? 'initiate' : 'target'
-                };
-                user.chats.push(chatToAdd);
-            }
-            await this.props.updateUser(user);
-            await this.setState({ chat: { ...this.props.currChat } });
-        })
+        //     if (this.props.currChat._id) {
+        //         const chatToAdd = {
+        //             _id: this.props.currChat._id,
+        //             topic: this.props.currChat.topic,
+        //         };
+        //         user.chats.push(chatToAdd);
+        //     }
+        //     await this.props.updateUser(user);
+        //     await this.setState({ chat: { ...this.props.currChat } });
+        // })
     }
 
     addMsg = async newMsg => {
@@ -122,15 +158,14 @@ class _Chat extends Component {
     sendMsg = async (ev) => {
         ev.preventDefault();
         const msg = {
-            senderId: this.props.loggedInUser._id,
-            from: this.props.loggedInUser.fullName,
+            authorId: this.props.loggedInUser._id,
             createdAt: new Date(),
             txt: this.state.msg.txt
         }
         await this.setState({ msg: { ...msg } });
         this.addMsg(this.state.msg);
-        socketService.emit('chat addMsg', this.state.msg);
-        this.setState({ msg: { senderId: '', from: '', createdAt: '', txt: '' } });
+        socketService.emit('chat newMsg', this.state.msg);
+        this.setState({ msg: { authorId: '', createdAt: '', txt: '' } });
     }
 
     msgHandleChange = ev => {
@@ -146,18 +181,17 @@ class _Chat extends Component {
     }
 
     onClose = () => {
-        this.props.onClose();
+        this.props.toggleChat();
     }
 
     displayMsg = (msg, idx) => {
-        console.log(msg);
         let classTxt = 'message-row ';
         const time=new Date(msg.createdAt);
-        const isSender=msg.senderId === this.props.loggedInUser._id;
-        classTxt += isSender ? 'sender' : 'recipient';
+        const isAuthor=msg.authorId === this.props.loggedInUser._id;
+        classTxt += isAuthor ? 'sender' : 'recipient';
         return (
             <div className={classTxt} key={idx}>
-                {!isSender && <img src={this.state.recipient.imgUrl} alt=""/>}
+                {!isAuthor && <img src={this.state.targetImg} alt=""/>}
                 <div className="message-content">
                     <div className="txt">{msg.txt}</div>
                     <div className="date" >{time.getHours()+':'+time.getMinutes()}</div>
@@ -167,17 +201,17 @@ class _Chat extends Component {
     }
 
     render() {
+        if (this.state.chat.msgs.length===0) return  <div className="chat-container"><h2>Loading</h2></div>
         return (
             <div className="chat-container">
                 <section className="chat-title flex space-evenly">
-                    <span>{this.state.recipient.fullName}</span>
+                    <span>{this.state.targetName}</span>
                     <button className="btn-close btn" onClick={this.onClose}><FontAwesomeIcon className="close-icon" icon={faTimes} /></button>
                 </section>
                 <section className="msgs-container">
                     {this.state.chat.msgs && this.state.chat.msgs.slice(0).reverse().map((msg, idx) => (
                         this.displayMsg(msg, idx))
                     )}
-
                 </section>
                 <form onSubmit={this.sendMsg}>
                     <section className="input-container flex space-around">
@@ -198,8 +232,9 @@ class _Chat extends Component {
 }
 const mapStateToProps = state => {
     return {
+        isChatShown: state.chatReducer.isChatShown,
         chats: state.chatReducer.chats,
-        currChat: state.chatReducer.currChat,
+        currChatInfo: state.chatReducer.currChatInfo,
         pets: state.petReducer.pets,
         loggedInUser: state.userReducer.loggedInUser,
     }
@@ -210,7 +245,8 @@ const mapDispatchToProps = {
     loadChats,
     saveChat,
     getChatById,
-    updateUser
+    updateUser,
+    toggleChat
 }
 
 export const Chat = connect(mapStateToProps, mapDispatchToProps)(_Chat)
