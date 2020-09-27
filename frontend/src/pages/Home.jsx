@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { CategoryList } from '../cmps/CategoryList'
 import { Hero } from '../cmps/Hero'
-import { PetList } from '../cmps/PetList'
 import { loadPets } from '../store/actions/petActions.js'
-import { PetApp } from './PetApp'
-import {PetFilter} from '../cmps/PetFilter'
 import { About } from '../cmps/About'
 
 class _Home extends Component {
@@ -28,6 +24,7 @@ class _Home extends Component {
         const {user} = this.props
         return (
             <div className="main-container">
+
                 <Hero />
                 <About />
             </div>

@@ -45,7 +45,7 @@ class _PetPreview extends Component {
         if (!pet || !pet.reacts) return <h1>loading...</h1>
         return (
             <NavLink to={`/details/${pet._id}`}>
-                
+
                 <div className="pet-preview">
                 {pet.isAdopted && <div class="ribbon ribbon-top-right"><span>Adopted</span></div>}
                 <img src={(pet.imgUrls) ? pet.imgUrls[0] : ''} alt="pet" />
