@@ -105,6 +105,9 @@ import {CategoryList} from  './CategoryList'
                         <FilterSearch parent="main" onInputChange={this.onInputChange}/>
                         {/* { <button className="more-btn"  onClick={this.onToggleFilterModal}>More</button>} */}
                 </section>
+                <section className="category-container">
+                    <CategoryList onCategoryChange={this.onFilterChange}/>
+                </section>
                 {isModalShown   && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onFilterChange={this.onFilterChange} onToggleFilterModal={this.onToggleFilterModal}/>}
               
             <br/>   
