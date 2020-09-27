@@ -48,7 +48,6 @@ class _NavBar extends Component {
 
     render() {
         const { user } = this.props
-        console.log('LOGED IN USER IS:',user );
         return (
         <div>
        

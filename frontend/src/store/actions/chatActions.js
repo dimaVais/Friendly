@@ -39,3 +39,9 @@ export function setFilter(filterBy){
         dispatch({ type: 'SET_FILTER', filterBy })
     }
 }
+
+export function toggleChat(chatInfo){
+    return dispatch => {
+        dispatch({ type: 'TOGGLE_CHAT', chatInfo })
+    }
+}

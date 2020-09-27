@@ -104,7 +104,7 @@ import {CategoryList} from  './CategoryList'
                     <CategoryList onCategoryChange={this.onFilterChange}/>
                 </section>
                 <section>
-                    {/* {//more filters: gender and distance} */}
+                    {/* {//more filters: gender and distance asaf} */}
                 </section>
                 <section className="search-container flex space-around">
                         <FilterSearch parent="main" onInputChange={this.onInputChange}/>
