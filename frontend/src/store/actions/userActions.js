@@ -64,10 +64,10 @@ export function signup(_user) {
 }
 export function logout() {
     return async dispatch => {
-        await userService.logout();
+        const guest =  await userService.logout();
         dispatch({
             type: 'SET_USER',
-            user: null
+            user: guest
         });
     };
 }
