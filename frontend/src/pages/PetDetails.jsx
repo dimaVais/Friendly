@@ -16,6 +16,7 @@ import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
 import { TextField } from '@material-ui/core';
 import { animateScroll as scroll } from "react-scroll";
 import { WhatsappShareButton, WhatsappIcon, FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share'
+import { AdoptionMsgModal } from '../cmps/AdoptionMsgModal.jsx';
 
 
 
@@ -31,7 +32,8 @@ class _PetDetails extends Component {
         isChatOn: false,
         isOwnerOfPet: false,
         adoptButton: 'Adopt',
-        currComment: ''
+        currComment: '',
+        AdoptionModalMsg: true
     }
 
     async componentDidMount() {
@@ -65,7 +67,7 @@ class _PetDetails extends Component {
     onAdopt = async () => {
         const { loggedInUser } = this.props
         if (loggedInUser.isGuest) return
-
+        this.setState({ AdoptionModalMsg: !this.state.AdoptionModalMsg })
         const pet = this.state.pet
         const shopId = pet.shop._id
         const shop = await shopService.getById(shopId)
@@ -275,6 +277,7 @@ class _PetDetails extends Component {
                         </div>
 
                         <button onClick={this.onAdopt} className="adoption-btn">Adopt</button>
+                        {this.state.AdoptionModalMsg && <AdoptionMsgModal />}
 
                     </div>
                     <hr />
@@ -329,7 +332,7 @@ class _PetDetails extends Component {
 
 
                 </div> */}
-                {this.state.isChatOn && < Chat  targetId={this.state.ownerId}
+                {this.state.isChatOn && < Chat targetId={this.state.ownerId}
                     onClose={this.onToggleChat} />}
             </section>
         )

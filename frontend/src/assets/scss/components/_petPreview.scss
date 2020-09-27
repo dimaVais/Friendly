@@ -1,7 +1,7 @@
 .pet-preview {
     background-color: $clr2;
     margin: 20px;
-    height: 22rem;
+    height: 20rem;
     width: 15rem;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
         width: 15rem;
         position: absolute;
         bottom: 0em;
-        padding: 0.5em 1em;
+        padding: 0.5em 0.7em;
         text-align: center;
         transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
         border-bottom: 1px solid rgb(198, 194, 252);
@@ -49,7 +49,7 @@
                 height: 25px;
                 position: absolute;
                 right: 7px;
-                top: 7px;
+                top: 11px;
                 color: rgb(79, 127, 216)
             }
 
@@ -58,7 +58,7 @@
                 height: 25px;
                 position: absolute;
                 right: 7px;
-                top: 7px;
+                top: 11px;
                 color: rgb(210, 136, 219)
             }
         }
@@ -81,7 +81,6 @@
         position: absolute;
         width: 15rem;
         bottom: 0;
-        left: 5px;
         font-family: roboto, sans-serif;
         font-size: 0.8rem;
         margin: 0 5px;
@@ -102,14 +101,14 @@
             padding: 5px;
             justify-content: space-between;
             
-            .love-icon {
-                color: #ffbf00;
-                font-size: 1.2rem;
-                margin-right: 5px;
-                cursor: pointer;
+            // .love-icon {
+            //     color: #ffbf00;
+            //     font-size: 1.2rem;
+            //     margin-right: 5px;
+            //     cursor: pointer;
 
 
-            }
+            // }
 
             .love-count {
                 font-size: 1rem;
@@ -117,6 +116,41 @@
                 font-family: roboto,sans-serif;
                 transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 
+            }
+
+            .love-icon {
+                position: absolute;
+                background: url("../../img/love.png") no-repeat;
+                background-position: left;
+                background-size: 2900%;
+                height: 70px;
+                width: 70px;
+                top: 50%;
+                right: -19px;
+                transform: translate(-50%, -50%);
+            }
+
+            .love-icon-active {
+                position: absolute;
+                background: url("../../img/love.png") no-repeat;
+                background-size: 2900%;
+                height: 70px;
+                width: 70px;
+                top: 50%;
+                right: -15px;
+                transform: translate(-50%, -50%);
+                animation: animate .8s steps(28) 1;
+                background-position: right;
+            }
+
+            @keyframes animate {
+                0% {
+                    background-position: left;
+                }
+
+                100% {
+                    background-position: right;
+                }
             }
 
         }
