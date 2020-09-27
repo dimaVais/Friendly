@@ -39,6 +39,10 @@ class _Chat extends Component {
     }
 
     async componentDidMount() {
+
+        if(this.props.chatId)console.log('got chat id:',this.props.chatId);
+
+
         var initiate = this.props.loggedInUser;
         console.log('logedIn', initiate);
         var target = await userService.getById(this.props.targetId);
@@ -177,7 +181,6 @@ class _Chat extends Component {
                     {this.state.chat.msgs && this.state.chat.msgs.slice(0).reverse().map((msg, idx) => (
                         this.displayMsg(msg, idx))
                     )}
-
                 </section>
                 <form onSubmit={this.sendMsg}>
                     <section className="input-container flex space-around">
