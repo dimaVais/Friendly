@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+
+import { toggleChat } from '../store/actions/chatActions.js';
 import { shopService } from '../services/shopService.js';
+import userService from '../services/userService.js';
 import { loadPets, savePet, removePet } from '../store/actions/petActions.js';
 import { saveOrder } from '../store/actions/orderActions.js';
-import { Chat } from '../cmps/Chat.jsx'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+
+
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import { faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons'
 import { faVenusMars } from '@fortawesome/free-solid-svg-icons'
 import { faAlignLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { TextField } from '@material-ui/core';
 import { animateScroll as scroll } from "react-scroll";
 import { WhatsappShareButton, WhatsappIcon, FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon } from 'react-share'
-
-
-
-
-
-
+import { AdoptionMsgModal } from '../cmps/AdoptionMsgModal.jsx';
 
 
 class _PetDetails extends Component {
 
     state = {
         pet: {},
-        isChatOn: false,
         isOwnerOfPet: false,
         adoptButton: 'Adopt',
-        currComment: ''
+        currComment: '',
+        AdoptionModalMsg: true
     }
 
     async componentDidMount() {
@@ -65,7 +64,7 @@ class _PetDetails extends Component {
     onAdopt = async () => {
         const { loggedInUser } = this.props
         if (loggedInUser.isGuest) return
-
+        this.setState({ AdoptionModalMsg: !this.state.AdoptionModalMsg })
         const pet = this.state.pet
         const shopId = pet.shop._id
         const shop = await shopService.getById(shopId)
@@ -97,9 +96,11 @@ class _PetDetails extends Component {
         // this.props.removePet(petId)
     }
 
-
-    onToggleChat = () => {
-        this.setState({ isChatOn: !this.state.isChatOn })
+     onToggleChat = async() => {
+         console.log();
+        const shop = await shopService.getById(this.state.pet.shop._id);
+        await console.log(shop);
+        await this.props.toggleChat({'userId':shop.owner._id})
     }
 
     onUpdateReaction = (reaction) => {
@@ -256,7 +257,7 @@ class _PetDetails extends Component {
                                     {pet.shop && <p className="shop-rate-rating">{pet.shop.rate.rating}  </p>}
                                     {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>}
                                 </div>
-                                {pet.shop && <button onClick={this.onToggleChat}>Message {pet.shop.fullName}</button>}
+                                {pet.shop && !this.state.isOwnerOfPet && <button onClick={this.onToggleChat}>Message {pet.shop.fullName}</button>}
                             </div>
                         </div>
                     </div>
@@ -275,6 +276,7 @@ class _PetDetails extends Component {
                         </div>
 
                         <button onClick={this.onAdopt} className="adoption-btn">Adopt</button>
+                        {this.state.AdoptionModalMsg && <AdoptionMsgModal />}
 
                     </div>
                     <hr />
@@ -329,8 +331,6 @@ class _PetDetails extends Component {
 
 
                 </div> */}
-                {this.state.isChatOn && < Chat  targetId={this.state.ownerId}
-                    onClose={this.onToggleChat} />}
             </section>
         )
     }
@@ -349,7 +349,8 @@ const mapDispatchToProps = {
     loadPets,
     savePet,
     saveOrder,
-    removePet
+    removePet,
+    toggleChat
 
 }
 

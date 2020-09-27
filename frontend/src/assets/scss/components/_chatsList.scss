@@ -4,9 +4,24 @@
     height: 220px;
     top: 80px;
     right: 30px;
-    background-color: $clr1;
+    background-color: $clr2;
     right: 1px;
     z-index: 4;   
     border-radius: 8px;
-    border: 1px solid grey;
+    box-shadow: -3px 4px 5px rgba(33,33,33,.2);
+    .chat-list-row{
+        padding: 10px 10px;
+        align-items: center;
+        font-size: 1.3rem;
+        img{
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+            margin-right: 10px;
+        }
+        &:hover{
+            cursor: pointer;
+            background-color: lightgray;
+        }
+    }
 }

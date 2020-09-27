@@ -1,14 +1,15 @@
 //search cmp basic
-.search-container{
+.search-container {
     width: 530px;
-    height: 4rem;
+    height: 3.8rem;
     position: relative;
-    margin-bottom: 20px;
-    
-    .input-container{
+    margin: 20px 0;
+
+    .input-container {
         display: flex;
         align-items: center;
         width: 80%;
+
         input {
             background-color: rgba(255, 255, 255, 0.747);
             border: none;
@@ -17,30 +18,32 @@
             height: 100%;
             font-size: 1.4rem;
             border-radius: 5px 0 0 5px;
-            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-            
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
             &:focus {
                 outline: none;
             }
-        } 
-        
-            .search-icon {
-                color: rgb(129, 129, 129);
-                position: absolute;
-               left:2%;
-                font-size: 1.5rem;
-                }
-                .clear-icon{
-                    color: rgb(129, 129, 129);
-                    position: absolute;
-                    right: 22%;
-                    font-size: 1.5rem;
-                    cursor: pointer;
-                }
-    
-            
+        }
+
+        .search-icon {
+            color: rgb(129, 129, 129);
+            position: absolute;
+            left: 2%;
+            font-size: 1.5rem;
+        }
+
+        .clear-icon {
+            color: rgb(129, 129, 129);
+            position: absolute;
+            right: 22%;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+
     }
-    .btn-search{
+
+    .btn-search {
         cursor: pointer;
         align-self: auto;
         font-size: 1.7rem;
@@ -49,19 +52,20 @@
         text-align: center;
         padding: 0 5px;
         background-color: #1dbf73;
-        color: white; 
+        color: white;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
-        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
-        &:active{
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+        &:active {
             background-color: #1d7e51;
         }
     }
-    
+
 }
 
 
-.more-btn{
+.more-btn {
     position: relative;
     background-color: white;
     width: 7rem;
@@ -69,33 +73,31 @@
     font-size: 1.7rem;
     border: 1px solid lightgrey;
     border-radius: 10px;
-/*     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+    /*     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
  */
-    &:hover{
+    &:hover {
         cursor: pointer;
         border: 1px solid black;
 
-/*         box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        /*         box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
         transition: box-shadow 0.3s */
     }
 
-    &.hero-btn{
-        
+    &.hero-btn {
+
         left: 50%;
         transform: translateX(-50%);
 
     }
 }
 
-.filter-container{
-    .categoty-container{
+.filter-container {
+
+    .category-container {
+        padding: 20px;
         width: 380px;
-        height:90px;
+        height: 90px;
     }
-    
+
 }
-
-
-
-
-

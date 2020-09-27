@@ -1,11 +1,20 @@
 const initialState = {
+    isChatShown:false,
+    currChatInfo:null,
     chats: [],
-    currChat:'',
+    currChatId:'',
     filterBy: {}
 }
 
 export function chatReducer(state = initialState, action) {
     switch (action.type) {
+        case 'TOGGLE_CHAT':
+            console.log('Reducer:',action.chatInfo);
+            return {
+                ...state,
+                isChatShown: !state.isChatShown,
+                currChatInfo: {...action.chatInfo}
+            }
         case 'LOAD_CHATS':
             return {
                 ...state,

@@ -1,0 +1,21 @@
+.adoption-modal-msg {
+    height: 35px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: rgb(59, 59, 165);
+    position: fixed;
+    top: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    .msg-content {
+    color: rgb(235, 233, 233);
+    font-family: roboto ,sans-serif;
+    font-size: 0.9rem;
+
+    }
+}
+

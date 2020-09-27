@@ -12,7 +12,8 @@ class _PetPreview extends Component {
 
     state = {
         pet: {},
-        isLiked: false
+        isLiked: false,
+        loveIconClass: 'love-icon'
     }
 
     async componentDidMount() {
@@ -29,6 +30,9 @@ class _PetPreview extends Component {
         const pet = this.state.pet;
         const updatedReacts = pet.reacts.map(react => {
             if (react.type === reaction) {
+                this.setState({isLiked: !this.state.isLiked})
+                // const loveIconClass = (this.state.loveIconClass === 'love-icon') ? 'love-icon-active' : 'love-icon'
+                // this.setState({ loveIconClass })
 
                 react.count += this.state.isLiked ? -1 : +1;
                 this.setState({ ...this.state, isLiked: !this.state.isLiked })
@@ -42,34 +46,39 @@ class _PetPreview extends Component {
 
     render() {
         const { pet } = (Object.keys(this.state.pet).length === 0) ? this.props : this.state;
+        const loveIconClass = (this.state.isLiked) ? 'love-icon-active' : 'love-icon'
         if (!pet || !pet.reacts) return <h1>loading...</h1>
         return (
             <NavLink to={`/details/${pet._id}`}>
 
                 <div className="pet-preview">
-                {pet.isAdopted && <div class="ribbon ribbon-top-right"><span>Adopted</span></div>}
-                <img src={(pet.imgUrls) ? pet.imgUrls[0] : ''} alt="pet" />
-                <div className="card-description">
-                    <div className="card-description-header">
-                        <h2 className="pet-name">{pet.name}</h2>
-                        {(pet.gender === 'Male') && <FontAwesomeIcon className="pet-gender-male-icon" icon={faMars} />}
-                        {(pet.gender !== 'Male') && <FontAwesomeIcon className="pet-gender-female-icon" icon={faVenus} />}
+                    {pet.isAdopted && <div class="ribbon ribbon-top-right"><span>Adopted</span></div>}
+                    <img src={(pet.imgUrls) ? pet.imgUrls[0] : ''} alt="pet" />
+                    <div className="card-description">
+                        <div className="card-description-header">
+                            <h2 className="pet-name">{pet.name}</h2>
+                            {(pet.gender === 'Male') && <FontAwesomeIcon className="pet-gender-male-icon" icon={faMars} />}
+                            {(pet.gender !== 'Male') && <FontAwesomeIcon className="pet-gender-female-icon" icon={faVenus} />}
+                        </div>
+                        <h4>{pet.summary}</h4>
                     </div>
-                    <h4>{pet.summary}</h4>
-                </div>
-                <div className="shop-container">
-                    {pet.shop && <Link to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
-                    {/* {pet.shop && <h4>{pet.shop.fullName}</h4>} */}
-                    <div onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="pet-rate-box">
-                        <span>{pet.reacts && pet.reacts[0].type === 'love' ? <FontAwesomeIcon className="love-icon" icon={faHeart} /> : ''} </span>
-                        {pet.reacts && pet.reacts[0].type === 'love' ? <span className="love-count">{pet.reacts[0].count}</span> : ''}
+                    <div className="shop-container">
+                        {pet.shop && <Link to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
+                        {/* {pet.shop && <h4>{pet.shop.fullName}</h4>} */}
+                        <div onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="pet-rate-box">
+                            {/* <span>{pet.reacts && pet.reacts[0].type === 'love' ? <FontAwesomeIcon className="love-icon" icon={faHeart} /> : ''} </span> */}
+                            <div className="content">
+                            <span>{pet.reacts && pet.reacts[0].type === 'love' ? <span className={loveIconClass}></span> : ''} </span>
+
+                            </div>
+                            {pet.reacts && pet.reacts[0].type === 'love' ? <span className="love-count">{pet.reacts[0].count}</span> : ''}
 
 
-                        {/* <FontAwesomeIcon className="star-icon" icon={faStar} />
+                            {/* <FontAwesomeIcon className="star-icon" icon={faStar} />
                             {pet.shop && <p className="shop-rate-rating">{pet.shop.rate.rating}  </p>}
                             {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>} */}
+                        </div>
                     </div>
-                </div>
 
 
                 </div>
