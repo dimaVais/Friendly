@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 const userService = require('../user/user.service')
 const logger = require('../../services/logger.service')
+const session = require('express-session')
 
 const saltRounds = 10
 
@@ -25,5 +26,5 @@ async function signup(email, password, userName) {
 
 module.exports = {
     signup,
-    login,
+    login
 }
