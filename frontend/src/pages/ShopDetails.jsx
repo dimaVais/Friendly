@@ -40,7 +40,7 @@ class _ShopDetails extends Component {
         await this.props.getShopById(shopId);
         this.setState({ shop: { ...this.props.currShop } });
         const owner = await userService.getById(this.props.currShop.owner._id);
-        console.log('owner from DB',  owner );
+        console.log('owner from DB', owner);
 
         await this.setState({ shopOwner: { ...owner } });
         const shopPets = this.props.pets.filter(pet => {
@@ -159,7 +159,7 @@ class _ShopDetails extends Component {
                                     <p>{shop.owner.contact.email}</p>
                                 </div>
 
-                            
+
                                 < div className="shop-description">
                                     <p>{shop.desc}</p>
                                 </div>
@@ -168,17 +168,7 @@ class _ShopDetails extends Component {
                                 {this.state.shop.owner._id === this.props.loggedInUser._id &&
                                     <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />}
                             </div>
-                            <div className="shop-location-box">
 
-                                <div className="map-container">
-                                    <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
-                                </div>
-                                <FontAwesomeIcon className="arrow-icon" icon={faAngleDoubleUp} />
-                                <div className="shop-location-name">
-                                    <h2>We are located at {shop.location.name}</h2>
-                                </div>
-
-                            </div>
 
                         </div>
                         <div className="bottom-screen-box">
@@ -232,12 +222,23 @@ class _ShopDetails extends Component {
                                         )}
                                     </ul>}
                             </div>
-                            <div className="pets-box" >
-                                {/* <h2>Our Pets</h2> */}
+                            <div className="shop-location-box">
+
+                                <div className="map-container">
+                                    <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
+                                </div>
+                                <FontAwesomeIcon className="arrow-icon" icon={faAngleDoubleUp} />
+                                <div className="shop-location-name">
+                                    <h2>We are located at {shop.location.name}</h2>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div className="pets-box" >
+                                <h2 className="our-pets-heading">Our Pets</h2>
                                 <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
                             </div>
-                        </div>
-
                     </div>
 
                 }
