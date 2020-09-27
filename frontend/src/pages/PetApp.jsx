@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { PetFilter } from '../cmps/PetFilter'
 import { PetList } from '../cmps/PetList'
 import { loadPets, removePet,setFilter } from '../store/actions/petActions'
+import { animateScroll as scroll } from "react-scroll";
 
 class _PetApp extends Component {
 
@@ -15,6 +16,7 @@ class _PetApp extends Component {
 
     async componentDidMount() {
         await this.loadPets();
+        scroll.scrollToTop();
     }
 
    async  componentDidUpdate(prevProps){

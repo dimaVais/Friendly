@@ -103,6 +103,9 @@ import {CategoryList} from  './CategoryList'
                 <section className="categoty-container">
                     <CategoryList onCategoryChange={this.onFilterChange}/>
                 </section>
+                <section>
+                    {/* {//more filters: gender and distance} */}
+                </section>
                 <section className="search-container flex space-around">
                         <FilterSearch parent="main" onInputChange={this.onInputChange}/>
                         {/* { <button className="more-btn"  onClick={this.onToggleFilterModal}>More</button>} */}

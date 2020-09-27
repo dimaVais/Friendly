@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { chatService } from "../services/chatService.js"
-
+import userService from '../services/userService.js';
 import { getChatById } from '../store/actions/chatActions.js';
 import { Chat } from './Chat.jsx';
 
@@ -10,18 +10,34 @@ import { Chat } from './Chat.jsx';
 class _ChatsList extends Component {
 
 state={
-    chats:[]
+    chats:null,
+    imgs:{}
 }  
-  async componentDidMount(){
+ 
+ async componentDidMount(){
     if (this.props.loggedInUser.chats){ 
-        let chats;
-        this.props.loggedInUser.chats.forEach(async (chat)=>{
+      
+        let chats=[];
+        let imgs;
+        this.props.loggedInUser.chats.forEach(async chat=>{
             const fullChat = await chatService.getById(chat._id);
-            chats.push(JSON.parse(JSON.stringify(fullChat)));
+            chats.push(fullChat);
+            const id = await fullChat.target._id;
+            const user = await userService.getById(id);
+            let img;
+            
+            if (user.imgUrl){
+                 img  =  {[fullChat.target._id]:user.imgUrl}
+                 await this.setState({imgs:{...this.state.imgs,img}})
+            }else{
+                const name=user.fullName.split(' ');
+                img = await {[fullChat.target._id]:`https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`}
+            }
+            await this.setState({imgs:{...this.state.imgs,...img}})
         })
-        console.log(chats);
         await this.setState({chats})
     }
+
 }
 
 async componentDidUpdate(prevProps){
@@ -38,17 +54,17 @@ async componentDidUpdate(prevProps){
     //     } 
     // }
 }
-// getChatUserImg = (id) => {
-//     const images = this.state.chatImgs;
-//     const imgForChat = images.find(img => {
-//         return img.id === id;
-//     })
-//     if (imgForChat) return imgForChat.img;
-//     else return imgForChat;
-// }
+getChatUserImg = (id) => {
+    const images = this.state.chatImgs;
+    const imgForChat = images.find(img => {
+        return img.id === id;
+    })
+    if (imgForChat) return imgForChat.img;
+    return imgForChat;
+}
 
 // getChatImgs = async () => {
-//     const chats = this.state.shopOwner.chats;
+//     const chats = this.state.chats;
 //     if (chats && chats.length > 0) {
 //         chats.forEach(async chat => {
 //             const id = chat.topic.substring(0, chat.topic.indexOf('_'));
@@ -59,19 +75,25 @@ async componentDidUpdate(prevProps){
 //     }
 // }
 
-displayChatDetails=(chat)=>{
-    console.log(chat);
+displayChatDetails= (chat)=>{
        return (
-            <div>
-                <div onClick={<Chat chatId={chat._id}/>} >{chat.target.fullName}</div>
+            <div key={chat._id}>   
+                <div onClick={<Chat chatId={chat._id}/>} >{chat._id}</div>
             </div>
         )
+}
 
+doLog=(chat)=>{
+    return(
+        <div>{chat._id}</div>
+    )
+    
 }
     render() {
+     
         return (
             <div className="chat-list-container">
-                {(this.state.chats && this.state.chats.map(chat=>this.displayChatDetails(chat)))|| <div>No chats to load</div> }
+                {(this.state.chats && this.state.chats.map(chat=>this.doLog(chat)))|| <div>No chats to load</div> }
             </div>
         )
     }
