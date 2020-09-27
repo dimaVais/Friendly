@@ -1234,3 +1234,42 @@ Sun, 27 Sep 2020 07:06:43 GMT - Error - ERROR: cannot find chat by id  c102, err
 Sun, 27 Sep 2020 07:06:59 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
 Sun, 27 Sep 2020 07:07:10 GMT - Error - ERROR: cannot find chat by id  c101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
 Sun, 27 Sep 2020 07:07:10 GMT - Error - ERROR: cannot find chat by id  c102, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 15:53:02 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 15:55:02 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 15:58:50 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:00:50 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:02:17 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:04:17 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:04:18 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:04:45 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:05:48 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:06:17 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:07:48 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:08:17 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:10:19 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:12:19 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:12:27 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:20:43 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:22:43 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:24:00 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:28:50 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:30:50 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:37:47 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:38:00 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:39:47 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:40:00 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 17:30:19 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 17:32:19 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 18:07:34 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 18:08:41 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 18:09:10 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 18:09:17 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 18:10:41 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 20:45:00 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 20:45:51 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 20:45:53 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 20:47:00 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 21:43:51 GMT - Info - Order 5f6d272784497965b845b155 was removed well!
+Sun, 27 Sep 2020 21:43:56 GMT - Info - Order 5f6ee8955593461ab817ed05 was removed well!
+Sun, 27 Sep 2020 21:57:22 GMT - Info - Pet 5f6a1578417318fe8d1ee039 was updated well!
+Sun, 27 Sep 2020 21:57:23 GMT - Info - Pet 5f6a1578417318fe8d1ee039 was updated well!

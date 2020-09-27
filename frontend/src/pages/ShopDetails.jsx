@@ -11,7 +11,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDoubleUp, faEnvelope, faFemale, faMobileAlt, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleUp, faEnvelope, faFemale, faMale, faMobileAlt, faStar } from '@fortawesome/free-solid-svg-icons'
 import { animateScroll as scroll } from "react-scroll";
 import userService from '../services/userService.js';
 
@@ -111,6 +111,7 @@ class _ShopDetails extends Component {
 
     render() {
         const shop = this.state.shop;
+        const owner = this.state.shopOwner;
         const isUserOwner = (Object.keys(this.state.shop).length > 0
             && this.props.loggedInUser._id === this.props.currShop.owner._id)
         // console.log('chats in shop ccc', this.props.loggedInUser.chats);
@@ -145,7 +146,8 @@ class _ShopDetails extends Component {
                                 <img className="shop-owner-img" src={shop.owner.imgUrl} />
 
                                 <div className="contact-box">
-                                    <FontAwesomeIcon className="contact-icon" icon={faFemale} />
+                                  {owner.gender &&  <FontAwesomeIcon className="contact-icon"
+                                        icon={(owner.gender === 'Male')? faMale : faFemale} />}
                                     <p>{shop.owner.fullName}</p>
                                 </div>
 
@@ -236,9 +238,9 @@ class _ShopDetails extends Component {
 
                         </div>
                         <div className="pets-box" >
-                                <h2 className="our-pets-heading">Our Pets</h2>
-                                <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
-                            </div>
+                            <h2 className="our-pets-heading">Our Pets</h2>
+                            <PetList pets={this.state.shopPets} onRemove={this.onRemove} />
+                        </div>
                     </div>
 
                 }
