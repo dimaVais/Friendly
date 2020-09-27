@@ -26,8 +26,7 @@ class _OrderList extends Component {
         const pet = this.props.pets.find(pet => pet._id === order.pet._id)
         pet.isAdopted = true
         this.props.savePet(pet)
-        console.log('pet', pet);
-        this.props.history.push('/')
+        this.props.history.push('/pet')
     }
 
     onSave = async (order, status) => {

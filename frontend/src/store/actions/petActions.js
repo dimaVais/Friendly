@@ -27,3 +27,4 @@ export function setFilter(filterBy){
         dispatch({ type: 'SET_FILTER', filterBy })
     }
 }
+

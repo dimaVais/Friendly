@@ -39,7 +39,8 @@ class _NavBar extends Component {
     }
 
     onLogOut = () => {
-        this.props.logout()
+        this.props.logout();
+        this.props.history.push('/');
     }
     onToggleChatsList=()=>{
         this.setState({showChatsList:!this.state.showChatsList})

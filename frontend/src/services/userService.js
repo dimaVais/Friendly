@@ -39,7 +39,7 @@ async function signup(user) {
 }
 
 async function logout() {
-    await httpService.post('auth/logout');
+    await httpService.post(`${BASE_URL_AUTH}/logout`);
     sessionStorage.clear();
 }
 function _handleLogin(user) {
