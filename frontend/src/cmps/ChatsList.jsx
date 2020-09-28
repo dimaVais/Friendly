@@ -73,7 +73,7 @@ getRecipientId(members){
 }
     render() {
      
-        return (
+        return (    
             <div className="chat-list-container">
                 {(this.state.chats && this.state.chats.map(chat=>this.displayChatDetails(chat)))|| <div>No chats to load</div> }
             </div>
