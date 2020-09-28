@@ -11,7 +11,7 @@ import { ShopDetails } from './pages/ShopDetails';
 import { NavBar } from './cmps/NavBar';
 import { userProfile } from './pages/userProfile';
 import { Footer } from './cmps/Footer';
-import {Chat} from './cmps/Chat'
+import {Chat} from './cmps/Chat.jsx'
 import { toggleChat } from './store/actions/chatActions.js';
 
  class _App extends Component {
@@ -45,11 +45,9 @@ import { toggleChat } from './store/actions/chatActions.js';
             <Route component={PetDetails}  path="/details/:id?" />
             <Route component={PetEdit} path="/edit/:id?" />
             <Route component={SignUp} path="/signup/:type?" />
-            {/* <Route component={About} path="/about" /> */}
             <Route component={userProfile} path="/profile/:id" />
             <Route component={PetApp} path="/pet/:filterType?" />
             <Route component={Home} path="/" /> 
-          {/* {this.state.isChatsList && <Route component={ChatsList} />}  */}
           </Switch>
         </main>
         <footer>

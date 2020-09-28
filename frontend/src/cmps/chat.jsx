@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import socketService from '../services/socketService'
 import { connect } from 'react-redux';
 import { loadPets } from '../store/actions/petActions.js';
-import { loadChats, saveChat, getChatById,toggleChat } from '../store/actions/chatActions.js';
+import {  saveChat, getChatById,toggleChat } from '../store/actions/chatActions.js';
 import { updateUser } from '../store/actions/userActions.js';
 import userService from '../services/userService.js'
 import { shopService } from '../services/shopService.js'
@@ -241,7 +241,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadPets,
-    loadChats,
     saveChat,
     getChatById,
     updateUser,
