@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { Input,InputLabel } from '@material-ui/core';
+import { Input, InputLabel, Select } from '@material-ui/core';
 
 import { TagsFilter } from './TagsFilter'
 import { setFilter, loadPets } from '../store/actions/petActions.js'
@@ -73,7 +73,7 @@ class _PetFilter extends Component {
             }
         })
     }
-    
+
     onToggleFilterModal = () => {
         this.setState({ isModalShown: !this.state.isModalShown })
     }
@@ -111,7 +111,7 @@ class _PetFilter extends Component {
     }
 
     render() {
-        const { isModalShown, parent } = this.state
+        const { isModalShown } = this.state
         // const btnClass=parent==='hero'?'hero-btn more-btn':'gallery-btn more-btn';
         return (
             <div className="filter-container flex column align-center">
@@ -124,8 +124,21 @@ class _PetFilter extends Component {
                     <CategoryList onCategoryChange={this.onFilterChange} />
                 </section>
                 <section>
-                    <InputLabel htmlFor="">{'Distance(km)'}</InputLabel>
-                    <Input type="number" name="distance.range" min="1" id="" onChange={this.handleInput} />
+                    {/* <InputLabel htmlFor="">{'Distance(km)'}</InputLabel>
+                    <Input type="number" name="distance.range" min="1" id="" onChange={this.handleInput} /> */}
+                    <InputLabel htmlFor='Distance(km)'>Distance(km)</InputLabel>
+                    <Select
+                        native
+                        onChange={this.handleInput}
+                        inputProps={{
+                            name: 'distance.range'
+                        }}
+                    >
+                        <option aria-label="None" value="" />
+                        <option value="20">20km</option>
+                        <option value="50">50km</option>
+                        <option value="200">200km</option>
+                    </Select>
                 </section>
                 {isModalShown && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onFilterChange={this.onFilterChange} onToggleFilterModal={this.onToggleFilterModal} />}
 

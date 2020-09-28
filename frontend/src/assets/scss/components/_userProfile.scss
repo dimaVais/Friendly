@@ -1,33 +1,57 @@
-.user-profile-box {
-    width: 960px;
-    margin: 0 auto;
-    justify-content: space-between;
-    position: relative;
-    background-color: #fff;
-    padding: 0 20px;
+
+
+.user-data-main-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.95;
+    border-radius: 10px;
+    padding: 20px;
+    width: 600px;
+    height: 600px;
+    border: solid 1px rgb(38, 2, 245);
+    font-family: roboto, sans-serif;
+    animation-name: fadeIn;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.4s;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        h2 {
+            margin-left: 10px;
+        }
+    }
 
     p {
-        font-size: 20px;
+        margin: 10px;
+        color: rgb(155, 155, 155);
     }
-}
+    
+    span {
+        color: rgb(48, 47, 47);
+    }
 
-.user-data-box {
-    margin: 0 auto;
-    width: 900px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    justify-items: center;
-    grid-gap: 30px; 
-    border-bottom: solid 3px rgb(236, 224, 224);
+    img {
+        width: 220px;
+        height: 180px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
 
-    > img {
-        grid-column: 1;
-        max-width: 300px;
-        max-height: 270px;
-        min-height: 240px;
-        border-radius: 20%;
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
     }
-    > div {
-        grid-column: 2;
-    }
+
 }
