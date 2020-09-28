@@ -1,11 +1,11 @@
 import { chatService } from "../../services/chatService.js"
 
-// export function loadChats(filterBy, filterName) {
-//     return async dispatch => {
-//         const chats = await chatService.query(filterBy, filterName);
-//         dispatch({ type: 'LOAD_CHATS', chats });
-//     }
-// }
+export function loadChats(filterBy, filterName) {
+    return async dispatch => {
+        const chats = await chatService.query(filterBy, filterName);
+        dispatch({ type: 'LOAD_CHATS', chats });
+    }
+}
 
 
 export function getChatsByUserId(userId) {
