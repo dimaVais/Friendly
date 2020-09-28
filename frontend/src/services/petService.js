@@ -1,4 +1,5 @@
 import httpService from './httpService.js'
+import {SphericalUtil} from "node-geometry-library";
 const BASE_URL = '/pet'
 
 export const petService = {
@@ -40,26 +41,27 @@ async function save(pet) {
 async function remove(petId) {
     await httpService.delete(`${BASE_URL}/${petId}`)
 }
-function filterPets(pets,filterBy){
+
+function filterPets(pets, filterBy) {
     if (!filterBy) return pets
 
-    let filteredPets=pets
-    if(filterBy.txt){
-        filterBy.txt=filterBy.txt.trim(' ');
-        filterBy.txt=filterBy.txt.trim(',');
+    let filteredPets = pets
+    if (filterBy.txt) {
+        filterBy.txt = filterBy.txt.trim(' ');
+        filterBy.txt = filterBy.txt.trim(',');
 
         let words = filterBy.txt.split(' ');
-        if (words.length=1) words=filterBy.txt.split(',');
+        if (words.length = 1) words = filterBy.txt.split(',');
 
-        words.forEach(word=>{
-            filteredPets = filteredPets.filter(pet =>{
-                if(pet.name.toLowerCase().includes(word) ||
-                 pet.type.toLowerCase().includes(word)||
-                 pet.gender.toLowerCase().includes(word)||
-                 pet.size.toLowerCase().includes(word)||
-                 pet.summary.toLowerCase().includes(word)||
-                 pet.description.toLowerCase().includes(word)||
-                 pet.shop.fullName.toLowerCase().includes(word)) return pet
+        words.forEach(word => {
+            filteredPets = filteredPets.filter(pet => {
+                if (pet.name.toLowerCase().includes(word) ||
+                    pet.type.toLowerCase().includes(word) ||
+                    pet.gender.toLowerCase().includes(word) ||
+                    pet.size.toLowerCase().includes(word) ||
+                    pet.summary.toLowerCase().includes(word) ||
+                    pet.description.toLowerCase().includes(word) ||
+                    pet.shop.fullName.toLowerCase().includes(word)) return pet
             })
         })
     }
@@ -70,16 +72,15 @@ function filterPets(pets,filterBy){
     })
 
 
-    if (filterBy.distance.range){
-        const geocoder = require('google-geocoder');
-        const geo = geocoder({
-            key: 'AIzaSyDGql0MyVMEQeH89LQj0TtpM66SoLpkAhw'
-        });
-        const distance=geo.computeDistanceBetween()
-        filteredPets = filteredPets.filter(pet=>{
-            return pet
-            })
+    if (filterBy.distance.range) {
+        const userLoc = {lat: filterBy.distance.lat, lng: filterBy.distance.lon};
+        filteredPets = filteredPets.filter(pet => {
+            const petLoc = {lat:pet.location.lat, lng:pet.location.lng };
+            const distanceFromUser = SphericalUtil.computeDistanceBetween(userLoc, petLoc)/1000
+            console.log('distanceFromUser',distanceFromUser)
+            return  distanceFromUser <= filterBy.distance.range
+        })
     }
+
     return filteredPets
 }
-
