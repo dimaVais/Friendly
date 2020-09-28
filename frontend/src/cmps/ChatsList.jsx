@@ -97,20 +97,3 @@ const mapDispatchToProps = {
 
 export const ChatsList = connect(mapStateToProps, mapDispatchToProps)(_ChatsList)
 
-
-{/* <div className={"chat-box flex"}>
-{(isUserOwner && this.props.loggedInUser.chats && this.props.loggedInUser.chats.length > 0) ?
-    this.props.loggedInUser.chats.map(chat => {
-        // console.log('Chat in shop', chat);
-        return (
-            <div>
-                <img className="chat-user-img"
-                    src={this.getChatUserImg(chat._id)}
-                    alt="CHAT"
-                    onClick={() => { this.onToggleChat(chat._id) }} />
-                {this.state.chatIdOn === chat._id &&
-                    currChat && <Chat targetId={currChat.initiate._id}
-                        onClose={() => { this.onToggleChat(chat._id) }} />}
-            </div>)
-    }) : ""}
-</div> */}
