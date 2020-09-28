@@ -1234,3 +1234,31 @@ Sun, 27 Sep 2020 07:06:43 GMT - Error - ERROR: cannot find chat by id  c102, err
 Sun, 27 Sep 2020 07:06:59 GMT - Error - ERROR: cannot find shop by id  s101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
 Sun, 27 Sep 2020 07:07:10 GMT - Error - ERROR: cannot find chat by id  c101, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
 Sun, 27 Sep 2020 07:07:10 GMT - Error - ERROR: cannot find chat by id  c102, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 15:20:42 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:20:56 GMT - Info - Chat 5f6f1bfb4abdee80830e097f was updated well!
+Sun, 27 Sep 2020 15:20:58 GMT - Info - Chat 5f6f1bfb4abdee80830e097f was updated well!
+Sun, 27 Sep 2020 15:23:41 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:25:17 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:25:23 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:27:30 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:27:36 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:23 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:23 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:23 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:27 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:27 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:27 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:30 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:30 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:30 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:34 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:34 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:33:34 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:34:13 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:34:13 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:34:13 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:34:22 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:34:22 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 15:34:22 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Sun, 27 Sep 2020 16:22:46 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Sun, 27 Sep 2020 16:24:46 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
