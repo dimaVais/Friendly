@@ -110,7 +110,6 @@ class _Chat extends Component {
     }
 
     async checkIfChatExists(chatID){
-
     }
 
     componentWillUnmount() {

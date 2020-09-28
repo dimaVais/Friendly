@@ -9,7 +9,6 @@ const initialState = {
 export function chatReducer(state = initialState, action) {
     switch (action.type) {
         case 'TOGGLE_CHAT':
-            console.log('Reducer:',action.chatInfo);
             return {
                 ...state,
                 isChatShown: !state.isChatShown,
