@@ -5,6 +5,7 @@ const BASE_URL = '/chat'
 export const chatService = {
     query,
     getById,
+    getByUserId,
     save,
     remove
 }
@@ -21,6 +22,10 @@ async function query(filterBy={}, filterName) {
 
 async function getById(id) {    
     const res = await httpService.get(`${BASE_URL}/${id}`);
+    return res;
+}
+async function getByUserId(userId) {    
+    const res = await httpService.get(`${BASE_URL}/member/${userId}`);
     return res;
 }
 

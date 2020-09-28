@@ -9,9 +9,16 @@ const initialState = {
 export function chatReducer(state = initialState, action) {
     switch (action.type) {
         case 'TOGGLE_CHAT':
+            if (!action.chatInfo){
+                return {
+                    ...state,
+                    isChatShown: false,
+                    currChatInfo: {...action.chatInfo}
+                }
+            }
             return {
                 ...state,
-                isChatShown: !state.isChatShown,
+                isChatShown: true,
                 currChatInfo: {...action.chatInfo}
             }
         case 'LOAD_CHATS':
@@ -20,16 +27,16 @@ export function chatReducer(state = initialState, action) {
                 chats: [...action.chats]
             }
         case 'GET_CHAT':
+            console.log(state);
             return {
                 ...state,
-                currChat: {...action.chat}
+                chats: [...state.chats,action.chat]
             }
         case 'ADD_CHAT':
             console.log('IN REDUCER',action.chatToSave);
             return {
                 ...state,
                 chats: [...state.chats, action.chatToSave],
-                currChat:{...action.chatToSave}
             }
         case 'EDIT_CHAT':
             return {
@@ -38,7 +45,6 @@ export function chatReducer(state = initialState, action) {
                     if (chat._id === action.chatToSave._id) return action.chatToSave;
                     return chat;
                 }),
-                currChat:{...action.chatToSave}
             }
         case 'REMOVE_CHAT':
             return {

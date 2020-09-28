@@ -24,7 +24,6 @@ function remove(userId) {
 }
 
 function update(user) {
-    console.log('This is user',user);
     return httpService.put(`user/${user._id}`, user)
 }
 

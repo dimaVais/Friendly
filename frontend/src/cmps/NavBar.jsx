@@ -6,6 +6,8 @@ import { loadShops } from '../store/actions/shopActions'
 import { logout } from '../store/actions/userActions';
 import { ChatsList } from './ChatsList';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faComments  } from '@fortawesome/free-solid-svg-icons'
 
 
 class _NavBar extends Component {
@@ -58,11 +60,11 @@ class _NavBar extends Component {
                     <NavLink className="nav-btn" to="/about">About Us</NavLink>
                 </div>
                 <div className="right-nav">
-                    {user && user.isOwner && this.state.shopId && <NavLink className="nav-btn" to={`/shop/${this.state.shopId}`}> <img className="shop-img" src={this.state.shop.imgUrls[0]} alt=""/> {this.state.shop.name}</NavLink>}
-
+                    
+                    {user && user.isOwner && this.state.shopId && <NavLink className="nav-btn shop-btn" to={`/shop/${this.state.shopId}`}> <img className="shop-img" src={this.state.shop.imgUrls[0]} alt=""/> {this.state.shop.name}</NavLink>}
                     {user && !user.isOwner && !user.isGuest && <NavLink className="nav-btn" to={`/profile/${user._id}`}>{user.fullName}</NavLink>}
 
-                    {user && !user.isGuest && <button className="chats-btn nav - btn" onClick={this.onToggleChatsList}>Chat</button>}
+                    {user && !user.isGuest && <div className="chats-btn nav-btn" onClick={this.onToggleChatsList}><FontAwesomeIcon className="send-icon" icon={faComments} /></div>}
 
                     {user && user.isGuest && <button className="login-btn nav-btn" onClick={() => { this.onNavBarClick() }}>Login</button>}
                     {user && !user.isGuest && <button className="logout-btn nav - btn" onClick={() => { this.onLogOut() }}>Logout</button>}

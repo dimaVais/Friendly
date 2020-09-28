@@ -64,7 +64,7 @@ class _PetDetails extends Component {
     onAdopt = async () => {
         const { loggedInUser } = this.props
         if (loggedInUser.isGuest) return
-
+        this.setState({ AdoptionModalMsg: !this.state.AdoptionModalMsg })
         const pet = this.state.pet
         const shopId = pet.shop._id
         const shop = await shopService.getById(shopId)
@@ -87,10 +87,6 @@ class _PetDetails extends Component {
             },
             status: "Pending",
         }
-        this.setState({ AdoptionModalMsg: !this.state.AdoptionModalMsg })
-        setTimeout(() => {
-            this.setState({ AdoptionModalMsg: !this.state.AdoptionModalMsg });
-        }, 1500)
         this.props.saveOrder(order)
         this.setState({ adoptButton: 'Request Sent' })
     }
@@ -100,11 +96,10 @@ class _PetDetails extends Component {
         // this.props.removePet(petId)
     }
 
-    onToggleChat = async () => {
-        console.log();
+     onToggleChat = async() => {
+ 
         const shop = await shopService.getById(this.state.pet.shop._id);
-        await console.log(shop);
-        await this.props.toggleChat({ 'userId': shop.owner._id })
+        await this.props.toggleChat({'userId':shop.owner._id})
     }
 
     onUpdateReaction = (reaction) => {
@@ -208,6 +203,10 @@ class _PetDetails extends Component {
                                             return <li className="react-count"><FontAwesomeIcon onClick={() => { this.onUpdateReaction('love') }}
                                                 className="heart-icon" icon={faHeart} /> {`${react.count}`}</li>
                                         }
+                                        // else if ((react.type === 'feed')) return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('feed') }}
+                                        //     className="bone-icon" icon={faBone} /> ({`${react.count}`})</li>
+                                        // else if ((react.type === 'pet')) return <li><FontAwesomeIcon onClick={() => { this.onUpdateReaction('pet') }}
+                                        //     className="hand-sparkles-icon" icon={faHandSparkles} /> ({`${react.count}`})</li>
                                     })
                                     : ''
                             }
@@ -276,7 +275,7 @@ class _PetDetails extends Component {
                         </div>
 
                         <button onClick={this.onAdopt} className="adoption-btn">Adopt</button>
-                        {this.state.AdoptionModalMsg && <AdoptionMsgModal />}
+                        {/* {this.state.AdoptionModalMsg && <AdoptionMsgModal />} */}
 
                     </div>
                     <hr />

@@ -8,8 +8,8 @@ import {
     login,
     logout,
     signup
-} from '../store/actions/userActions';
-
+} from '../store/actions/userActions.js';
+import { getChatById,getChatsByUserId } from '../store/actions/chatActions.js';
 class _LoginModal extends Component {
 
     state = {
@@ -42,7 +42,14 @@ class _LoginModal extends Component {
             return this.setState({ msg: 'Please enter user/password' });
         }
         const userCreds = { userName, password };
-        this.props.login(userCreds);
+        await this.props.login(userCreds);
+       if(this.props.loggedInUser.chats){
+           this.props.loggedInUser.chats.forEach(async chat=>{
+               await this.props.getChatById(chat._id);
+           })
+       }
+        // this.props.getChatsByUserId(this.props.loggedInUser._id);
+        
         this.setState({ loginCred: { userName: '', password: '' } });
         this.props.onNavBarClick()
 
@@ -89,7 +96,7 @@ class _LoginModal extends Component {
 const mapStateToProps = state => {
     return {
         users: state.userReducer.users,
-        // loggedInUser: state.userReducer.loggedInUser,
+        loggedInUser: state.userReducer.loggedInUser,
     };
 };
 const mapDispatchToProps = {
@@ -97,7 +104,9 @@ const mapDispatchToProps = {
     logout,
     signup,
     removeUser,
-    loadUsers
+    loadUsers,
+    getChatsByUserId,
+    getChatById
 };
 
 

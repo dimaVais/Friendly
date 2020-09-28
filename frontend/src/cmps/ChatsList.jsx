@@ -15,7 +15,8 @@ state={
 }  
  
  async componentDidMount(){
-    if (this.props.loggedInUser.chats){ 
+     console.log(this.props.chats);
+    if (this.props.chats){ 
         let chats=[];
         let imgs;
         this.props.loggedInUser.chats.forEach(async chat=>{
@@ -25,7 +26,7 @@ state={
             const user = await userService.getById(recipientId);
             await this.setStateWithRecipient(user);
         })
-        await this.setState({chats})
+        await this.setState({chats:this.props.chats})
     }
 }
 async componentDidUpdate(prevProps){
