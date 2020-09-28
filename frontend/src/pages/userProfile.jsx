@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { OrderList } from '../cmps/OrderList.jsx';
-import { UserData } from '../cmps/UserData.jsx';
+import { UserDataModal } from '../cmps/UserDataModal.jsx';
 import userService from '../services/userService.js';
 import { loadOrders } from '../store/actions/orderActions.js'
 
@@ -32,7 +32,7 @@ export class _userProfile extends Component {
         if (!user) return <h3>Loading...</h3>
         return (
             <div className="user-profile-box flex column">
-                <UserData user={user}/>
+                <UserDataModal user={user}/>
                 { user._id === loggedInUser._id &&
                     <div className="user-profile-adoptions flex column">
                         <h2>My Adoption Requests</h2>

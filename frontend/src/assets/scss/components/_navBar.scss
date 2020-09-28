@@ -20,13 +20,13 @@
         margin-left: 5px;
         display: flex;
         align-items: center;
-
     }
 
     .nav-btn {
         padding: 10px 10px;
         font-size: 1.2rem;
         font-weight: 100;
+        
     }
 
 }
@@ -63,6 +63,7 @@
         align-items: center;
 
     }
+    
 
     .nav-btn {
         padding: 10px 10px;
@@ -70,6 +71,21 @@
         font-weight: 100;
     }
 }
+
+.right-nav{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+// .shop-btn{
+//     &:hover{
+//         background-color: lightgrey;
+//         border-radius: 40px;
+//     }
+// }
+
+
 
 .login-btn {
     padding: 10px;
@@ -98,4 +114,14 @@
 .logo-up {
     width: 60px;
     height: 60px;
+}
+
+.nav-btn.chats-btn{
+    
+    color: #33aced;
+    display: inline;
+    font-size: 1.8rem;
+    :hover{
+        cursor: pointer;
+    }
 }

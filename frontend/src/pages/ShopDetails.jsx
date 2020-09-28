@@ -85,8 +85,7 @@ class _ShopDetails extends Component {
             fullName: user.fullName,
             imgUrl: user.imgUrl
         }
-        console.log('review', review);
-        shop.reviews.push(review);
+        shop.reviews.unshift(review);
         await this.props.saveShop(shop);
         this.loadShopData();
     }
@@ -118,7 +117,7 @@ class _ShopDetails extends Component {
 
         return (
             <section>
-                {(!shop.owner || !shop.location || !shop.reviews) ? <h1>LOADING Shop....</h1> :
+                {(!shop.owner || !shop.location || !shop.reviews) ? <h1>Loading...</h1> :
 
                     <div className="shop-details-main-box">
                         <div className="shop-details-header">
@@ -178,21 +177,21 @@ class _ShopDetails extends Component {
                             <div className="reviews-box">
                                 <h3>What they say about us</h3>
                                 <button className="open-reviews-btn" onClick={this.onToggleReviewModal}>
-                                    {(!this.state.isOpenReviews) ? 'Tell Us What You Think' : `Close review form`}
+                                    {(!this.state.isOpenReviews) ? 'Tell Us What You Think' : `Close`}
                                 </button>
                                 <div className={(this.state.isOpenReviews) ? `review-modal` : `hidden`}>
                                     <form className="review-form">
                                         <div className="flex column">
                                             <TextField
                                                 id="standard-textarea"
-                                                label="Shelter/Owner Review:"
-                                                placeholder="write your review:"
+                                                label="Your Review"
+                                                placeholder="Write your review"
                                                 multiline
                                                 name="txt"
                                                 onChange={this.handleInput}
                                             />
                                             <FormControl>
-                                                <InputLabel htmlFor="rate">Please add your rate:</InputLabel>
+                                                <InputLabel htmlFor="rate">Your rate</InputLabel>
                                                 <Select
                                                     native
                                                     onChange={this.handleInput}
