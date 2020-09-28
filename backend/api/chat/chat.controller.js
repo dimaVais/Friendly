@@ -4,6 +4,7 @@ const logger = require('../../services/logger.service');
 
 module.exports = {
     getChats,
+    getChatsByUserId,
     getChat,
     createChat,
     updateChat,
@@ -13,6 +14,11 @@ module.exports = {
 async function getChats(req, res) {
     const filterBy = req.query;
     const chats = await chatService.query(filterBy);
+    return res.json(chats);
+}
+async function getChatsByUserId(req, res) {
+    const userId = req.params.id;
+    const chats = await chatService.getByUserId(userId);
     return res.json(chats);
 }
 

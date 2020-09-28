@@ -8,6 +8,7 @@ const logger = require('../../services/logger.service');
 module.exports = {
     query,
     getById,
+    getByUserId,
     save,
     remove
 }
@@ -30,6 +31,20 @@ async function getById(_id) {
     try {
         const chat = await collection.findOne({
             "_id": ObjectId(_id)
+        });
+        console.log('AFTER MONGO');
+        return chat;
+    } catch (err) {
+        logger.error(`ERROR: cannot find chat by id  ${_id}, err: ${err}`);
+        throw err;
+    }
+}
+async function getByUserId(_id) {
+    console.log('chatId in service:',_id);
+    const collection = await dbService.getCollection('chat');
+    try {
+        const chat = await collection.find({
+           "members":ObjectId(_id)
         });
         console.log('AFTER MONGO');
         return chat;

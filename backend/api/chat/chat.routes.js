@@ -6,7 +6,8 @@ const {
     getChat,
     createChat,
     updateChat,
-    deleteChat
+    deleteChat,
+    getChatsByUserId
 } = require('./chat.controller');
 
 const {
@@ -17,6 +18,7 @@ const chatService = require('./chat.service');
 
 
 router.get('/', getChats);
+router.get('/member/:id', getChatsByUserId);
 router.post('/', createChat);
 router.get('/:id', getChat);
 router.put('/:id', updateChat);
