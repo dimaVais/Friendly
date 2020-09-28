@@ -11,8 +11,8 @@ function connectSockets(io) {
             socket.join(topic)
             socket.myTopic = topic;
         })
-        socket.on('chat addMsg', msg => {          
-                // io.to(socket.myTopic).emit('chat addMsg', msg)
+        socket.on('chat newMsg', msg => {          
+                io.to(socket.myTopic).emit('chat addMsg', msg)
         })
     })
 }
