@@ -30,7 +30,7 @@ class _PetDetails extends Component {
         isOwnerOfPet: false,
         adoptButton: 'Adopt',
         currComment: '',
-        AdoptionModalMsg: true
+        AdoptionModalMsg: false
     }
 
     async componentDidMount() {
@@ -276,7 +276,7 @@ class _PetDetails extends Component {
                         </div>
 
                         <button onClick={this.onAdopt} className="adoption-btn">Adopt</button>
-                        {this.state.AdoptionModalMsg && <AdoptionMsgModal />}
+                        {/* {this.state.AdoptionModalMsg && <AdoptionMsgModal />} */}
 
                     </div>
                     <hr />
