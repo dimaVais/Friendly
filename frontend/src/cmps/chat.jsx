@@ -25,7 +25,8 @@ class _Chat extends Component {
         msg: {
             authorId: '',
             createdAt: '',
-            txt: ''
+            txt: '',
+            isRead:false
         },
     }
 
@@ -37,111 +38,63 @@ class _Chat extends Component {
            
             const targetId = await (chat.members[0]===this.props.loggedInUser._id)?chat.members[1]:chat.members[0];
             const target = await userService.getById(targetId);
-
-            ///same code
-            let targetName = target.fullName;
-            let targetImg = target.imgUrl;
-            if (!target.imgUrl){
-                const name=target.fullName.split(' ');
-                targetImg = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
-            }
-        
-            if (target.isOwner) {
-                const shop = await shopService.getByUserId(target._id);
-                targetName=shop.name;
-            }
-            this.setState({targetId:target._id,targetImg,targetName})
-            socketService.setup();
-            socketService.emit('chat topic', this.state.chat.topic);
-            socketService.on('chat addMsg', this.addMsg);
+            this.setChatAndTargetInfo(target);
+            
+            
         }else{
             var initiate = this.props.loggedInUser;
-            console.log('logedIn', initiate);
-            var target = await userService.getById(this.props.currChatInfo.targetId);
-        
-            ///same code
-            let targetName = target.fullName;
-            let targetImg = target.imgUrl;
-            if (!target.imgUrl){
-                const name=target.fullName.split(' ');
-                targetImg = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
-            }
-        
-            if (target.isOwner) {
-                const shop = await shopService.getByUserId(target._id);
-                targetName=shop.name;
-            }
-            this.setState({targetId:target._id,targetImg,targetName})
-            // if(initiate.chats){
-            //     const chatId= initiate.chats.find(chat=>)
-            // }
-            // const chat= await chatService.getById(this.props.currChatInfo.chatId);
-            // await this.setState({chat});
-            // this.setChat(this.props.loggedInUser);
-        }
-    }
-    async setChatByChatId(chatId){
-        const chat = await chatService.getChatById(chatId);
-    }
-
-    setChat = async (user) => {
-        let userChat = null;
-        if (user.chats && user.chats.length > 0) {
-            console.log('userchats', user.chats, 'of user', user);
-            userChat = [...user.chats].find(chat => {
-                console.log('IN USER CHAT', chat);
-                return chat.topic === `${this.props.loggedInUser._id}__${this.props.targetId}`
-                    || chat.topic === `${this.props.targetId}__${this.props.loggedInUser._id}`;
+            var target = await userService.getById(this.props.currChatInfo.userId);
+            debugger
+            let chat  = this.props.chats.find(chat=>{
+                (chat.members.includes(initiate._id) && chat.members.includes(target._id))
             })
-        }
-        console.log('userChat', userChat);
-        if (userChat) {
-            await this.props.getChatById(userChat._id)
-            await this.setState({ chat: { ...this.props.currChat } })
-        }
-        else {
-            await this.createChat(this.props.loggedInUser, this.state.targetId);
-        }
+            if (!chat) chat = await  this.creatNewChat(initiate,target)
+            console.log('New chat:',chat);
 
-        socketService.setup();
-        socketService.emit('chat topic', this.state.chat.topic);
-        console.log('TOPIC:',this.state.chat.topic);
-        socketService.on('chat addMsg', this.addMsg);
+            await this.setState({chat});
+
+            this.setChatAndTargetInfo(target);
+        }
     }
-
-    async checkIfChatExists(chatID){
-    }
-
     componentWillUnmount() {
         socketService.off('chat addMsg', this.addMsg);
         socketService.terminate();
     }
+    setChatAndTargetInfo = async (target)=>{
+            let targetName = target.fullName;
+            let targetImg = target.imgUrl;
+            if (!target.imgUrl){
+                const name=target.fullName.split(' ');
+                targetImg = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
+            }
+        
+            if (target.isOwner) {
+                const shop = await shopService.getByUserId(target._id);
+                targetName=shop.name;
+            }
+            this.setState({targetId:target._id,targetImg,targetName});
+            socketService.setup();
+            socketService.emit('chat topic', this.state.chat.topic);
+            socketService.on('chat addMsg', this.addMsg);
+        }
 
-    createChat = async (initiate, targetId) => {
+    creatNewChat = async (sender,recipient)=>{
         const chat = {
-            topic: `${initiate._id}__${targetId}`,
-            members:[initiate._id,targetId],
+            topic: `${sender._id}__${recipient._id}`,
+            members:[sender._id,recipient._id],
             msgs: []
         }
-        await this.props.saveChat(chat);
 
-        // const users = [initiate, target];
-        // users.forEach(async user => {
-        //     if (!user.chats) {
-        //         user.chats = [];
-        //     }
+        const users = [sender, recipient];
+        users.forEach( user => {
+            if (!user.chats) {
+                user.chats = [];
+            }  
+       
+        })
 
-        //     if (this.props.currChat._id) {
-        //         const chatToAdd = {
-        //             _id: this.props.currChat._id,
-        //             topic: this.props.currChat.topic,
-        //         };
-        //         user.chats.push(chatToAdd);
-        //     }
-        //     await this.props.updateUser(user);
-        //     await this.setState({ chat: { ...this.props.currChat } });
-        // })
-    }
+        return chat
+    } 
 
     addMsg = async newMsg => {
         await this.setState({
@@ -159,12 +112,13 @@ class _Chat extends Component {
         const msg = {
             authorId: this.props.loggedInUser._id,
             createdAt: new Date(),
-            txt: this.state.msg.txt
+            txt: this.state.msg.txt,
+            isRead:false
         }
+        this.props.saveChat(this.state.chat);
         await this.setState({ msg: { ...msg } });
-        this.addMsg(this.state.msg);
         socketService.emit('chat newMsg', this.state.msg);
-        this.setState({ msg: { authorId: '', createdAt: '', txt: '' } });
+        this.setState({ msg: { authorId: '', createdAt: '', txt: '',isRead:false } });
     }
 
     msgHandleChange = ev => {
@@ -200,7 +154,6 @@ class _Chat extends Component {
     }
 
     render() {
-        if (this.state.chat.msgs.length===0) return  <div className="chat-container"><h2>Loading</h2></div>
         return (
             <div className="chat-container">
                 <section className="chat-title flex space-evenly">
