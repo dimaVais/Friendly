@@ -3,19 +3,38 @@
     width: 300px;
     border-radius: 10px;
     background-color: rgb(59, 59, 165);
-    position: fixed;
-    top: 50px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
 
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    animation-name: fadeIn;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.3s;
 
     .msg-content {
-    color: rgb(235, 233, 233);
-    font-family: roboto ,sans-serif;
-    font-size: 0.9rem;
+        color: rgb(235, 233, 233);
+        font-family: roboto ,sans-serif;
+        font-size: 0.9rem;
+    
+        }
+}
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
+
+
+
+
 

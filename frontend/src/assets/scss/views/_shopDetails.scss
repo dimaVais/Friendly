@@ -218,7 +218,6 @@
 }
 
 .reviews-box {
-    // width: 300px;
     flex-grow: 1;
 }
 
@@ -232,8 +231,9 @@
 }
 
 .review {
-    margin: 80px 0;
-    border-bottom: rgb(230, 230, 230);
+    margin: 30px 0;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    width: 300px;
 
     p {
         color:rgb(107, 107, 107)
@@ -241,8 +241,17 @@
 
 }
 
+.review-modal {
+    height: 130px;
+}
+
+form {
+    border-top: none;
+}
+
 .review-form {
     max-width: 20em;
+
 
     * {
         margin-bottom: 5px;
@@ -250,7 +259,8 @@
 }
 
 .open-reviews-btn {
-    padding: 10px 10px; 
+    margin-bottom: 10px;
+    padding: 15px 15px; 
     background-color: #ffbf00;
     cursor: pointer;
     border-radius: 15px;
