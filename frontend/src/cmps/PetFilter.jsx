@@ -5,7 +5,7 @@ import { Input, InputLabel, Select } from '@material-ui/core';
 import { TagsFilter } from './TagsFilter'
 import { setFilter, loadPets } from '../store/actions/petActions.js'
 import { FilterSearch } from './FilterSearch';
-import { CategoryList } from './CategoryList'
+import { CategoryList } from './CategoryList';
 // import SearchIcon from '@material-ui/icons/Search';
 
 class _PetFilter extends Component {
@@ -51,27 +51,38 @@ class _PetFilter extends Component {
         await this.setState({ filterBy: { ...this.state.filterBy, distance: distance } });
     }
 
-    componentDidUpdate() {
-        console.log(this.props.pets);
-    }
     onFilterChange = (obj) => {
-        this.updateFilterAndLoad(obj)
+        this.updateFilterAndLoad(obj);
     }
 
-    handleInput = ({ target }) => {
+    handleInput = async ({ target }) => {
         const field = target.name;
         if (target.type === 'number') var value = +target.value;
         else value = target.value;
-
-        this.setState(prevState => {
-            return {
-                ...prevState,
-                filterBy: {
-                    ...prevState.filterBy,
-                    [field]: value
+        await this.setState(prevState => {
+            if (field === 'range') {
+                return {
+                    ...prevState,
+                    filterBy: {
+                        ...prevState.filterBy,
+                        distance: {
+                            ...prevState.filterBy.distance,
+                            [field]: value
+                        }
+                    }
+                }
+            } else {
+                return {
+                    ...prevState,
+                    filterBy: {
+                        ...prevState.filterBy,
+                        [field]: value
+                    }
                 }
             }
-        })
+
+        });
+        this.onFilterChange(this.state.filterBy);
     }
 
     onToggleFilterModal = () => {
@@ -98,7 +109,6 @@ class _PetFilter extends Component {
         await this.props.setFilter({ ...this.props.filterBy, ...obj }, () => this.loadPets())
     }
     onToggleTag = ev => {
-        console.log('toggled:', ev.target.value);
         const tag = ev.target.value;
         let tags = [...this.state.tags]
         if (tags.includes(tag)) {

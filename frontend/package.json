@@ -15,6 +15,7 @@
     "chart.js": "^2.9.3",
     "google-geocoder": "^0.2.1",
     "google-maps-react": "^2.0.6",
+    "node-geometry-library": "^1.2.3",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.10.0",
