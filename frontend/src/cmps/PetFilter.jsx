@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-Dimport { Input,InputLabel } from '@material-ui/core';
-
+import { Input,InputLabel } from '@material-ui/core';
 import { TagsFilter } from './TagsFilter'
 import { setFilter, loadPets } from '../store/actions/petActions.js'
 import { FilterSearch } from './FilterSearch';
-import { CategoryList } from './CategoryList'
+import { CategoryList } from './CategoryList';
 // import SearchIcon from '@material-ui/icons/Search';
 
 class _PetFilter extends Component {
