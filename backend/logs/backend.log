@@ -1510,3 +1510,5 @@ Tue, 29 Sep 2020 09:22:09 GMT - Error - ERROR: cannot find shop by id  5f6a16ac4
 Tue, 29 Sep 2020 09:22:19 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: imgUrls is not defined
 Tue, 29 Sep 2020 09:23:41 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: imgUrls is not defined
 Tue, 29 Sep 2020 09:24:12 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: imgUrls is not defined
+Tue, 29 Sep 2020 09:51:45 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Tue, 29 Sep 2020 09:51:45 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
