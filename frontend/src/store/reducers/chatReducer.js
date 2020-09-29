@@ -27,7 +27,6 @@ export function chatReducer(state = initialState, action) {
                 chats: [...action.chats]
             }
         case 'GET_CHAT':
-            console.log(state);
             return {
                 ...state,
                 chats: [...state.chats,action.chat]
