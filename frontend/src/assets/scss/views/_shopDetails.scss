@@ -1,6 +1,6 @@
 .shop-details-main-box {
     width: 1140px;
-    
+
     margin: 0 auto;
     font-family: roboto, sans-serif;
     background-color: #fff;
@@ -22,35 +22,35 @@
         display: flex;
         justify-content: space-around;
         align-items: flex-end;
-        margin: 0 0 15px 0 ;
-        
-        
-    .shop-rate-rating {
-
-        color: #ffbf00;
-        font-size: 14px;
-        margin: 0;
-        font-family: montserrat, sans-serif;
-        border-radius: 50%;
-        font-weight: 900;
-        font-size: 1.2rem;
-        margin-right: 2px;
+        margin: 0 0 15px 0;
 
 
-    }
+        .shop-rate-rating {
 
-    .star-icon {
-        color: #ffbf00;
-        font-size: 1rem;
-        margin: 0 5px 3px 0;
-    }
+            color: #ffbf00;
+            font-size: 14px;
+            margin: 0;
+            font-family: montserrat, sans-serif;
+            border-radius: 50%;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-right: 2px;
 
-    .shop-rate-count {
-        font-size: 13px;
-        margin: 18px 3px 0 0;
-        color: rgb(192, 192, 192);
-        font-size: 1rem;
-    }
+
+        }
+
+        .star-icon {
+            color: #ffbf00;
+            font-size: 1rem;
+            margin: 0 5px 3px 0;
+        }
+
+        .shop-rate-count {
+            font-size: 13px;
+            margin: 18px 3px 0 0;
+            color: rgb(192, 192, 192);
+            font-size: 1rem;
+        }
     }
 
 }
@@ -104,7 +104,7 @@
     text-align: start;
     margin-top: 25px;
     padding-bottom: 30px;
-    
+
     .owner-details {
         display: flex;
     }
@@ -129,10 +129,12 @@
             color: #ffbf00;
         }
     }
+
     .phone-box {
         display: flex;
         align-items: center;
     }
+
     .email-box {
         display: flex;
         align-items: center;
@@ -158,7 +160,7 @@
 }
 
 .map-container {
-    
+
     width: 350px;
     height: 300px;
     position: relative;
@@ -197,7 +199,7 @@
 
 .bottom-screen-box {
     display: flex;
-    
+
 }
 
 
@@ -236,7 +238,7 @@
     width: 300px;
 
     p {
-        color:rgb(107, 107, 107)
+        color: rgb(107, 107, 107)
     }
 
 }
@@ -260,7 +262,7 @@ form {
 
 .open-reviews-btn {
     margin-bottom: 10px;
-    padding: 15px 15px; 
+    padding: 15px 15px;
     background-color: #ffbf00;
     cursor: pointer;
     border-radius: 15px;
@@ -274,7 +276,7 @@ form {
 }
 
 .add-review-btn {
-    padding: 10px 10px; 
+    padding: 10px 10px;
     background-color: #ffbf00;
     cursor: pointer;
     border-radius: 15px;
@@ -287,20 +289,38 @@ form {
     }
 }
 
-.chat-box{
-    .chat-user-img{
-        max-width:70px;
-        max-height:70px;
+.chat-box {
+    .chat-user-img {
+        max-width: 70px;
+        max-height: 70px;
         border-radius: 50%;
         cursor: pointer;
-        border: solid 4px  #ffbf00;
+        border: solid 4px #ffbf00;
 
-        &:hover{
-            border: solid 5px  $clr5;
+        &:hover {
+            border: solid 5px $clr5;
         }
     }
 }
 
+.order-modal-button {
+
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    padding:20px;
+    border-radius: 10px;
+    background-color: rgb(0, 172, 237);
+    border: none;
+    font-family: roboto, sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    margin-top:50px;    
+
+    &:hover{
+        background-color: rgb(25, 28, 221);
+        box-shadow: inset 0px 0px 20px white
+    }
+}
 @media (max-width: 376px) {
     .shop-details-main-box {
         width: 376px;

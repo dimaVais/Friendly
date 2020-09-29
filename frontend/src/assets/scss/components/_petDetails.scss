@@ -194,10 +194,17 @@
     transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     &:hover {
-        color: #f5f5f5;
-        transform: scale(1.2);
+        color: #667dff;
     }
 
+
+}
+
+.adopted {
+    background-color: #a19c8c;
+    &:hover {
+        color: #bbbbbb;
+    }
 
 }
 

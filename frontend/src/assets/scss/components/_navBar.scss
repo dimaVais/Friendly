@@ -8,6 +8,7 @@
     background-color: transparent;
     z-index: 3;
 
+
     a {
         font-family: roboto, sans-serif;
         text-decoration: none;
@@ -29,6 +30,11 @@
         
     }
 
+}
+
+.hamburger-mobile-btn {
+    display: none;
+    
 }
 
 .shop-img {
@@ -124,4 +130,36 @@
     :hover{
         cursor: pointer;
     }
+}
+
+@media (max-width: 376px) {
+    .main-nav-not-home {
+        background-color: #fff;
+        top: 0;
+        transition: transform .8s;
+
+        .nav-btn {
+            font-size: 0.9rem;
+            margin-left: 3px;
+        }
+
+        .shop-btn {
+            padding: 5px;
+            margin-right: 20px;
+            border: 1px solid lightgray;
+        }
+
+        .chats-btn {
+            margin-right: 2px;
+            margin-top: 2px;
+        }
+
+        .shop-img {
+            display: none;
+        }
+    }
+        
+
+
+
 }

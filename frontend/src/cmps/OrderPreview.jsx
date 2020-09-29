@@ -17,6 +17,7 @@ export class OrderPreview extends Component {
     }
 
     showModal = async () => {
+        console.log('hey');
         this.setState({ showUserModal: !this.state.showUserModal })
         const user = await userService.getById(this.props.order.buyer._id)
         await this.setState({ user })
@@ -34,10 +35,12 @@ export class OrderPreview extends Component {
 
     render() {
         const { order, onSave, onRemove, isShop, loggedInUser } = this.props
+        const isModalClass = (this.props.inModal)? 'modal-order-preview' : 'ddd';
+        console.log('props',this.props);
         const user = this.state.user
         if (!order) return <h3 style={{ display: 'none' }}>loading...</h3>
         return (
-            <div className={`order-preview ${this.orderClass}`}>
+            <div className={`order-preview ${isModalClass} ${this.orderClass}`}>
                 {
                     isShop && <div  className="order-preview-details">
                         <p onClick={this.showModal}>{order.buyer.fullName} <span>Wants to Adopt</span> {order.pet.name} </p>
@@ -50,7 +53,7 @@ export class OrderPreview extends Component {
                     </div>
 
                 } */}
-                {this.state.showUserModal && user && <UserDataModal user={user} />}
+                {this.state.showUserModal && user && <UserDataModal closeModal={this.showModal} user={user} />}
 
                 {!isShop && loggedInUser._id === order.buyer._id &&
                     <div>

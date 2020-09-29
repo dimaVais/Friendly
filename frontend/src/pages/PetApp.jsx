@@ -2,16 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { PetFilter } from '../cmps/PetFilter'
 import { PetList } from '../cmps/PetList'
-import { loadPets, removePet,setFilter } from '../store/actions/petActions'
+import { loadPets, removePet, setFilter } from '../store/actions/petActions'
 import { animateScroll as scroll } from "react-scroll";
 
 class _PetApp extends Component {
 
     state = {
         pets: [],
-        filterBy:{type:''},
+        filterBy: { type: '' },
         sortBy: null,
-        isReady:false
+        isReady: false
     }
 
     async componentDidMount() {
@@ -19,46 +19,46 @@ class _PetApp extends Component {
         scroll.scrollToTop();
     }
 
-   async  componentDidUpdate(prevProps){
-        if (prevProps!==this.props){
-            this.setState({isReady:true})
-           }
-        if(prevProps.filterBy!==this.props.filterBy){
+    async componentDidUpdate(prevProps) {
+        if (prevProps !== this.props) {
+            this.setState({ isReady: true })
+        }
+        if (prevProps.filterBy !== this.props.filterBy) {
             await this.loadPets();
         }
 
     }
-    async componentWillUnmount(){
-       await this.resetFitler();
+    async componentWillUnmount() {
+        await this.resetFitler();
     }
 
-     resetFitler=async()=>{
+    resetFitler = async () => {
         await this.props.setFilter({
-            type:'',
-            gender:'',
-            breed:'',
-            size:'',
-            txt:''
-        },()=>this.loadPets())
+            type: '',
+            gender: '',
+            breed: '',
+            size: '',
+            txt: ''
+        }, () => this.loadPets())
     }
 
     loadPets = async _ => {
         //loading from props with filter and setting the local state
         await this.props.loadPets(this.props.filterBy);
-        const pets=this.props.pets;
-        await this.setState({...this.state,pets})
+        const pets = this.props.pets;
+        await this.setState({ ...this.state, pets })
     }
 
     onRemove = (id) => {
         this.props.removePet(id)
     }
-    
+
     render() {
-        const {  user } = this.props;
+        const { user } = this.props;
         if (!this.state.pets) return <h1>Loading...</h1>
         return (
-            <div className="pets-container"> 
-                <PetFilter/>
+            <div className="pets-container">
+                <PetFilter />
                 <div id="center"></div>
                 <PetList pets={this.state.pets} onRemove={this.onRemove} user={user} />
             </div>
@@ -69,8 +69,8 @@ class _PetApp extends Component {
 const mapStateToProps = state => {
     return {
         pets: state.petReducer.pets,
-        filterBy:state.petReducer.filterBy 
-      }
+        filterBy: state.petReducer.filterBy
+    }
 }
 const mapDispatchToProps = {
     loadPets,
