@@ -55,6 +55,7 @@ class _OrderList extends Component {
 
     render() {
         const orders = this.props.orders;
+        const inModal = (this.props.inModal)? true : false;
         return (!orders) ? <h1>LOADING...</h1> :
             (
                 <div className="order-list flex column" >
@@ -62,7 +63,7 @@ class _OrderList extends Component {
                     <div className={`doubleAccept ${this.state.msgDivClass}`}>Only one approval please.</div>
                     {orders.map(order =>
                         <OrderPreview isShop={this.props.isShop} order={order} loggedInUser={this.props.loggedInUser}
-                            onRemove={this.onRemove} onSave={this.onSave} />)}
+                        inModal={inModal}  onRemove={this.onRemove} onSave={this.onSave} />)}
                 </div>
             )
     }

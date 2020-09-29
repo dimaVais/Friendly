@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import socketService from '../services/socketService'
 import { connect } from 'react-redux';
 import { loadPets } from '../store/actions/petActions.js';
-import {  saveChat, getChatById,toggleChat } from '../store/actions/chatActions.js';
+import { saveChat, getChatById, toggleChat } from '../store/actions/chatActions.js';
 import { updateUser } from '../store/actions/userActions.js';
 import userService from '../services/userService.js'
 import { shopService } from '../services/shopService.js'
@@ -26,69 +26,78 @@ class _Chat extends Component {
             authorId: '',
             createdAt: '',
             txt: '',
-            isRead:false
+            isRead: false
         },
+        recipient:{},
+        sender:{}
     }
 
     async componentDidMount() {
-        console.log(this.props);
-        if (this.props.currChatInfo.chatId){
-            const chat= await chatService.getById(this.props.currChatInfo.chatId);
-            await this.setState({chat});
-           
-            const targetId = await (chat.members[0]===this.props.loggedInUser._id)?chat.members[1]:chat.members[0];
-            const target = await userService.getById(targetId);
-            this.setChatAndTargetInfo(target);
-            
-            
-        }else{
-            var initiate = this.props.loggedInUser;
-            var target = await userService.getById(this.props.currChatInfo.userId);
-            let chat  = this.props.chats.find(chat=>{
-                (chat.members.includes(initiate._id) && chat.members.includes(target._id))
-            })
-            if (!chat) chat = await  this.creatNewChat(initiate,target)
-            console.log('New chat:',chat);
+        var sender = this.props.loggedInUser;
+        this.setState({ sender })
 
-            await this.setState({chat});
+        if (this.props.currChatInfo.chatId) {
+            const chat = this.props.chats.find(chat => chat._id === this.props.currChatInfo.chatId);
+            this.setState({ chat });
+            this.setRecipientInfo(this.getRecipientId(chat.members));
+            this.setSocket();
 
-            this.setChatAndTargetInfo(target);
+        } else {
+            await this.setRecipientInfo(this.props.currChatInfo.userId);
+            const chat = this.getChatIfExists() !== false || this.creatNewChat();
+            this.setState({ chat });
+            this.setSocket();
         }
     }
     componentWillUnmount() {
         socketService.off('chat addMsg', this.addMsg);
         socketService.terminate();
     }
-    setChatAndTargetInfo = async (target)=>{
-            let targetName = target.fullName;
-            let targetImg = target.imgUrl;
-            if (!target.imgUrl){
-                const name=target.fullName.split(' ');
-                targetImg = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
-            }
-        
-            if (target.isOwner) {
-                const shop = await shopService.getByUserId(target._id);
-                targetName=shop.name;
-            }
-            this.setState({targetId:target._id,targetImg,targetName});
-            socketService.setup();
-            socketService.emit('chat topic', this.state.chat.topic);
-            socketService.on('chat addMsg', this.addMsg);
-        }
 
-    creatNewChat = async (initiate,target)=>{
+    getChatIfExists() {
+        return this.props.chats.includes(chat => {
+            (chat.members.includes(this.state.sender._id) && chat.members.includes(this.state.recipient._id))
+        })
+    }
+    setRecipientInfo = async (id) => {
+        
+        let recipient = await userService.getMiniById(id);
+        if (!recipient.imgUrl) {
+            const name = recipient.name.split(' ');
+            recipient.imgUrl = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
+        }
+        if (recipient.isOwner) {
+            const shop = await shopService.getMiniByUserId(recipient._id);
+            console.log('shop:',shop);
+            recipient.name = shop.name;
+            recipient.imgUrl = shop.imgUrl;
+        }
+        console.log('recipient:',recipient);
+        this.setState({ recipient });
+    }
+
+    setSocket = async () => {
+
+        socketService.setup();
+        socketService.emit('chat topic', this.state.chat.topic);
+        socketService.on('chat addMsg', this.addMsg);
+    }
+
+    creatNewChat = () => {
+        console.log(this.state);
         const chat = {
-            topic: `${initiate._id}__${target._id}`,
-            members:[initiate._id,target._id],
+            topic: `${this.state.sender._id}__${this.state.recipient._id}`,
+            members: [this.state.sender._id, this.state.recipient._id],
             msgs: []
         }
-
         return chat
-    } 
+    }
+
+    getRecipientId(members) {
+        return (members[0] === this.state.sender._id) ? members[1] : members[0]
+    }
 
     addMsg = async newMsg => {
-        console.log('Receiving new msg');
         await this.setState({
             chat: {
                 ...this.state.chat,
@@ -105,11 +114,11 @@ class _Chat extends Component {
             authorId: this.props.loggedInUser._id,
             createdAt: new Date(),
             txt: this.state.msg.txt,
-            isRead:false
+            isRead: false
         }
         await this.setState({ msg: { ...msg } });
         socketService.emit('chat newMsg', this.state.msg);
-        this.setState({ msg: { authorId: '', createdAt: '', txt: '',isRead:false } });
+        this.setState({ msg: { authorId: '', createdAt: '', txt: '', isRead: false } });
     }
 
     msgHandleChange = ev => {
@@ -130,15 +139,15 @@ class _Chat extends Component {
 
     displayMsg = (msg, idx) => {
         let classTxt = 'message-row ';
-        const time=new Date(msg.createdAt);
-        const isAuthor=msg.authorId === this.props.loggedInUser._id;
+        const time = new Date(msg.createdAt);
+        const isAuthor = msg.authorId === this.state.sender._id;
         classTxt += isAuthor ? 'sender' : 'recipient';
         return (
             <div className={classTxt} key={idx}>
-                {!isAuthor && <img src={this.state.targetImg} alt=""/>}
+                {!isAuthor && <img src={this.state.recipient.imgUrl} alt="" />}
                 <div className="message-content">
                     <div className="txt">{msg.txt}</div>
-                    <div className="date" >{time.getHours()+':'+time.getMinutes()}</div>
+                    <div className="date" >{time.getHours() + ':' + time.getMinutes()}</div>
                 </div>
             </div>
         )
@@ -148,7 +157,7 @@ class _Chat extends Component {
         return (
             <div className="chat-container">
                 <section className="chat-title flex space-evenly">
-                    <span>{this.state.targetName}</span>
+                    {this.state.recipient && <span>{this.state.recipient.name}</span>}
                     <button className="btn-close btn" onClick={this.onClose}><FontAwesomeIcon className="close-icon" icon={faTimes} /></button>
                 </section>
                 <section className="msgs-container">

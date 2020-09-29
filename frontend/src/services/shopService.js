@@ -5,7 +5,7 @@ const BASE_URL = '/shop'
 export const shopService = {
     query,
     getById,
-    getMiniById,
+    getMiniByUserId,
     getByUserId,
     save,
     remove
@@ -21,7 +21,7 @@ async function getById(id) {
     return res;
 }
 
-function getMiniById(id) {
+function getMiniByUserId(id) {
     return httpService.get(`${BASE_URL}/mini/${id}`);
 }
 
