@@ -15,7 +15,6 @@ state={
 }  
  
  async componentDidMount(){
-     console.log(this.props.chats);
     if (this.props.chats.length>0){ 
         let chats=[];
         let imgs;
@@ -30,7 +29,9 @@ state={
     }
 }
 async componentDidUpdate(prevProps){
+    if (prevProps!==this.props){
 
+    }
 }
 
 async setStateWithRecipient(user){
