@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { OrderList } from '../cmps/OrderList.jsx';
-import { UserDataModal } from '../cmps/UserDataModal.jsx';
+import { UserData } from '../cmps/UserData.jsx';
 import userService from '../services/userService.js';
 import { loadOrders } from '../store/actions/orderActions.js'
 
@@ -26,13 +26,13 @@ export class _userProfile extends Component {
     }
 
     render() {
-
         const { user } = this.state;
         const loggedInUser = this.props.loggedInUser;
         if (!user) return <h3>Loading...</h3>
         return (
-            <div className="user-profile-box flex column">
-                <UserDataModal user={user}/>
+            <div className="flex column align-center user-profile "> 
+                <UserData user={user} display="grid"/>
+                <hr/>
                 { user._id === loggedInUser._id &&
                     <div className="user-profile-adoptions flex column">
                         <h2>My Adoption Requests</h2>

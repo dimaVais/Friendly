@@ -27,13 +27,11 @@ async function getShop(req, res) {
 async function getMiniShop(req, res) {
     const shopId = req.params.id;
     const miniShop = await shopService.getMiniById(shopId);
-    console.log('IN Server:',miniShop);
     return res.json(miniShop);
 }
 
 async function getShopByUser(req, res) {
     const userId = req.params.id;
-    console.log('userId',userId);
     const shop = await shopService.getShopByUser(userId)
     return res.json(shop);
 }

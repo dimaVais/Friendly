@@ -1,57 +1,62 @@
-
-
-.user-data-main-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 5;
-    background-color: rgb(255, 255, 255);
+.user-data {
+    align-content: center;
+    background-color: $clr2;
     padding: 20px;
     width: 600px;
-    height: 600px;
+    // height: 40px;
     font-family: roboto, sans-serif;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 200px 200px;
+    margin-top: 20px;
     animation-name: fadeIn;
     animation-iteration-count: 1;
     animation-timing-function: ease-in-out;
     animation-duration: 0.4s;
 
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
 
-        h2 {
-            margin-left: 15px;
+    &.inModa {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 5;
+    }
+
+    .header {
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+
+        img {
+            width: 220px;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: cover;
         }
     }
 
     .user-profile-details {
         margin-bottom: 150px;
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
+
+        h2 {
+            text-align: left;
+        }
     }
 
     p {
         color: rgb(155, 155, 155);
     }
-    
+
     span {
         color: rgb(48, 47, 47);
-    }
-
-    img {
-        width: 220px;
-        height: 180px;
-        border-radius: 10px;
-        object-fit: cover;
-        position: absolute;
-        right: 15px;
-        top: 40px;
     }
 
     @keyframes fadeIn {
         0% {
             opacity: 0;
         }
+
         100% {
             opacity: 1;
         }
@@ -62,7 +67,7 @@
         font-size: 1rem;
         padding: 15px;
         border-radius: 15px;
-        font-family: roboto,sans-serif;
+        font-family: roboto, sans-serif;
         text-align: center;
         margin: 0;
         background-color: rgb(255, 0, 0);
