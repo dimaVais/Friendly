@@ -1763,3 +1763,10 @@ Tue, 29 Sep 2020 14:03:44 GMT - Info - Order 5f733ea92bc31c57b421d6fb was remove
 >>>>>>> 6dee4402815d92e4c749adfd855c9aa9b6bdf6c9
 >>>>>>> b644290e11778bb34d6789ad8e86e780b6493643
 >>>>>>> 38676269809148cbbd874c81927a8a15a11f8fdc
+Tue, 29 Sep 2020 14:41:41 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Tue, 29 Sep 2020 14:41:56 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:45:51 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:46:11 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:46:12 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:46:12 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:46:22 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
