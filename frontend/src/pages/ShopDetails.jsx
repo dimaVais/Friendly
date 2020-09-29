@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PetList } from '../cmps/PetList';
 import { OrderList } from '../cmps/OrderList';
+import { OrderListModal } from '../cmps/OrderListModal';
 import { getShopById, saveShop } from '../store/actions/shopActions.js';
 import { savePet, loadPets } from '../store/actions/petActions.js'
 import { GoogleMap } from '../cmps/GoogleMap';
@@ -14,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp, faEnvelope, faFemale, faMale, faMobileAlt, faStar } from '@fortawesome/free-solid-svg-icons'
 import { animateScroll as scroll } from "react-scroll";
 import userService from '../services/userService.js';
-import {shopService} from '../services/shopService.js';
+import { shopService } from '../services/shopService.js';
 
 
 class _ShopDetails extends Component {
@@ -24,6 +25,7 @@ class _ShopDetails extends Component {
         shopPets: [],
         shopOwner: '',
         isOpenReviews: false,
+        isOpenOrders: false,
         currReview: {
             txt: '',
             rate: ''
@@ -91,6 +93,15 @@ class _ShopDetails extends Component {
         this.loadShopData();
     }
 
+    onToggleOrderModal = () => {
+        this.setState(
+            {
+                ...this.state,
+                isOpenOrders: !this.state.isOpenOrders
+            }
+        )
+    }
+
     onToggleReviewModal = () => {
         this.setState(
             {
@@ -112,6 +123,7 @@ class _ShopDetails extends Component {
     render() {
         const shop = this.state.shop;
         const owner = this.state.shopOwner;
+        const isOrderModal = (this.state.isOpenOrders) ? "" : "hidden";
         const isUserOwner = (Object.keys(this.state.shop).length > 0
             && this.props.loggedInUser._id === this.props.currShop.owner._id)
         // console.log('chats in shop ccc', this.props.loggedInUser.chats);
@@ -146,8 +158,8 @@ class _ShopDetails extends Component {
                                 <img className="shop-owner-img" src={shop.owner.imgUrl} />
 
                                 <div className="contact-box">
-                                  {owner.gender &&  <FontAwesomeIcon className="contact-icon"
-                                        icon={(owner.gender === 'Male')? faMale : faFemale} />}
+                                    {owner.gender && <FontAwesomeIcon className="contact-icon"
+                                        icon={(owner.gender === 'Male') ? faMale : faFemale} />}
                                     <p>{shop.owner.fullName}</p>
                                 </div>
 
@@ -166,13 +178,13 @@ class _ShopDetails extends Component {
                                     <p>{shop.desc}</p>
                                 </div>
                             </div>
-                            <div className="order-list-box">
-                                {this.state.shop.owner._id === this.props.loggedInUser._id &&
-                                    <OrderList isShop={true} orderFilterName={"shop._id"} filterById={this.state.shop._id} />}
+                            {this.state.shop.owner._id === this.props.loggedInUser._id && 
+                             <div className={`order-list-box`}>
+                                <button className="order-modal-button" onClick={this.onToggleOrderModal}>Adoption Requests</button>
+                                    <OrderListModal isOpen={isOrderModal} isShop={true} orderFilterName={"shop._id"}
+                                        filterById={this.state.shop._id} onToggleOrderModal={this.onToggleOrderModal} />
+                            </div>}
                             </div>
-
-
-                        </div>
                         <div className="bottom-screen-box">
 
                             <div className="reviews-box">

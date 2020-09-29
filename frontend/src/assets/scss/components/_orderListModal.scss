@@ -1,0 +1,67 @@
+.orderlist-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.95;
+    border-radius: 10px;
+    padding: 20px;
+    width: 700px;
+    height: 90vh;
+    // border: solid 1pxrgb (38, 2, 245);
+    box-shadow: 0 6px 6px rgb(51, 43, 43);
+    font-family: roboto, sans-serif;
+    animation-name: fadeIn;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.4s;
+    overflow-y: auto;
+
+    h2 {
+        text-align: center;
+    }
+
+    p {
+        color: rgb(48, 47, 47);
+        margin: 10px;
+
+    }
+
+    span {
+        color: rgb(155, 155, 155);
+    }
+
+    img {
+        width: 220px;
+        height: 180px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .close-modal{
+        margin-top:20px;
+        color: rgb(255, 255, 255);
+        padding:20px;
+        border-radius: 10px;
+        background-color: rgb(0, 172, 237);
+        border: none;
+        font-family: roboto, sans-serif;
+        font-weight: 500;
+        font-size: 1rem;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
