@@ -43,12 +43,14 @@ class _LoginModal extends Component {
         }
         const userCreds = { userName, password };
         await this.props.login(userCreds);
-       if(this.props.loggedInUser.chats){
+
+        if(this.props.loggedInUser.chats){
            this.props.loggedInUser.chats.forEach(async chat=>{
                await this.props.getChatById(chat._id);
            })
        }
-        this.props.getChatsByUserId(this.props.loggedInUser._id);
+
+        // this.props.getChatsByUserId(this.props.loggedInUser._id);
         
         this.setState({ loginCred: { userName: '', password: '' } });
         this.props.onNavBarClick()
