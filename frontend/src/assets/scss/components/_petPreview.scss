@@ -100,7 +100,7 @@
             display: flex;
             padding: 5px;
             justify-content: space-between;
-            
+
             // .love-icon {
             //     color: #ffbf00;
             //     font-size: 1.2rem;
@@ -113,7 +113,7 @@
             .love-count {
                 font-size: 1rem;
                 color: #979595;
-                font-family: roboto,sans-serif;
+                font-family: roboto, sans-serif;
                 transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 
             }
@@ -168,12 +168,12 @@
                 font-family: montserrat, sans-serif;
                 border-radius: 50%;
                 font-weight: 900;
-    
+
             }
 
             .star-icon {
                 color: #ffbf00;
-                margin: 19px 0 0 ;
+                margin: 19px 0 0;
             }
 
             .shop-rate-count {
@@ -183,7 +183,7 @@
             }
         }
 
-        
+
 
         a {
             text-decoration: none;
@@ -223,16 +223,18 @@
     overflow: hidden;
     position: absolute;
     z-index: 4;
-  }
-  .ribbon::before,
-  .ribbon::after {
+}
+
+.ribbon::before,
+.ribbon::after {
     position: absolute;
     z-index: -1;
     content: '';
     display: block;
     border: 3px solid #1092d3;
-  }
-  .ribbon span {
+}
+
+.ribbon span {
     position: absolute;
     display: block;
     width: 165px;
@@ -240,31 +242,53 @@
     background-color: #1092d3;
     // box-shadow: 0 5px 10px rgba(0,0,0,.1);
     text-align: center;
-    font-family: montserrat,sans-serif;
+    font-family: montserrat, sans-serif;
     font-weight: 800;
     color: rgb(215, 230, 215);
-  }
+}
 
-  .ribbon-top-right {
+.ribbon-top-right {
     top: -3px;
     right: -3px;
-  }
-  .ribbon-top-right::before,
-  .ribbon-top-right::after {
+}
+
+.ribbon-top-right::before,
+.ribbon-top-right::after {
     border-top-color: transparent;
     border-right-color: transparent;
-  }
-  .ribbon-top-right::before {
+}
+
+.ribbon-top-right::before {
     top: 0;
     left: 0;
-  }
-  .ribbon-top-right::after {
+}
+
+.ribbon-top-right::after {
     bottom: 0;
     right: 0;
-  }
-  .ribbon-top-right span {
+}
+
+.ribbon-top-right span {
     left: -22px;
     top: 30px;
     transform: rotate(45deg);
-  }
-  
+}
+
+@media (max-width: 375px) {
+    .pet-preview {
+        margin: 10px;
+        width: 19rem;
+
+        img {
+            width: 19rem;
+        }
+
+        .card-description {
+            width: 19rem;
+        }
+        
+        .shop-container {
+            width: 19rem;
+        }
+    }
+}

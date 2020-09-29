@@ -4,6 +4,7 @@ const router = express.Router();
 const {
     getShops,
     getShop,
+    getMiniShop,
     getShopByUser,
     createShop,
     updateShop,
@@ -18,6 +19,7 @@ router.get('/', getShops);
 router.post('/', createShop);
 router.get('/:id', getShop); 
 router.get('/owner/:id', getShopByUser); 
+router.get('/mini/:id', getMiniShop); 
 router.put('/:id', updateShop);
 router.delete('/:id', requireAuth, requireOwner, deleteShop);
 

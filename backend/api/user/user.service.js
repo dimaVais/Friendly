@@ -6,6 +6,7 @@ const ObjectId = require('mongodb').ObjectId
 module.exports = {
     query,
     getById,
+    getMiniById,
     getByUsername,
     remove,
     update,
@@ -33,6 +34,22 @@ async function getById(userId) {
         return user;
     } catch (err) {
         console.log(`ERROR: while finding user ${userId}`)
+        throw err;
+    }
+}
+
+async function getMiniById(userId) {
+    const collection = await dbService.getCollection('user')
+    try {
+        const user = await collection.findOne({ "_id": ObjectId(userId) });
+        const miniUser = {
+            userName:user.userName,
+            imgUrl:user.imgUrl,
+            isOwner:user.isOwner
+        }
+        return miniUser;
+    } catch (err) {
+        console.log(`ERROR: while finding mini user ${userId}`)
         throw err;
     }
 }

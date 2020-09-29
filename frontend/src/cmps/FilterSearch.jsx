@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import { setFilter, loadPets } from '../store/actions/petActions.js'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { animateScroll as scroll } from "react-scroll";

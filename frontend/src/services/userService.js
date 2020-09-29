@@ -8,6 +8,7 @@ export default {
     signup,
     getUsers,
     getById,
+    getMiniById,
     remove,
     update
 }
@@ -19,6 +20,11 @@ function getUsers() {
 function getById(userId) {
     return httpService.get(`${BASE_URL_USER}/${userId}`)
 }
+
+ function getMiniById(userId) {
+    return httpService.get(`${BASE_URL_USER}/mini/${userId}`);
+}
+
 function remove(userId) {
     return httpService.delete(`${BASE_URL_USER}/${userId}`)
 }
