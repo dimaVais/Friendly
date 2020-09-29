@@ -1761,8 +1761,29 @@ Tue, 29 Sep 2020 14:03:38 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated 
 Tue, 29 Sep 2020 14:03:44 GMT - Info - Order 5f733ea92bc31c57b421d6fb was removed well!
 =======
 >>>>>>> 6dee4402815d92e4c749adfd855c9aa9b6bdf6c9
+<<<<<<< HEAD
+Tue, 29 Sep 2020 10:08:25 GMT - Info - Chat 5f730799f4c0d9075d283ce0 was creted well!
+Tue, 29 Sep 2020 10:10:46 GMT - Info - Chat 5f730826f4c0d9075d283ce1 was creted well!
+Tue, 29 Sep 2020 10:15:57 GMT - Info - Chat 5f73095df4c0d9075d283ce2 was creted well!
+Tue, 29 Sep 2020 10:27:33 GMT - Info - Pet 5f6e25cce4a7712389cb273a was updated well!
+Tue, 29 Sep 2020 11:16:42 GMT - Info - Chat 5f73179af4c0d9075d283ce3 was creted well!
+Tue, 29 Sep 2020 11:59:48 GMT - Info - Chat 5f7321b4b584660ad85bad59 was creted well!
+Tue, 29 Sep 2020 11:59:51 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property 'name' of null
+Tue, 29 Sep 2020 12:01:12 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property 'name' of null
+Tue, 29 Sep 2020 12:01:13 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property 'name' of null
+Tue, 29 Sep 2020 12:01:14 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property 'name' of null
+Tue, 29 Sep 2020 12:01:23 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property 'name' of null
+Tue, 29 Sep 2020 12:01:50 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property 'name' of null
+Tue, 29 Sep 2020 12:02:28 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property 'name' of null
+Tue, 29 Sep 2020 12:03:36 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property '_id' of null
+Tue, 29 Sep 2020 12:05:36 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property '_id' of null
+Tue, 29 Sep 2020 14:22:24 GMT - Info - Chat 5f73431fdf5c4b0fa5322bc7 was creted well!
+Tue, 29 Sep 2020 14:25:39 GMT - Info - Chat 5f7343e3df5c4b0fa5322bc8 was creted well!
+Tue, 29 Sep 2020 14:25:52 GMT - Info - Chat 5f73431fdf5c4b0fa5322bc7 was updated well!
+=======
 >>>>>>> b644290e11778bb34d6789ad8e86e780b6493643
 >>>>>>> 38676269809148cbbd874c81927a8a15a11f8fdc
+<<<<<<< HEAD
 Tue, 29 Sep 2020 14:44:58 GMT - Info - Order 5f73486ade50172538316062 was creted well!
 Tue, 29 Sep 2020 14:44:59 GMT - Info - Order 5f73486bde50172538316063 was creted well!
 Tue, 29 Sep 2020 14:44:59 GMT - Info - Order 5f73486bde50172538316064 was creted well!
@@ -1771,3 +1792,6 @@ Tue, 29 Sep 2020 14:45:00 GMT - Info - Order 5f73486cde50172538316066 was creted
 Tue, 29 Sep 2020 14:45:03 GMT - Info - Order 5f73486fde50172538316067 was creted well!
 Tue, 29 Sep 2020 14:45:03 GMT - Info - Order 5f73486fde50172538316068 was creted well!
 Tue, 29 Sep 2020 14:45:09 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+=======
+>>>>>>> 492b009892a7c45dddc121654476045a085e94f9
+>>>>>>> cc35bd10b7f371799f9d71851defb139e1705f1d
