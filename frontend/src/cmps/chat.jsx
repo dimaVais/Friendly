@@ -44,7 +44,6 @@ class _Chat extends Component {
         }else{
             var initiate = this.props.loggedInUser;
             var target = await userService.getById(this.props.currChatInfo.userId);
-            debugger
             let chat  = this.props.chats.find(chat=>{
                 (chat.members.includes(initiate._id) && chat.members.includes(target._id))
             })
@@ -78,25 +77,18 @@ class _Chat extends Component {
             socketService.on('chat addMsg', this.addMsg);
         }
 
-    creatNewChat = async (sender,recipient)=>{
+    creatNewChat = async (initiate,target)=>{
         const chat = {
-            topic: `${sender._id}__${recipient._id}`,
-            members:[sender._id,recipient._id],
+            topic: `${initiate._id}__${target._id}`,
+            members:[initiate._id,target._id],
             msgs: []
         }
-
-        const users = [sender, recipient];
-        users.forEach( user => {
-            if (!user.chats) {
-                user.chats = [];
-            }  
-       
-        })
 
         return chat
     } 
 
     addMsg = async newMsg => {
+        console.log('Receiving new msg');
         await this.setState({
             chat: {
                 ...this.state.chat,
@@ -115,7 +107,6 @@ class _Chat extends Component {
             txt: this.state.msg.txt,
             isRead:false
         }
-        this.props.saveChat(this.state.chat);
         await this.setState({ msg: { ...msg } });
         socketService.emit('chat newMsg', this.state.msg);
         this.setState({ msg: { authorId: '', createdAt: '', txt: '',isRead:false } });

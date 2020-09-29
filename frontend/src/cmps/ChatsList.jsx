@@ -16,7 +16,7 @@ state={
  
  async componentDidMount(){
      console.log(this.props.chats);
-    if (this.props.chats){ 
+    if (this.props.chats.length>0){ 
         let chats=[];
         let imgs;
         this.props.loggedInUser.chats.forEach(async chat=>{
@@ -56,6 +56,7 @@ async setStateWithRecipient(user){
 
 onChatListClicked=(chatId)=>{
     this.props.toggleChat({'chatId':chatId});
+    this.props.onToggleChatsList()
 }
 
 displayChatDetails= (chat)=>{

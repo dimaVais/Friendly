@@ -36,7 +36,7 @@ async function getById(_id) {
         return chat;
     } catch (err) {
         logger.error(`ERROR: cannot find chat by id  ${_id}, err: ${err}`);
-        throw err;
+            
     }
 }
 async function getByUserId(_id) {
@@ -44,12 +44,13 @@ async function getByUserId(_id) {
     const collection = await dbService.getCollection('chat');
     try {
         const chat = await collection.find({
-           "members":ObjectId(_id)
+           "members":_id
         });
+        
         console.log('AFTER MONGO');
         return chat;
     } catch (err) {
-        logger.error(`ERROR: cannot find chat by id  ${_id}, err: ${err}`);
+        logger.error(`ERROR: cannot find chat by user id  ${_id}, err: ${err}`);
         throw err;
     }
 }
@@ -67,6 +68,8 @@ async function remove(_id) {
 
 async function save(chat) {
     const collection = await dbService.getCollection('chat');
+    const userCollection = await dbService.getCollection('user');
+
     if (chat._id) {
         chat._id = ObjectId(chat._id);
         chat.updatedAt = new Date(Date.now()).toISOString();
@@ -83,11 +86,23 @@ async function save(chat) {
         try {
             await collection.insertOne(chat);
             logger.info(`Chat ${chat._id} was creted well!`);
-            return chat;
+
+            //target user
+            const userToUpdate =  await userCollection.findOne({"_id":ObjectId(chat.members[1])});
+            const miniChat={
+                _id:ObjectId(chat._id),
+                topic :chat.topic
+            }
+            userToUpdate.chats.push(miniChat);
+            userCollection.updateOne({"_id":ObjectId(userToUpdate._id)},{$set:userToUpdate})
+            
+        return chat;
         } catch (err) {
             logger.error(`ERROR: cannot insert chat ${chat._id} to DB, err: ${err}`)
             throw err;
         }
+        
+       
     }
 }
 

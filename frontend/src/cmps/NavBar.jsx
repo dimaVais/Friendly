@@ -38,15 +38,20 @@ class _NavBar extends Component {
 
     onNavBarClick = () => {
         this.setState({ showLoginModal: !this.state.showLoginModal });
+        this.setState({showChatsList:false})
+
     }
 
     onLogOut = () => {
         this.props.logout();
         this.props.history.push('/');
+        this.setState({showChatsList:false})
+
     }
     onToggleChatsList=()=>{
         this.setState({showChatsList:!this.state.showChatsList})
-      }
+    }
+    
 
     render() {
         const { user } = this.props
@@ -74,7 +79,7 @@ class _NavBar extends Component {
                     {user && user.isGuest && <NavLink className="nav-btn" to="/signup">Sign Up</NavLink>}
                 </div>
             </div>
-                {this.state.showChatsList && <ChatsList/>}
+                {this.state.showChatsList && <ChatsList onToggleChatsList={this.onToggleChatsList}/>}
         </div>   
         )
     }
