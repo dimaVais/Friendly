@@ -28,8 +28,8 @@ class _Chat extends Component {
             txt: '',
             isRead: false
         },
-        recipient:{},
-        sender:{}
+        recipient: {},
+        sender: {}
     }
 
     async componentDidMount() {
@@ -60,7 +60,7 @@ class _Chat extends Component {
         })
     }
     setRecipientInfo = async (id) => {
-        
+
         let recipient = await userService.getMiniById(id);
         if (!recipient.imgUrl) {
             const name = recipient.name.split(' ');
@@ -68,11 +68,11 @@ class _Chat extends Component {
         }
         if (recipient.isOwner) {
             const shop = await shopService.getMiniByUserId(recipient._id);
-            console.log('shop:',shop);
+            console.log('shop:', shop);
             recipient.name = shop.name;
             recipient.imgUrl = shop.imgUrl;
         }
-        console.log('recipient:',recipient);
+        console.log('recipient:', recipient);
         this.setState({ recipient });
     }
 

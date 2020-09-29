@@ -43,9 +43,10 @@ async function getMiniById(_id) {
     const collection = await dbService.getCollection('shop');
     try {
         const shop = await collection.findOne({
-            "_id": ObjectId(_id)
+            "owner._id": ObjectId(_id)
         });
         const minShop = {
+            _id:shop._id,
             name:shop.name,
             imgUrl:shop.imgUrls[0]
         }

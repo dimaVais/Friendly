@@ -43,7 +43,8 @@ async function getMiniById(userId) {
     try {
         const user = await collection.findOne({ "_id": ObjectId(userId) });
         const miniUser = {
-            userName:user.userName,
+            _id:user._id,
+            name:user.fullName,
             imgUrl:user.imgUrl,
             isOwner:user.isOwner
         }
