@@ -120,3 +120,14 @@ a {
     font-size: 1rem;
     cursor: pointer;
 }
+
+@media (max-width: 375px) {
+    .order-list-box {
+        width: 100%;
+    }
+
+    .order-preview {
+        width: 100%;
+    }
+
+}

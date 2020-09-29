@@ -1,4 +1,14 @@
-.pet-list-container{
+.pet-list-container {
+
+    .popular-pets-header {
+        font-size: 1.5rem;
+        font-family: montserrat, sans-serif;
+        width: 200px;
+        margin: 10px auto;
+        border-bottom: 1px solid rgb(134, 134, 134);
+        padding: 10px;
+        text-align: center;
+    }
 
     padding: 0 100px;
 
@@ -21,3 +31,25 @@
     }
 }
 
+@media (max-width: 376px) {
+    .pet-list-container {
+        padding: 0;
+        margin-left: 0;
+
+        .popular-pets-header {
+            font-size: 1.2rem;
+            margin: 10px auto;
+
+        }
+    }
+
+    .bottom-screen-box {
+        flex-direction: column;
+    }
+
+    .pet-list {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+    }
+}

@@ -64,7 +64,7 @@ class _PetDetails extends Component {
     onAdopt = async () => {
         const { loggedInUser } = this.props
         if (loggedInUser.isGuest) return
-        this.setState({ AdoptionModalMsg: !this.state.AdoptionModalMsg })
+        
         const pet = this.state.pet
         const shopId = pet.shop._id
         const shop = await shopService.getById(shopId)
@@ -88,6 +88,10 @@ class _PetDetails extends Component {
             status: "Pending",
         }
         this.props.saveOrder(order)
+        this.setState({ AdoptionModalMsg: !this.state.AdoptionModalMsg })
+        setTimeout(() => {
+            this.setState({ AdoptionModalMsg: !this.state.AdoptionModalMsg })
+          }, 1000);
         this.setState({ adoptButton: 'Request Sent' })
     }
 
@@ -275,7 +279,7 @@ class _PetDetails extends Component {
                         </div>
 
                         <button onClick={this.onAdopt} className="adoption-btn">Adopt</button>
-                        {/* {this.state.AdoptionModalMsg && <AdoptionMsgModal />} */}
+                        {this.state.AdoptionModalMsg && <AdoptionMsgModal />}
 
                     </div>
                     <hr />
@@ -285,7 +289,7 @@ class _PetDetails extends Component {
                     <hr />
                     <div className="comments-box">
                         <div className="comment-input-box">
-                            <TextField name="txt" fullWidth="true" value={this.state.currComment} placeholder="Add Comment Here" onChange={this.handleCommentInput} />
+                            <TextField autocomplete="off" name="txt" fullWidth="true" value={this.state.currComment} placeholder="Add Comment Here" onChange={this.handleCommentInput} />
 
                             <button className="add-comment-btn" onClick={this.onComment}>Add</button>
                         </div>
@@ -299,7 +303,7 @@ class _PetDetails extends Component {
 
                                                 {(comment.by.id === 'guest') ? <img src={"https://images.macrumors.com/t/x_zUFqghBUNBxVUZN_dYoKF3D9g=/1600x0/article-new/2019/04/guest-user-250x250.jpg"} alt="" /> : ""}
 
-                                                <p><span>{comment.by.fullName}:</span> </p>
+                                                <p><span>{comment.by.fullName}: </span> </p>
                                                 <p><span>{comment.createdAt}</span> </p>
                                                 <p>{comment.txt} </p>
                                             </div>
