@@ -1763,3 +1763,11 @@ Tue, 29 Sep 2020 14:03:44 GMT - Info - Order 5f733ea92bc31c57b421d6fb was remove
 >>>>>>> 6dee4402815d92e4c749adfd855c9aa9b6bdf6c9
 >>>>>>> b644290e11778bb34d6789ad8e86e780b6493643
 >>>>>>> 38676269809148cbbd874c81927a8a15a11f8fdc
+Tue, 29 Sep 2020 14:44:58 GMT - Info - Order 5f73486ade50172538316062 was creted well!
+Tue, 29 Sep 2020 14:44:59 GMT - Info - Order 5f73486bde50172538316063 was creted well!
+Tue, 29 Sep 2020 14:44:59 GMT - Info - Order 5f73486bde50172538316064 was creted well!
+Tue, 29 Sep 2020 14:45:00 GMT - Info - Order 5f73486cde50172538316065 was creted well!
+Tue, 29 Sep 2020 14:45:00 GMT - Info - Order 5f73486cde50172538316066 was creted well!
+Tue, 29 Sep 2020 14:45:03 GMT - Info - Order 5f73486fde50172538316067 was creted well!
+Tue, 29 Sep 2020 14:45:03 GMT - Info - Order 5f73486fde50172538316068 was creted well!
+Tue, 29 Sep 2020 14:45:09 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
