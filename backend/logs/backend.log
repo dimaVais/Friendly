@@ -1445,6 +1445,42 @@ Mon, 28 Sep 2020 10:35:02 GMT - Info - Pet 5f6b89eee4a7712389cabc15 was updated 
 Mon, 28 Sep 2020 10:35:04 GMT - Info - Pet 5f6a1578417318fe8d1ee039 was updated well!
 Mon, 28 Sep 2020 12:25:13 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
 >>>>>>> 00f3880a23e4fa6ac3d6b46077b6d34d2d31b4fe
+<<<<<<< HEAD
+Mon, 28 Sep 2020 18:12:36 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Mon, 28 Sep 2020 18:13:04 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Mon, 28 Sep 2020 18:13:04 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Mon, 28 Sep 2020 18:33:36 GMT - Info - Chat 5f722c80bb04b54357d8b7e8 was creted well!
+Mon, 28 Sep 2020 18:39:42 GMT - Info - Chat 5f722deebb04b54357d8b7e9 was creted well!
+Mon, 28 Sep 2020 18:39:42 GMT - Info - Chat 5f722deebb04b54357d8b7ea was creted well!
+Mon, 28 Sep 2020 19:16:30 GMT - Error - ERROR: cannot find chat by id  5f6a1fcc417318fe8d1ee424, err: ReferenceError: Cannot access 'chat' before initialization
+Mon, 28 Sep 2020 19:17:59 GMT - Error - ERROR: cannot find chat by user id  5f6a1fcc417318fe8d1ee424, err: ReferenceError: Cannot access 'chat' before initialization
+Tue, 29 Sep 2020 06:39:33 GMT - Info - Order 5f72d6a58e2eeb53ba2a9796 was creted well!
+Tue, 29 Sep 2020 06:39:59 GMT - Info - Order 5f72d6bf8e2eeb53ba2a9797 was creted well!
+Tue, 29 Sep 2020 06:40:19 GMT - Info - Order 5f72d6d38e2eeb53ba2a9798 was creted well!
+Tue, 29 Sep 2020 06:40:20 GMT - Info - Order 5f72d6d48e2eeb53ba2a9799 was creted well!
+Tue, 29 Sep 2020 06:40:20 GMT - Info - Order 5f72d6d48e2eeb53ba2a979a was creted well!
+Tue, 29 Sep 2020 06:40:21 GMT - Info - Order 5f72d6d48e2eeb53ba2a979b was creted well!
+Tue, 29 Sep 2020 06:40:21 GMT - Info - Order 5f72d6d58e2eeb53ba2a979c was creted well!
+Tue, 29 Sep 2020 06:40:22 GMT - Info - Order 5f72d6d58e2eeb53ba2a979d was creted well!
+Tue, 29 Sep 2020 06:40:22 GMT - Info - Order 5f72d6d58e2eeb53ba2a979e was creted well!
+Tue, 29 Sep 2020 06:40:22 GMT - Info - Order 5f72d6d68e2eeb53ba2a979f was creted well!
+Tue, 29 Sep 2020 06:40:22 GMT - Info - Order 5f72d6d68e2eeb53ba2a97a0 was creted well!
+Tue, 29 Sep 2020 06:40:22 GMT - Info - Order 5f72d6d68e2eeb53ba2a97a1 was creted well!
+Tue, 29 Sep 2020 06:40:22 GMT - Info - Order 5f72d6d68e2eeb53ba2a97a2 was creted well!
+Tue, 29 Sep 2020 06:40:22 GMT - Info - Order 5f72d6d68e2eeb53ba2a97a4 was creted well!
+Tue, 29 Sep 2020 06:40:22 GMT - Info - Order 5f72d6d68e2eeb53ba2a97a3 was creted well!
+Tue, 29 Sep 2020 07:36:52 GMT - Info - Chat 5f72e4142de53755dd7c80b4 was creted well!
+Tue, 29 Sep 2020 07:36:52 GMT - Error - ERROR: cannot insert chat 5f72e4142de53755dd7c80b4 to DB, err: TypeError: Cannot read property '1' of undefined
+Tue, 29 Sep 2020 07:37:59 GMT - Info - Chat 5f72e4578d250a560163e1d6 was creted well!
+Tue, 29 Sep 2020 07:49:16 GMT - Info - Chat 5f72e6fcb92bc85640174b22 was creted well!
+Tue, 29 Sep 2020 07:49:55 GMT - Info - Chat 5f72e6fcb92bc85640174b22 was updated well!
+Tue, 29 Sep 2020 07:54:15 GMT - Info - Chat 5f72e827b92bc85640174b23 was creted well!
+Tue, 29 Sep 2020 07:58:04 GMT - Info - Chat 5f72e90cb92bc85640174b24 was creted well!
+Tue, 29 Sep 2020 07:58:54 GMT - Info - Chat 5f72e90cb92bc85640174b24 was updated well!
+Tue, 29 Sep 2020 08:05:36 GMT - Info - Chat 5f72ead0b92bc85640174b25 was creted well!
+Tue, 29 Sep 2020 08:05:53 GMT - Info - Chat 5f72eae1b92bc85640174b26 was creted well!
+Tue, 29 Sep 2020 08:05:53 GMT - Info - Chat 5f72ead0b92bc85640174b25 was updated well!
+=======
 Mon, 28 Sep 2020 15:45:42 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
 Mon, 28 Sep 2020 15:45:42 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
 Mon, 28 Sep 2020 15:46:21 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
@@ -1462,6 +1498,7 @@ Mon, 28 Sep 2020 15:56:07 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated
 Mon, 28 Sep 2020 15:56:18 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
 Mon, 28 Sep 2020 15:56:18 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
 Mon, 28 Sep 2020 15:56:18 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+<<<<<<< HEAD
 Tue, 29 Sep 2020 05:22:04 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
 Tue, 29 Sep 2020 05:22:04 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
 Tue, 29 Sep 2020 05:29:12 GMT - Info - Pet 5f6a16ac417318fe8d1ee0ac was updated well!
@@ -1485,3 +1522,19 @@ Tue, 29 Sep 2020 08:44:01 GMT - Info - Pet 5f6e25cce4a7712389cb273a was updated 
 Tue, 29 Sep 2020 08:44:04 GMT - Info - Pet 5f6e25cce4a7712389cb273a was updated well!
 Tue, 29 Sep 2020 09:03:28 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
 Tue, 29 Sep 2020 09:12:54 GMT - Info - Order 5f72fa96766f292a9c7f3c4a was creted well!
+=======
+<<<<<<< HEAD
+Tue, 29 Sep 2020 06:31:46 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Tue, 29 Sep 2020 06:31:46 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+=======
+>>>>>>> 9df6993d41085626633d1cb68802d64feed3242b
+>>>>>>> 8aacea5911f4ddd452aa10d5986074ba7b20f8a5
+Tue, 29 Sep 2020 09:20:43 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: imgUrls is not defined
+Tue, 29 Sep 2020 09:21:23 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: imgUrls is not defined
+Tue, 29 Sep 2020 09:22:09 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: imgUrls is not defined
+Tue, 29 Sep 2020 09:22:19 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: imgUrls is not defined
+Tue, 29 Sep 2020 09:23:41 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: imgUrls is not defined
+Tue, 29 Sep 2020 09:24:12 GMT - Error - ERROR: cannot find shop by id  5f6a16ac417318fe8d1ee0ac, err: ReferenceError: imgUrls is not defined
+Tue, 29 Sep 2020 09:51:45 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+Tue, 29 Sep 2020 09:51:45 GMT - Info - Chat 5f6ef8fd5593461ab817ed07 was updated well!
+>>>>>>> 3a1d61fce43d9dc051e07e0f7072e4768cd6d9aa

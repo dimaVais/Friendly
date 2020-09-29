@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDoubleUp, faEnvelope, faFemale, faMale, faMobileAlt, faStar } from '@fortawesome/free-solid-svg-icons'
 import { animateScroll as scroll } from "react-scroll";
 import userService from '../services/userService.js';
+import {shopService} from '../services/shopService.js';
 
 
 class _ShopDetails extends Component {
