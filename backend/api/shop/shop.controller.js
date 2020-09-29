@@ -5,6 +5,7 @@ const logger = require('../../services/logger.service');
 module.exports = {
     getShops,
     getShop,
+    getMiniShop,
     getShopByUser,
     createShop,
     updateShop,
@@ -21,6 +22,13 @@ async function getShop(req, res) {
     const shopId = req.params.id;
     const shop = await shopService.getById(shopId);
     return res.json(shop);
+}
+
+async function getMiniShop(req, res) {
+    const shopId = req.params.id;
+    const miniShop = await shopService.getMiniById(shopId);
+    console.log('IN Server:',miniShop);
+    return res.json(miniShop);
 }
 
 async function getShopByUser(req, res) {

@@ -8,6 +8,7 @@ const logger = require('../../services/logger.service');
 module.exports = {
     query,
     getById,
+    getMiniById,
     getShopByUser,
     save,
     remove
@@ -32,6 +33,23 @@ async function getById(_id) {
             "_id": ObjectId(_id)
         });
         return shop;
+    } catch (err) {
+        logger.error(`ERROR: cannot find shop by id  ${_id}, err: ${err}`);
+        throw err;
+    }
+}
+
+async function getMiniById(_id) {
+    const collection = await dbService.getCollection('shop');
+    try {
+        const shop = await collection.findOne({
+            "_id": ObjectId(_id)
+        });
+        const minShop = {
+            name:shop.name,
+            imgUrl:shop.imgUrls[0]
+        }
+        return minShop;
     } catch (err) {
         logger.error(`ERROR: cannot find shop by id  ${_id}, err: ${err}`);
         throw err;
