@@ -34,7 +34,7 @@ class _Chat extends Component {
         console.log(this.props);
         if (this.props.currChatInfo.chatId){
             const chat= await chatService.getById(this.props.currChatInfo.chatId);
-            await this.setState({chat});
+            this.setState({chat});
            
             const targetId = await (chat.members[0]===this.props.loggedInUser._id)?chat.members[1]:chat.members[0];
             const target = await userService.getById(targetId);
@@ -48,10 +48,8 @@ class _Chat extends Component {
                 (chat.members.includes(initiate._id) && chat.members.includes(target._id))
             })
             if (!chat) chat = await  this.creatNewChat(initiate,target)
-            console.log('New chat:',chat);
 
-            await this.setState({chat});
-
+            this.setState({chat});
             this.setChatAndTargetInfo(target);
         }
     }
@@ -70,6 +68,7 @@ class _Chat extends Component {
             if (target.isOwner) {
                 const shop = await shopService.getByUserId(target._id);
                 targetName=shop.name;
+                targetImg = shop.imgUrls[0];
             }
             this.setState({targetId:target._id,targetImg,targetName});
             socketService.setup();
