@@ -24,10 +24,6 @@ class _PetFilter extends Component {
                 range: 0
             }
         },
-        position: {
-            lat: 0,
-            lon: 0,
-        },
         isModalShown: false,
         tags: []
 
@@ -51,8 +47,18 @@ class _PetFilter extends Component {
         await this.setState({ filterBy: { ...this.state.filterBy, distance: distance } });
     }
 
-    onFilterChange = (obj) => {
-        this.updateFilterAndLoad(obj);
+    onFilterChange = async (obj) => {
+        await this.props.setFilter({ ...this.props.filterBy, ...obj }, () => this.loadPets())
+    }
+
+    onSetCategory = async (_type) => {
+        await this.setState({
+            filterBy: {
+                ...this.state.filterBy,
+                type: _type
+            }
+        })
+        this.onFilterChange({ 'type': _type })
     }
 
     handleInput = async ({ target }) => {
@@ -80,9 +86,8 @@ class _PetFilter extends Component {
                     }
                 }
             }
-
         });
-        this.onFilterChange(this.state.filterBy);
+        this.onFilterChange( this.state.filterBy );
     }
 
     onToggleFilterModal = () => {
@@ -105,9 +110,6 @@ class _PetFilter extends Component {
         this.props.setFilter(this.state.filterBy, () => this.props.loadPets())
     }
 
-    async updateFilterAndLoad(obj) {
-        await this.props.setFilter({ ...this.props.filterBy, ...obj }, () => this.loadPets())
-    }
     onToggleTag = ev => {
         const tag = ev.target.value;
         let tags = [...this.state.tags]
@@ -131,22 +133,22 @@ class _PetFilter extends Component {
                     {/* { <button className="more-btn"  onClick={this.onToggleFilterModal}>More</button>} */}
                 </section>
                 <section className="category-container">
-                    <CategoryList onCategoryChange={this.onFilterChange} />
+                    <CategoryList onCategoryChange={this.onSetCategory} />
                 </section>
                 <section>
-                    {/* <InputLabel htmlFor="">{'Distance(km)'}</InputLabel>
-                    <Input type="number" name="distance.range" min="1" id="" onChange={this.handleInput} /> */}
                     <InputLabel htmlFor='Distance(km)'>Distance(km)</InputLabel>
                     <Select
                         native
                         onChange={this.handleInput}
                         inputProps={{
-                            name: 'distance.range'
+                            name: 'range',
+                            type: "number"
                         }}
                     >
                         <option aria-label="None" value="" />
                         <option value="20">20km</option>
                         <option value="50">50km</option>
+                        <option value="100">100km</option>
                         <option value="200">200km</option>
                     </Select>
                 </section>
