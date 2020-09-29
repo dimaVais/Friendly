@@ -69,7 +69,7 @@ async function remove(_id) {
 async function save(chat) {
     const collection = await dbService.getCollection('chat');
     const userCollection = await dbService.getCollection('user');
-
+    console.log('|||||||||||||saving chat|||||||||||||');
     if (chat._id) {
         chat._id = ObjectId(chat._id);
         chat.updatedAt = new Date(Date.now()).toISOString();
@@ -88,21 +88,25 @@ async function save(chat) {
             logger.info(`Chat ${chat._id} was creted well!`);
 
             //target user
-            const userToUpdate =  await userCollection.findOne({"_id":ObjectId(chat.members[1])});
+            const userToUpdate1 =  await userCollection.findOne({"_id":ObjectId(chat.members[1])});
+            const userToUpdate2 =  await userCollection.findOne({"_id":ObjectId(chat.members[0])});
             const miniChat={
                 _id:ObjectId(chat._id),
                 topic :chat.topic
             }
-            userToUpdate.chats.push(miniChat);
-            userCollection.updateOne({"_id":ObjectId(userToUpdate._id)},{$set:userToUpdate})
-            
+            userToUpdate1.chats.push(miniChat);
+            userToUpdate2.chats.push(miniChat);
+            userCollection.updateOne({"_id":ObjectId(userToUpdate1._id)},{$set:userToUpdate1})
+            userCollection.updateOne({"_id":ObjectId(userToUpdate2._id)},{$set:userToUpdate2})
+            console.log('users after update|||||||||||||||||||||||||||');
+            console.log(userToUpdate1);
+            console.log(userToUpdate2);
         return chat;
         } catch (err) {
             logger.error(`ERROR: cannot insert chat ${chat._id} to DB, err: ${err}`)
             throw err;
         }
-        
-       
+
     }
 }
 

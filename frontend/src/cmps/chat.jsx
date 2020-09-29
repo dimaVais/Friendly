@@ -98,14 +98,16 @@ class _Chat extends Component {
     }
 
     addMsg = async newMsg => {
-        await this.setState({
+        this.setState({
             chat: {
                 ...this.state.chat,
                 msgs: [...this.state.chat.msgs, newMsg]
             }
+        }, () => {
+            // const updatedUser = {...this.state.sender,chats:[...this.state.sender.chats,this.state.chat]}
+            this.props.saveChat(this.state.chat);
+            // this.props.updateUser(updatedUser);
         });
-        this.props.saveChat(this.state.chat);
-        this.props.updateUser(this.props.loggedInUser);
     }
 
     sendMsg = async (ev) => {
@@ -142,6 +144,7 @@ class _Chat extends Component {
         const time = new Date(msg.createdAt);
         const isAuthor = msg.authorId === this.state.sender._id;
         classTxt += isAuthor ? 'sender' : 'recipient';
+        if (msg.authorId !== this.state.sender._id) msg.isRead = true;
         return (
             <div className={classTxt} key={idx}>
                 {!isAuthor && <img src={this.state.recipient.imgUrl} alt="" />}
