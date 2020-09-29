@@ -1783,7 +1783,28 @@ Tue, 29 Sep 2020 14:25:52 GMT - Info - Chat 5f73431fdf5c4b0fa5322bc7 was updated
 =======
 >>>>>>> b644290e11778bb34d6789ad8e86e780b6493643
 >>>>>>> 38676269809148cbbd874c81927a8a15a11f8fdc
+<<<<<<< HEAD
+<<<<<<< HEAD
+Tue, 29 Sep 2020 14:41:41 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Tue, 29 Sep 2020 14:41:56 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:45:51 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:46:11 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:46:12 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:46:12 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Tue, 29 Sep 2020 14:46:22 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+=======
+Tue, 29 Sep 2020 14:44:58 GMT - Info - Order 5f73486ade50172538316062 was creted well!
+Tue, 29 Sep 2020 14:44:59 GMT - Info - Order 5f73486bde50172538316063 was creted well!
+Tue, 29 Sep 2020 14:44:59 GMT - Info - Order 5f73486bde50172538316064 was creted well!
+Tue, 29 Sep 2020 14:45:00 GMT - Info - Order 5f73486cde50172538316065 was creted well!
+Tue, 29 Sep 2020 14:45:00 GMT - Info - Order 5f73486cde50172538316066 was creted well!
+Tue, 29 Sep 2020 14:45:03 GMT - Info - Order 5f73486fde50172538316067 was creted well!
+Tue, 29 Sep 2020 14:45:03 GMT - Info - Order 5f73486fde50172538316068 was creted well!
+Tue, 29 Sep 2020 14:45:09 GMT - Error - ERROR: cannot find shop by id  undefined, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+>>>>>>> caf4de477b6ee8df40395eb75bcd866896bcb3e9
+=======
 >>>>>>> 492b009892a7c45dddc121654476045a085e94f9
+<<<<<<< HEAD
 Tue, 29 Sep 2020 14:44:21 GMT - Info - Chat 5f734844df5c4b0fa5322bc9 was creted well!
 Tue, 29 Sep 2020 16:06:51 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property '_id' of null
 Tue, 29 Sep 2020 16:08:51 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property '_id' of null
@@ -1813,3 +1834,6 @@ Tue, 29 Sep 2020 20:25:32 GMT - Error - ERROR: cannot find chat by id  undefined
 Tue, 29 Sep 2020 20:26:40 GMT - Info - Chat 5f7398809b701d1b09747836 was creted well!
 Tue, 29 Sep 2020 20:26:40 GMT - Error - ERROR: cannot insert chat 5f7398809b701d1b09747836 to DB, err: TypeError: Cannot read property 'push' of undefined
 Tue, 29 Sep 2020 20:31:13 GMT - Info - Chat 5f739991296ab71b54837c80 was creted well!
+=======
+>>>>>>> cc35bd10b7f371799f9d71851defb139e1705f1d
+>>>>>>> b27372499980938612d55edd6273e3c62fa1f997
