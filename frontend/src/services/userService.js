@@ -21,9 +21,9 @@ function getById(userId) {
     return httpService.get(`${BASE_URL_USER}/${userId}`)
 }
 
-function getMiniById(userId) {
-    const miniUser  = httpService.get(`${BASE_URL_USER}/mini/${userId}`);
-    console.log('MINI USER:',);
+async function getMiniById(userId) {
+    const miniUser  = await httpService.get(`${BASE_URL_USER}/mini/${userId}`);
+    console.log('MINI USER:',miniUser);
     return miniUser;
 }
 
