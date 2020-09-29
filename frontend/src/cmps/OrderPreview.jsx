@@ -17,6 +17,7 @@ export class OrderPreview extends Component {
     }
 
     showModal = async () => {
+        console.log('hey');
         this.setState({ showUserModal: !this.state.showUserModal })
         const user = await userService.getById(this.props.order.buyer._id)
         await this.setState({ user })
@@ -50,7 +51,7 @@ export class OrderPreview extends Component {
                     </div>
 
                 } */}
-                {this.state.showUserModal && user && <UserDataModal user={user} />}
+                {this.state.showUserModal && user && <UserDataModal closeModal={this.showModal} user={user} />}
 
                 {!isShop && loggedInUser._id === order.buyer._id &&
                     <div>

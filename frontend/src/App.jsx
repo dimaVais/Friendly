@@ -35,7 +35,7 @@ import { toggleChat } from './store/actions/chatActions.js';
 
     return (
       <div>
-        <header>
+        <header >
           <NavBar  onToggleChatsList={this.onToggleChatsList}/>
         </header>
         <main>

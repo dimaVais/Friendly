@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export function UserDataModal({ user }) {
+export function UserDataModal({ user, closeModal }) {
     return (
         <React.Fragment>
 
@@ -24,8 +24,10 @@ export function UserDataModal({ user }) {
                         {user.petCondition && <p><span>Pet Designated Living conditions: </span>{user.petCondition}</p>}
                         {user.currrenPets && <p><span>Current Pets at home: </span>{user.currrenPets}</p>}
                         {user.prevExperince && <p><span>Previous experience with animals: </span>{user.prevExperince}</p>}
+                        <button className="close-user-modal-btn" onClick={closeModal}>Close</button>
                     </div>
                 </div>
+                
             </div>
         </React.Fragment>
     )

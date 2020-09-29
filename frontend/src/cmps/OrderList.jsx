@@ -23,6 +23,7 @@ class _OrderList extends Component {
     }
 
     changePetAdoptionStatus = async (order) => {
+        console.log('yo');
         const pet = this.props.pets.find(pet => pet._id === order.pet._id)
         pet.isAdopted = true
         this.props.savePet(pet)
@@ -42,6 +43,7 @@ class _OrderList extends Component {
             await this.props.saveOrder(order);
             this.props.loadOrders(this.props.filterById, this.props.orderFilterName);
             if (status === 'accepted') {
+                console.log('is it?');
                 this.changePetAdoptionStatus(order)
             }
         }
@@ -56,7 +58,7 @@ class _OrderList extends Component {
         return (!orders) ? <h1>LOADING...</h1> :
             (
                 <div className="order-list flex column" >
-
+                    <h3>Adoption Requests</h3>
                     <div className={`doubleAccept ${this.state.msgDivClass}`}>Only one approval please.</div>
                     {orders.map(order =>
                         <OrderPreview isShop={this.props.isShop} order={order} loggedInUser={this.props.loggedInUser}

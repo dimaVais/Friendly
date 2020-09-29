@@ -278,7 +278,7 @@ class _PetDetails extends Component {
                             </ul>
                         </div>
 
-                        <button onClick={this.onAdopt} className="adoption-btn">Adopt</button>
+                        <button  onClick={this.onAdopt} className={`adoption-btn ${pet.isAdopted ? 'adopted' : 'adopt'}`}>{pet.isAdopted ? 'Already Adopted' : 'Adopt'} </button>
                         {this.state.AdoptionModalMsg && <AdoptionMsgModal />}
 
                     </div>

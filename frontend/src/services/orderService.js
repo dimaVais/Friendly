@@ -25,7 +25,9 @@ async function getById(id) {
 }
 
 async function save(order) {
+    console.log('order', order);
     if (order._id) {
+
         order.updatedAt = new Date(Date.now()).toLocaleString();
         const res = await httpService.put(`${BASE_URL}/${order._id}`, order)
         return res;
