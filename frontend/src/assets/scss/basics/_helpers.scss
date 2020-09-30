@@ -50,8 +50,16 @@
     }
 }
 
+.grid{
+    display: grid;
+}
+
 .hidden{
     display:none;
+}
+
+.unvisible{
+    visibility:none;
 }
 
 .sticky {

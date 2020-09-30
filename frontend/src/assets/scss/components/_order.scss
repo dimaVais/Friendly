@@ -73,7 +73,7 @@
         border-radius: 10px;
         margin: 0;
         padding: 10px;
-        &:hover{box-shadow: inset 0px 0px 20px rgba(63, 58, 58, 0.5);}
+        &:hover{box-shadow: inset 0px 0px 8px rgba(63, 58, 58, 0.5);}
     }
 }
 
@@ -129,6 +129,19 @@ a {
     font-family: montserrat, sans-serif;
     font-size: 1rem;
     cursor: pointer;
+}
+
+.order-data-btn{
+    background-color: #fff;
+    border: 1px solid rgb(0, 172, 237);
+    color: rgb(0, 172, 237);
+    padding: 6px 10px;
+    font-family: montserrat, sans-serif;
+    font-size: 1.5rem;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+    }
 }
 
 @media (max-width: 375px) {
