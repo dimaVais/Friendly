@@ -31,6 +31,7 @@ setSocket = async () => {
     socketService.on('chat addMsg', this.addMsg);
 }
 
+
 // Backend Socket
 function connectSockets(io) {
     io.on('connection', socket => {
