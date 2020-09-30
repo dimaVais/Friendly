@@ -68,11 +68,9 @@ class _Chat extends Component {
         }
         if (recipient.isOwner) {
             const shop = await shopService.getMiniByUserId(recipient._id);
-            console.log('shop:', shop);
             recipient.name = shop.name;
             recipient.imgUrl = shop.imgUrl;
         }
-        console.log('recipient:', recipient);
         this.setState({ recipient });
     }
 
@@ -84,7 +82,6 @@ class _Chat extends Component {
     }
 
     creatNewChat = () => {
-        console.log(this.state);
         const chat = {
             topic: `${this.state.sender._id}__${this.state.recipient._id}`,
             members: [this.state.sender._id, this.state.recipient._id],
@@ -103,11 +100,7 @@ class _Chat extends Component {
                 ...this.state.chat,
                 msgs: [...this.state.chat.msgs, newMsg]
             }
-        }, () => {
-            // const updatedUser = {...this.state.sender,chats:[...this.state.sender.chats,this.state.chat]}
-            this.props.saveChat(this.state.chat);
-            // this.props.updateUser(updatedUser);
-        });
+        }, () => this.props.saveChat(this.state.chat));
     }
 
     sendMsg = async (ev) => {
@@ -140,6 +133,7 @@ class _Chat extends Component {
     }
 
     displayMsg = (msg, idx) => {
+        
         let classTxt = 'message-row ';
         const time = new Date(msg.createdAt);
         const isAuthor = msg.authorId === this.state.sender._id;

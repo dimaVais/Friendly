@@ -7,21 +7,21 @@ import { logout } from '../store/actions/userActions';
 import { ChatsList } from './ChatsList';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComments  } from '@fortawesome/free-solid-svg-icons'
+import { faComments } from '@fortawesome/free-solid-svg-icons'
 
 
 class _NavBar extends Component {
 
     state = {
         showLoginModal: false,
-        showChatsList:false,
+        showChatsList: false,
         shop: '',
         shopId: '',
         pathName: '',
-        unreadMsgCount:0
+        unReadMsgCount: 0
     }
     componentDidMount() {
-        this.setState({pathName: this.props.history.location.pathname})
+        this.setState({ pathName: this.props.history.location.pathname })
         this.setUnreadMsgCount();
     }
     componentDidUpdate = async (prevProps) => {
@@ -35,63 +35,70 @@ class _NavBar extends Component {
                 if (userShop) this.setState({ shopId: userShop._id, shop: userShop })
             }
         }
-        if (prevProps!==this.props)this.setUnreadMsgCount();
-
+        if (prevProps !== this.props) {
+            console.log('NavBar updated');
+            console.log(this.props.chats);
+            this.setUnreadMsgCount();
+        }
     }
 
     onNavBarClick = () => {
         this.setState({ showLoginModal: !this.state.showLoginModal });
-        this.setState({showChatsList:false})
+        this.setState({ showChatsList: false })
 
     }
 
     onLogOut = () => {
         this.props.logout();
         this.props.history.push('/');
-        this.setState({showChatsList:false})
+        this.setState({ showChatsList: false })
 
     }
-    onToggleChatsList=()=>{
-        this.setState({showChatsList:!this.state.showChatsList})
+    onToggleChatsList = () => {
+        this.setState({ showChatsList: !this.state.showChatsList })
     }
-    setUnreadMsgCount(){
-        let unReadMsgCount=0;
+    setUnreadMsgCount() {
+        let unReadMsgCount = 0;
         console.log(this.props.chats);
-        if (this.props.chats.length===0)return
+        if (this.props.chats.length === 0) return
 
-        this.props.chats.forEach(chat=>{
-            if (chat.msgs.some(msg=> !msg.isRead && msg.authorId!==this.props.user._id)) unReadMsgCount++;
+        this.props.chats.forEach(chat => {
+            if (chat.msgs.some(msg => !msg.isRead && msg.authorId !== this.props.user._id)) unReadMsgCount++;
         })
-        console.log('Unread msgs:',unReadMsgCount);
+        console.log('Unread msgs:', unReadMsgCount);
+        this.setState({ unReadMsgCount })
     }
 
     render() {
         const { user } = this.props
         return (
-        <div>
-       
-            <div className={this.props.history.location.pathname === '/' ? 'main-nav' : 'main-nav-not-home'}>
-                <div className="left-nav">
-                    <NavLink to="/"><img className="logo-up" src={require('../assets/img/logo.png')} alt="Home" /></NavLink>
-                    <NavLink className="nav-btn" to="/pet">Gallery</NavLink>
+            <div>
+
+                <div className={this.props.history.location.pathname === '/' ? 'main-nav' : 'main-nav-not-home'}>
+                    <div className="left-nav">
+                        <NavLink to="/"><img className="logo-up" src={require('../assets/img/logo.png')} alt="Home" /></NavLink>
+                        <NavLink className="nav-btn" to="/pet">Gallery</NavLink>
+                    </div>
+                    <div className="right-nav">
+
+                        {user && user.isOwner && this.state.shopId && <NavLink className="nav-btn shop-btn" to={`/shop/${this.state.shopId}`}> <img className="shop-img" src={this.state.shop.imgUrls[0]} alt="" /> {this.state.shop.name}</NavLink>}
+                        {user && !user.isOwner && !user.isGuest && <NavLink className="nav-btn" to={`/profile/${user._id}`}>{user.fullName}</NavLink>}
+
+                        {user && !user.isGuest && <div className="chats-btn nav-btn" onClick={this.onToggleChatsList}>
+                            <FontAwesomeIcon className="send-icon" icon={faComments} />
+                            {this.state.unReadMsgCount > 0 && <div className="unread-msgs-count">{this.state.unReadMsgCount}</div>}
+                        </div>}
+
+                        {user && user.isGuest && <button className="login-btn nav-btn" onClick={() => { this.onNavBarClick() }}>Login</button>}
+                        {user && !user.isGuest && <button className="logout-btn nav - btn" onClick={() => { this.onLogOut() }}>Logout</button>}
+
+                        {this.state.showLoginModal && <LoginModal onNavBarClick={this.onNavBarClick} />}
+
+                        {user && user.isGuest && <NavLink className="nav-btn" to="/signup">Sign Up</NavLink>}
+                    </div>
                 </div>
-                <div className="right-nav">
-                    
-                    {user && user.isOwner && this.state.shopId && <NavLink className="nav-btn shop-btn" to={`/shop/${this.state.shopId}`}> <img className="shop-img" src={this.state.shop.imgUrls[0]} alt=""/> {this.state.shop.name}</NavLink>}
-                    {user && !user.isOwner && !user.isGuest && <NavLink className="nav-btn" to={`/profile/${user._id}`}>{user.fullName}</NavLink>}
-
-                    {user && !user.isGuest && <div className="chats-btn nav-btn" onClick={this.onToggleChatsList}><FontAwesomeIcon className="send-icon" icon={faComments} /></div>}
-
-                    {user && user.isGuest && <button className="login-btn nav-btn" onClick={() => { this.onNavBarClick() }}>Login</button>}
-                    {user && !user.isGuest && <button className="logout-btn nav - btn" onClick={() => { this.onLogOut() }}>Logout</button>}
-
-                    {this.state.showLoginModal && <LoginModal onNavBarClick={this.onNavBarClick} />}
-
-                    {user && user.isGuest && <NavLink className="nav-btn" to="/signup">Sign Up</NavLink>}
-                </div>
+                {this.state.showChatsList && <ChatsList onToggleChatsList={this.onToggleChatsList} />}
             </div>
-                {this.state.showChatsList && <ChatsList onToggleChatsList={this.onToggleChatsList}/>}
-        </div>   
         )
     }
 }
