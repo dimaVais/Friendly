@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { loadShops } from '../store/actions/shopActions'
 import { logout } from '../store/actions/userActions';
 import { ChatsList } from './ChatsList';
+import { toggleChat } from '../store/actions/chatActions.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComments } from '@fortawesome/free-solid-svg-icons'
@@ -18,11 +19,13 @@ class _NavBar extends Component {
         shop: '',
         shopId: '',
         pathName: '',
-        unReadMsgCount: 0
+        unReadMsgCount: 0,
+        chats:[]
     }
     componentDidMount() {
         this.setState({ pathName: this.props.history.location.pathname })
-        this.setUnreadMsgCount();
+        // this.setState({chats:this.props.chats},()=>this.setUnreadMsgCount())
+        
     }
     componentDidUpdate = async (prevProps) => {
         if (this.props.user && prevProps.user._id !== this.props.user._id) {
@@ -35,11 +38,10 @@ class _NavBar extends Component {
                 if (userShop) this.setState({ shopId: userShop._id, shop: userShop })
             }
         }
-        if (prevProps !== this.props) {
-            console.log('NavBar updated');
-            console.log(this.props.chats);
-            this.setUnreadMsgCount();
-        }
+        // if (prevProps !== this.props) {
+        //     console.log('NavBar updated');
+        //     this.setState({chats:this.props.chats},()=>this.setUnreadMsgCount())
+        // }
     }
 
     onNavBarClick = () => {
@@ -52,6 +54,7 @@ class _NavBar extends Component {
         this.props.logout();
         this.props.history.push('/');
         this.setState({ showChatsList: false })
+        this.props.toggleChat()
 
     }
     onToggleChatsList = () => {
@@ -60,9 +63,9 @@ class _NavBar extends Component {
     setUnreadMsgCount() {
         let unReadMsgCount = 0;
         console.log(this.props.chats);
-        if (this.props.chats.length === 0) return
+        if (this.state.chats.length === 0) return
 
-        this.props.chats.forEach(chat => {
+        this.state.chats.forEach(chat => {
             if (chat.msgs.some(msg => !msg.isRead && msg.authorId !== this.props.user._id)) unReadMsgCount++;
         })
         console.log('Unread msgs:', unReadMsgCount);
@@ -105,7 +108,6 @@ class _NavBar extends Component {
 
 const mapStateToProps = state => {
     return {
-
         user: state.userReducer.loggedInUser,
         shops: state.shopReducer.shops,
         chats: state.chatReducer.chats
@@ -114,7 +116,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadShops,
-    logout
+    logout,
+    toggleChat
 }
 
 

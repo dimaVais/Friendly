@@ -130,6 +130,17 @@
     :hover{
         cursor: pointer;
     }
+    .unread-msgs-count{
+        right: 15px;
+        position: absolute;
+        display: inline;
+        color: white;
+        background-color: red;
+        border-radius: 100%;
+        font-size: 0.8rem;
+        padding: 3px;
+
+    }
 }
 
 @media (max-width: 376px) {
