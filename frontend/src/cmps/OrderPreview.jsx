@@ -47,9 +47,9 @@ import { toggleChat } from '../store/actions/chatActions.js';
         const user = await userService.getById(this.props.order.buyer._id)
         await this.setState({ user })
     }
-    onToggleChat = (id) => {
- 
-        this.props.toggleChat({'userId':id})
+    onToggleChat = () => {
+        console.log(this.props);
+        this.props.toggleChat({'userId':this.props.order.buyer._id})
     }
 
     orderClass = () => {
@@ -74,10 +74,14 @@ import { toggleChat } from '../store/actions/chatActions.js';
                     <div className="order-preview-details">
                         <p>{order.buyer.fullName} <span>Wants to Adopt</span> {order.pet.name}</p>
                         <div className="contact-user-actions-btns">
-                            <button className="order-data-btn" onClick={this.onToggleModal}>
-                                <FontAwesomeIcon icon={btnIcon} />
-                            </button>
-                            <button className="order-data-btn" onClick={()=>this.onToggleChat(order.buyer._id)}>
+                            <div>
+                                <button className="order-data-btn" onClick={this.onToggleModal}>
+                                    <FontAwesomeIcon icon={btnIcon} />
+                                </button>
+                                <div className="unread-badge">{this.state}</div>
+
+                            </div>
+                            <button className="order-data-btn" onClick={this.onToggleChat}>
                                 <FontAwesomeIcon icon={faComment} />
                             </button>
                         </div>
