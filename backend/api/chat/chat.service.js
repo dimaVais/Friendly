@@ -98,9 +98,7 @@ async function save(chat) {
             userToUpdate2.chats.push(miniChat);
             userCollection.updateOne({"_id":ObjectId(userToUpdate1._id)},{$set:userToUpdate1})
             userCollection.updateOne({"_id":ObjectId(userToUpdate2._id)},{$set:userToUpdate2})
-            console.log('users after update|||||||||||||||||||||||||||');
-            console.log(userToUpdate1);
-            console.log(userToUpdate2);
+           
         return chat;
         } catch (err) {
             logger.error(`ERROR: cannot insert chat ${chat._id} to DB, err: ${err}`)

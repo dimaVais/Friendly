@@ -41,12 +41,11 @@ class _Chat extends Component {
             this.setState({ chat });
             this.setRecipientInfo(this.getRecipientId(chat.members));
             this.setSocket();
-
         } else {
             await this.setRecipientInfo(this.props.currChatInfo.userId);
-            const chat = this.getChatIfExists() !== false || this.creatNewChat();
-            this.setState({ chat });
-            this.setSocket();
+            const chat = this.getChatIfExists() || this.creatNewChat();
+            this.setState({ chat },()=>this.setSocket());
+            console.log(this.state);
         }
     }
     componentWillUnmount() {
@@ -55,9 +54,12 @@ class _Chat extends Component {
     }
 
     getChatIfExists() {
-        return this.props.chats.includes(chat => {
-            (chat.members.includes(this.state.sender._id) && chat.members.includes(this.state.recipient._id))
+        const chats= this.props.chats.find(chat => {
+            console.log(chat);
+            return (chat.members.includes(this.state.sender._id) && chat.members.includes(this.state.recipient._id))
         })
+        console.log(chats);
+        return chats
     }
     setRecipientInfo = async (id) => {
 
@@ -68,23 +70,20 @@ class _Chat extends Component {
         }
         if (recipient.isOwner) {
             const shop = await shopService.getMiniByUserId(recipient._id);
-            console.log('shop:', shop);
             recipient.name = shop.name;
             recipient.imgUrl = shop.imgUrl;
         }
-        console.log('recipient:', recipient);
         this.setState({ recipient });
     }
 
-    setSocket = async () => {
-
+    setSocket =  () => {
+        console.log(this.state);
         socketService.setup();
         socketService.emit('chat topic', this.state.chat.topic);
         socketService.on('chat addMsg', this.addMsg);
     }
 
     creatNewChat = () => {
-        console.log(this.state);
         const chat = {
             topic: `${this.state.sender._id}__${this.state.recipient._id}`,
             members: [this.state.sender._id, this.state.recipient._id],
@@ -103,11 +102,7 @@ class _Chat extends Component {
                 ...this.state.chat,
                 msgs: [...this.state.chat.msgs, newMsg]
             }
-        }, () => {
-            // const updatedUser = {...this.state.sender,chats:[...this.state.sender.chats,this.state.chat]}
-            this.props.saveChat(this.state.chat);
-            // this.props.updateUser(updatedUser);
-        });
+        }, () => this.props.saveChat(this.state.chat));
     }
 
     sendMsg = async (ev) => {
@@ -141,10 +136,9 @@ class _Chat extends Component {
 
     displayMsg = (msg, idx) => {
         let classTxt = 'message-row ';
-        const time = new Date(msg.createdAt);
+        const time = new Date(msg.createdAt);   
         const isAuthor = msg.authorId === this.state.sender._id;
         classTxt += isAuthor ? 'sender' : 'recipient';
-        if (msg.authorId !== this.state.sender._id) msg.isRead = true;
         return (
             <div className={classTxt} key={idx}>
                 {!isAuthor && <img src={this.state.recipient.imgUrl} alt="" />}
