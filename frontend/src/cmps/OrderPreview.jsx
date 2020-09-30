@@ -22,7 +22,7 @@ import { toggleChat } from '../store/actions/chatActions.js';
     }
     componentDidUpdate(preProps){
         if (preProps!==this.props){
-                    this.setUnreadCount();
+        this.setUnreadCount();
 
         }
     }
@@ -74,16 +74,17 @@ import { toggleChat } from '../store/actions/chatActions.js';
                     <div className="order-preview-details">
                         <p>{order.buyer.fullName} <span>Wants to Adopt</span> {order.pet.name}</p>
                         <div className="contact-user-actions-btns">
-                            <div>
                                 <button className="order-data-btn" onClick={this.onToggleModal}>
                                     <FontAwesomeIcon icon={btnIcon} />
                                 </button>
-                                <div className="unread-badge">{this.state}</div>
+                            <div>
+                                <button className="order-data-btn" onClick={this.onToggleChat}>
+                                    <FontAwesomeIcon icon={faComment} />
+                                </button>
+                                {/* {this.state.isUndreadMsg && <div className="unread-badge"></div>} */}
 
                             </div>
-                            <button className="order-data-btn" onClick={this.onToggleChat}>
-                                <FontAwesomeIcon icon={faComment} />
-                            </button>
+
                         </div>
 
                     </div>
