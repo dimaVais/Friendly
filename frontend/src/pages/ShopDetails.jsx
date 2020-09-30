@@ -176,7 +176,7 @@ class _ShopDetails extends Component {
 
                                 {this.state.shop.owner._id === this.props.loggedInUser._id && 
                              <div className={`order-list-box`}>
-                                 <div className="red-circle"></div>
+                                 {/* <div className="red-circle"></div> */}
                                 <button className="order-modal-button" onClick={this.onToggleOrderModal}>Adoption Requests</button>
                                     <OrderListModal isOpen={isOrderModal} isShop={true} orderFilterName={"shop._id"}
                                         filterById={this.state.shop._id} onToggleOrderModal={this.onToggleOrderModal} />
