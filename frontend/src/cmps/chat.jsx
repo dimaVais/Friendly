@@ -55,7 +55,6 @@ class _Chat extends Component {
 
     getChatIfExists() {
         const chats= this.props.chats.find(chat => {
-            console.log(chat);
             return (chat.members.includes(this.state.sender._id) && chat.members.includes(this.state.recipient._id))
         })
         console.log(chats);
