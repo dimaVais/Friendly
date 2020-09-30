@@ -13,13 +13,35 @@ import { toggleChat } from '../store/actions/chatActions.js';
 
     state = {
         showUserModal: false,
-        user: null
+        user: null,
+        isUndreadMsg:false
     }
 
     componentDidMount() {
+        this.setUnreadCount();
+    }
+    componentDidUpdate(preProps){
+        if (preProps!==this.props){
+                    this.setUnreadCount();
 
+        }
     }
 
+    setUnreadCount=()=>{
+        console.log('Chats:',this.props.chats);
+        const chat= this.props.chats.find(chat => {
+            return (chat.members.includes(this.props.loggedInUser._id) && chat.members.includes(this.props.order.buyer._id))
+        }) 
+        console.log(chat);
+        if (!chat || chat.length>0) return
+        const isUndreadMsg = chat.msgs.some(msg=>{
+            console.log(!msg.isRead );
+            console.log((msg.authorId !== this.props.loggedInUser._id));
+            return !msg.isRead && (msg.authorId !== this.props.loggedInUser._id)
+        });
+        this.setState({isUndreadMsg})
+        console.log(this.state);
+    }
     onToggleModal = async () => {
         this.setState({ showUserModal: !this.state.showUserModal })
         const user = await userService.getById(this.props.order.buyer._id)
@@ -89,7 +111,9 @@ import { toggleChat } from '../store/actions/chatActions.js';
 
 const mapStateToProps = state => {
     return {
-    
+        chats: state.chatReducer.chats,
+        loggedInUser: state.userReducer.loggedInUser
+
     }
 }
 

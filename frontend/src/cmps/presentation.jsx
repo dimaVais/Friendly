@@ -17,12 +17,10 @@ async componentDidMount() {
         this.setState({ chat });
         this.setRecipientInfo(this.getRecipientId(chat.members));
         this.setSocket();
-
     } else {
         await this.setRecipientInfo(this.props.currChatInfo.userId);
-        const chat = this.getChatIfExists() !== false || this.creatNewChat();
-        this.setState({ chat });
-        this.setSocket();
+        const chat = this.getChatIfExists() || this.creatNewChat();
+        this.setState({ chat },()=>this.setSocket());
     }
 }
 //Fronend Socket
@@ -32,6 +30,7 @@ setSocket = async () => {
     socketService.emit('chat topic', this.state.chat.topic);
     socketService.on('chat addMsg', this.addMsg);
 }
+
 
 // Backend Socket
 function connectSockets(io) {
