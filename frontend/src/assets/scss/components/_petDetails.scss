@@ -102,6 +102,61 @@
     width: 100%;
 }
 
+.ribbon-details {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 4;
+}
+
+// .ribbon-details::before,
+// .ribbon-details::after {
+//     position: absolute;
+//     z-index: -1;
+//     content: '';
+//     display: block;
+//     border: 3px solid #1092d3;
+// }
+
+.ribbon-details span {
+    position: absolute;
+    display: block;
+    width: 165px;
+    padding: 5px 0;
+    background-color: #1092d3;
+    text-align: center;
+    font-family: montserrat, sans-serif;
+    font-weight: 800;
+    color: rgb(215, 230, 215);
+}
+
+.ribbon-top {
+    top: 30px;
+    left: 20px;
+}
+
+.ribbon-top::before,
+.ribbon-top::after {
+    border-top-color: transparent;
+    border-right-color: transparent;
+}
+
+// .ribbon-top::before {
+//     top: 0;
+//     left: 0;
+// }
+
+// .ribbon-top::after {
+//     bottom: 0;
+//     right: 0;
+// }
+
+.ribbon-top span {
+    left: -30px;
+    top: 60px;
+}
+
 .pet-details-img-box {
     display: grid;
     height: 60vh;

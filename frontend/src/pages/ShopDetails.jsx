@@ -154,9 +154,8 @@ class _ShopDetails extends Component {
                         </div>
                         <div className="top-screen-box">
                             <div className="shop-details-section">
-
+                                <div className="shop-owner-details">
                                 <img className="shop-owner-img" src={shop.owner.imgUrl} />
-
                                 <div className="contact-box">
                                     {owner.gender && <FontAwesomeIcon className="contact-icon"
                                         icon={(owner.gender === 'Male') ? faMale : faFemale} />}
@@ -172,18 +171,20 @@ class _ShopDetails extends Component {
                                     <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
                                     <p>{shop.owner.contact.email}</p>
                                 </div>
-
-
-                                < div className="shop-description">
-                                    <p>{shop.desc}</p>
                                 </div>
-                            </div>
-                            {this.state.shop.owner._id === this.props.loggedInUser._id && 
+
+
+                                {this.state.shop.owner._id === this.props.loggedInUser._id && 
                              <div className={`order-list-box`}>
                                 <button className="order-modal-button" onClick={this.onToggleOrderModal}>Adoption Requests</button>
                                     <OrderListModal isOpen={isOrderModal} isShop={true} orderFilterName={"shop._id"}
                                         filterById={this.state.shop._id} onToggleOrderModal={this.onToggleOrderModal} />
                             </div>}
+
+                            </div>
+                            < div className="shop-description">
+                                    <p>{shop.desc}</p>
+                                </div>
                             </div>
                         <div className="bottom-screen-box">
 

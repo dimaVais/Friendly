@@ -1,11 +1,8 @@
 
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-
-import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faInfoCircle, faComment , faTimesCircle} from '@fortawesome/free-solid-svg-icons'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle, faComment, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import userService from '../services/userService';
 import { UserData } from './UserData.jsx';
 import { toggleChat } from '../store/actions/chatActions.js';
@@ -45,7 +42,7 @@ import { toggleChat } from '../store/actions/chatActions.js';
         const { order, onSave, onRemove, isShop, loggedInUser } = this.props
         const isModalClass = (this.props.inModal) ? 'modal-order-preview' : '';
         const display = (this.state.showUserModal) ? "grid" : "hidden";
-        const btnIcon = (this.state.showUserModal) ? faTimesCircle : faInfoCircle; 
+        const btnIcon = (this.state.showUserModal) ? faTimesCircle : faInfoCircle;
         const user = this.state.user;
         if (!order) return <h3 style={{ display: 'none' }}>loading...</h3>
         return (
@@ -53,14 +50,16 @@ import { toggleChat } from '../store/actions/chatActions.js';
                 {
                     isShop &&
                     <div className="order-preview-details">
-                        <p> {order.buyer.fullName} <span>Wants to Adopt</span> {order.pet.name}
+                        <p>{order.buyer.fullName} <span>Wants to Adopt</span> {order.pet.name}</p>
+                        <div className="contact-user-actions-btns">
                             <button className="order-data-btn" onClick={this.onToggleModal}>
                                 <FontAwesomeIcon icon={btnIcon} />
                             </button>
                             <button className="order-data-btn" onClick={()=>this.onToggleChat(order.buyer._id)}>
                                 <FontAwesomeIcon icon={faComment} />
                             </button>
-                        </p>
+                        </div>
+
                     </div>
                 }
 

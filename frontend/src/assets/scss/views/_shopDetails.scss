@@ -55,6 +55,8 @@
 }
 
 
+
+
 .shop-details-img-box {
     display: grid;
     height: 50vh;
@@ -94,15 +96,17 @@
 
 }
 
-.top-screen-box {
-    display: flex;
-    justify-content: center;
-}
+// .top-screen-box {
+//     display: flex;
+//     justify-content: center;
+// }
 
 .shop-details-section {
     text-align: start;
     margin-top: 25px;
     padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
 
     .owner-details {
         display: flex;
@@ -156,6 +160,7 @@
     padding: 20px 0;
     border-bottom: 1px solid rgb(223, 223, 223);
     border-top: 1px solid rgb(223, 223, 223);
+    width: 50%;
 }
 
 .map-container {
@@ -305,14 +310,14 @@ form {
 .order-modal-button {
 
     cursor: pointer;
-    color: rgb(255, 255, 255);
+    color: rgb(233, 233, 233);
     padding: 15px;
     border-radius: 10px;
     background-color: rgb(0, 172, 237);
     border: none;
-    font-family: roboto, sans-serif;
-    font-weight: 500;
-    font-size: 1.3rem;
+    font-family: montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
     margin-top: 50px;
 
     &:hover {
@@ -339,6 +344,10 @@ form {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 50%);
         grid-gap: 5px;
+    }
+
+    .shop-description {
+        width: 100%;
     }
 
     .shop-details-img-0 {

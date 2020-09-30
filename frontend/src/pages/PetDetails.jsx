@@ -188,7 +188,7 @@ class _PetDetails extends Component {
 
                         </div>
                     </div>
-
+                    {pet.isAdopted && <div class="ribbon-details ribbon-top"><span>Adopted</span></div>}
                     <div className="pet-details-img-box">
                         {
                             (pet.imgUrls) ?

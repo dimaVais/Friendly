@@ -152,6 +152,7 @@ class _PetFilter extends Component {
                         <option value="200">200km</option>
                     </Select>
                 </section>
+                
                 {isModalShown && <TagsFilter filterBy={this.props.filterBy} onToggleTag={this.onToggleTag} onFilterChange={this.onFilterChange} onToggleFilterModal={this.onToggleFilterModal} />}
 
                 <br />

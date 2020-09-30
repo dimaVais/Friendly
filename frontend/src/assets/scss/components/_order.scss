@@ -1,6 +1,6 @@
 .order-list-box {
-    width: 550px;
-    min-height: 250px;
+    width: 250px;
+    height: 70px;
 }
 
 .order-list {
@@ -149,8 +149,24 @@ a {
         width: 100%;
     }
 
-    .order-preview {
+    .modal-order-preview {
         width: 100%;
+
+        .order-preview-details {
+            margin: 0;
+        }
     }
+
+    .order-actions-btns-box {
+        flex-wrap: wrap;
+    }
+
+    .contact-user-actions-btns {
+        display: flex;
+        justify-content: center;
+    }
+
+
+
 
 }
