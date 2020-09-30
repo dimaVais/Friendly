@@ -63,6 +63,7 @@ class _Chat extends Component {
     setRecipientInfo = async (id) => {
 
         let recipient = await userService.getMiniById(id);
+        console.log(recipient);
         if (!recipient.imgUrl) {
             const name = recipient.name.split(' ');
             recipient.imgUrl = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
@@ -92,7 +93,8 @@ class _Chat extends Component {
     }
 
     getRecipientId(members) {
-        return (members[0] === this.state.sender._id) ? members[1] : members[0]
+        const id=  members.find(member=>member!==this.props.loggedInUser._id)
+        return id
     }
 
     addMsg = async newMsg => {
