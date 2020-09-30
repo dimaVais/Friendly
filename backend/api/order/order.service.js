@@ -16,7 +16,7 @@ async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
     const collection = await dbService.getCollection('order');
     try {
-        const orders = await collection.find(criteria).toArray();
+        const orders = await collection.find(({ "shop._id": ObjectId(filterBy['shop._id'])})).toArray();
         return orders;
     } catch (err) {
         logger.error(`ERROR: cannot get order list, err: ${err}`);
@@ -63,6 +63,9 @@ async function save(order) {
         }
     } else {
         order.createdAt = new Date(Date.now()).toISOString();
+        order.shop._id = ObjectId(order.shop._id);
+        order.buyer._id = ObjectId(order.buyer._id);
+        order.pet._id = ObjectId(order.pet._id);
         try {
             await collection.insertOne(order);
             logger.info(`Order ${order._id} was creted well!`);
@@ -77,9 +80,6 @@ async function save(order) {
 
 function _buildCriteria(filterBy) {
     const criteria = {};
-    if (filterBy.type) {
-        criteria.type = filterBy.type
-    }
 
     if (filterBy.type) {
         criteria.type = filterBy.type

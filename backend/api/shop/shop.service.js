@@ -63,7 +63,6 @@ async function getShopByUser(_id) {
         const shop = await collection.findOne({
             "owner._id": ObjectId(_id)
         });
-        console.log('shopuser service', shop)
         return shop;
     } catch (err) {
         logger.error(`ERROR: cannot find shop by user id  ${_id}, err: ${err}`);

@@ -30,7 +30,7 @@ function remove(userId) {
 }
 
 function update(user) {
-    return httpService.put(`user/${user._id}`, user)
+    return httpService.put(`${BASE_URL_USER}/${user._id}`, user)
 }
 
 async function login(userCred) {

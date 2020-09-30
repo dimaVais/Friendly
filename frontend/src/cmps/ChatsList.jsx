@@ -16,6 +16,7 @@ class _ChatsList extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props);
         if (this.props.chats.length > 0) {
             this.setState({ chats: [...this.props.chats] }, () => this.setUsersData())
         }
