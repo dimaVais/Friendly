@@ -4,7 +4,7 @@
     bottom: 0;
     width: 320px;
     height: 330px;
-    z-index: 5;
+    z-index: 20;
     background-color: $clr2;
     display: flex;
     flex-direction: column;
@@ -167,5 +167,13 @@ form {
     .chat-container {
         width: 100%;
         right: 0;
+        height: 100%;
+        justify-content: flex-end;
+        .msgs-container {
+            height: 90vh;
+            margin-top: 0;
+        }
     }
+
+
 }
