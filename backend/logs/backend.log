@@ -2011,9 +2011,36 @@ Wed, 30 Sep 2020 07:17:59 GMT - Error - ERROR: cannot find shop by id  5f6a1f994
 =======
 >>>>>>> ed5e1ed6adb3897dde6870974fdea6a44842c0c9
 >>>>>>> fc2d1142374e4a290deb6941cc76bc5e347786f3
+<<<<<<< HEAD
 Wed, 30 Sep 2020 07:45:01 GMT - Info - Chat 5f74377d46eef5212c9c619c was creted well!
 Wed, 30 Sep 2020 07:45:04 GMT - Info - Order 5f74378046eef5212c9c619d was creted well!
 Wed, 30 Sep 2020 07:45:51 GMT - Info - Chat 5f7437af46eef5212c9c619e was creted well!
 Wed, 30 Sep 2020 07:45:51 GMT - Info - Chat 5f74377d46eef5212c9c619c was updated well!
 Wed, 30 Sep 2020 08:27:35 GMT - Info - Chat 5f74417746eef5212c9c619f was creted well!
 Wed, 30 Sep 2020 08:30:47 GMT - Info - Chat 5f74423746eef5212c9c61a0 was creted well!
+=======
+Wed, 30 Sep 2020 07:35:06 GMT - Info - Pet 5f71b5f7e4a7712389cbcd5b was updated well!
+Wed, 30 Sep 2020 07:36:01 GMT - Info - Order 5f74356145b7135368d0516e was creted well!
+Wed, 30 Sep 2020 07:37:18 GMT - Info - Order 5f74356145b7135368d0516e was updated well!
+Wed, 30 Sep 2020 07:37:18 GMT - Info - Pet 5f6a1578417318fe8d1ee033 was updated well!
+Wed, 30 Sep 2020 07:40:08 GMT - Error - ERROR: cannot find shop by id  5f6a1f99417318fe8d1ee407, err: TypeError: Cannot read property '_id' of null
+Wed, 30 Sep 2020 07:53:05 GMT - Info - Chat 5f74396145b7135368d0516f was creted well!
+Wed, 30 Sep 2020 07:53:05 GMT - Error - ERROR: cannot insert chat 5f74396145b7135368d0516f to DB, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Wed, 30 Sep 2020 07:54:03 GMT - Info - Order 5f74399b45b7135368d05170 was creted well!
+Wed, 30 Sep 2020 07:56:53 GMT - Info - Chat 5f743a4545b7135368d05171 was creted well!
+Wed, 30 Sep 2020 07:58:37 GMT - Info - Chat 5f743aad45b7135368d05172 was creted well!
+Wed, 30 Sep 2020 07:58:37 GMT - Info - Chat 5f743a4545b7135368d05171 was updated well!
+Wed, 30 Sep 2020 07:58:58 GMT - Info - Chat 5f743ac245b7135368d05173 was creted well!
+Wed, 30 Sep 2020 07:58:58 GMT - Info - Chat 5f743a4545b7135368d05171 was updated well!
+Wed, 30 Sep 2020 08:06:08 GMT - Info - Chat 5f743aad45b7135368d05172 was updated well!
+Wed, 30 Sep 2020 08:06:10 GMT - Info - Chat 5f743aad45b7135368d05172 was updated well!
+Wed, 30 Sep 2020 08:06:14 GMT - Info - Chat 5f743aad45b7135368d05172 was updated well!
+Wed, 30 Sep 2020 08:06:21 GMT - Info - Chat 5f743c7d45b7135368d05174 was creted well!
+Wed, 30 Sep 2020 08:06:21 GMT - Error - ERROR: cannot insert chat 5f743c7d45b7135368d05174 to DB, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+Wed, 30 Sep 2020 08:06:53 GMT - Info - Chat 5f743a4545b7135368d05171 was updated well!
+Wed, 30 Sep 2020 08:06:53 GMT - Info - Chat 5f743aad45b7135368d05172 was updated well!
+Wed, 30 Sep 2020 08:07:04 GMT - Info - Chat 5f743aad45b7135368d05172 was updated well!
+Wed, 30 Sep 2020 08:07:04 GMT - Info - Chat 5f743a4545b7135368d05171 was updated well!
+Wed, 30 Sep 2020 08:08:21 GMT - Info - Chat 5f743cf545b7135368d05175 was creted well!
+Wed, 30 Sep 2020 08:08:21 GMT - Error - ERROR: cannot insert chat 5f743cf545b7135368d05175 to DB, err: Error: Argument passed in must be a single String of 12 bytes or a string of 24 hex characters
+>>>>>>> 1bcec1df64d1bb8fdf7e8c06f714137c6a1a0e0d

@@ -167,5 +167,13 @@ form {
     .chat-container {
         width: 100%;
         right: 0;
+        height: 100%;
+        justify-content: flex-end;
+        .msgs-container {
+            height: 90vh;
+            margin-top: 0;
+        }
     }
+
+
 }
