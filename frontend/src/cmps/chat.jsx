@@ -35,35 +35,47 @@ class _Chat extends Component {
     async componentDidMount() {
         var sender = this.props.loggedInUser;
         this.setState({ sender })
-
         if (this.props.currChatInfo.chatId) {
             const chat = this.props.chats.find(chat => chat._id === this.props.currChatInfo.chatId);
-            this.setState({ chat });
-            this.setRecipientInfo(this.getRecipientId(chat.members));
-            this.setSocket();
+            this.setState({ chat }, () => {
+                this.setRecipientInfo(this.getRecipientId(chat.members));
+                this.setSocket();
+            });
         } else {
             await this.setRecipientInfo(this.props.currChatInfo.userId);
-            const chat = this.getChatIfExists() || this.creatNewChat();
-            this.setState({ chat },()=>this.setSocket());
-            console.log(this.state);
+            const chat = this.getChatIfExists();
+            if (chat) {
+                this.setState({ chat }, () => this.setSocket());
+            } else {
+                const newChat = this.creatNewChat();
+                await this.props.saveChat(newChat);
+                const savedChat = this.getChatIfExists();
+                this.setState({ chat: savedChat }, () => {
+                    this.setRecipientInfo(this.getRecipientId(savedChat.members));
+                    this.setSocket();
+                });
+            }
         }
     }
+
     componentWillUnmount() {
         socketService.off('chat addMsg', this.addMsg);
         socketService.terminate();
     }
 
+    getChatFromChatList = () => {
+
+    }
+
     getChatIfExists() {
-        const chats= this.props.chats.find(chat => {
+        const chats = this.props.chats.find(chat => {
             return (chat.members.includes(this.state.sender._id) && chat.members.includes(this.state.recipient._id))
         })
-        console.log(chats);
         return chats
     }
-    setRecipientInfo = async (id) => {
 
+    setRecipientInfo = async (id) => {
         let recipient = await userService.getMiniById(id);
-        console.log(recipient);
         if (!recipient.imgUrl) {
             const name = recipient.name.split(' ');
             recipient.imgUrl = `https://ui-avatars.com/api/?name=${name[0]}+${name[1]}`
@@ -76,8 +88,7 @@ class _Chat extends Component {
         this.setState({ recipient });
     }
 
-    setSocket =  () => {
-        console.log(this.state);
+    setSocket = () => {
         socketService.setup();
         socketService.emit('chat topic', this.state.chat.topic);
         socketService.on('chat addMsg', this.addMsg);
@@ -93,17 +104,17 @@ class _Chat extends Component {
     }
 
     getRecipientId(members) {
-        const id=  members.find(member=>member!==this.props.loggedInUser._id)
+        const id = members.find(member => member !== this.props.loggedInUser._id)
         return id
     }
 
-    addMsg = async newMsg => {
+    addMsg = async (newMsg) => {
         this.setState({
             chat: {
                 ...this.state.chat,
                 msgs: [...this.state.chat.msgs, newMsg]
             }
-        }, () => this.props.saveChat(this.state.chat));
+        }, () => {this.props.saveChat(this.state.chat)});
     }
 
     sendMsg = async (ev) => {
@@ -137,7 +148,7 @@ class _Chat extends Component {
 
     displayMsg = (msg, idx) => {
         let classTxt = 'message-row ';
-        const time = new Date(msg.createdAt);   
+        const time = new Date(msg.createdAt);
         const isAuthor = msg.authorId === this.state.sender._id;
         classTxt += isAuthor ? 'sender' : 'recipient';
         return (
@@ -153,7 +164,7 @@ class _Chat extends Component {
 
     render() {
         return (
-            <div className="chat-container">
+            <div className="chat-container" >
                 <section className="chat-title flex space-evenly">
                     {this.state.recipient && <span>{this.state.recipient.name}</span>}
                     <button className="btn-close btn" onClick={this.onClose}><FontAwesomeIcon className="close-icon" icon={faTimes} /></button>

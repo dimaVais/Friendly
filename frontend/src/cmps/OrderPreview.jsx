@@ -9,8 +9,6 @@ import { toggleChat } from '../store/actions/chatActions.js';
 
 
  class _OrderPreview extends Component {
-
-
     state = {
         showUserModal: false,
         user: null,
@@ -20,27 +18,23 @@ import { toggleChat } from '../store/actions/chatActions.js';
     componentDidMount() {
         this.setUnreadCount();
     }
-    componentDidUpdate(preProps){
-        if (preProps!==this.props){
+    componentDidUpdate(prevProps){
+        if (prevProps!==this.props){
         this.setUnreadCount();
 
         }
     }
 
     setUnreadCount=()=>{
-        console.log('Chats:',this.props.chats);
         const chat= this.props.chats.find(chat => {
             return (chat.members.includes(this.props.loggedInUser._id) && chat.members.includes(this.props.order.buyer._id))
         }) 
-        console.log(chat);
         if (!chat || chat.length>0) return
         const isUndreadMsg = chat.msgs.some(msg=>{
-            console.log(!msg.isRead );
-            console.log((msg.authorId !== this.props.loggedInUser._id));
+  
             return !msg.isRead && (msg.authorId !== this.props.loggedInUser._id)
         });
         this.setState({isUndreadMsg})
-        console.log(this.state);
     }
     onToggleModal = async () => {
         this.setState({ showUserModal: !this.state.showUserModal })
@@ -73,7 +67,7 @@ import { toggleChat } from '../store/actions/chatActions.js';
                     isShop &&
                     <div className="order-preview-details">
                         <p>{order.buyer.fullName} <span>Wants to Adopt</span> {order.pet.name}</p>
-                        <div className="contact-user-actions-btns">
+                        <div className="contact-user-actions-btns flex justify-center">
                                 <button className="order-data-btn" onClick={this.onToggleModal}>
                                     <FontAwesomeIcon icon={btnIcon} />
                                 </button>
@@ -81,7 +75,7 @@ import { toggleChat } from '../store/actions/chatActions.js';
                                 <button className="order-data-btn" onClick={this.onToggleChat}>
                                     <FontAwesomeIcon icon={faComment} />
                                 </button>
-                                {/* {this.state.isUndreadMsg && <div className="unread-badge"></div>} */}
+                                {this.state.isUndreadMsg && <div className="unread-badge"></div>}
 
                             </div>
 
@@ -123,8 +117,6 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-
     toggleChat
-
 }
 export const OrderPreview = connect(mapStateToProps, mapDispatchToProps)(_OrderPreview)

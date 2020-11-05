@@ -26,13 +26,11 @@ async function query(filterBy = {}) {
   }
 
 async function getById(_id) {
-    console.log('chatId in service:',_id);
     const collection = await dbService.getCollection('chat');
     try {
         const chat = await collection.findOne({
             "_id": ObjectId(_id)
         });
-        console.log('AFTER MONGO');
         return chat;
     } catch (err) {
         logger.error(`ERROR: cannot find chat by id  ${_id}, err: ${err}`);
@@ -40,14 +38,11 @@ async function getById(_id) {
     }
 }
 async function getByUserId(_id) {
-    console.log('chatId in service:',_id);
     const collection = await dbService.getCollection('chat');
     try {
         const chat = await collection.find({
            "members":_id
-        });
-        
-        console.log('AFTER MONGO');
+        });       
         return chat;
     } catch (err) {
         logger.error(`ERROR: cannot find chat by user id  ${_id}, err: ${err}`);
@@ -69,7 +64,6 @@ async function remove(_id) {
 async function save(chat) {
     const collection = await dbService.getCollection('chat');
     const userCollection = await dbService.getCollection('user');
-    console.log('|||||||||||||saving chat|||||||||||||');
     if (chat._id) {
         chat._id = ObjectId(chat._id);
         chat.updatedAt = new Date(Date.now()).toISOString();
@@ -86,7 +80,6 @@ async function save(chat) {
         try {
             await collection.insertOne(chat);
             logger.info(`Chat ${chat._id} was creted well!`);
-
             //target user
             const userToUpdate1 =  await userCollection.findOne({"_id":ObjectId(chat.members[1])});
             const userToUpdate2 =  await userCollection.findOne({"_id":ObjectId(chat.members[0])});

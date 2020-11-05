@@ -1,43 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import socketService from '../services/socketService'
 import { chatService } from "../services/chatService.js"
 import userService from '../services/userService.js';
 import { shopService } from '../services/shopService.js'
-import { getChatById, toggleChat } from '../store/actions/chatActions.js';
+import { getChatById, toggleChat, loadChats } from '../store/actions/chatActions.js';
 
 
 class _ChatsList extends Component {
 
     state = {
-        chats: null,
+        chats: [],
         chatsReady: false,
         usersInfo: {}
     }
 
     componentDidMount() {
-        console.log(this.props);
         if (this.props.chats.length > 0) {
+            this.setState({ chats: [...this.props.chats] }, () => this.setUsersData())
+        }
+        this.setSocket();
+    }
+
+    async componentDidUpdate(prevProps) {
+        if (this.props.chats.length !== prevProps.chats.length) {
             this.setState({ chats: [...this.props.chats] }, () => this.setUsersData())
         }
     }
 
-    async componentDidUpdate(prevProps) {
-        if (prevProps !== this.props) {
-            this.setState({ chats: [...this.props.chats] }, () => this.setUsersData())
-        }
+    componentWillUnmount() {
+        socketService.off('chat addMsg', this.loadAllChats());
+        socketService.terminate();
     }
+
+    setSocket = () => {
+        socketService.setup();
+        socketService.on('chat addMsg', this.loadAllChats());
+    }
+
     setUsersData = () => {
         this.setState({ chatsReady: true })
         this.state.chats.forEach(async chat => {
             const miniUser = await userService.getMiniById(this.getRecipientId(chat.members))
             this.setRecipientsInfo(miniUser);
         })
+    }
 
+    loadAllChats = async () => {
+        await this.props.loadChats();
+        this.setState({ chats: [...this.props.chats] }, () => this.setUsersData())
     }
 
     async setRecipientsInfo(miniUser) {
-        console.log('miniuser:', miniUser);
         let userInfo = {
             [miniUser._id]: {
                 imgUrl: miniUser.imgUrl,
@@ -65,7 +79,6 @@ class _ChatsList extends Component {
     }
 
     displayChatDetails = (chat) => {
-        console.log(chat);
         const id = this.getRecipientId(chat.members)
         if (!this.state.usersInfo[id]) return
         return (
@@ -79,10 +92,11 @@ class _ChatsList extends Component {
     getRecipientId(members) {
         return (members[0] === this.props.loggedInUser._id) ? members[1] : members[0]
     }
+
     render() {
         return (
             <div className="chat-list-container">
-                {(this.state.chatsReady && this.state.chats.map(chat => this.displayChatDetails(chat))) || <div>No chats to load</div>}
+                {(this.state.chats.length > 0 && this.state.chats.map(chat => this.displayChatDetails(chat))) || <div>No chats to load</div>}
             </div>
         )
     }
@@ -99,7 +113,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     getChatById,
-    toggleChat
+    toggleChat,
+    loadChats
 }
 
 export const ChatsList = connect(mapStateToProps, mapDispatchToProps)(_ChatsList)

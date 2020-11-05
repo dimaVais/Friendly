@@ -62,13 +62,13 @@ class _NavBar extends Component {
     }
     setUnreadMsgCount() {
         let unReadMsgCount = 0;
-        console.log(this.props.chats);
+        // console.log(this.props.chats);
         if (this.state.chats.length === 0) return
 
         this.state.chats.forEach(chat => {
             if (chat.msgs.some(msg => !msg.isRead && msg.authorId !== this.props.user._id)) unReadMsgCount++;
         })
-        console.log('Unread msgs:', unReadMsgCount);
+        // console.log('Unread msgs:', unReadMsgCount);
         this.setState({ unReadMsgCount })
     }
 

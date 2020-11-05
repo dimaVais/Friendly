@@ -147,7 +147,7 @@ class _ShopDetails extends Component {
                             {
                                 (shop.imgUrls) ?
                                     shop.imgUrls.map((imgUrl, index) => {
-                                        return <img className={`shop-details-img-${index}`} src={imgUrl} />
+                                        return <img key={index} className={`shop-details-img-${index}`} src={imgUrl} />
                                     })
                                     : ''
                             }
@@ -155,38 +155,38 @@ class _ShopDetails extends Component {
                         <div className="top-screen-box">
                             <div className="shop-details-section">
                                 <div className="shop-owner-details">
-                                <img className="shop-owner-img" src={shop.owner.imgUrl} />
-                                <div className="contact-box">
-                                    {owner.gender && <FontAwesomeIcon className="contact-icon"
-                                        icon={(owner.gender === 'Male') ? faMale : faFemale} />}
-                                    <p>{shop.owner.fullName}</p>
+                                    <img className="shop-owner-img" src={shop.owner.imgUrl} />
+                                    <div className="contact-box">
+                                        {owner.gender && <FontAwesomeIcon className="contact-icon"
+                                            icon={(owner.gender === 'Male') ? faMale : faFemale} />}
+                                        <p>{shop.owner.fullName}</p>
+                                    </div>
+
+                                    <div className="contact-box">
+                                        <FontAwesomeIcon className="contact-icon" icon={faMobileAlt} />
+                                        <p>{shop.owner.contact.phone}</p>
+                                    </div>
+
+                                    <div className="contact-box">
+                                        <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
+                                        <p>{shop.owner.contact.email}</p>
+                                    </div>
                                 </div>
 
-                                <div className="contact-box">
-                                    <FontAwesomeIcon className="contact-icon" icon={faMobileAlt} />
-                                    <p>{shop.owner.contact.phone}</p>
-                                </div>
 
-                                <div className="contact-box">
-                                    <FontAwesomeIcon className="contact-icon" icon={faEnvelope} />
-                                    <p>{shop.owner.contact.email}</p>
-                                </div>
-                                </div>
-
-
-                                {this.state.shop.owner._id === this.props.loggedInUser._id && 
-                             <div className={`order-list-box`}>
-                                 {/* <div className="red-circle"></div> */}
-                                <button className="order-modal-button" onClick={this.onToggleOrderModal}>Adoption Requests</button>
-                                    <OrderListModal isOpen={isOrderModal} isShop={true} orderFilterName={"shop._id"}
-                                        filterById={this.state.shop._id} onToggleOrderModal={this.onToggleOrderModal} />
-                            </div>}
+                                {this.state.shop.owner._id === this.props.loggedInUser._id &&
+                                    <div className={`order-list-box`}>
+                                        {/* <div className="red-circle"></div> */}
+                                        <button className="order-modal-button" onClick={this.onToggleOrderModal}>Adoption Requests</button>
+                                        <OrderListModal isOpen={isOrderModal} isShop={true} orderFilterName={"shop._id"}
+                                            filterById={this.state.shop._id} onToggleOrderModal={this.onToggleOrderModal} />
+                                    </div>}
 
                             </div>
                             < div className="shop-description">
-                                    <p>{shop.desc}</p>
-                                </div>
+                                <p>{shop.desc}</p>
                             </div>
+                        </div>
                         <div className="bottom-screen-box">
 
                             <div className="reviews-box">
@@ -227,8 +227,8 @@ class _ShopDetails extends Component {
                                 </div>
                                 {(!shop.reviews) ? <h1>Loading Reviews...</h1> :
                                     <ul className="reviews-list">
-                                        {shop.reviews.map(review => {
-                                            return <li className="review">
+                                        {shop.reviews.map((review, idx) => {
+                                            return <li key={idx} className="review">
                                                 <p className="review-text">{review.txt}</p>
                                                 <p><span>Rate: </span>{this.drawStars(review.rate)}</p>
                                                 <p><span>From: </span>{review.by.fullName}</p>

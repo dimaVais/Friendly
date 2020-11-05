@@ -12,11 +12,18 @@ function createSocketService() {
   const socketService = {
     setup() {
       socket = io(baseUrl);
+      console.log('socketservice:',socket);
+
     },
     on(eventName, cb) {
       socket.on(eventName, cb);
+      console.log('socketservice:',eventName, 'cb', cb);
+
     },
     off(eventName, cb) {
+      console.log('socketserviceOff:',socket);
+
+      console.log('socketserviceOff:',eventName, 'cb', cb);
       socket.off(eventName, cb);
     },
     emit(eventName, data) {

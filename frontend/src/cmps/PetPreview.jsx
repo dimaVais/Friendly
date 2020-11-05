@@ -50,9 +50,8 @@ class _PetPreview extends Component {
         if (!pet || !pet.reacts) return <h1>loading...</h1>
         return (
             <NavLink to={`/details/${pet._id}`}>
-
                 <div className="pet-preview">
-                    {pet.isAdopted && <div class="ribbon ribbon-top-right"><span>Adopted</span></div>}
+                    {pet.isAdopted && <div className="ribbon ribbon-top-right"><span>Adopted</span></div>}
                     <img src={(pet.imgUrls) ? pet.imgUrls[0] : ''} alt="pet" />
                     <div className="card-description">
                         <div className="card-description-header">
@@ -63,7 +62,7 @@ class _PetPreview extends Component {
                         <h4>{pet.summary}</h4>
                     </div>
                     <div className="shop-container">
-                        {pet.shop && <Link to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
+                        {pet.shop && <Link  to={`/shop/${pet.shop._id}`}>{pet.shop.fullName}</Link>}
                         {/* {pet.shop && <h4>{pet.shop.fullName}</h4>} */}
                         <div onClick={(ev) => { this.onUpdateReaction(ev, 'love') }} className="pet-rate-box">
                             {/* <span>{pet.reacts && pet.reacts[0].type === 'love' ? <FontAwesomeIcon className="love-icon" icon={faHeart} /> : ''} </span> */}
@@ -79,8 +78,6 @@ class _PetPreview extends Component {
                             {pet.shop && <p className="shop-rate-count">({pet.shop.rate.count})  </p>} */}
                         </div>
                     </div>
-
-
                 </div>
             </ NavLink >
         )

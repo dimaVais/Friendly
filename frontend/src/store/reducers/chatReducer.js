@@ -32,7 +32,6 @@ export function chatReducer(state = initialState, action) {
                 chats: [...state.chats,action.chat]
             }
         case 'ADD_CHAT':
-            console.log('IN REDUCER',action.chatToSave);
             return {
                 ...state,
                 chats: [...state.chats, action.chatToSave],

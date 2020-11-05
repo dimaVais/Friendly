@@ -10,7 +10,6 @@ export class Geolocation extends React.Component {
 
     setLocToFind = async (ev) => {
         const loc = ev.target.value;
-        console.log('find:', loc);
         const res = await this.findLocation(loc, this.getLatLng);
     }
 

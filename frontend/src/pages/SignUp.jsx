@@ -14,7 +14,7 @@ import { saveShop, loadShops } from '../store/actions/shopActions'
 export class _SignUp extends Component {
 
     state = {
-        userAdopt: false,
+        userAdopt: true,
         userShop: false,
         signupCred: ''
     }
@@ -34,13 +34,13 @@ export class _SignUp extends Component {
                 [name]: value
             }
         }));
-        console.log('This State:', this.state);
     };
 
     doSignup = async ev => {
         ev.preventDefault();
         const { userAdopt, userShop } = this.state;
-        const { fullName, username, password, address, email, phone } = this.state.signupCred;
+        const { fullName, username, password, address, email, phone, birthDate, familyStatus,
+            numOfKids, residence, petCondition, currPets, prevExperince } = this.state.signupCred;
         if (!fullName || !username || !password || !address) {
             return this.setState({ msg: 'All inputs are required!' });
         }
@@ -52,17 +52,25 @@ export class _SignUp extends Component {
             address: address,
             email: email,
             phone: phone,
+            birthDate:birthDate,
+            familyStatus:familyStatus,
+            numOfKids:numOfKids,
+            residence:residence,
+            petCondition:petCondition,
+            currPets:currPets,
+            prevExperince:prevExperince,
             isOwner: userShop,
-            isGuest: false
+            isGuest: false,
+            chats: []
         };
         await this.props.signup(user);
         await this.props.loadUsers();
         const lastSignUpUser = this.props.users[this.props.users.length - 1]
-        console.log('userNow:',lastSignUpUser);
+        console.log('userNow:', lastSignUpUser);
         this.setState({ signupCred: { fullName: '', username: '', password: '', address: '', email: '', phone: '' } });
         if (userShop) {
             this.signUpShop(lastSignUpUser);
-        } 
+        }
         this.props.history.push(`/`);
     }
 
@@ -106,10 +114,73 @@ export class _SignUp extends Component {
         })
     }
 
+    getUserAdoptForm() {
+        return <div className="flex column align-center">
+            <OutlinedInput type="date" name="birthDate" placeholder="Your Birth Date"
+                onChange={this.signupHandleChange}></OutlinedInput>
+            <FormControl>
+                <InputLabel htmlFor="type">Family Status:</InputLabel>
+                <Select
+                    native
+                    onChange={this.signupHandleChange}
+                    inputProps={{
+                        name: "familyStatus",
+                    }}>
+                    <option aria-label="None" value="" />
+                    <option value={"single"}>Single</option>
+                    <option value={"married"}>Married</option>
+                </Select>
+            </FormControl>
+            <OutlinedInput type="number" name="numOfKids" placeholder="Number of Children"
+                onChange={this.signupHandleChange}></OutlinedInput>
+            <OutlinedInput type="text" name="residence" placeholder="Your Residence"
+                onChange={this.signupHandleChange}></OutlinedInput>
+            <OutlinedInput type="text" name="petCondition" placeholder="The conditions of the pet"
+                onChange={this.signupHandleChange}></OutlinedInput>
+            <OutlinedInput type="text" name="currPets" placeholder="Do you have current pets"
+                onChange={this.signupHandleChange}></OutlinedInput>
+            <OutlinedInput type="text" name="prevExperince" multiline rowsMax={4}
+                placeholder="Do you previouse experince?" onChange={this.signupHandleChange}> </OutlinedInput>
+        </div>
+    }
+
+    getUserShopForm() {
+        return <div className="flex column align-center">
+            <OutlinedInput type="text" name="name" placeholder="Your Shop Name"
+                onChange={this.signupHandleChange}></OutlinedInput>
+            <FormControl>
+                <InputLabel htmlFor="type">Shop Type:</InputLabel>
+                <Select
+                    native
+                    onChange={this.signupHandleChange}
+                    inputProps={{
+                        name: "type",
+                    }}>
+                    <option aria-label="None" value="" />
+                    <option value={"shelter"}>Shelter</option>
+                    <option value={"volunteer"}>Volunteer</option>
+                    <option value={"private"}>Private</option>
+                </Select>
+            </FormControl>
+            <OutlinedInput type="text" name="title" placeholder="Your shop title/catchFrase"
+                onChange={this.signupHandleChange}></OutlinedInput>
+            <OutlinedInput
+                id="standard-textarea"
+                label="Shop Description:"
+                placeholder="Your shop short description"
+                multiline
+                name="desc"
+                onChange={this.signupHandleChange}
+            />
+            <Geolocation getGeolocation={this.getGeolocation}
+                signupHandleChange={this.signupHandleChange} />
+            <br />
+        </div>
+    }
+
     render() {
         const { userAdopt, userShop } = this.state
         const { loggedInUser } = this.props
-        console.log('this.state.signupCred', this.state.signupCred);
         return (
             <div className="form-container flex column align-center">
                 <h1>We are happy you decided to join us!</h1>
@@ -119,12 +190,11 @@ export class _SignUp extends Component {
                     <button onClick={() => { this.setUserShop() }}>Find Adopters</button>
                 </div>
                 <div className="fields-container flex column align-center">
-                    {(userAdopt) ? <h3>New Adopter</h3> :
+                    {(userAdopt) ? <h3>Welcome New Adopter please fill the details so we can know you better</h3> :
                         <h3>Please filled out this form so we will be able to get to know you and your animals</h3>}
                     <form className="flex column align-center" onSubmit={this.doSignup}>
-                        <div className="flex">
+                        <div className="form-inner-box flex space-around">
                             <div className="flex column align-center">
-                                <br />
                                 <OutlinedInput type="text" name="fullName" placeholder="Full Name" onChange={this.signupHandleChange} value={this.state.signupCred.fullName}></OutlinedInput>
                                 <OutlinedInput type="text" name="username" placeholder="User Name" onChange={this.signupHandleChange} value={this.state.signupCred.username}></OutlinedInput>
                                 <OutlinedInput type="password" name="password" placeholder="Password" onChange={this.signupHandleChange} value={this.state.signupCred.password}></OutlinedInput>
@@ -132,38 +202,8 @@ export class _SignUp extends Component {
                                 <OutlinedInput type="text" name="email" placeholder="Email" onChange={this.signupHandleChange} value={this.state.signupCred.email}></OutlinedInput>
                                 <OutlinedInput type="text" name="phone" placeholder="Phone" onChange={this.signupHandleChange} value={this.state.signupCred.phone}></OutlinedInput>
                             </div>
-                            {userShop &&
-                                <div className="flex column align-center">
-                                    <OutlinedInput type="text" name="name" placeholder="Your Shop Name"
-                                        onChange={this.signupHandleChange}></OutlinedInput>
-                                    <FormControl>
-                                        <InputLabel htmlFor="type">Shop Type:</InputLabel>
-                                        <Select
-                                            native
-                                            onChange={this.signupHandleChange}
-                                            inputProps={{
-                                                name: "type",
-                                            }}>
-                                            <option aria-label="None" value="" />
-                                            <option value={"shelter"}>Shelter</option>
-                                            <option value={"volunteer"}>Volunteer</option>
-                                            <option value={"private"}>Private</option>
-                                        </Select>
-                                    </FormControl>
-                                    <OutlinedInput type="text" name="title" placeholder="Your shop title/catchFrase"
-                                        onChange={this.signupHandleChange}></OutlinedInput>
-                                    <OutlinedInput
-                                        id="standard-textarea"
-                                        label="Shop Description:"
-                                        placeholder="Your shop short description"
-                                        multiline
-                                        name="desc"
-                                        onChange={this.signupHandleChange}
-                                    />
-                                    <Geolocation getGeolocation={this.getGeolocation}
-                                        signupHandleChange={this.signupHandleChange} />
-                                    <br />
-                                </div>}
+                            {userAdopt && this.getUserAdoptForm()}
+                            {userShop && this.getUserShopForm()}
                         </div>
                         <button>Signup</button>
                     </form>

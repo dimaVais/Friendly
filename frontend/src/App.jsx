@@ -25,7 +25,6 @@ import { toggleChat } from './store/actions/chatActions.js';
   }
   componentDidUpdate(prevProps){
     if(prevProps!==this.props) this.setState({isChatShown:this.props.isChatShown})
-    console.log(this.props.isChatShown);
   }
 
 

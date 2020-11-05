@@ -3,17 +3,16 @@ import { chatService } from "../../services/chatService.js"
 export function loadChats(filterBy, filterName) {
     return async dispatch => {
         const chats = await chatService.query(filterBy, filterName);
+        console.log('Chats were load:',chats);
         dispatch({ type: 'LOAD_CHATS', chats });
     }
 }
-
 
 export function getChatsByUserId(userId) {
     console.log('chatId',userId);
     return async dispatch => {
         try {
             const chat = await chatService.getByUserId(userId);
-            console.log(chat);
             dispatch({ type: 'LOAD_CHATS', chat });
         } catch (err) {
             console.log('UserActions: err in loadUsers', err);
@@ -21,7 +20,6 @@ export function getChatsByUserId(userId) {
     }
 }
 export function getChatById(chatId) {
-    console.log('chatId',chatId);
     return async dispatch => {
         try {
             const chat = await chatService.getById(chatId);

@@ -39,6 +39,7 @@ async function getById(userId) {
 }
 
 async function getMiniById(userId) {
+    console.log('userId',userId);
     const collection = await dbService.getCollection('user')
     try {
         const user = await collection.findOne({ "_id": ObjectId(userId) });

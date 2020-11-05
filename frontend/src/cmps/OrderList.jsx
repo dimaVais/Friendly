@@ -61,7 +61,7 @@ class _OrderList extends Component {
                     {/* <h3>Adoption Requests</h3> */}
                     <div className={`doubleAccept ${this.state.msgDivClass}`}>Only one approval please.</div>
                     {orders.map(order =>
-                        <OrderPreview isShop={this.props.isShop} order={order} loggedInUser={this.props.loggedInUser}
+                        <OrderPreview key={order._id} isShop={this.props.isShop} order={order} loggedInUser={this.props.loggedInUser}
                         inModal={inModal}  onRemove={this.onRemove} onSave={this.onSave} />)}
                 </div>
             )
