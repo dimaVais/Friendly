@@ -20,8 +20,10 @@ Gallery and filter -
 shelter page-
 ![shelter page](/shelterPage.png?raw=true "shelter page")
 
+
 animal page-
 ![animal page](/animalPage.png?raw=true "animal page")
+
 
 Chat and Chatlist-
 ![Chat and Chatlist](/Chat_list_with_chat_with_saved_history.png?raw=true "Chat and Chatlist")
