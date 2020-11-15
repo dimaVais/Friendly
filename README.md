@@ -14,7 +14,7 @@ Home page -
 ![Home page](/Home.jpg?raw=true "Home page")
 
 Gallery and filter - 
-![Gallery overvie](/"GalleryOverview.jpg"?raw=true "Gallery overvie")
+![Gallery overvie](/GalleryOverview.jpg?raw=true "Gallery overvie")
 ![Filtered Gallery](/Gallery with filter.jpg?raw=true "Filtered Gallery")
 
 shelter page-
