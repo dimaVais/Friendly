@@ -14,8 +14,14 @@ Home page -
 ![Home page](/Home.jpg?raw=true "Home page")
 
 Gallery and filter - 
-![Gallery overvie](Gallery overview.jpg?raw=true "Gallery overvie")
+![Gallery overvie](/Gallery overview.jpg?raw=true "Gallery overvie")
 ![Filtered Gallery](/Gallery with filter.jpg?raw=true "Filtered Gallery")
 
-Chat list with chat with saved history.png
+shelter page-
+![shelter page](/shelter page.png?raw=true "shelter page")
+
+Chat and Chatlist-
+![Chat and Chatlist](/Chat list with chat with saved history.png?raw=true "Chat and Chatlist")
+
+
 
