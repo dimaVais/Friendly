@@ -7,3 +7,15 @@ It also allows a chat between the owners and the adopters, give comments to the 
 
 Link to the full app on heroku is - 
 https://friendly-cajul20.herokuapp.com/#/
+
+ScreenShot-
+
+Home page - 
+![Home page](/Home.jpg?raw=true "Home page")
+
+Gallery and filter - 
+![Gallery overvie](Gallery overview.jpg?raw=true "Gallery overvie")
+![Filtered Gallery](/Gallery with filter.jpg?raw=true "Filtered Gallery")
+
+Chat list with chat with saved history.png
+
