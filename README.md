@@ -18,10 +18,12 @@ Gallery and filter -
 ![Filtered Gallery](/GalleryWithFilter.jpg?raw=true "Filtered Gallery")
 
 shelter page-
+
 ![shelter page](/shelterPage.png?raw=true "shelter page")
 
 
 animal page-
+
 ![animal page](/animalPage.png?raw=true "animal page")
 
 
