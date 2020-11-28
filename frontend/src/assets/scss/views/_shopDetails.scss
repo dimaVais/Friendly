@@ -104,10 +104,10 @@
 
 }
 
-// .top-screen-box {
-//     display: flex;
-//     justify-content: center;
-// }
+.top-screen-box {
+    border-bottom: 3px solid rgb(223, 223, 223);
+    padding-bottom: 30px;
+}
 
 .shop-details-section {
     text-align: start;
@@ -166,8 +166,7 @@
     line-height: 1.8;
     margin-top: 20px;
     padding: 20px 0;
-    border-bottom: 1px solid rgb(223, 223, 223);
-    border-top: 1px solid rgb(223, 223, 223);
+    // border-top: 1px solid rgb(223, 223, 223);
     width: 50%;
 }
 
@@ -211,10 +210,8 @@
 
 .bottom-screen-box {
     display: flex;
-
+    border-bottom: 3px solid rgb(223, 223, 223);
 }
-
-
 
 .adoption-requests-heading {
     margin-top: 50px;

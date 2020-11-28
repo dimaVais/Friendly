@@ -131,7 +131,6 @@ class _ShopDetails extends Component {
         return (
             <section>
                 {(!shop.owner || !shop.location || !shop.reviews) ? <h1>Loading...</h1> :
-
                     <div className="shop-details-main-box">
                         <div className="shop-details-header">
                             <h2 className="shop-details-heading">{shop.name}</h2>
@@ -142,17 +141,15 @@ class _ShopDetails extends Component {
 
                             </div>
                         </div>
-
                         <div className="shop-details-img-box">
                             {
                                 (shop.imgUrls) ?
                                     shop.imgUrls.map((imgUrl, index) => {
                                         return <img key={index} className={`shop-details-img-${index}`} src={imgUrl} />
-                                    })
-                                    : ''
+                                    }) : ''
                             }
                         </div>
-                        <div className="top-screen-box">
+                        <div className="top-screen-box flex space-between">
                             <div className="shop-details-section">
                                 <div className="shop-owner-details">
                                     <img className="shop-owner-img" src={shop.owner.imgUrl} />
@@ -172,8 +169,6 @@ class _ShopDetails extends Component {
                                         <p>{shop.owner.contact.email}</p>
                                     </div>
                                 </div>
-
-
                                 {this.state.shop.owner._id === this.props.loggedInUser._id &&
                                     <div className={`order-list-box`}>
                                         {/* <div className="red-circle"></div> */}
@@ -181,14 +176,13 @@ class _ShopDetails extends Component {
                                         <OrderListModal isOpen={isOrderModal} isShop={true} orderFilterName={"shop._id"}
                                             filterById={this.state.shop._id} onToggleOrderModal={this.onToggleOrderModal} />
                                     </div>}
-
                             </div>
                             < div className="shop-description">
+                                <h2>About Us:</h2>
                                 <p>{shop.desc}</p>
                             </div>
                         </div>
                         <div className="bottom-screen-box">
-
                             <div className="reviews-box">
                                 <h3>What they say about us</h3>
                                 <button className="open-reviews-btn" onClick={this.onToggleReviewModal}>
@@ -233,13 +227,10 @@ class _ShopDetails extends Component {
                                                 <p><span>Rate: </span>{this.drawStars(review.rate)}</p>
                                                 <p><span>From: </span>{review.by.fullName}</p>
                                             </li>
-                                        }
-
-                                        )}
+                                        })}
                                     </ul>}
                             </div>
                             <div className="shop-location-box">
-
                                 <div className="map-container">
                                     <GoogleMap lat={shop.location.lat} lng={shop.location.lng} name={shop.location.name} />
                                 </div>
@@ -247,9 +238,7 @@ class _ShopDetails extends Component {
                                 <div className="shop-location-name">
                                     <h2>We are located at {shop.location.name}</h2>
                                 </div>
-
                             </div>
-
                         </div>
                         <div className="pets-box" >
                             <h2 className="our-pets-heading">Our Pets</h2>

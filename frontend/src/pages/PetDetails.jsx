@@ -101,7 +101,6 @@ class _PetDetails extends Component {
     }
 
      onToggleChat = async() => {
- 
         const shop = await shopService.getById(this.state.pet.shop._id);
         await this.props.toggleChat({'userId':shop.owner._id})
     }

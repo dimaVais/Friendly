@@ -2,12 +2,16 @@
     max-width: 80%;
     height: 1000px;
     // border: 1px solid gray;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     margin: auto;
     margin-top: 10px;
     text-align: center;
-    background-color:$clr2;
+    background-color: $clr2;
     border-radius: 10px;
+
+    &.shop {
+        height: 880px;
+    }
 
     button {
         padding: 10px;
@@ -30,14 +34,29 @@
     min-width: 100%;
     padding: 10px;
 
-    * {
-        margin-top:0px;
-        margin-bottom: 10px;
+    *{
+        margin-top: 0px;
         width: 20em;
+    }
+    
+   .form-field {
+        margin-bottom: 10px;
         padding: 10px;
+    }
+
+    #shop-desc{
+        padding-bottom: 9.5px;
     }
 
     .form-inner-box {
         min-width: 46em;
+        &.prev-ex-box {
+            padding: 0px;
+
+            * {
+               width: 43em;
+            }
+        }
     }
+
 }

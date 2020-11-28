@@ -41,7 +41,7 @@ export class Geolocation extends React.Component {
         if (!latLng) return <h1>LOADING...</h1>
         return (
             <div className="flex column align-center">
-                <OutlinedInput type="text" name="locName" placeholder="Your Shop Location"
+                <OutlinedInput className="form-field" type="text" name="locName" placeholder="Your Shop Location"
                     onChange={(event) => {
                         this.setLocToFind(event);
                         this.props.signupHandleChange(event)

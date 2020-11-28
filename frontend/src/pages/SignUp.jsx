@@ -4,6 +4,7 @@ import { OutlinedInput } from '@material-ui/core';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
+import FormHelperText from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import { Geolocation } from '../cmps/Geolocation';
 
@@ -52,13 +53,13 @@ export class _SignUp extends Component {
             address: address,
             email: email,
             phone: phone,
-            birthDate:birthDate,
-            familyStatus:familyStatus,
-            numOfKids:numOfKids,
-            residence:residence,
-            petCondition:petCondition,
-            currPets:currPets,
-            prevExperince:prevExperince,
+            birthDate: birthDate,
+            familyStatus: familyStatus,
+            numOfKids: numOfKids,
+            residence: residence,
+            petCondition: petCondition,
+            currPets: currPets,
+            prevExperince: prevExperince,
             isOwner: userShop,
             isGuest: false,
             chats: []
@@ -115,14 +116,12 @@ export class _SignUp extends Component {
     }
 
     getUserAdoptForm() {
-        return <div className="flex column align-center">
-            <OutlinedInput type="date" name="birthDate" placeholder="Your Birth Date"
+        return <div className="side-div flex column align-center">
+            <OutlinedInput className="form-field" type="date" name="birthDate" placeholder="Your Birth Date"
                 onChange={this.signupHandleChange}></OutlinedInput>
-            <FormControl>
-                <InputLabel htmlFor="type">Family Status:</InputLabel>
-                <Select
-                    native
-                    onChange={this.signupHandleChange}
+            <FormControl variant="outlined">
+                <InputLabel htmlFor="type" style={{ textAlign: 'start' }} >Family Status:</InputLabel>
+                <Select className="form-field" native label="Family Status:" onChange={this.signupHandleChange}
                     inputProps={{
                         name: "familyStatus",
                     }}>
@@ -131,28 +130,24 @@ export class _SignUp extends Component {
                     <option value={"married"}>Married</option>
                 </Select>
             </FormControl>
-            <OutlinedInput type="number" name="numOfKids" placeholder="Number of Children"
+            <OutlinedInput className="form-field" type="number" name="numOfKids" placeholder="Number of Children"
                 onChange={this.signupHandleChange}></OutlinedInput>
-            <OutlinedInput type="text" name="residence" placeholder="Your Residence"
+            <OutlinedInput className="form-field" type="text" name="residence" placeholder="Your Residence"
                 onChange={this.signupHandleChange}></OutlinedInput>
-            <OutlinedInput type="text" name="petCondition" placeholder="The conditions of the pet"
+            <OutlinedInput className="form-field" type="text" name="petCondition" placeholder="The conditions of the pet"
                 onChange={this.signupHandleChange}></OutlinedInput>
-            <OutlinedInput type="text" name="currPets" placeholder="Do you have current pets"
+            <OutlinedInput className="form-field" type="text" name="currPets" placeholder="Do you have current pets"
                 onChange={this.signupHandleChange}></OutlinedInput>
-            <OutlinedInput type="text" name="prevExperince" multiline rowsMax={4}
-                placeholder="Do you previouse experince?" onChange={this.signupHandleChange}> </OutlinedInput>
         </div>
     }
 
     getUserShopForm() {
-        return <div className="flex column align-center">
-            <OutlinedInput type="text" name="name" placeholder="Your Shop Name"
+        return <div className="side-div flex column align-center">
+            <OutlinedInput className="form-field" type="text" name="name" placeholder="Your Shop Name"
                 onChange={this.signupHandleChange}></OutlinedInput>
-            <FormControl>
-                <InputLabel htmlFor="type">Shop Type:</InputLabel>
-                <Select
-                    native
-                    onChange={this.signupHandleChange}
+            <FormControl variant="outlined">
+                <InputLabel htmlFor="type" style={{ textAlign: 'start' }} >Shop Type:</InputLabel>
+                <Select className="form-field" native label="Shop Type:" onChange={this.signupHandleChange}
                     inputProps={{
                         name: "type",
                     }}>
@@ -162,16 +157,10 @@ export class _SignUp extends Component {
                     <option value={"private"}>Private</option>
                 </Select>
             </FormControl>
-            <OutlinedInput type="text" name="title" placeholder="Your shop title/catchFrase"
+            <OutlinedInput className="form-field" type="text" name="title" placeholder="Your shop title/catchFrase"
                 onChange={this.signupHandleChange}></OutlinedInput>
-            <OutlinedInput
-                id="standard-textarea"
-                label="Shop Description:"
-                placeholder="Your shop short description"
-                multiline
-                name="desc"
-                onChange={this.signupHandleChange}
-            />
+            <OutlinedInput className="form-field" id="shop-desc" label="Shop Description:" name="desc"
+                multiline rows="7" placeholder="Your shop short description" onChange={this.signupHandleChange} />
             <Geolocation getGeolocation={this.getGeolocation}
                 signupHandleChange={this.signupHandleChange} />
             <br />
@@ -181,8 +170,9 @@ export class _SignUp extends Component {
     render() {
         const { userAdopt, userShop } = this.state
         const { loggedInUser } = this.props
+        const isShop = userShop ? "shop" : "";
         return (
-            <div className="form-container flex column align-center">
+            <div className={`form-container flex column align-center ${isShop}`}>
                 <h1>We are happy you decided to join us!</h1>
                 <p>Do you want to adopt or to find adopters for your animals?</p>
                 <div className="btn-menu flex">
@@ -193,19 +183,26 @@ export class _SignUp extends Component {
                     {(userAdopt) ? <h3>Welcome New Adopter please fill the details so we can know you better</h3> :
                         <h3>Please filled out this form so we will be able to get to know you and your animals</h3>}
                     <form className="flex column align-center" onSubmit={this.doSignup}>
-                        <div className="form-inner-box flex space-around">
-                            <div className="flex column align-center">
-                                <OutlinedInput type="text" name="fullName" placeholder="Full Name" onChange={this.signupHandleChange} value={this.state.signupCred.fullName}></OutlinedInput>
-                                <OutlinedInput type="text" name="username" placeholder="User Name" onChange={this.signupHandleChange} value={this.state.signupCred.username}></OutlinedInput>
-                                <OutlinedInput type="password" name="password" placeholder="Password" onChange={this.signupHandleChange} value={this.state.signupCred.password}></OutlinedInput>
-                                <OutlinedInput type="text" name="address" placeholder="Personal Address" onChange={this.signupHandleChange} value={this.state.signupCred.address}></OutlinedInput>
-                                <OutlinedInput type="text" name="email" placeholder="Email" onChange={this.signupHandleChange} value={this.state.signupCred.email}></OutlinedInput>
-                                <OutlinedInput type="text" name="phone" placeholder="Phone" onChange={this.signupHandleChange} value={this.state.signupCred.phone}></OutlinedInput>
+                        <div className="form-inner-box flex column" >
+                            <div className="form-inner-box main-frame flex space-around">
+                                <div className="side-div flex column align-center">
+                                    <OutlinedInput className="form-field" type="text" name="fullName" placeholder="Full Name" onChange={this.signupHandleChange} value={this.state.signupCred.fullName}></OutlinedInput>
+                                    <OutlinedInput className="form-field" type="text" name="username" placeholder="User Name" onChange={this.signupHandleChange} value={this.state.signupCred.username}></OutlinedInput>
+                                    <OutlinedInput className="form-field" type="password" name="password" placeholder="Password" onChange={this.signupHandleChange} value={this.state.signupCred.password}></OutlinedInput>
+                                    <OutlinedInput className="form-field" type="text" name="address" placeholder="Personal Address" onChange={this.signupHandleChange} value={this.state.signupCred.address}></OutlinedInput>
+                                    <OutlinedInput className="form-field" type="text" name="email" placeholder="Email" onChange={this.signupHandleChange} value={this.state.signupCred.email}></OutlinedInput>
+                                    <OutlinedInput className="form-field" type="text" name="phone" placeholder="Phone" onChange={this.signupHandleChange} value={this.state.signupCred.phone}></OutlinedInput>
+                                </div>
+                                {userAdopt && this.getUserAdoptForm()}
+                                {userShop && this.getUserShopForm()}
                             </div>
-                            {userAdopt && this.getUserAdoptForm()}
-                            {userShop && this.getUserShopForm()}
+                            {userAdopt && <div className="form-inner-box prev-ex-box">
+                                <OutlinedInput className="form-field" type="text" name="prevExperince" multiline rows="5"
+                                    placeholder="Do you have previouse experince with pets?"
+                                    onChange={this.signupHandleChange}> </OutlinedInput>
+                            </div>}
                         </div>
-                        <button>Signup</button>
+                        <button className="signup-btn">Signup</button>
                     </form>
                 </div >
             </div >
