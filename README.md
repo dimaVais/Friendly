@@ -7,3 +7,28 @@ It also allows a chat between the owners and the adopters, give comments to the 
 
 Link to the full app on heroku is - 
 https://friendly-cajul20.herokuapp.com/#/
+
+ScreenShot-
+
+Home page - 
+![Home page](/Home.jpg?raw=true "Home page")
+
+Gallery and filter - 
+![Gallery overvie](/GalleryOverview.jpg?raw=true "Gallery overvie")
+![Filtered Gallery](/GalleryWithFilter.jpg?raw=true "Filtered Gallery")
+
+shelter page-
+
+![shelter page](/shelterPage.png?raw=true "shelter page")
+
+
+animal page-
+
+![animal page](/animalPage.png?raw=true "animal page")
+
+
+Chat and Chatlist-
+![Chat and Chatlist](/Chat_list_with_chat_with_saved_history.png?raw=true "Chat and Chatlist")
+
+
+
