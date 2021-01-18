@@ -7,6 +7,7 @@ It also allows a chat between the owners and the adopters, give comments to the 
 
 Link to the full app on heroku is - 
 https://friendly-cajul20.herokuapp.com/#/
+
 To Test the chat please Login to the app - username: dima, password: dima.
 
 ScreenShot-
